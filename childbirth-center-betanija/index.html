@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Childbirth Center Betanija – Novi Sad</title>
+    <style>
+        :root {
+            --bg: #f5f9ff;
+            --bg-card: #ffffff;
+            --accent: #2d6a4f;
+            --accent-dark: #1a4a36;
+            --accent-light: #e8f5ee;
+            --text-primary: #1a2e2a;
+            --text-secondary: #3d5a4f;
+            --text-light: #6b7f76;
+            --border-light: #d0e4d8;
+            --shadow: 0 8px 30px rgba(45, 106, 79, 0.10);
+            --shadow-hover: 0 16px 40px rgba(45, 106, 79, 0.18);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --max-width: 1080px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.25s ease;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-dark);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 18px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 14px;
+            }
+        }
+
+        /* ---------- STICKY NAV ---------- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(245, 249, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-light);
+            transition: box-shadow var(--transition);
+        }
+
+        .site-header.scrolled {
+            box-shadow: 0 2px 20px rgba(45, 106, 79, 0.08);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        @media (max-width: 720px) {
+            .nav-inner {
+                padding-left: 18px;
+                padding-right: 18px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+        .nav-logo {
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            font-weight: 700;
+            color: var(--accent-dark);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-logo .logo-emoji {
+            font-size: 1.3em;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-dark);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--accent-dark);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition);
+        }
+
+        .nav-toggle:hover {
+            background: var(--accent-light);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(245, 249, 255, 0.96);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                gap: 0;
+                padding: 12px 0 20px;
+                border-bottom: 1px solid var(--border-light);
+                transform: translateY(-110%);
+                opacity: 0;
+                transition: transform 0.35s ease, opacity 0.35s ease;
+                pointer-events: none;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 24px;
+                font-size: 1rem;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 120px 0 70px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, #f0f9f4 0%, #e2f0ea 40%, #f5f9ff 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -100px;
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-deco {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-deco svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.35;
+        }
+
+        .hero-deco .heart-svg {
+            color: var(--accent);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--accent-dark);
+            max-width: 860px;
+            margin: 0 auto 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 660px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 14px 34px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.25);
+            text-decoration: none;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(45, 106, 79, 0.30);
+            color: #fff;
+        }
+
+        .hero-cta:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.20);
+        }
+
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .trust-item .num {
+            font-weight: 700;
+            color: var(--accent-dark);
+            font-size: 1.2rem;
+        }
+
+        .trust-item .emoji {
+            font-size: 1.3rem;
+        }
+
+        /* ---------- SECTIONS COMMON ---------- */
+        section {
+            padding: 64px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 16px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+            font-weight: 700;
+            color: var(--accent-dark);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 36px;
+            line-height: 1.5;
+        }
+
+        .section-title-centered {
+            text-align: center;
+        }
+
+        .section-desc-centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ---------- WHY US ---------- */
+        .why-us {
+            background: #fff;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 22px 24px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .why-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 0.94rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .why-card .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 40px;
+            margin-top: 10px;
+        }
+
+        /* ---------- SITUATIONS ---------- */
+        .situations {
+            background: var(--bg);
+        }
+
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .sit-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 24px 20px 22px;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            border-left: 4px solid var(--accent);
+        }
+
+        .sit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .sit-card .emoji {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .sit-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .sit-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .sit-card .cta-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 2px 14px;
+            border-radius: 40px;
+        }
+
+        /* ---------- HOW IT WORKS ---------- */
+        .how-it-works {
+            background: #fff;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            position: relative;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 28px 18px 22px;
+            border-radius: var(--radius);
+            background: var(--bg);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.20);
+        }
+
+        .step-card .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .step-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .step-card .step-info {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ---------- FOOTER ---------- */
+        .site-footer {
+            background: #eaf3ee;
+            border-top: 1px solid var(--border-light);
+            padding: 48px 0 36px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 36px;
+        }
+
+        @media (max-width: 720px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 720px) {
+            .footer-col h4 {
+                justify-content: center;
+            }
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: block;
+        }
+
+        .footer-col a {
+            padding: 2px 0;
+            transition: color var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-dark);
+        }
+
+        .footer-phone {
+            font-size: 1.1rem !important;
+            font-weight: 600;
+            color: var(--accent) !important;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 720px) {
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 720px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .footer-bottom a {
+            color: var(--text-light);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ---------- STICKY MOBILE CTA ---------- */
+        .sticky-mobile-cta {
+            display: none;
+        }
+
+        @media (max-width: 720px) {
+            .sticky-mobile-cta {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 90;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-top: 1px solid var(--border-light);
+                padding: 10px 18px;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+
+            .sticky-mobile-cta a {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                background: var(--accent);
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 600;
+                padding: 12px 32px;
+                border-radius: 40px;
+                text-decoration: none;
+                box-shadow: 0 4px 16px rgba(45, 106, 79, 0.25);
+                transition: background var(--transition), transform var(--transition);
+            }
+
+            .sticky-mobile-cta a:hover {
+                background: var(--accent-dark);
+                transform: scale(1.02);
+                color: #fff;
+            }
+
+            .sticky-mobile-cta a:active {
+                transform: scale(0.97);
+            }
+        }
+
+        /* ---------- DECORATIVE SVG BLOBS ---------- */
+        .deco-blob {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .deco-blob-1 {
+            top: -40px;
+            right: -30px;
+            width: 280px;
+            height: 280px;
+        }
+
+        .deco-blob-2 {
+            bottom: -50px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+        }
+
+        @media (max-width: 720px) {
+            .deco-blob-1 {
+                width: 150px;
+                height: 150px;
+                top: -20px;
+                right: -20px;
+            }
+            .deco-blob-2 {
+                width: 120px;
+                height: 120px;
+                bottom: -30px;
+                left: -20px;
+            }
+        }
+
+        /* ---------- UTILITY ---------- */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+
+        /* ---------- REVIEW QUOTE ---------- */
+        .review-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-top: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        .review-badge .stars {
+            color: #e6a817;
+            font-size: 1rem;
+        }
+
+        /* ---------- RESPONSIVE TWEAKS ---------- */
+        @media (max-width: 420px) {
+            .hero {
+                padding: 100px 0 50px;
+            }
+            .hero-trust {
+                gap: 18px;
+            }
+            .trust-item {
+                font-size: 0.82rem;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .situations-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            section {
+                padding: 44px 0;
+            }
+        }
+
+        /* ---------- KEYFRAMES ---------- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .animate-in-delay-1 {
+            animation-delay: 0.1s;
+        }
+        .animate-in-delay-2 {
+            animation-delay: 0.2s;
+        }
+        .animate-in-delay-3 {
+            animation-delay: 0.3s;
+        }
+        .animate-in-delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== STICKY NAV ====== -->
+    <header class="site-header" id="header">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="logo-emoji">👶</span>
+                Childbirth Center <span>Betanija</span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#situations">Kada</a></li>
+                <li><a href="#how">Kako</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="hero">
+        <div class="deco-blob deco-blob-1">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <path fill="#2d6a4f" d="M44.7,-67.8C58.3,-60.2,70.1,-48.1,76.5,-33.6C82.9,-19.1,84,-2.2,79.2,12.8C74.4,27.8,63.7,41,50.6,52.5C37.5,64,22,73.8,4.1,77.4C-13.8,81,-34.1,78.4,-49.8,67.7C-65.5,57,-76.5,38.2,-80.2,17.5C-83.9,-3.2,-80.3,-25.8,-68.7,-42.2C-57.1,-58.6,-37.5,-68.8,-20.2,-75.6C-2.9,-82.4,12.1,-85.8,27.6,-80.6C43.1,-75.4,59,-68.3,44.7,-67.8Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="deco-blob deco-blob-2">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <path fill="#2d6a4f" d="M39.2,-56.2C51.7,-50.6,63.2,-40.5,69.4,-27.7C75.6,-14.9,76.6,0.6,71.1,14.2C65.5,27.8,53.5,39.4,40.2,49.5C26.9,59.6,12.3,68.2,-2.9,72.4C-18.1,76.6,-33.9,76.4,-47.2,68.4C-60.5,60.4,-71.3,44.6,-76.1,26.8C-80.9,9,-79.6,-10.8,-71.5,-27.2C-63.5,-43.6,-48.7,-56.6,-33.5,-61.9C-18.3,-67.2,-2.7,-64.8,11.2,-59.1C25.1,-53.4,37.9,-44.4,39.2,-56.2Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="container">
+            <div class="hero-deco">
+                <svg class="heart-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="40" height="40">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+                <svg viewBox="0 0 40 40" fill="none" stroke="#2d6a4f" stroke-width="1.2" width="36" height="36" opacity="0.3">
+                    <circle cx="20" cy="20" r="16" stroke="currentColor" fill="none" />
+                    <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                <svg viewBox="0 0 40 40" fill="none" stroke="#2d6a4f" stroke-width="1.2" width="36" height="36" opacity="0.25">
+                    <path d="M20 6v28M6 20h28" stroke="currentColor" />
+                    <circle cx="20" cy="20" r="14" stroke="currentColor" fill="none" />
+                </svg>
+            </div>
+            <h1>Bezbedan porođaj i stručna nega <span class="highlight">za vas i vašu bebu</span></h1>
+            <p class="hero-sub">Centar za porođaj Betanija u Novom Sadu — mesto gde je vaše poverenje na prvom mestu. Iskusni tim, savremena oprema i individualni pristup svakoj porodilji.</p>
+            <a href="tel:+381214899335" class="hero-cta">📞 Pozovite nas</a>
+            <div class="hero-trust">
+                <span class="trust-item"><span class="emoji">🕊️</span> <span class="num">15+</span> godina iskustva</span>
+                <span class="trust-item"><span class="emoji">👶</span> <span class="num">500+</span> porođaja godišnje</span>
+                <span class="trust-item"><span class="emoji">⏱️</span> Odgovor za <span class="num">30</span> min</span>
+                <span class="trust-item"><span class="emoji">⭐</span> Ocena <span class="num">4.8</span> / 5</span>
+            </div>
+            <div class="review-badge">
+                <span class="stars">★★★★★</span> „Spasili su mene i moju bebu” — Aleksandra G.
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== WHY US ====== -->
+    <section class="why-us" id="why">
+        <div class="container">
+            <div class="section-label text-center">Zašto baš mi</div>
+            <h2 class="section-title section-title-centered">Zašto Childbirth Center Betanija?</h2>
+            <p class="section-desc section-desc-centered">Ne nudimo samo uslugu — nudimo sigurnost, stručnost i nežnu negu u najvažnijem trenutku vašeg života.</p>
+            <div class="why-grid">
+                <div class="why-card animate-in">
+                    <span class="emoji">👩‍⚕️</span>
+                    <h3>Iskusni stručnjaci</h3>
+                    <p>Tim čine lekari i babice sa više od 15 godina iskustva u visokorizičnim i redovnim porođajima.</p>
+                    <span class="badge">15+ godina</span>
+                </div>
+                <div class="why-card animate-in animate-in-delay-1">
+                    <span class="emoji">🩺</span>
+                    <h3>Savremena oprema</h3>
+                    <p>Najnovija dijagnostička i monitoring tehnologija za bezbednost majke i deteta u svakom trenutku.</p>
+                    <span class="badge">Full oprema</span>
+                </div>
+                <div class="why-card animate-in animate-in-delay-2">
+                    <span class="emoji">💝</span>
+                    <h3>Individualni pristup</h3>
+                    <p>Svaka porodilja dobija plan nege prilagođen svojim potrebama — bez šablona i rutine.</p>
+                    <span class="badge">1 na 1</span>
+                </div>
+                <div class="why-card animate-in animate-in-delay-3">
+                    <span class="emoji">🏥</span>
+                    <h3>Centar u Novom Sadu</h3>
+                    <p>Lokacija u mirnom delu grada, lako dostupna, sa parkingom i prijateljskim osobljem na recepciji.</p>
+                    <span class="badge">Majevička</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SITUATIONS ====== -->
+    <section class="situations" id="situations">
+        <div class="container">
+            <div class="section-label text-center">Kada vam trebamo</div>
+            <h2 class="section-title section-title-centered">U kojim situacijama vas čekamo?</h2>
+            <p class="section-desc section-desc-centered">Bilo da planirate porođaj ili vam je potrebna hitna pomoć — tu smo za vas 24/7.</p>
+            <div class="situations-grid">
+                <div class="sit-card">
+                    <span class="emoji">🤰</span>
+                    <h4>Trudnoća sa komplikacijama</h4>
+                    <p>Preeklampsija, prevremeni porođaj, dijabetes — imamo iskustvo i opremu za visokorizične trudnoće.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🚑</span>
+                    <h4>Hitna stanja</h4>
+                    <p>Krvarenje, bolovi, sumnja na infekciju — javite se odmah, naš tim reaguje u roku od nekoliko minuta.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">📋</span>
+                    <h4>Redovni pregledi</h4>
+                    <p>Ultrazvuk, CTG, laboratorija i savetovanje — kompletan monitoring trudnoće na jednom mestu.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🧘</span>
+                    <h4>Psiho-fizička priprema</h4>
+                    <p>Radionice disanja, relaksacije i pripreme za porođaj — smanjite strah i povećajte samopouzdanje.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🍼</span>
+                    <h4>Postporođajna nega</h4>
+                    <p>Podrška u dojenju, nega bebe, saveti za oporavak — ne ostavljamo vas same nakon porođaja.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">💬</span>
+                    <h4>Savetovanje o dojenju</h4>
+                    <p>Individualne konsultacije sa sertifikovanim savetnicima za dojenje — rešite nedoumice i probleme.</p>
+                    <span class="cta-tag">Tu smo za vas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== HOW IT WORKS ====== -->
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-label text-center">Kako funkcionišemo</div>
+            <h2 class="section-title section-title-centered">Vaš put do sigurnog porođaja</h2>
+            <p class="section-desc section-desc-centered">Jednostavan proces koji vas vodi od prvog kontakta do trenutka kada u rukama držite svoju bebu.</p>
+            <div class="steps-grid">
+                <div class="step-card animate-in">
+                    <span class="step-number">1</span>
+                    <span class="emoji">📞</span>
+                    <h4>Kontaktirajte nas</h4>
+                    <p>Pozovite nas ili pošaljite email. Naš tim odgovara u roku od 30 minuta, 24 sata dnevno.</p>
+                    <div class="step-info">📅 Radno vreme: 00–24h</div>
+                </div>
+                <div class="step-card animate-in animate-in-delay-1">
+                    <span class="step-number">2</span>
+                    <span class="emoji">📅</span>
+                    <h4>Zakažite termin</h4>
+                    <p>Dogovorite pregled ili dolazak. Prijem je brz, bez dugih čekanja i papirologije.</p>
+                    <div class="step-info">📍 Novi Sad, Majevička</div>
+                </div>
+                <div class="step-card animate-in animate-in-delay-2">
+                    <span class="step-number">3</span>
+                    <span class="emoji">🏡</span>
+                    <h4>Dođite u centar</h4>
+                    <p>Dočekaće vas prijateljsko osoblje, čiste i opremljene sobe i osećaj sigurnosti.</p>
+                    <div class="step-info">🅿️ Besplatan parking</div>
+                </div>
+                <div class="step-card animate-in animate-in-delay-3">
+                    <span class="step-number">4</span>
+                    <span class="emoji">👶</span>
+                    <h4>Dobijate nežnu negu</h4>
+                    <p>Od prijema do otpusta — vi i vaša beba ste u centru pažnje. Svaki korak je podržan.</p>
+                    <div class="step-info">⭐ Ocena 4.8 / 5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="site-footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>👶 Childbirth Center Betanija</h4>
+                    <p>Medicinski centar za porođaj i zdravlje žena u Novom Sadu. Stručnost, poverenje i nežna nega od 2009. godine.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="LinkedIn">🔗</a>
+                        <a href="viber://chat?number=381214899335" aria-label="Viber">💬</a>
+                        <a href="https://wa.me/381214899335" aria-label="WhatsApp">📱</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>📞 Kontakt</h4>
+                    <a href="tel:+381214899335" class="footer-phone">📞 +381 21 489 9335</a>
+                    <a href="mailto:childbirth.center.betanija@example.com">✉️ childbirth.center.betanija@example.com</a>
+                    <p>📍 Majevička, Novi Sad, Serbia</p>
+                    <p style="margin-top:6px;font-size:0.85rem;color:var(--text-light);">⏱️ Radno vreme: 00 – 24h, svaki dan</p>
+                </div>
+                <div class="footer-col">
+                    <h4>🔗 Brzi linkovi</h4>
+                    <a href="#hero">Početna</a>
+                    <a href="#why">Zašto baš mi</a>
+                    <a href="#situations">Kada vam trebamo</a>
+                    <a href="#how">Kako funkcionišemo</a>
+                    <a href="tel:+381214899335">Pozovite nas</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Childbirth Center Betanija — Novi Sad. Sva prava zadržana.</span>
+                <span>🌿 Nega kojoj verujete</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== STICKY MOBILE CTA ====== -->
+    <div class="sticky-mobile-cta">
+        <a href="tel:+381214899335">📞 Pozovite nas</a>
+    </div>
+
+    <!-- ====== JAVASCRIPT ====== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                    toggleBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+                });
+
+                // Close nav on link click
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggleBtn.textContent = '☰';
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && e.target !== toggleBtn) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.textContent = '☰';
+                    }
+                });
+            }
+
+            // Header scroll shadow
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 20) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Smooth scroll for anchor links (fallback for very old browsers)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Simple intersection observer for animate-in
+            const animateEls = document.querySelectorAll('.animate-in');
+            if (animateEls.length > 0 && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+                animateEls.forEach(function(el) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback: just show them
+                animateEls.forEach(function(el) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }
+
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,283 +1,1348 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ključar Novi Sad Euro Ključ | bravar Novi Sad</title>
-  <meta name="description" content="Ključar Novi Sad Euro Ključ nudi locksmith usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Ključar Novi Sad Euro Ključ">
-  <meta property="og:description" content="Locksmith usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ključar Novi Sad Euro Ključ – Bravar u Novom Sadu</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --bg2: #16213e;
+            --bg3: #0f3460;
+            --accent: #e8a838;
+            --accent2: #d4922e;
+            --accent-glow: rgba(232, 168, 56, 0.18);
+            --text: #f0e9df;
+            --text2: #c4b9a8;
+            --text3: #9a8e7a;
+            --card-bg: #1f2a44;
+            --card-border: #2a375a;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+            --radius: 14px;
+            --radius-sm: 10px;
+            --max-w: 1080px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.25s ease;
+            --header-h: 64px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #1a1a2e;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ───── sticky nav ───── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-h);
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(232, 168, 56, 0.10);
+            display: flex;
+            align-items: center;
+            transition: box-shadow var(--transition);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 2px 28px rgba(0, 0, 0, 0.5);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+            letter-spacing: -0.01em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-deco {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 6px 0 6px 0;
+            position: relative;
+            margin-right: 4px;
+        }
+
+        .logo-deco::after {
+            content: "🔑";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--text2);
+            transition: color var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media(max-width:720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--header-h);
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.96);
+                backdrop-filter: blur(18px);
+                flex-direction: column;
+                padding: 20px 28px 28px;
+                gap: 16px;
+                transform: translateY(-110%);
+                opacity: 0;
+                transition: transform 0.35s ease, opacity 0.3s ease;
+                border-bottom: 1px solid rgba(232, 168, 56, 0.12);
+                pointer-events: none;
+                font-size: 1.05rem;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        /* ───── sections common ───── */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4.4vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text2);
+            max-width: 640px;
+            margin-bottom: 44px;
+        }
+
+        .section-sub.centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .section-title.centered {
+            text-align: center;
+        }
+
+        .accent-highlight {
+            color: var(--accent);
+        }
+
+        /* ───── hero ───── */
+        #hero {
+            padding-top: calc(var(--header-h) + 50px);
+            padding-bottom: 70px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 70% 30%, rgba(232, 168, 56, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(232, 168, 56, 0.05) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-deco {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-deco-svg {
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            right: -80px;
+            top: -60px;
+            opacity: 0.10;
+            transform: rotate(12deg);
+        }
+
+        .hero-deco-svg2 {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            left: -100px;
+            bottom: -60px;
+            opacity: 0.07;
+            transform: rotate(-8deg);
+        }
+
+        .hero-deco-dots {
+            position: absolute;
+            right: 10%;
+            bottom: 15%;
+            width: 120px;
+            height: 120px;
+            background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+            opacity: 0.12;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(232, 168, 56, 0.12);
+            border: 1px solid rgba(232, 168, 56, 0.20);
+            padding: 6px 16px 6px 12px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            width: fit-content;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        .hero-title .hl {
+            color: var(--accent);
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
+            color: var(--text2);
+            max-width: 480px;
+            line-height: 1.5;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px 24px;
+            margin-top: 6px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #1a1a2e;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 18px rgba(232, 168, 56, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(232, 168, 56, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text2);
+            font-weight: 500;
+            font-size: 0.98rem;
+            border: 1.5px solid rgba(232, 168, 56, 0.25);
+            padding: 11px 26px;
+            border-radius: 50px;
+            transition: background var(--transition), border-color var(--transition), color var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(232, 168, 56, 0.08);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 36px;
+            margin-top: 10px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(232, 168, 56, 0.08);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text2);
+        }
+
+        .trust-item strong {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .trust-item .num {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1/1;
+            border-radius: 50% 30% 50% 30% / 40% 50% 30% 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(232, 168, 56, 0.12), transparent 70%);
+            border: 2px solid rgba(232, 168, 56, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-visual svg {
+            width: 72%;
+            height: 72%;
+            opacity: 0.50;
+            filter: drop-shadow(0 0 40px rgba(232, 168, 56, 0.10));
+        }
+
+        .hero-visual-ring {
+            position: absolute;
+            inset: -12px;
+            border-radius: inherit;
+            border: 1.5px dashed rgba(232, 168, 56, 0.10);
+            animation: spin 40s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media(max-width:820px) {
+            #hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-cta-row {
+                justify-content: center;
+            }
+            .trust-row {
+                justify-content: center;
+            }
+            .hero-badge {
+                margin: 0 auto;
+            }
+            .hero-right {
+                order: -1;
+            }
+            .hero-visual {
+                max-width: 240px;
+            }
+            #hero {
+                min-height: auto;
+                padding-top: calc(var(--header-h) + 30px);
+                padding-bottom: 50px;
+            }
+            .hero-deco-svg {
+                width: 320px;
+                height: 320px;
+                right: -40px;
+                top: -30px;
+            }
+            .hero-deco-svg2 {
+                width: 220px;
+                height: 220px;
+                left: -50px;
+                bottom: -30px;
+            }
+        }
+
+        @media(max-width:420px) {
+            .hero-visual {
+                max-width: 180px;
+            }
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            .trust-row {
+                gap: 12px 20px;
+                font-size: 0.82rem;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* ───── why us ───── */
+        #why {
+            background: var(--bg2);
+            position: relative;
+        }
+
+        #why::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.25;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px 24px 24px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .why-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 100% 0%, rgba(232, 168, 56, 0.06), transparent 70%);
+            border-radius: 0 0 0 80px;
+        }
+
+        .why-card .emoji {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        .why-card .big-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        /* ───── services / situations ───── */
+        #situations {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .situation-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-sm);
+            padding: 22px 22px 20px;
+            border: 1px solid var(--card-border);
+            transition: background var(--transition), transform var(--transition), border-color var(--transition);
+            position: relative;
+        }
+
+        .situation-card:hover {
+            background: #233156;
+            transform: translateY(-3px);
+            border-color: rgba(232, 168, 56, 0.18);
+        }
+
+        .situation-card .s-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .situation-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .situation-card p {
+            font-size: 0.9rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        .situation-card .s-cta {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            border-bottom: 1.5px solid transparent;
+            transition: border-color var(--transition);
+        }
+
+        .situation-card .s-cta:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .situation-card .s-cta span {
+            margin-left: 4px;
+        }
+
+        /* ───── how it works ───── */
+        #how {
+            background: var(--bg2);
+            position: relative;
+        }
+
+        #how::after {
+            content: "⚙️ 🔑 🛠️";
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 3.4rem;
+            opacity: 0.04;
+            pointer-events: none;
+            letter-spacing: 20px;
+            transform: rotate(-6deg);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            counter-reset: step;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px 22px 22px;
+            border: 1px solid var(--card-border);
+            position: relative;
+            transition: transform var(--transition), border-color var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(232, 168, 56, 0.18);
+        }
+
+        .step-card .step-num {
+            counter-increment: step;
+            content: counter(step);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.12);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            border: 1.5px solid rgba(232, 168, 56, 0.15);
+        }
+
+        .step-card .step-num::before {
+            content: counter(step);
+        }
+
+        .step-card .step-emoji {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        .step-card .step-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            font-size: 0.82rem;
+            color: var(--text3);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+
+        .step-card .step-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ───── footer ───── */
+        #footer {
+            background: #111123;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            padding: 48px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.4fr 1.4fr;
+            gap: 40px;
+            margin-bottom: 28px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+
+        .footer-brand .tag {
+            font-size: 0.85rem;
+            color: var(--text3);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text2);
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-col ul li {
+            font-size: 0.9rem;
+            color: var(--text2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text2);
+            transition: color var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.06);
+            border: 1px solid rgba(232, 168, 56, 0.10);
+            transition: background var(--transition), border-color var(--transition);
+            font-size: 1rem;
+            color: var(--text2);
+        }
+
+        .footer-social a:hover {
+            background: rgba(232, 168, 56, 0.14);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: var(--text3);
+            gap: 12px;
+        }
+
+        @media(max-width:800px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .footer-brand {
+                grid-column: 1/-1;
+            }
+        }
+
+        @media(max-width:480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ───── sticky mobile CTA ───── */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(26, 26, 46, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(232, 168, 56, 0.10);
+            padding: 12px 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-mobile-cta .sm-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .sticky-mobile-cta .sm-phone .sm-icon {
+            font-size: 1.3rem;
+        }
+
+        .sticky-mobile-cta .sm-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #1a1a2e;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 22px;
+            border-radius: 50px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 18px rgba(232, 168, 56, 0.20);
+        }
+
+        .sticky-mobile-cta .sm-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(232, 168, 56, 0.30);
+        }
+
+        @media(max-width:720px) {
+            .sticky-mobile-cta {
+                display: flex;
+            }
+            body {
+                padding-bottom: 72px;
+            }
+            section {
+                padding: 50px 0;
+            }
+        }
+
+        @media(max-width:400px) {
+            .sticky-mobile-cta .sm-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .sticky-mobile-cta .sm-phone {
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ───── utilities ───── */
+        .text-accent {
+            color: var(--accent);
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+        .mb-24 {
+            margin-bottom: 24px;
+        }
+        .gap-12 {
+            gap: 12px;
+        }
+
+        /* decorative inline svg blob */
+        .blob-deco {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            vertical-align: middle;
+            margin-right: 4px;
+            opacity: 0.15;
+        }
+
+        .blob-deco svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* extra decorative shapes */
+        .section-deco-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .section-deco-line.centered {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Ključar Novi Sad Euro Ključ</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Bravar / Novi Sad</p>
-          <h1>Ključar Novi Sad Euro Ključ: bravarske usluge u Novom Sadu, na jedan poziv</h1>
-          <p class="lead">Kontaktirajte Ključar Novi Sad Euro Ključ direktno za Profesionalne Bravarske usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 4.8 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:0629682567">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Bravar</div>
-            <div class="micro">Direktan kontakt: 062 9682567</div>
-          </div>
+    <!-- ═══════ STICKY NAV ═══════ -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <span class="logo-deco"></span>
+                Ključar <span>Novi Sad</span> Euro Ključ
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početak</a></li>
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#situations">Kada trebate</a></li>
+                <li><a href="#how">Kako funkcionišemo</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Bravar</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> Slovačka 16, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
+    </header>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section id="hero">
+        <div class="hero-deco">
+            <div class="hero-deco-svg">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="rgba(232,168,56,0.12)" stroke-width="1.2">
+                    <path d="M40 140 Q 80 30 160 40 Q 200 70 180 120 Q 160 170 100 180 Q 30 190 40 140Z" fill="rgba(232,168,56,0.03)" />
+                    <circle cx="120" cy="90" r="12" stroke="rgba(232,168,56,0.08)" fill="none" />
+                    <circle cx="70" cy="130" r="6" stroke="rgba(232,168,56,0.06)" fill="none" />
+                </svg>
+            </div>
+            <div class="hero-deco-svg2">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="rgba(232,168,56,0.08)" stroke-width="1">
+                    <path d="M20 100 Q 60 10 130 30 Q 190 50 170 120 Q 150 190 80 170 Q 10 150 20 100Z" fill="rgba(232,168,56,0.02)" />
+                </svg>
+            </div>
+            <div class="hero-deco-dots"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    🔑 Bravar u Novom Sadu
+                </div>
+                <h1 class="hero-title">
+                    Zaključani ste <span class="hl">napolju?</span><br>
+                    Nema panike – tu smo.
+                </h1>
+                <p class="hero-sub">
+                    Profesionalna bravarska pomoć u Novom Sadu i okolini. Brzi dolazak, fer cene i pouzdan servis za sve vrste brava i ključeva.
+                </p>
+                <div class="hero-cta-row">
+                    <a href="tel:0629682567" class="btn-primary">
+                        📞 Pozovite nas
+                    </a>
+                    <a href="#how" class="btn-secondary">
+                        Kako radimo →
+                    </a>
+                </div>
+                <div class="trust-row">
+                    <div class="trust-item">
+                        <span class="num">4.8</span> ★ <strong>Ocena</strong>
+                    </div>
+                    <div class="trust-item">
+                        <span class="num">12+</span> Godina iskustva
+                    </div>
+                    <div class="trust-item">
+                        <span class="num">~25</span> minuta dolazak
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <div class="hero-visual-ring"></div>
+                    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="60" cy="60" r="48" stroke="rgba(232,168,56,0.20)" stroke-width="2" />
+                        <circle cx="60" cy="60" r="36" stroke="rgba(232,168,56,0.10)" stroke-width="1.5" stroke-dasharray="4 6" />
+                        <path d="M48 60 L72 60 M60 48 L60 72" stroke="rgba(232,168,56,0.30)" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="60" cy="60" r="8" fill="rgba(232,168,56,0.12)" stroke="rgba(232,168,56,0.25)" stroke-width="1.5" />
+                        <path d="M36 60 Q 30 40 48 44 Q 54 50 48 56 Q 40 58 36 60Z" fill="rgba(232,168,56,0.06)" />
+                        <path d="M84 60 Q 90 80 72 76 Q 66 70 72 64 Q 80 62 84 60Z" fill="rgba(232,168,56,0.06)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ═══════ WHY US ═══════ -->
+    <section id="why">
+        <div class="container">
+            <div class="section-deco-line"></div>
+            <h2 class="section-title">Zašto baš <span class="accent-highlight">Ključar Novi Sad?</span></h2>
+            <p class="section-sub">Ne nudimo samo ključeve – nudimo sigurnost i mir. Evo zašto nam veruju.</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <div class="big-num">4.8</div>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši klijenti nas ocenjuju sa prosečnih 4,8 zvezdica. Profesionalnost i ljubaznost su na prvom mestu.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">⚡</span>
+                    <div class="big-num">~25</div>
+                    <h3>Brzi dolazak</h3>
+                    <p>U proseku smo na licu mesta za 25 minuta. Znamo da vam je hitno – ne gubimo vreme.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🔧</span>
+                    <h3>Profesionalan servis</h3>
+                    <p>Radimo sa svim vrstama brava, obijanja, zamena i kopiranja ključeva. Znanje i alat su uvek uz nas.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">💰</span>
+                    <h3>Pristupačne cene</h3>
+                    <p>Fer cene bez skrivenih troškova. Kažemo tačno koliko košta pre nego što krenemo.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Profesionalne Bravarske usluge</h3>
-          <p>Profesionalne Bravarske usluge je dostupna usluga u okviru bravarske ponude koju Ključar Novi Sad Euro Ključ pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ═══════ SITUATIONS ═══════ -->
+    <section id="situations">
+        <div class="container">
+            <div class="section-deco-line"></div>
+            <h2 class="section-title">Kada vam <span class="accent-highlight">trebamo?</span></h2>
+            <p class="section-sub">Prepoznajemo te situacije. U svakoj od njih – mi smo rešenje.</p>
+            <div class="situation-grid">
+                <div class="situation-card">
+                    <span class="s-emoji">🚪</span>
+                    <h4>Zaključali ste se napolju</h4>
+                    <p>Vrata su se zatvorila, a ključ je ostao unutra. Bez panike – dolazimo i otvaramo bez oštećenja.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+                <div class="situation-card">
+                    <span class="s-emoji">🔑</span>
+                    <h4>Izgubljeni ili polomljeni ključ</h4>
+                    <p>Ključ se polomio u bravi ili ste ga izgubili? Izrađujemo novi i otklanjamo ostatke.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+                <div class="situation-card">
+                    <span class="s-emoji">🏠</span>
+                    <h4>Provala ili oštećenje brave</h4>
+                    <p>Posle provale ili pokušaja obijanja – hitno menjamo bravu i osiguravamo vrata.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+                <div class="situation-card">
+                    <span class="s-emoji">🚗</span>
+                    <h4>Zaključan auto</h4>
+                    <p>Ključevi su u automobilu? Specijalizovani smo i za otvaranje vozila – brzo i pažljivo.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+                <div class="situation-card">
+                    <span class="s-emoji">🏢</span>
+                    <h4>Kancelarija ili magacin</h4>
+                    <p>Poslovni prostori, magacini, zajedničke prostorije – radimo i sa komercijalnim bravama.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+                <div class="situation-card">
+                    <span class="s-emoji">🛠️</span>
+                    <h4>Hitna intervencija</h4>
+                    <p>Noću, vikendom, praznikom – dežurni smo za hitne slučajeve. Samo nas pozovite.</p>
+                    <a href="tel:0629682567" class="s-cta">Tu smo za vas <span>→</span></a>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.8 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Pristupačne cene</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ═══════ HOW IT WORKS ═══════ -->
+    <section id="how">
+        <div class="container">
+            <div class="section-deco-line"></div>
+            <h2 class="section-title">Kako <span class="accent-highlight">funkcionišemo?</span></h2>
+            <p class="section-sub">Do rešenja vas deli samo nekoliko jednostavnih koraka.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-emoji">📞</span>
+                    <div class="step-num"></div>
+                    <h4>Pozovite nas</h4>
+                    <p>Pozovite broj 062 9682567 i recite nam gde se nalazite i šta vam je potrebno.</p>
+                    <div class="step-info">
+                        <span>📅 Svaki dan 07–22h</span>
+                        <span>📱 Javljamo se odmah</span>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">📍</span>
+                    <div class="step-num"></div>
+                    <h4>Dolazimo na lice mesta</h4>
+                    <p>U roku od ~25 minuta smo kod vas. Radimo u celom Novom Sadu i okolini.</p>
+                    <div class="step-info">
+                        <span>🚗 Bilo gde u gradu</span>
+                        <span>⏱️ Brza reakcija</span>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">🔓</span>
+                    <div class="step-num"></div>
+                    <h4>Rešavamo problem</h4>
+                    <p>Otvaramo, popravljamo ili menjamo bravu. Sve radi profesionalno i bez gužve.</p>
+                    <div class="step-info">
+                        <span>🛡️ Bez oštećenja</span>
+                        <span>🧾 Po dogovoru</span>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">✅</span>
+                    <div class="step-num"></div>
+                    <h4>Mir i sigurnost</h4>
+                    <p>Proverimo da sve radi, date nam potvrdu i nastavljate dan bez stresa.</p>
+                    <div class="step-info">
+                        <span>💬 Pitajte šta god</span>
+                        <span>🔐 Garantujemo rad</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Odlično, Brzo.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🔑 Ključar <span>Novi Sad</span> Euro Ključ</h3>
+                    <span class="tag">Bravar • Novi Sad • Srbija</span>
+                    <p>Pouzdan bravar u Novom Sadu. Brzi dolazak, profesionalna usluga i fer cene. Otključavamo i osiguravamo vaš dom i auto.</p>
+                    <div class="footer-social" style="margin-top:16px;">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">🔗</a>
+                        <a href="viber://chat?number=381629682567" aria-label="Viber">💬</a>
+                        <a href="https://wa.me/381629682567" aria-label="WhatsApp">📱</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>📬 Kontakt</h4>
+                    <ul>
+                        <li>📞 <a href="tel:0629682567">062 9682567</a></li>
+                        <li>✉️ <a href="mailto:svetozarmaluckov@gmail.com">svetozarmaluckov@gmail.com</a></li>
+                        <li>📍 Slovačka 16, Novi Sad 21000</li>
+                        <li>🕒 Ponedeljak – Nedelja: 07–22h</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>🔗 Brzi linkovi</h4>
+                    <ul>
+                        <li><a href="#hero">Početak</a></li>
+                        <li><a href="#why">Zašto baš mi</a></li>
+                        <li><a href="#situations">Kada vam trebamo</a></li>
+                        <li><a href="#how">Kako funkcionišemo</a></li>
+                        <li><a href="tel:0629682567">Pozovite nas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Ključar Novi Sad Euro Ključ. Sva prava zadržana.</span>
+                <span>🛠️ Bravar u Novom Sadu – tu smo kad zatreba.</span>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0629682567">062 9682567</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:svetozarmaluckov@gmail.com">svetozarmaluckov@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Slovačka 16, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Ključar Novi Sad Euro Ključ. Bravar u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ═══════ STICKY MOBILE CTA ═══════ -->
+    <div class="sticky-mobile-cta">
+        <div class="sm-phone">
+            <span class="sm-icon">📞</span>
+            <span>062 9682567</span>
+        </div>
+        <a href="tel:0629682567" class="sm-btn">
+            📞 Pozovite nas
+        </a>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script>
+        (function() {
+            // mobile nav toggle
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+            if (toggle && links) {
+                toggle.addEventListener('click', function() {
+                    const isOpen = links.classList.toggle('open');
+                    toggle.classList.toggle('active', isOpen);
+                });
+                // close on link click
+                links.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        links.classList.remove('open');
+                        toggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // header scroll shadow
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 20) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }, { passive: true });
+            }
+
+            // close mobile menu on resize above 720
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 720 && links && toggle) {
+                    links.classList.remove('open');
+                    toggle.classList.remove('active');
+                }
+            });
+        })();
+    </script>
+
 </body>
 </html>

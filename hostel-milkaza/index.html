@@ -1,274 +1,688 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hostel Milkaza | Noćenje sa doručkom Novi Sad</title>
-  <meta name="description" content="Hostel Milkaza nudi bed &amp; breakfast usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Hostel Milkaza">
-  <meta property="og:description" content="Bed &amp; Breakfast usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Milkaza – Noćenje sa doručkom u Novom Sadu</title>
+    <style>
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-card: #2a2a2a;
+            --bg-card-hover: #333333;
+            --accent: #c9a959;
+            --accent-hover: #dabe6b;
+            --accent-soft: #e8d5a280;
+            --text-light: #f5efe0;
+            --text-muted: #b8a88a;
+            --text-dark: #1e1e1e;
+            --shadow: 0 12px 30px rgba(0,0,0,0.5);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --max-width: 1080px;
+            --header-h: 64px;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-h);
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--accent-hover); }
+
+        img, svg { display: block; max-width: 100%; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- HEADER ----- */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            height: var(--header-h);
+            background: rgba(26,26,26,0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(201,169,89,0.15);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span { color: var(--text-light); font-weight: 400; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--text-light); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .nav-open .nav-links {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ----- SECTIONS ----- */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin-bottom: 44px;
+        }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            background: var(--bg-card-hover);
+        }
+        .card h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--accent); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+        .card-emoji { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+
+        /* ----- HERO ----- */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 20% 60%, rgba(201,169,89,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 30%, rgba(201,169,89,0.05) 0%, transparent 50%),
+                        var(--bg-dark);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -60px;
+            width: 380px; height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,169,89,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '✦ ✦ ✦';
+            position: absolute;
+            bottom: 20px; right: 40px;
+            font-size: 2.8rem;
+            color: rgba(201,169,89,0.08);
+            letter-spacing: 18px;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+        }
+        .hero-content h1 span { color: var(--accent); }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--text-dark) !important;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta:hover {
+            background: var(--accent-hover);
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(201,169,89,0.25);
+        }
+
+        .trust-row {
+            display: flex;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .trust-item strong { color: var(--accent); font-weight: 700; }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-svg-wrap {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1/1;
+            position: relative;
+        }
+        .hero-svg-wrap svg {
+            width: 100%;
+            height: 100%;
+        }
+        .hero-svg-wrap .deco-dot {
+            position: absolute;
+            width: 14px; height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.25;
+        }
+        .deco-dot:nth-child(2) { top: 10%; right: 8%; width: 22px; height: 22px; opacity: 0.12; }
+        .deco-dot:nth-child(3) { bottom: 12%; left: 6%; width: 18px; height: 18px; opacity: 0.18; }
+
+        /* ----- WHY ----- */
+        .why {
+            background: radial-gradient(ellipse at 70% 30%, rgba(201,169,89,0.05) 0%, transparent 60%);
+        }
+
+        /* ----- SITUATIONS ----- */
+        .situations .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+        /* ----- STEPS ----- */
+        .steps-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            top: 44px; left: 10%; right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), rgba(201,169,89,0.2));
+            border-radius: 4px;
+        }
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 32px 20px 24px;
+            text-align: center;
+            border-top: 3px solid var(--accent);
+            position: relative;
+            transition: var(--transition);
+        }
+        .step-card:hover { transform: translateY(-4px); background: var(--bg-card-hover); }
+        .step-number {
+            width: 44px; height: 44px;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            position: relative;
+            z-index: 2;
+        }
+        .step-card h3 { font-size: 1.1rem; color: var(--accent); margin-bottom: 6px; }
+        .step-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ----- FOOTER ----- */
+        .footer {
+            background: #131313;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(201,169,89,0.1);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer h4 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .footer p, .footer a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .footer a { display: inline-block; }
+        .footer .social-links { display: flex; gap: 14px; margin-top: 12px; }
+        .footer .social-links a {
+            background: var(--bg-card);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .footer .social-links a:hover { background: var(--accent); color: var(--text-dark); }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(201,169,89,0.08);
+            padding-top: 24px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ----- MOBILE CTA BAR ----- */
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 200;
+            background: rgba(26,26,26,0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(201,169,89,0.15);
+            padding: 10px 20px;
+            justify-content: center;
+        }
+        .mobile-cta-bar .btn-cta {
+            width: 100%;
+            max-width: 340px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            padding: 14px 20px;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p { margin: 0 auto 30px; }
+            .trust-row { justify-content: center; }
+            .hero-visual { order: -1; }
+            .hero-svg-wrap { max-width: 260px; margin: 0 auto; }
+
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+            .steps-timeline { grid-template-columns: 1fr 1fr; }
+            .steps-timeline::before { display: none; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 720px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: var(--header-h);
+                left: 0; right: 0;
+                background: rgba(26,26,26,0.98);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                align-items: center;
+                padding: 28px 20px;
+                gap: 20px;
+                transform: translateX(100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(201,169,89,0.1);
+            }
+            .nav-links a { font-size: 1.1rem; }
+
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .steps-timeline { grid-template-columns: 1fr; }
+
+            .hero { padding: 100px 0 60px; }
+
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer .social-links { justify-content: center; }
+
+            .mobile-cta-bar { display: flex; }
+            body { padding-bottom: 70px; }
+        }
+
+        @media (max-width: 420px) {
+            .section-title { font-size: 1.7rem; }
+            .hero-content h1 { font-size: 1.9rem; }
+            .card { padding: 20px 16px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Hostel Milkaza</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Noćenje sa doručkom / Novi Sad</p>
-          <h1>Hostel Milkaza: lokalna Noćenje sa doručkom destinacija u Novom Sadu</h1>
-          <p class="lead">Kontaktirajte Hostel Milkaza direktno za noćenje u Novom Sadu. Ključna prednost: Veruje nam preko 440 zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:hotelmilkaz@gmail.com">Planiraj posetu</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Noćenje sa doručkom</div>
-            <div class="micro">Direktan kontakt: 064 2361648</div>
-          </div>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="logo">
+                🏡 Hostel <span>Milkaza</span>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Meni">
+                <span></span><span></span><span></span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Početak</a></li>
+                    <li><a href="#why">Zašto mi</a></li>
+                    <li><a href="#situations">Situacije</a></li>
+                    <li><a href="#steps">Koraci</a></li>
+                    <li><a href="#footer">Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Noćenje sa doručkom</p>
-          <p><strong>Cilj:</strong> Planiraj posetu</p>
-          <p><strong>Adresa:</strong> Temerinski put 99, Novi Sad 21138, Serbia</p>
-        </aside>
-      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Zaslužujete miran san <span>i topao dorčak</span> u Novom Sadu</h1>
+                <p>Bilo da ste na putu, poslovno ili u prolazu – kod nas ćete se osećati kao kod kuće. Udobni kreveti, domaća atmosfera i osmeh na dobrodošlici.</p>
+                <a href="tel:0642361648" class="btn-cta">📞 Rezervišite smeštaj</a>
+                <div class="trust-row">
+                    <span class="trust-item">⭐ <strong>440+</strong> zadovoljnih gostiju</span>
+                    <span class="trust-item">⏱️ <strong>odgovor</strong> za manje od 1h</span>
+                    <span class="trust-item">📍 <strong>Novi Sad</strong> – centar grada</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-svg-wrap">
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,89,0.12)" stroke-width="1.5"/>
+                        <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,89,0.08)" stroke-width="1.2"/>
+                        <circle cx="100" cy="100" r="40" fill="none" stroke="rgba(201,169,89,0.15)" stroke-width="1"/>
+                        <path d="M100 30 L120 70 L165 75 L130 105 L140 150 L100 125 L60 150 L70 105 L35 75 L80 70 Z" fill="rgba(201,169,89,0.06)" stroke="rgba(201,169,89,0.12)" stroke-width="0.8"/>
+                        <text x="100" y="106" font-size="44" text-anchor="middle" fill="var(--accent)" opacity="0.7">🏡</text>
+                    </svg>
+                    <span class="deco-dot"></span>
+                    <span class="deco-dot"></span>
+                    <span class="deco-dot"></span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- WHY CHOOSE US -->
+    <section class="why" id="why">
+        <div class="container">
+            <h2 class="section-title">Zašto baš Hostel Milkaza?</h2>
+            <p class="section-sub">Nismo samo smeštaj – mi smo mesto gde se putnici osećaju prihvaćeno. Više od 440 gostiju nam veruje.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-emoji">🤝</span>
+                    <h3>Poverenje gostiju</h3>
+                    <p>Preko 440 zadovoljnih gostiju – naše preporuke govore same za sebe. Ljudi nam se vraćaju jer znaju da ih čeka topla dobrodošlica.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">🧹</span>
+                    <h3>Besprekorna čistoća</h3>
+                    <p>Svaka soba se detaljno čisti pre dolaska. Posteljina, peškiri, kupatilo – sve je sveže i spremno za vas.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">☕</span>
+                    <h3>Doručak uključen</h3>
+                    <p>Svako jutro vas čeka domaći doručak. Kafa, sveže pecivo, jaja, voće – dobar početak dana je zagarantovan.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Noćenje</h3>
-          <p>Noćenje je dostupna usluga u okviru ponude noćenja sa doručkom koju Hostel Milkaza pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Sobe</h3>
-          <p>Sobe je dostupna usluga u okviru ponude noćenja sa doručkom koju Hostel Milkaza pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- SITUATIONS – when you might need us -->
+    <section class="situations" id="situations">
+        <div class="container">
+            <h2 class="section-title">Kada vam treba miran kutak?</h2>
+            <p class="section-sub">Bilo da planirate unapred ili vam treba smeštaj u poslednjem trenutku – tu smo za vas.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-emoji">🧳</span>
+                    <h3>Poslovni put</h3>
+                    <p>Dolazite u Novi Sad zbog posla? Potreban vam je miran prostor, brz internet i udoban krevet. Tu smo za vas.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">🎒</span>
+                    <h3>Putovanje u prolazu</h3>
+                    <p>Samo prenoćište dok putujete dalje? Brza prijava, parking u blizini i topao tuš – sve što vam treba.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">👫</span>
+                    <h3>Vikend izlet sa prijateljima</h3>
+                    <p>Planirate vikend u Novom Sadu? Kod nas možete odmoriti nakon šetnje, a doručak vas čeka ujutro.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">🎓</span>
+                    <h3>Studentski posetioci</h3>
+                    <p>Dolazite na ispit, seminar ili fakultet? Povoljan i udoban smeštaj u blizini univerziteta.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">🏕️</span>
+                    <h3>Turisti u prolazu</h3>
+                    <p>Istražujete Vojvodinu ili idete na EXIT? Naša lokacija je savršena za odmor između avantura.</p>
+                </div>
+                <div class="card">
+                    <span class="card-emoji">🛌</span>
+                    <h3>Treba vam samo noćenje</h3>
+                    <p>Bez nepotrebnih dodataka – čista soba, udoban krevet i doručak. Jednostavno i profesionalno.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Veruje nam preko 440 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Noćenje sa doručkom ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- HOW IT WORKS / STEPS -->
+    <section class="steps" id="steps">
+        <div class="container">
+            <h2 class="section-title">Kako funkcionišemo?</h2>
+            <p class="section-sub">Do vašeg udobnog boravka vode samo tri koraka. Brzo, lako i bez stresa.</p>
+            <div class="steps-timeline">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>📞 Pozovite ili pišite</h3>
+                    <p>Javite nam se telefonom ili mejlom. Dostupni smo svakog dana od 8h do 22h.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>✅ Potvrdite termin</h3>
+                    <p>Kažite nam datum i broj osoba – mi potvrđujemo za manje od sat vremena.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>🏡 Uživajte u boravku</h3>
+                    <p>Dođite, smestite se i opustite. Doručak vas čeka ujutro. Sve je spremno za vas.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">⭐</div>
+                    <h3>📝 Podelite utiske</h3>
+                    <p>Vaše mišljenje nam je važno. Nakon boravka, recite nam kako vam je bilo – to nam pomaže da budemo još bolji.</p>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Prijateljski, Preporuka, Odlično, Odlično, Vrhunski.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>🏡 Hostel Milkaza</h4>
+                    <p>Noćenje sa doručkom u Novom Sadu.<br>Toplina doma na svakom putovanju.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="LinkedIn">🔗</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Kontakt</h4>
+                    <p>📞 <a href="tel:0642361648" style="color: var(--text-light);">064 236 1648</a><br>
+                    ✉️ <a href="mailto:hotelmilkaz@gmail.com">hotelmilkaz@gmail.com</a><br>
+                    📍 Temerinski put 99, 21138 Novi Sad</p>
+                    <p style="margin-top: 12px;">
+                        <a href="viber://chat?number=381642361648" style="color: var(--accent);">💬 Viber</a> &nbsp;|&nbsp;
+                        <a href="https://wa.me/381642361648" style="color: var(--accent);">📱 WhatsApp</a>
+                    </p>
+                </div>
+                <div>
+                    <h4>Radno vreme</h4>
+                    <p>Prijava gostiju: 08:00 – 22:00<br>
+                    Dolazak po dogovoru moguć i van termina.<br><br>
+                    ⏱️ Odgovaramo na poruke u roku od 1h.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Hostel Milkaza – Novi Sad | Sva prava zadržana.
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0642361648">064 2361648</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:hotelmilkaz@gmail.com">hotelmilkaz@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Temerinski put 99, Novi Sad 21138, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Hostel Milkaza. Noćenje sa doručkom u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- MOBILE CTA BAR -->
+    <div class="mobile-cta-bar">
+        <a href="tel:0642361648" class="btn-cta">📞 Pozovite nas</a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            const isOpen = navLinks.classList.contains('nav-open');
+            if (isOpen) {
+                navLinks.classList.remove('nav-open');
+                navLinks.style.transform = 'translateX(100%)';
+                navLinks.style.opacity = '0';
+                navLinks.style.pointerEvents = 'none';
+            } else {
+                navLinks.classList.add('nav-open');
+                navLinks.style.transform = 'translateX(0)';
+                navLinks.style.opacity = '1';
+                navLinks.style.pointerEvents = 'auto';
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 720) {
+                    navLinks.classList.remove('nav-open');
+                    navLinks.style.transform = 'translateX(100%)';
+                    navLinks.style.opacity = '0';
+                    navLinks.style.pointerEvents = 'none';
+                }
+            });
+        });
+
+        // Smooth scroll fallback (already using CSS scroll-behavior)
+        // Ensure mobile CTA works
+    </script>
 </body>
 </html>

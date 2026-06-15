@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALE I SREĆKO VULKANIZERSKI SERVIS – Novi Sad</title>
+    <style>
+        /* ===== CSS Custom Properties ===== */
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #22223b;
+            --bg-card: #262640;
+            --bg-card-hover: #2d2d4a;
+            --accent: #e8a838;
+            --accent-hover: #d4942e;
+            --accent-glow: rgba(232, 168, 56, 0.15);
+            --text-light: #f0eee6;
+            --text-muted: #b8b5a8;
+            --text-dark: #1a1a2e;
+            --border-subtle: rgba(232, 168, 56, 0.2);
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.45);
+            --radius-card: 14px;
+            --radius-btn: 10px;
+            --max-width: 1060px;
+            --font-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-base);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bg-primary);
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+
+        @media (min-width: 721px) {
+            body {
+                padding-bottom: 0;
+            }
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== Typography ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5.5vw, 3.6rem);
+        }
+        h2 {
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+        }
+        h3 {
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            border: 1px solid var(--border-subtle);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ===== Sticky Nav ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(232, 168, 56, 0.08);
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.25rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .site-logo {
+            font-weight: 800;
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .site-logo span {
+            color: var(--accent);
+        }
+        .site-logo .logo-deco {
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--text-light);
+            background: rgba(232, 168, 56, 0.08);
+        }
+        .nav-links a.nav-cta {
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            padding: 0.45rem 1.2rem;
+        }
+        .nav-links a.nav-cta:hover {
+            background: var(--accent-hover);
+            color: var(--text-dark);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        .nav-toggle:hover {
+            background: rgba(232, 168, 56, 0.1);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(26, 26, 46, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.6rem;
+                padding: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s ease, opacity 0.3s ease;
+                z-index: 999;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                font-size: 1.4rem;
+                padding: 0.7rem 1.2rem;
+                text-align: center;
+                width: 100%;
+                max-width: 300px;
+            }
+            .nav-links a.nav-cta {
+                margin-top: 0.6rem;
+            }
+            .nav-toggle {
+                display: block;
+                z-index: 1001;
+                position: relative;
+            }
+            .nav-toggle.open {
+                color: var(--accent);
+            }
+            .header-inner {
+                padding: 0.55rem 1rem;
+            }
+        }
+
+        /* ===== Section Spacing ===== */
+        section {
+            padding: 4.5rem 0;
+        }
+        @media (min-width: 721px) {
+            section {
+                padding: 5.5rem 0;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 6.5rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+            background: radial-gradient(ellipse 80% 70% at 20% 30%, rgba(232, 168, 56, 0.06), transparent 70%),
+                radial-gradient(ellipse 60% 60% at 80% 70%, rgba(232, 168, 56, 0.04), transparent 70%),
+                var(--bg-primary);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .hero-content .badge-row span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            background: rgba(232, 168, 56, 0.08);
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .hero-content h1 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero-content .sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 500px;
+            margin-bottom: 1.6rem;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.6rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(232, 168, 56, 0.25);
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 6px 28px rgba(232, 168, 56, 0.35);
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .trust-micro {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.6rem;
+            margin-top: 1.6rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .trust-micro strong {
+            color: var(--text-light);
+            font-weight: 700;
+        }
+        .trust-micro .dot {
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .hero-svg-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1/1;
+            margin: 0 auto;
+        }
+
+        .hero-svg-wrap svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 40px rgba(232, 168, 56, 0.08));
+        }
+
+        .hero-svg-ring {
+            position: absolute;
+            inset: 8%;
+            border-radius: 50%;
+            border: 2px dashed rgba(232, 168, 56, 0.15);
+            animation: spin-slow 40s linear infinite;
+            pointer-events: none;
+        }
+        .hero-svg-ring--inner {
+            inset: 18%;
+            border-color: rgba(232, 168, 56, 0.07);
+            animation-duration: 50s;
+            animation-direction: reverse;
+        }
+
+        @keyframes spin-slow {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-deco-dots {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 2.6rem;
+            letter-spacing: 0.3em;
+            color: rgba(232, 168, 56, 0.06);
+            pointer-events: none;
+            line-height: 1;
+            user-select: none;
+        }
+
+        @media (max-width: 820px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .hero-content .sub {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-cta-row {
+                justify-content: center;
+            }
+            .trust-micro {
+                justify-content: center;
+            }
+            .hero-visual {
+                min-height: 240px;
+                order: -1;
+            }
+            .hero-svg-wrap {
+                max-width: 280px;
+            }
+            .hero {
+                padding: 5rem 0 2.5rem;
+            }
+        }
+        @media (max-width: 420px) {
+            .hero-visual {
+                min-height: 180px;
+            }
+            .hero-svg-wrap {
+                max-width: 200px;
+            }
+        }
+
+        /* ===== Why Us ===== */
+        .section-why {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        .section-why::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.2rem;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 1.8rem 1.5rem 1.5rem;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-card);
+            background: radial-gradient(circle at 80% 10%, rgba(232, 168, 56, 0.04), transparent 60%);
+            pointer-events: none;
+        }
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .why-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.7rem;
+            display: inline-block;
+        }
+        .why-card h3 {
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
+        }
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        .why-card .num {
+            position: absolute;
+            bottom: 0.6rem;
+            right: 1rem;
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: rgba(232, 168, 56, 0.04);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @media (max-width: 820px) {
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 520px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== When You Need Us ===== */
+        .section-situations {
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .section-situations .section-intro {
+            max-width: 640px;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+
+        .situation-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 1.4rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        .situation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            background: var(--bg-card-hover);
+        }
+        .situation-card .emoji {
+            font-size: 1.7rem;
+            flex-shrink: 0;
+            line-height: 1.2;
+            margin-top: 0.1rem;
+        }
+        .situation-card .text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+            color: var(--text-light);
+        }
+        .situation-card .text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .situation-card .text .tacka {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-top: 0.2rem;
+        }
+
+        @media (max-width: 700px) {
+            .situation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== How It Works ===== */
+        .section-process {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .section-process::after {
+            content: '⚙️ 🔧 🛞';
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-size: 3rem;
+            opacity: 0.04;
+            letter-spacing: 0.5rem;
+            pointer-events: none;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-top: 2.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 1.6rem 1.2rem 1.2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .process-step .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+        }
+        .process-step .step-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .process-step h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+        .process-step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .process-step .step-note {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: block;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 820px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 420px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            background: #131324;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            padding: 3rem 0 1.8rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 2rem 2.5rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-light);
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand .tag {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 300px;
+        }
+
+        .footer-contact h4,
+        .footer-social h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-contact ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-contact ul li {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-contact ul li a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        .footer-contact ul li a:hover {
+            color: var(--accent);
+        }
+        .footer-contact .viber-link {
+            color: #665cac;
+        }
+        .footer-contact .viber-link:hover {
+            color: #7c6fcf;
+        }
+
+        .footer-social .social-links {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .footer-social .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.07);
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .footer-social .social-links a:hover {
+            background: rgba(232, 168, 56, 0.18);
+            color: var(--accent);
+            border-color: var(--border-subtle);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom .copy {
+            color: var(--text-muted);
+        }
+        .footer-bottom .made {
+            opacity: 0.6;
+        }
+
+        @media (max-width: 820px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.8rem;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 520px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== Sticky Mobile CTA ===== */
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: rgba(26, 26, 46, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(232, 168, 56, 0.12);
+            padding: 0.7rem 1.2rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
+        }
+        .mobile-cta-bar .cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .mobile-cta-bar .cta-inner a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.65rem 1.6rem;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            transition: var(--transition);
+            flex: 1;
+            max-width: 280px;
+        }
+        .mobile-cta-bar .cta-inner a:hover {
+            background: var(--accent-hover);
+        }
+        .mobile-cta-bar .cta-inner .cta-phone-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 720px) {
+            .mobile-cta-bar {
+                display: block;
+            }
+        }
+
+        /* ===== Decorative extras ===== */
+        .deco-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin: 0.8rem 0 1.2rem;
+            opacity: 0.5;
+        }
+        .text-center .deco-line {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header {
+            margin-bottom: 1.8rem;
+        }
+
+        .accent-dot {
+            color: var(--accent);
+        }
+
+        /* ===== Utility ===== */
+        .text-center {
+            text-align: center;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ===== Smooth hover for all cards ===== */
+        .why-card,
+        .situation-card,
+        .process-step {
+            will-change: transform;
+        }
+
+        /* ===== Selection ===== */
+        ::selection {
+            background: rgba(232, 168, 56, 0.3);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <a href="#" class="site-logo">
+                <span class="logo-deco">🛞</span>
+                SALE I SREĆKO <span>|</span> Vulkanizerski servis
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori meni">☰</button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Početak</a></li>
+                    <li><a href="#why">Zašto mi</a></li>
+                    <li><a href="#situations">Kada</a></li>
+                    <li><a href="#process">Kako</a></li>
+                    <li><a href="#footer">Kontakt</a></li>
+                    <li><a href="tel:+38163536207" class="nav-cta">Pozovite nas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge-row">
+                    <span>🔧 Vulkanizerski servis</span>
+                    <span>📍 Novi Sad</span>
+                </div>
+                <h1>
+                    Vaše gume –<br>
+                    <span class="highlight">vaša sigurnost</span> na putu
+                </h1>
+                <p class="sub">
+                    Poverite svoje vozilo rukama koje već 20+ godina brinu o Novosađanima.
+                    Kvalitetan izbor, stručan savet i usluga kojoj se veruje.
+                </p>
+                <div class="hero-cta-row">
+                    <a href="tel:+38163536207" class="btn-primary">
+                        📞 Pozovite nas
+                    </a>
+                    <span style="font-size:0.85rem;color:var(--text-muted);">besplatna konsultacija</span>
+                </div>
+                <div class="trust-micro">
+                    <span><strong>20+</strong> godina iskustva</span>
+                    <span class="dot">•</span>
+                    <span><strong>500+</strong> zadovoljnih vozača</span>
+                    <span class="dot">•</span>
+                    <span><strong>⏱️</strong> odgovor za 30 min</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-svg-wrap">
+                    <!-- Decorative SVG – stylized wheel/gear motif -->
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="88" stroke="rgba(232,168,56,0.10)" stroke-width="2" />
+                        <circle cx="100" cy="100" r="72" stroke="rgba(232,168,56,0.07)" stroke-width="1.5" stroke-dasharray="8 6" />
+                        <circle cx="100" cy="100" r="48" stroke="rgba(232,168,56,0.12)" stroke-width="1.8" />
+                        <circle cx="100" cy="100" r="28" fill="rgba(232,168,56,0.04)" stroke="rgba(232,168,56,0.10)" stroke-width="1.2" />
+                        <circle cx="100" cy="100" r="6" fill="rgba(232,168,56,0.20)" />
+                        <!-- Spoke lines -->
+                        <line x1="100" y1="12" x2="100" y2="188" stroke="rgba(232,168,56,0.06)" stroke-width="1.2" />
+                        <line x1="12" y1="100" x2="188" y2="100" stroke="rgba(232,168,56,0.06)" stroke-width="1.2" />
+                        <line x1="37.8" y1="37.8" x2="162.2" y2="162.2" stroke="rgba(232,168,56,0.05)" stroke-width="1.2" />
+                        <line x1="162.2" y1="37.8" x2="37.8" y2="162.2" stroke="rgba(232,168,56,0.05)" stroke-width="1.2" />
+                        <!-- Small decorative dots -->
+                        <circle cx="100" cy="16" r="3" fill="rgba(232,168,56,0.15)" />
+                        <circle cx="100" cy="184" r="3" fill="rgba(232,168,56,0.15)" />
+                        <circle cx="16" cy="100" r="3" fill="rgba(232,168,56,0.15)" />
+                        <circle cx="184" cy="100" r="3" fill="rgba(232,168,56,0.15)" />
+                        <circle cx="40" cy="40" r="2.5" fill="rgba(232,168,56,0.08)" />
+                        <circle cx="160" cy="160" r="2.5" fill="rgba(232,168,56,0.08)" />
+                        <circle cx="40" cy="160" r="2.5" fill="rgba(232,168,56,0.08)" />
+                        <circle cx="160" cy="40" r="2.5" fill="rgba(232,168,56,0.08)" />
+                    </svg>
+                    <div class="hero-svg-ring"></div>
+                    <div class="hero-svg-ring hero-svg-ring--inner"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-deco-dots">• • • • •</div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section class="section-why" id="why">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Zašto baš mi?</span>
+                <h2>Razlozi da nam poverite svoje gume</h2>
+                <div class="deco-line text-center"></div>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="icon">🏆</span>
+                    <h3>Kvalitetni proizvodi</h3>
+                    <p>Radimo isključivo sa proverenim brendovima i dobavljačima. Svaka guma prolazi vizuelnu i tehničku proveru pre montaže.</p>
+                    <span class="num">01</span>
+                </div>
+                <div class="why-card">
+                    <span class="icon">🤝</span>
+                    <h3>Ljubazna usluga</h3>
+                    <p>Bez nadmenosti i balkanskog stava – kod nas ste dobrodošli uz osmeh i iskren savet. Salu i Srećko su poznati po prijatnoj atmosferi.</p>
+                    <span class="num">02</span>
+                </div>
+                <div class="why-card">
+                    <span class="icon">💰</span>
+                    <h3>Povoljne cene</h3>
+                    <p>Direktna saradnja sa dobavljačima omogućava cene koje su među najkonkurentnijim u Novom Sadu. Bez skrivenih troškova – sve je transparentno.</p>
+                    <span class="num">03</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHEN YOU NEED US ===== -->
+    <section class="section-situations" id="situations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Kada vam trebamo</span>
+                <h2>U kojim situacijama nas zovu?</h2>
+                <p class="section-intro">Bilo da ste iskusan vozač ili tek sedate za volan – ovo su najčešći razlozi zbog kojih nam se javljaju Novosađani.</p>
+                <div class="deco-line"></div>
+            </div>
+            <div class="situation-grid">
+                <div class="situation-card">
+                    <span class="emoji">❄️</span>
+                    <div class="text">
+                        <h4>Zimske gume – vreme je za zamenu</h4>
+                        <p>Kada temperature padnu ispod 7°C, vaše letnje gume gube prijanjanje. Pravovremena zamena čuva vas i vaš novčanik.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🛞</span>
+                    <div class="text">
+                        <h4>Probušena guma ili oštećenje</h4>
+                        <p>Ekser na putu, oštar ivičnjak ili loš put – neplanirani zastoj. Brzo reagujemo, dijagnostikujemo i rešavamo problem.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🔍</span>
+                    <div class="text">
+                        <h4>Kupovina polovnih guma – provera</h4>
+                        <p>Ne znate da li su polovne gume još uvek bezbedne? Donesite ih na pregled – reći ćemo vam istinu, čak i ako to znači da ih ne preporučujemo.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">⚖️</span>
+                    <div class="text">
+                        <h4>Balansiranje i centriranje</h4>
+                        <p>Osećate vibracije u volanu? Neravnomerno trošenje guma? Pravilno balansiranje produžava vek gumama i vožnju čini ugodnijom.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">📏</span>
+                    <div class="text">
+                        <h4>Pritisak i stanje guma pred put</h4>
+                        <p>Planirate duže putovanje? Proverite pritisak, dubinu šare i opšte stanje – za vaš mir i bezbednost porodice.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🗓️</span>
+                    <div class="text">
+                        <h4>Sezonsko skladištenje guma</h4>
+                        <p>Nemate prostora da čuvate letnje/zimske gume? Mi nudimo sigurno i suvo skladištenje uz označavanje i negu.</p>
+                        <span class="tacka">★ Tu smo za vas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section-process" id="process">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Kako funkcionišemo</span>
+                <h2>Vaš put do bezbedne vožnje</h2>
+                <p style="color:var(--text-muted);max-width:560px;margin:0.3rem auto 0;">Jednostavno, brzo i bez stresa – evo kako izgleda saradnja sa nama.</p>
+                <div class="deco-line text-center"></div>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="step-badge">1</span>
+                    <span class="step-icon">📞</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Javite se na telefon i opišite šta vam treba. Ako ne stignemo odmah, vraćamo poziv u roku od 30 minuta.</p>
+                    <span class="step-note">radnim danom 08–18h</span>
+                </div>
+                <div class="process-step">
+                    <span class="step-badge">2</span>
+                    <span class="step-icon">🚗</span>
+                    <h4>Dovezite vozilo</h4>
+                    <p>Dođite na naš servis u Vršačku 22. Bez gužve, bez čekanja – primamo vas tačno u dogovoreno vreme.</p>
+                    <span class="step-note">parking ispred servisa</span>
+                </div>
+                <div class="process-step">
+                    <span class="step-badge">3</span>
+                    <span class="step-icon">🔧</span>
+                    <h4>Mi radimo svoj posao</h4>
+                    <p>Zamenjujemo, balansiramo, proveravamo i savetujemo. Sve radimo dok vi možete da popijete kafu ili obavite obaveze.</p>
+                    <span class="step-note">prosečno 30–60 min</span>
+                </div>
+                <div class="process-step">
+                    <span class="step-badge">4</span>
+                    <span class="step-icon">✅</span>
+                    <h4>Preuzimate vozilo</h4>
+                    <p>Platite samo ono što je dogovoreno – bez skrivenih troškova. Ulazite u auto sa osmehom i sigurnošću.</p>
+                    <span class="step-note">garancija na uslugu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🛞 SALE I SREĆKO <span>·</span> Vulkanizerski servis</h3>
+                    <span class="tag">Tire Shop · Novi Sad</span>
+                    <p>Dve decenije posvećenosti bezbednosti na putu. Bez marketinških trikova – samo pošten rad, kvalitetne gume i ljubazna usluga.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>📬 Kontakt</h4>
+                    <ul>
+                        <li>📍 <a href="https://maps.google.com/?q=Vršačka+22,+Novi+Sad" target="_blank" rel="noopener">Vršačka 22, Novi Sad 21000</a></li>
+                        <li>📞 <a href="tel:+38163536207">+381 63 536 207</a></li>
+                        <li>✉️ <a href="mailto:sale.i.sreko.vulkanizerski.servis@example.com">sale.i.sreko.vulkanizerski.servis@example.com</a></li>
+                        <li>💬 <a href="viber://chat?number=%2B38163536207" class="viber-link">Viber</a> · <a href="https://wa.me/38163536207" target="_blank" rel="noopener">WhatsApp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>🌐 Društvene mreže</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">fb</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="Instagram">ig</a>
+                        <a href="tel:+38163536207" aria-label="Telefon">📞</a>
+                    </div>
+                    <p style="margin-top:0.8rem;font-size:0.8rem;color:var(--text-muted);">Radno vreme: pon–pet 08–18h, sub 09–14h</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="copy">© 2025 SALE I SREĆKO VULKANIZERSKI SERVIS – sva prava zadržana.</span>
+                <span class="made">🛞 servis u Novom Sadu</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="mobile-cta-bar">
+        <div class="cta-inner">
+            <a href="tel:+38163536207">
+                <span class="cta-phone-icon">📞</span> Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Mobile nav toggle
+            var toggleBtn = document.getElementById('navToggle');
+            var navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var isOpen = navLinks.classList.toggle('open');
+                    toggleBtn.classList.toggle('open', isOpen);
+                    toggleBtn.textContent = isOpen ? '✕' : '☰';
+                    toggleBtn.setAttribute('aria-label', isOpen ? 'Zatvori meni' : 'Otvori meni');
+                });
+
+                // Close nav on link click (mobile)
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggleBtn.classList.remove('open');
+                        toggleBtn.textContent = '☰';
+                        toggleBtn.setAttribute('aria-label', 'Otvori meni');
+                    });
+                });
+
+                // Close nav on click outside
+                document.addEventListener('click', function(e) {
+                    if (navLinks.classList.contains('open') &&
+                        !navLinks.contains(e.target) &&
+                        !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.classList.remove('open');
+                        toggleBtn.textContent = '☰';
+                        toggleBtn.setAttribute('aria-label', 'Otvori meni');
+                    }
+                });
+            }
+
+            // Smooth scroll for anchor links (fallback for very old browsers)
+            var anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    var target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        var offset = 80;
+                        var targetPos = target.getBoundingClientRect().top + window.pageYOffset -
+                        offset;
+                        window.scrollTo({
+                            top: targetPos,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Small enhancement: close mobile menu on resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 720 && navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    toggleBtn.classList.remove('open');
+                    toggleBtn.textContent = '☰';
+                    toggleBtn.setAttribute('aria-label', 'Otvori meni');
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>

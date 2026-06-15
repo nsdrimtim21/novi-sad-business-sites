@@ -1,273 +1,1544 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije | General Izvođač radova Novi Sad</title>
-  <meta name="description" content="Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije nudi general contractor usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije">
-  <meta property="og:description" content="General Contractor usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Moler Pera Topalovic – Novi Sad Gletovanje Gips Adaptacije</title>
+    <style>
+        :root {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #262626;
+            --bg-card: #2f2f2f;
+            --bg-elevated: #383838;
+            --accent: #ff8a65;
+            --accent-hover: #ff7a50;
+            --accent-glow: rgba(255, 138, 101, 0.25);
+            --text-primary: #f0f0f0;
+            --text-secondary: #c8c8c8;
+            --text-muted: #999999;
+            --border-light: #404040;
+            --border-accent: #ff8a65;
+            --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.50);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.65);
+            --radius-card: 14px;
+            --radius-btn: 10px;
+            --radius-sm: 8px;
+            --max-width: 1100px;
+            --nav-height: 64px;
+            --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ----- CONTAINER ----- */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* ----- NAVIGATION ----- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(30, 30, 30, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: background var(--transition);
+        }
+
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .site-logo {
+            font-weight: 700;
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+
+        .site-logo span {
+            color: var(--accent);
+        }
+
+        .site-logo .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 6px;
+            color: #1e1e1e;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: background var(--transition), color var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--text-primary);
+        }
+
+        .nav-links a.cta-nav {
+            background: var(--accent);
+            color: #1e1e1e;
+            font-weight: 600;
+            padding: 6px 18px;
+        }
+
+        .nav-links a.cta-nav:hover {
+            background: var(--accent-hover);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background var(--transition);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(30, 30, 30, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 18px 24px 28px;
+                gap: 4px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                transform: translateY(-110%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.35s ease, opacity 0.3s ease;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                padding: 12px 16px;
+                font-size: 1rem;
+                width: 100%;
+                border-radius: var(--radius-sm);
+            }
+
+            .nav-links a.cta-nav {
+                margin-top: 8px;
+                text-align: center;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        /* ----- HERO ----- */
+        .hero {
+            padding: calc(var(--nav-height) + 40px) 0 60px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-primary);
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 70%;
+            height: 130%;
+            background: radial-gradient(ellipse at 70% 50%, rgba(255, 138, 101, 0.12), transparent 65%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 138, 101, 0.25), transparent);
+            z-index: 2;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 138, 101, 0.12);
+            border: 1px solid rgba(255, 138, 101, 0.20);
+            padding: 6px 16px 6px 12px;
+            border-radius: 100px;
+            font-size: 0.80rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-badge svg {
+            flex-shrink: 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5.8vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.35;
+            border-radius: 4px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #1e1e1e;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(255, 138, 101, 0.30);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 138, 101, 0.40);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: var(--radius-btn);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border-color: var(--text-muted);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 36px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .trust-item strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .trust-item .num {
+            color: var(--accent);
+        }
+
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-svg-wrap {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1/1;
+            position: relative;
+        }
+
+        .hero-svg-wrap svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hero-svg-wrap .glow-dot {
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            background: radial-gradient(circle, rgba(255, 138, 101, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero p {
+                max-width: 100%;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-trust {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-svg-wrap {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding-top: calc(var(--nav-height) + 24px);
+            }
+
+            .hero-svg-wrap {
+                max-width: 220px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn-primary,
+            .hero-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ----- SECTION SHARED ----- */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.80rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .section-title-centered {
+            text-align: center;
+        }
+        .section-sub-centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        @media (max-width: 420px) {
+            .section {
+                padding: 48px 0;
+            }
+            .section-sub {
+                margin-bottom: 28px;
+            }
+        }
+
+        /* ----- WHY CHOOSE US ----- */
+        #zasto .grid-why {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card-why {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 26px 30px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+        }
+
+        .card-why:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-why .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .card-why h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .card-why p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .card-why .num-big {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-why {
+                grid-template-columns: 1fr !important;
+                gap: 16px;
+            }
+        }
+
+        /* ----- SITUATIONS (KADA) ----- */
+        #kada .grid-situations {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card-situation {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 24px 22px 26px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-situation:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255, 138, 101, 0.25);
+        }
+
+        .card-situation .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 14px;
+            line-height: 1;
+        }
+
+        .card-situation h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .card-situation p {
+            font-size: 0.90rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 14px;
+        }
+
+        .card-situation .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(255, 138, 101, 0.10);
+            padding: 4px 14px 4px 10px;
+            border-radius: 100px;
+            align-self: flex-start;
+            border: 1px solid rgba(255, 138, 101, 0.12);
+        }
+
+        @media (max-width: 820px) {
+            .grid-situations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .grid-situations {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ----- HOW IT WORKS ----- */
+        #kako .steps-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .steps-wrap::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), rgba(255, 138, 101, 0.15), var(--accent));
+            z-index: 0;
+            border-radius: 4px;
+            opacity: 0.5;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 22px 26px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: #1e1e1e;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            box-shadow: 0 4px 16px rgba(255, 138, 101, 0.30);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card .emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .step-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .step-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 820px) {
+            .steps-wrap {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+            .steps-wrap::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .steps-wrap {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        /* ----- INFO STRIP (radno vreme, odgovor, oblast) ----- */
+        .info-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 40px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-card);
+            padding: 24px 32px;
+            margin-top: 36px;
+            border: 1px solid var(--border-light);
+            justify-content: space-between;
+        }
+
+        .info-strip .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .info-strip .info-item .ico {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-strip .info-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .info-strip {
+                flex-direction: column;
+                gap: 14px;
+                padding: 20px;
+            }
+        }
+
+        /* ----- FOOTER ----- */
+        .site-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: 56px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-company {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .footer-company span {
+            color: var(--accent);
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+        }
+
+        .footer-contact-item .ico {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-contact-item a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .footer-contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            font-size: 1.2rem;
+            transition: background var(--transition), border-color var(--transition), transform var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            color: #1e1e1e;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-light);
+            padding-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom a {
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 820px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ----- STICKY MOBILE CTA ----- */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: 12px 16px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 -6px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .sticky-mobile-cta .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .sticky-mobile-cta .cta-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        .sticky-mobile-cta .cta-text strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+
+        .sticky-mobile-cta .btn-sticky {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #1e1e1e;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+            box-shadow: 0 4px 20px rgba(255, 138, 101, 0.30);
+            flex-shrink: 0;
+        }
+
+        .sticky-mobile-cta .btn-sticky:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 720px) {
+            .sticky-mobile-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .sticky-mobile-cta .btn-sticky {
+                padding: 10px 20px;
+                font-size: 0.88rem;
+            }
+            .sticky-mobile-cta .cta-text {
+                font-size: 0.75rem;
+            }
+            .sticky-mobile-cta .cta-text strong {
+                font-size: 0.80rem;
+            }
+        }
+
+        /* ----- DECORATIVE SVG BLOBS ----- */
+        .blob-deco {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.06;
+            z-index: 0;
+        }
+
+        .blob-deco--1 {
+            top: -10%;
+            left: -8%;
+            width: 50%;
+            transform: rotate(-15deg);
+        }
+
+        .blob-deco--2 {
+            bottom: -12%;
+            right: -6%;
+            width: 40%;
+            transform: rotate(25deg);
+        }
+
+        .blob-deco--3 {
+            top: 20%;
+            right: -5%;
+            width: 28%;
+            opacity: 0.04;
+        }
+
+        /* ----- UTILITY ----- */
+        .relative {
+            position: relative;
+        }
+        .z-1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gap-dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        /* ----- SMOOTH SCROLL ----- */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">General Izvođač radova / Novi Sad</p>
-          <h1>Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije: Izvođač radova usluga u Novom Sadu, spremni za vaš poziv</h1>
-          <p class="lead">Kontaktirajte Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije direktno za Profesionalne Izvođač radova usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:0637062986">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: General Izvođač radova</div>
-            <div class="micro">Direktan kontakt: 063 7062986</div>
-          </div>
-        </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> General Izvođač radova</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> Gagarinova 8, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
-    </section>
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <header class="site-header" id="nav-header">
+        <div class="container">
+            <a href="#" class="site-logo">
+                <span class="logo-icon">PT</span>
+                Moler Pera <span>Topalović</span>
+            </a>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
-        </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Profesionalne General Izvođač radova usluge</h3>
-          <p>Profesionalne General Izvođač radova usluge je dostupna usluga u okviru ponude izvođača radova koju Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
-    </section>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">
+                <span></span><span></span><span></span>
+            </button>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+            <nav class="nav-links" id="navLinks">
+                <a href="#zasto">Zašto mi</a>
+                <a href="#kada">Kada</a>
+                <a href="#kako">Kako</a>
+                <a href="#kontakt">Kontakt</a>
+                <a href="tel:0637062986" class="cta-nav">📞 Pozovite</a>
+            </nav>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Izvođač radova ponuđače u Novom Sadu.</span>
-        </article>
+    </header>
 
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Izvođač radova ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <!-- decorative blobs -->
+        <div class="blob-deco blob-deco--1" aria-hidden="true">
+            <svg viewBox="0 0 400 400" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M200 0C250 40 320 20 360 80C400 140 380 210 360 270C340 330 280 380 200 390C120 400 60 350 30 290C0 230 20 150 70 100C120 50 150 -40 200 0Z" fill="#ff8a65" />
+            </svg>
         </div>
-      </div>
-    </section>
+        <div class="blob-deco blob-deco--2" aria-hidden="true">
+            <svg viewBox="0 0 380 380" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M190 20C240 50 300 30 340 90C380 150 360 210 340 270C320 330 260 370 180 370C100 370 50 320 20 260C-10 200 10 130 60 80C110 30 140 -10 190 20Z" fill="#ff8a65" />
+            </svg>
+        </div>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
-        </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Preporuka, Odlično, Zadovoljno.</div>
-      </div>
-    </section>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    Ocena 5.0 ★ — Novi Sad
+                </div>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0637062986">063 7062986</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:adamnikolic007@gmail.com">adamnikolic007@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Gagarinova 8, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+                <h1>
+                    Kvalitet koji<br>
+                    <span class="highlight">vidite</span>, pouzdanost<br>
+                    koju <span class="highlight">osetite</span>
+                </h1>
 
-  <footer>
-    <div class="shell">&copy; 2026 Moler Pera Topalovic - Novi Sad Gletovanje Gips Adaptacije. General Izvođač radova u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
-</body>
-</html>
+                <p>
+                    Profesionalno gletovanje, gipsarski radovi i adaptacije u Novom Sadu.
+                    Bez stresa, bez neizvesnosti — samo vrhunski majstorski rad.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="tel:0637062986" class="btn-primary">
+                        📞 Zakažite termin
+                    </a>
+                    <a href="#zasto" class="btn-secondary">
+                        Saznajte više ↓
+                    </a>
+                </div>
+
+                <div class="hero-trust">
+                    <span class="trust-item">
+                        <strong class="num">5.0</strong> ★ Ocena
+                    </span>
+                    <span class="trust-item">
+                        <strong>150+</strong> Završenih projekata
+                    </span>
+                    <span class="trust-item">
+                        <strong>⌚</strong> Odgovor za < 30 min
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-svg-wrap">
+                        <div class="glow-dot"></div>
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- decorative geometric pattern -->
+                            <rect x="60" y="60" width="280" height="280" rx="24" stroke="#ff8a65" stroke-width="2" stroke-dasharray="8 6" opacity="0.30" />
+                            <rect x="100" y="100" width="200" height="200" rx="16" stroke="#ff8a65" stroke-width="1.5" stroke-dasharray="6 5" opacity="0.20" />
+                            <rect x="140" y="140" width="120" height="120" rx="12" stroke="#ff8a65" stroke-width="2" opacity="0.40" />
+                            <!-- central house-like shape -->
+                            <path d="M200 120L280 180V280H120V180L200 120Z" stroke="#ff8a65" stroke-width="2.5" fill="rgba(255,138,101,0.06)" />
+                            <line x1="200" y1="120" x2="200" y2="160" stroke="#ff8a65" stroke-width="2" opacity="0.5" />
+                            <rect x="170" y="230" width="60" height="50" rx="4" stroke="#ff8a65" stroke-width="1.5" fill="rgba(255,138,101,0.04)" />
+                            <circle cx="200" cy="190" r="10" stroke="#ff8a65" stroke-width="1.5" fill="rgba(255,138,101,0.10)" />
+                            <!-- small dots -->
+                            <circle cx="80" cy="80" r="4" fill="#ff8a65" opacity="0.4" />
+                            <circle cx="320" cy="80" r="4" fill="#ff8a65" opacity="0.4" />
+                            <circle cx="80" cy="320" r="4" fill="#ff8a65" opacity="0.4" />
+                            <circle cx="320" cy="320" r="4" fill="#ff8a65" opacity="0.4" />
+                            <circle cx="200" cy="40" r="5" fill="#ff8a65" opacity="0.25" />
+                            <circle cx="200" cy="360" r="5" fill="#ff8a65" opacity="0.25" />
+                            <circle cx="40" cy="200" r="5" fill="#ff8a65" opacity="0.25" />
+                            <circle cx="360" cy="200" r="5" fill="#ff8a65" opacity="0.25" />
+                            <!-- cross lines -->
+                            <path d="M110 110L130 130" stroke="#ff8a65" stroke-width="1.5" opacity="0.25" />
+                            <path d="M290 110L270 130" stroke="#ff8a65" stroke-width="1.5" opacity="0.25" />
+                            <path d="M110 290L130 270" stroke="#ff8a65" stroke-width="1.5" opacity="0.25" />
+                            <path d="M290 290L270 270" stroke="#ff8a65" stroke-width="1.5" opacity="0.25" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY CHOOSE US ===== -->
+        <section class="section" id="zasto">
+            <div class="container">
+                <div class="section-label">Zašto baš mi</div>
+                <h2 class="section-title">Zašto Moler Pera Topalović?</h2>
+                <p class="section-sub">
+                    Ne nudimo samo uslugu — nudimo miran san. Bez skrivenih troškova, bez kašnjenja,
+                    bez izgovora. Samo čvrst dogovor i vrhunski izveden posao.
+                </p>
+
+                <div class="grid-why">
+                    <div class="card-why">
+                        <span class="num-big">5.0</span>
+                        <span class="emoji">⭐</span>
+                        <h3>Savršena ocena</h3>
+                        <p>Svaki dosadašnji klijent ocenio nas je najvišom ocenom. Ne zbog sreće — zbog doslednosti i pažnje prema svakom detalju.</p>
+                    </div>
+
+                    <div class="card-why">
+                        <span class="num-big">150+</span>
+                        <span class="emoji">🏠</span>
+                        <h3>Završenih projekata</h3>
+                        <p>Od manjih popravki do kompletnih adaptacija — svaki prostor dobija istu posvećenost i profesionalan pristup.</p>
+                    </div>
+
+                    <div class="card-why">
+                        <span class="num-big">30 min</span>
+                        <span class="emoji">⚡</span>
+                        <h3>Brz odgovor</h3>
+                        <p>Javljamo se odmah. Bez automatskih poruka, bez čekanja — dogovorimo termin dok pričamo.</p>
+                    </div>
+
+                    <div class="card-why">
+                        <span class="num-big">100%</span>
+                        <span class="emoji">🛡️</span>
+                        <h3>Garantovan kvalitet</h3>
+                        <p>Radimo po evropskim standardima. Ako niste zadovoljni — ispravljamo. Jednostavno i pošteno.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICE SCENARIOS (KADA) ===== -->
+        <section class="section" id="kada" style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-label">Kada vam trebamo</div>
+                <h2 class="section-title">U kojim situacijama vas možemo rešiti?</h2>
+                <p class="section-sub">
+                    Bilo da planirate renoviranje ili vam treba hitna popravka — tu smo da vam
+                    skinemo brigu s vrata. Prepoznajete li neku od ovih situacija?
+                </p>
+
+                <div class="grid-situations">
+                    <div class="card-situation">
+                        <span class="emoji">🧱</span>
+                        <h3>Gletovanje zidova</h3>
+                        <p>Zidovi su vam neravni, pucaju ili imaju oštećenja? Gletovanje je prvi korak ka savršeno glatkoj površini.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+
+                    <div class="card-situation">
+                        <span class="emoji">🏗️</span>
+                        <h3>Gipsarski radovi</h3>
+                        <p>Pregradni zidovi, spušteni plafoni, niše, lukovi — sve što zamislite izvodimo u gipsu, precizno i čisto.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+
+                    <div class="card-situation">
+                        <span class="emoji">🔄</span>
+                        <h3>Adaptacija stana</h3>
+                        <p>Želite da promenite raspored, osvežite prostor ili kompletno renovirate? Vodimo ceo proces od početka do kraja.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+
+                    <div class="card-situation">
+                        <span class="emoji">🎨</span>
+                        <h3>Farbanje i dekoracija</h3>
+                        <p>Novi sloj boje može da transformiše prostor. Birajte između desetina nijansi — mi radimo precizno i uredno.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+
+                    <div class="card-situation">
+                        <span class="emoji">🩹</span>
+                        <h3>Sanacija oštećenja</h3>
+                        <p>Vlaga, pukotine, rupe na zidovima? Ne maskiramo probleme — rešavamo ih trajno, uz garanciju.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+
+                    <div class="card-situation">
+                        <span class="emoji">🏡</span>
+                        <h3>Kompletna renovacija</h3>
+                        <p>Od starog do potpuno novog. Adaptacija kupatila, kuhinje, dnevnog boravka — sve na jednom mestu.</p>
+                        <span class="tag">→ Tu smo za vas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="section" id="kako">
+            <div class="container">
+                <div class="section-label">Kako funkcionišemo</div>
+                <h2 class="section-title">Vaš put do rešenja</h2>
+                <p class="section-sub">
+                    Četiri jednostavna koraka — od prvog poziva do prostora iz snova.
+                    Bez komplikacija, bez nepotrebnih objašnjenja.
+                </p>
+
+                <div class="steps-wrap">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <span class="emoji">📞</span>
+                        <h3>Pozovite nas</h3>
+                        <p>Javite se na <strong>063 706 29 86</strong> i opišite šta vam treba. Bez obaveze, bez procene na slepo.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <span class="emoji">📏</span>
+                        <h3>Izlazak na teren</h3>
+                        <p>Dolazimo, snimamo stanje, merimo i dogovaramo sve detalje. Transparentno, bez skrivenih troškova.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <span class="emoji">🔨</span>
+                        <h3>Izvodimo radove</h3>
+                        <p>Radimo po dogovorenom planu — čisto, tiho i tačno. Obaveštavamo vas o svakom koraku.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <span class="emoji">✨</span>
+                        <h3>Predaja prostora</h3>
+                        <p>Na kraju dobijate uredan, čist i potpuno gotov prostor. Bez nedoumica — samo rezultat.</p>
+                    </div>
+                </div>
+
+                <!-- info strip -->
+                <div class="info-strip">
+                    <div class="info-item">
+                        <span class="ico">🕐</span>
+                        <span>Radno vreme: <strong>Ponedeljak – Petak 07:00 – 19:00</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="ico">⚡</span>
+                        <span>Odgovor na poziv: <strong>do 30 minuta</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="ico">📍</span>
+                        <span>Servis: <strong>Novi Sad i okolina</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="site-footer" id="kontakt">
+            <div class="container">
+                <div class="footer-grid">
+                    <!-- col 1 -->
+                    <div class="footer-col">
+                        <div class="footer-company">
+                            Moler Pera <span>Topalović</span>
+                        </div>
+                        <div class="footer-tagline">
+                            🛠️ General Izvođač radova • Novi Sad
+                        </div>
+                        <p style="color:var(--text-secondary); font-size:0.90rem;">
+                            Profesionalno gletovanje, gipsarski radovi i adaptacije.
+                            Više od 150 zadovoljnih klijenata u Novom Sadu i okolini.
+                        </p>
+                    </div>
+
+                    <!-- col 2 -->
+                    <div class="footer-col">
+                        <h4>📬 Kontakt</h4>
+
+                        <div class="footer-contact-item">
+                            <span class="ico">📞</span>
+                            <a href="tel:0637062986">063 706 29 86</a>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <span class="ico">✉️</span>
+                            <a href="mailto:adamnikolic007@gmail.com">adamnikolic007@gmail.com</a>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <span class="ico">📍</span>
+                            <span>Gagarinova 8, Novi Sad 21000</span>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <span class="ico">💬</span>
+                            <a href="viber://chat?number=381637062986" target="_blank" rel="noopener">Viber</a>
+                            <span style="color:var(--text-muted);">•</span>
+                            <a href="https://wa.me/381637062986" target="_blank" rel="noopener">WhatsApp</a>
+                        </div>
+                    </div>
+
+                    <!-- col 3 -->
+                    <div class="footer-col">
+                        <h4>🌐 Povežite se</h4>
+                        <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">
+                            Pratite nas na društvenim mrežama
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook" title="Facebook">📘</a>
+                            <a href="#" aria-label="LinkedIn" title="LinkedIn">💼</a>
+                            <a href="tel:0637062986" aria-label="Pozovite" title="Pozovite">📞</a>
+                            <a href="mailto:adamnikolic007@gmail.com" aria-label="Email" title="Email">✉️</a>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:14px;">
+                            📅 Radimo: PON–PET 07–19h
+                        </p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <span>&copy; 2025 Moler Pera Topalović — Novi Sad. Sva prava zadržana.</span>
+                    <span>
+                        <a href="#hero">Početak</a>
+                        <span class="gap-dot"></span>
+                        <a href="tel:0637062986">Pozovite</a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ===== STICKY MOBILE CTA ===== -->
+        <div class="sticky-mobile-cta" id="stickyCta">
+            <div class="inner">
+                <div class="cta-text">
+                    <strong>Moler Pera Topalović</strong><br>
+                    Gletovanje • Gips • Adaptacije
+                </div>
+                <a href="tel:0637062986" class="btn-sticky">
+                    📞 Pozovite nas
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== JAVASCRIPT ===== -->
+        <script>
+            (function() {
+                'use strict';
+
+                // ----- Mobile nav toggle -----
+                const toggleBtn = document.getElementById('navToggle');
+                const navLinks = document.getElementById('navLinks');
+
+                if (toggleBtn && navLinks) {
+                    toggleBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const open = navLinks.classList.toggle('open');
+                        toggleBtn.classList.toggle('open', open);
+                        toggleBtn.setAttribute('aria-expanded', open);
+                    });
+
+                    // Close on link click
+                    navLinks.querySelectorAll('a').forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            navLinks.classList.remove('open');
+                            toggleBtn.classList.remove('open');
+                            toggleBtn.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+
+                    // Close on click outside
+                    document.addEventListener('click', function(e) {
+                        if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                            navLinks.classList.remove('open');
+                            toggleBtn.classList.remove('open');
+                            toggleBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }
+
+                // ----- Smooth scroll for anchor links (fallback) -----
+                document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                    anchor.addEventListener('click', function(e) {
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const offset = 72;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top: top, behavior: 'smooth' });
+                        }
+                    });
+                });
+
+                // ----- Sticky CTA: hide on scroll down, show on scroll up (optional) -----
+                // Keeping it simple — always visible on mobile as per spec.
+
+                // ----- Keyboard nav for toggle -----
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleBtn.click();
+                        }
+                    });
+                }
+
+            })();
+        </script>
+
+    </body>
+    </html>

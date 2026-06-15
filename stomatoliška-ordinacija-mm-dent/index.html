@@ -1,273 +1,1458 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stomatoliška ordinacija &quot;MM DENT&quot; | zubar Novi Sad</title>
-  <meta name="description" content="Stomatoliška ordinacija &quot;MM DENT&quot; nudi dentist usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Stomatoliška ordinacija &quot;MM DENT&quot;">
-  <meta property="og:description" content="Dentist usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MM DENT — Stomatološka ordinacija Novi Sad</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f0f4f8;
+            --accent: #0077b6;
+            --accent-dark: #005a8a;
+            --accent-glow: rgba(0, 119, 182, 0.08);
+            --accent-light: #dceef9;
+            --accent-soft: #e8f4fc;
+            --text: #1a2a3a;
+            --text-light: #4a5a6a;
+            --text-muted: #6b7f8f;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 14px rgba(0, 119, 182, 0.07);
+            --shadow-md: 0 8px 26px rgba(0, 119, 182, 0.10);
+            --shadow-lg: 0 16px 40px rgba(0, 119, 182, 0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --max-width: 1080px;
+            --nav-height: 68px;
+            --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --transition: 0.30s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: var(--nav-height);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-pad {
+            padding: 64px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 4.2vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--text-light);
+            max-width: 640px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .section-sub.centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        /* ===== NAV ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            background: rgba(240, 244, 248, 0.78);
+            border-bottom: 1px solid rgba(0, 119, 182, 0.10);
+            transition: background var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand span {
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: color var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 8px 20px !important;
+            border-radius: 40px;
+            font-weight: 600 !important;
+            font-size: 0.82rem !important;
+            transition: background var(--transition), transform var(--transition) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* hamburger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 3px;
+            transition: all 0.30s;
+            transform-origin: center;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            padding: 60px 0 70px;
+            overflow: hidden;
+            background: linear-gradient(145deg, #eaf1fa 0%, #f0f7ff 60%, #e4eefa 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -8%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 40px;
+            width: fit-content;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5.6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .hero-title .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-light);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--text-light);
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 119, 182, 0.25);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 119, 182, 0.30);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 36px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-trust-item strong {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        /* hero right — decorative tooth SVG */
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-svg-wrap {
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 1/1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-svg-wrap svg {
+            width: 80%;
+            height: auto;
+            filter: drop-shadow(0 8px 30px rgba(0, 119, 182, 0.12));
+            animation: floatTooth 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatTooth {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-14px) rotate(2deg);
+            }
+        }
+
+        .hero-svg-glow {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at center, rgba(0, 119, 182, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            animation: pulseGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.92);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-section {
+            background: var(--white);
+            position: relative;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .why-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 32px 26px 28px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+            position: relative;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .why-card .emoji-big {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .why-card .stat {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-top: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== WHEN YOU NEED US ===== */
+        .when-section {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .when-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .when-card {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            padding: 24px 24px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .when-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .when-card .when-icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .when-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .when-card p {
+            font-size: 0.90rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .when-card .when-cta {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-section {
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            counter-reset: step;
+        }
+
+        .how-step {
+            counter-increment: step;
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 22px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+        }
+
+        .how-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .how-step .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 14px rgba(0, 119, 182, 0.20);
+        }
+
+        .how-step .step-emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .how-step h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .how-step p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .how-info {
+            margin-top: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            justify-content: center;
+            font-size: 0.92rem;
+            color: var(--text-light);
+            background: var(--accent-soft);
+            border-radius: var(--radius);
+            padding: 20px 30px;
+        }
+
+        .how-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .how-info strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1a2a3a;
+            color: #dce4ec;
+            padding: 52px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1.2fr;
+            gap: 36px 44px;
+        }
+
+        .footer-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            font-size: 0.90rem;
+            color: #b0c4d4;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            max-width: 320px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: #dce4ec;
+            font-size: 1.2rem;
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-contact {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: #b0c4d4;
+        }
+
+        .footer-contact li a {
+            color: #dce4ec;
+            transition: color var(--transition);
+        }
+
+        .footer-contact li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact .contact-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .footer-buttons a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #dce4ec;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .footer-buttons a:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 36px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.80rem;
+            color: #8aa0b4;
+        }
+
+        .footer-bottom a {
+            color: #b0c4d4;
+            transition: color var(--transition);
+        }
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: var(--white);
+            border-top: 1px solid rgba(0, 119, 182, 0.10);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .mobile-cta .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .mobile-cta .cta-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mobile-cta .cta-text small {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .mobile-cta .btn-mobile {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+            box-shadow: 0 4px 14px rgba(0, 119, 182, 0.20);
+            flex-shrink: 0;
+        }
+
+        .mobile-cta .btn-mobile:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 920px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .how-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-left {
+                align-items: center;
+                text-align: center;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-right {
+                order: -1;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .hero-svg-wrap {
+                max-width: 220px;
+            }
+            .hero-badge {
+                margin: 0 auto;
+            }
+            .section-sub {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --nav-height: 60px;
+            }
+            .section-pad {
+                padding: 44px 0;
+            }
+            .container {
+                padding: 0 18px;
+            }
+
+            /* nav */
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(240, 244, 248, 0.96);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                gap: 0;
+                padding: 12px 0 20px;
+                border-bottom: 1px solid rgba(0, 119, 182, 0.08);
+                transform: translateY(-110%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.40s ease, opacity 0.30s ease;
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 18px !important;
+                font-size: 1rem;
+                border-radius: 0;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-links .nav-cta {
+                margin: 10px 18px 6px;
+                border-radius: 40px !important;
+                text-align: center;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 36px 0 48px;
+            }
+            .hero-title {
+                font-size: clamp(1.6rem, 7vw, 2.2rem);
+            }
+            .hero-desc {
+                font-size: 0.95rem;
+            }
+            .hero-right {
+                max-width: 180px;
+            }
+            .hero-svg-wrap {
+                max-width: 160px;
+            }
+            .hero-trust {
+                gap: 14px 20px;
+                font-size: 0.78rem;
+            }
+            .hero-trust-item strong {
+                font-size: 0.95rem;
+            }
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 0.92rem;
+            }
+            .btn-outline {
+                padding: 10px 20px;
+                font-size: 0.88rem;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .why-card {
+                padding: 24px 20px;
+            }
+
+            .when-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .how-info {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 20px;
+                gap: 10px;
+                font-size: 0.85rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* mobile cta */
+            .mobile-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions .btn-primary,
+            .hero-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            .footer-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-buttons a {
+                width: 100%;
+                justify-content: center;
+            }
+            .mobile-cta .cta-text small {
+                display: none;
+            }
+            .mobile-cta .btn-mobile {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 721px) {
+            .mobile-cta {
+                display: none !important;
+            }
+        }
+
+        /* ===== SMOOTH & ACCESSIBLE ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* focus visible */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Stomatoliška ordinacija &quot;MM DENT&quot;</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAV ===== -->
+    <nav class="navbar" role="navigation" aria-label="Glavna navigacija">
+        <div class="container">
+            <a href="#hero" class="nav-brand">
+                <span>🦷</span> MM DENT
+            </a>
+            <button class="nav-toggle" aria-label="Otvorite meni" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#when">Kada</a></li>
+                <li><a href="#how">Kako</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="tel:+38162288089" class="nav-cta">Pozovite nas</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Stomatolog / Novi Sad</p>
-          <h1>Stomatoliška ordinacija &quot;MM DENT&quot;: zubar u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Stomatoliška ordinacija &quot;MM DENT&quot; direktno za Profesionalne Stomatološke usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 4.9 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:mgavric@hotmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Stomatolog</div>
-            <div class="micro">Direktan kontakt: 062 288089</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    🏆 Stomatološka ordinacija u Novom Sadu
+                </div>
+                <h1 class="hero-title">
+                    Vaš osmeh je <span class="highlight">naša briga</span>
+                </h1>
+                <p class="hero-desc">
+                    Bezbolna i pažljiva dentalna nega u prijatnom ambijentu. 
+                    Verujemo da svako zaslužuje zdrav i lep osmeh — bez straha i bez stresa.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:+38162288089" class="btn-primary">
+                        📞 Zakažite termin
+                    </a>
+                    <a href="#why" class="btn-outline">
+                        Saznajte više ↓
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <span class="hero-trust-item">
+                        <strong>★ 4.9</strong> ocena pacijenata
+                    </span>
+                    <span class="hero-trust-item">
+                        <strong>12+</strong> godina iskustva
+                    </span>
+                    <span class="hero-trust-item">
+                        <strong>⏱ 24h</strong> brz odgovor
+                    </span>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-svg-wrap">
+                    <div class="hero-svg-glow"></div>
+                    <!-- Decorative tooth SVG -->
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 28C78 28 56 42 50 68C44 94 48 116 52 132C56 148 60 156 66 164C72 172 80 178 88 180C96 182 100 178 100 178C100 178 104 182 112 180C120 178 128 172 134 164C140 156 144 148 148 132C152 116 156 94 150 68C144 42 122 28 100 28Z"
+                        fill="url(#toothGrad)" stroke="var(--accent)" stroke-width="2.5"/>
+                        <path d="M76 68C72 82 74 100 78 112" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+                        <path d="M124 68C128 82 126 100 122 112" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+                        <path d="M88 54C84 64 84 78 88 88" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" opacity="0.25"/>
+                        <path d="M112 54C116 64 116 78 112 88" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" opacity="0.25"/>
+                        <circle cx="66" cy="56" r="3" fill="var(--accent)" opacity="0.10"/>
+                        <circle cx="134" cy="56" r="3" fill="var(--accent)" opacity="0.10"/>
+                        <circle cx="100" cy="136" r="4" fill="var(--accent)" opacity="0.12"/>
+                        <defs>
+                            <linearGradient id="toothGrad" x1="50" y1="28" x2="150" y2="180">
+                                <stop offset="0%" stop-color="var(--white)"/>
+                                <stop offset="100%" stop-color="var(--accent-light)"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Stomatolog</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Branislava Nušića 16, Novi Sad, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="section-pad why-section" id="why">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Zašto baš <span class="text-accent">MM DENT</span>?</h2>
+                <p class="section-sub centered">
+                    Ne birate nas slučajno. Svaki pacijent je prioritet, svaki osmeh je pobeda.
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji-big">⭐</span>
+                    <h3>Izuzetna ocena 4.9</h3>
+                    <p>Naši pacijenti nas ocenjuju najvišim ocenama. Ponosni smo na poverenje koje nam svakodnevno ukazuju.</p>
+                    <span class="stat">4.9 ★</span>
+                </div>
+                <div class="why-card">
+                    <span class="emoji-big">🦷</span>
+                    <h3>Profesionalnost i iskustvo</h3>
+                    <p>Više od 12 godina rada u stomatologiji, uz redovno usavršavanje i primenu savremenih metoda lečenja.</p>
+                    <span class="stat">12+ god.</span>
+                </div>
+                <div class="why-card">
+                    <span class="emoji-big">❤️</span>
+                    <h3>Bezbolan i prijatan tretman</h3>
+                    <p>Razumemo vaš strah. Zato smo tu da vam pružimo nežnu, strpljivu i potpuno bezbolnu negu.</p>
+                    <span class="stat">99% pacijenata</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Profesionalne Stomatološke usluge</h3>
-          <p>Profesionalne Stomatološke usluge je dostupna usluga u okviru stomatološke ponude koju Stomatoliška ordinacija &quot;MM DENT&quot; pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ===== WHEN YOU NEED US ===== -->
+    <section class="section-pad when-section" id="when">
+        <div class="container">
+            <h2 class="section-title">Kada vam je potrebna pomoć?</h2>
+            <p class="section-sub">
+                Mnogi pacijenti dolaze sa istim pitanjima. Prepoznajte se u nekoj od situacija — tu smo da vam pomognemo.
+            </p>
+            <div class="when-grid">
+                <div class="when-card">
+                    <span class="when-icon">😣</span>
+                    <h4>Bol ili osetljivost zuba</h4>
+                    <p>Ne trpite bol. Javite se na vreme — brza intervencija sprečava veće komplikacije.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+                <div class="when-card">
+                    <span class="when-icon">😬</span>
+                    <h4>Strah od stomatologa</h4>
+                    <p>Niste jedini. Naš pristup je blag, strpljiv i prilagođen vašem tempu. Bez osuđivanja.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+                <div class="when-card">
+                    <span class="when-icon">🦷</span>
+                    <h4>Redovan pregled i prevencija</h4>
+                    <p>Preventiva je najbolji lek. Dolazite na redovne kontrole i sačuvajte osmeh godinama.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+                <div class="when-card">
+                    <span class="when-icon">✨</span>
+                    <h4>Estetska stomatologija</h4>
+                    <p>Želite lepši osmeh? Beljenje, fasete, popravke — sve uz minimalnu invaziju i maksimalan efekat.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+                <div class="when-card">
+                    <span class="when-icon">👶</span>
+                    <h4>Stomatolog za decu</h4>
+                    <p>Prvi pregled ne mora biti strašan. Naš tim zna kako da decu ume da opusti i motiviše.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+                <div class="when-card">
+                    <span class="when-icon">🆘</span>
+                    <h4>Hitna stomatološka pomoć</h4>
+                    <p>Puknuće zuba, upala ili jak bol? Zovite odmah — primamo hitne slučajeve svakog radnog dana.</p>
+                    <span class="when-cta">Tu smo za vas →</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.9 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section-pad how-section" id="how">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Kako funkcionišemo?</h2>
+                <p class="section-sub centered">
+                    Jednostavan put do zdravog osmeha — bez komplikacija i dugog čekanja.
+                </p>
+            </div>
+            <div class="how-grid">
+                <div class="how-step">
+                    <span class="step-emoji">📞</span>
+                    <span class="step-number">1</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Javite se putem telefona ili poruke. Odgovaramo u roku od 24 sata.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">📅</span>
+                    <span class="step-number">2</span>
+                    <h4>Zakažite termin</h4>
+                    <p>Dogovaramo vreme koje vama odgovara. Brzo i bez čekanja u redu.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">🦷</span>
+                    <span class="step-number">3</span>
+                    <h4>Pregled i tretman</h4>
+                    <p>U prijatnom ambijentu obavljamo pregled i predlažemo najbolje rešenje.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">😊</span>
+                    <span class="step-number">4</span>
+                    <h4>Osmeh bez brige</h4>
+                    <p>Nakon tretmana dobijate savete za negu i poziv za redovnu kontrolu.</p>
+                </div>
+            </div>
+            <div class="how-info">
+                <span>🕒 <strong>Radno vreme:</strong> Pon–Pet 08:00 – 20:00 &nbsp;|&nbsp; Sub 09:00 – 14:00</span>
+                <span>📍 <strong>Servisiramo:</strong> Novi Sad i okolina</span>
+                <span>⏱ <strong>Odgovor:</strong> u roku od 24h</span>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Prijateljski, Preporuka, Odlično, Zadovoljno.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <span>🦷</span> MM DENT
+                    </div>
+                    <p class="footer-desc">
+                        Stomatološka ordinacija u Novom Sadu. Posvećeni smo vašem osmehu i zdravlju zuba 
+                        uz vrhunsku stručnost i ljudski pristup.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook" title="Facebook">📘</a>
+                        <a href="#" aria-label="LinkedIn" title="LinkedIn">🔗</a>
+                        <a href="https://wa.me/38162288089" aria-label="WhatsApp" title="WhatsApp">💬</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Kontakt</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <span class="contact-icon">📞</span>
+                            <a href="tel:+38162288089">062 288089</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">✉️</span>
+                            <a href="mailto:mgavric@hotmail.com">mgavric@hotmail.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>Branislava Nušića 16,<br />Novi Sad, Srbija</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Brzi linkovi</h4>
+                    <ul class="footer-contact" style="gap:8px;">
+                        <li><a href="#why">→ Zašto baš mi</a></li>
+                        <li><a href="#when">→ Kada vam trebamo</a></li>
+                        <li><a href="#how">→ Kako funkcionišemo</a></li>
+                        <li><a href="tel:+38162288089">→ Pozovite nas</a></li>
+                    </ul>
+                    <div class="footer-buttons" style="margin-top:14px;">
+                        <a href="viber://chat?number=38162288089">💜 Viber</a>
+                        <a href="https://wa.me/38162288089">💚 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 MM DENT — Stomatološka ordinacija. Sva prava zadržana.</span>
+                <span>Izrađeno sa ❤️ u Novom Sadu</span>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:062288089">062 288089</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:mgavric@hotmail.com">mgavric@hotmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Branislava Nušića 16, Novi Sad, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Stomatoliška ordinacija &quot;MM DENT&quot;. Stomatolog u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="mobile-cta">
+        <div class="container">
+            <span class="cta-text">
+                🦷 MM DENT
+                <small>Novi Sad</small>
+            </span>
+            <a href="tel:+38162288089" class="btn-mobile">
+                📞 Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = navLinks.classList.toggle('open');
+                    toggleBtn.classList.toggle('active', isOpen);
+                    toggleBtn.setAttribute('aria-expanded', isOpen);
+                });
+
+                // close on link click
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggleBtn.classList.remove('active');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.classList.remove('active');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // smooth scroll for anchor links (fallback if browser doesn't support scroll-behavior)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue(
+                            '--nav-height'), 10) || 68;
+                        const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+                        window.scrollTo({ top: offset, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // close mobile menu on resize to desktop
+            var resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.innerWidth > 720) {
+                        if (navLinks && navLinks.classList.contains('open')) {
+                            navLinks.classList.remove('open');
+                            if (toggleBtn) toggleBtn.classList.remove('active');
+                        }
+                    }
+                }, 100);
+            });
+
+        })();
+    </script>
+
 </body>
 </html>

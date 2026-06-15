@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilni Vulkanizer Polovne Gume Novi Sad</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --bg-card: #1e1e36;
+            --bg-nav: rgba(26, 26, 46, 0.88);
+            --accent: #e8a838;
+            --accent-hover: #d4942e;
+            --accent-glow: rgba(232, 168, 56, 0.25);
+            --text: #f0ede8;
+            --text-muted: #b8b2a8;
+            --text-dark: #1a1a2e;
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --border-glow: 0 0 0 1px rgba(232, 168, 56, 0.15);
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-w: 1080px;
+            --section-pad: 64px 0;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─── STICKY NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(232, 168, 56, 0.10);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            color: var(--accent);
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            transition: color 0.25s ease, border-color 0.25s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 140px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-deco {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-bg-deco .circle-1 {
+            position: absolute;
+            top: -10%;
+            right: -8%;
+            width: 60vmax;
+            height: 60vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.07) 0%, transparent 70%);
+        }
+
+        .hero-bg-deco .circle-2 {
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50vmax;
+            height: 50vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.04) 0%, transparent 70%);
+        }
+
+        .hero-bg-deco .ring-svg {
+            position: absolute;
+            top: 18%;
+            right: 5%;
+            width: 320px;
+            height: 320px;
+            opacity: 0.10;
+            transform: rotate(12deg);
+        }
+
+        .hero-bg-deco .ring-svg-2 {
+            position: absolute;
+            bottom: 12%;
+            left: 2%;
+            width: 220px;
+            height: 220px;
+            opacity: 0.08;
+            transform: rotate(-25deg);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(232, 168, 56, 0.12);
+            border: 1px solid rgba(232, 168, 56, 0.20);
+            border-radius: 40px;
+            padding: 6px 18px 6px 14px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--accent);
+            width: fit-content;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            color: var(--text-muted);
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 34px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 168, 56, 0.30);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232, 168, 56, 0.40);
+            color: var(--text-dark);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(232, 168, 56, 0.25);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(232, 168, 56, 0.08);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(232, 168, 56, 0.10);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .trust-item strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-deco-svg {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .hero-deco-svg .accent-stroke {
+            stroke: var(--accent);
+        }
+        .hero-deco-svg .accent-fill {
+            fill: var(--accent);
+        }
+        .hero-deco-svg .muted-stroke {
+            stroke: var(--text-muted);
+            opacity: 0.20;
+        }
+
+        /* ─── HOW IT WORKS ─── */
+        .how {
+            padding: var(--section-pad);
+            background: rgba(232, 168, 56, 0.02);
+            position: relative;
+        }
+
+        .how::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.15;
+        }
+
+        .section-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 36px;
+            font-size: 1rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 22px 24px;
+            border: 1px solid rgba(232, 168, 56, 0.06);
+            box-shadow: var(--border-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232, 168, 56, 0.12);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .step-card .step-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .step-card .step-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(232, 168, 56, 0.08);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ─── SERVICE SCENARIOS (Kada vam trebamo) ─── */
+        .scenarios {
+            padding: var(--section-pad);
+            position: relative;
+        }
+
+        .scenarios-deco {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+            opacity: 0.04;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .scenario-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 26px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--border-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(232, 168, 56, 0.08);
+        }
+
+        .scenario-card .scemoji {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .scenario-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .scenario-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .scenario-card .scta {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ─── WHY US ─── */
+        .why {
+            padding: var(--section-pad);
+            background: rgba(232, 168, 56, 0.02);
+            position: relative;
+        }
+
+        .why::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.10;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px 32px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--border-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(232, 168, 56, 0.10);
+        }
+
+        .why-card .why-emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .why-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .why-card .why-stat {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(232, 168, 56, 0.10);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 4px 16px;
+            border-radius: 40px;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            padding: 56px 0 40px;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            background: rgba(0, 0, 0, 0.20);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 40px 50px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .footer-brand .fcategory {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-contact h4,
+        .footer-social h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact .fitem {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .footer-contact .fitem a {
+            color: var(--text-muted);
+            transition: color 0.25s ease;
+        }
+
+        .footer-contact .fitem a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact .fitem .femoji {
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .footer-social .soc-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social .soc-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.08);
+            border: 1px solid rgba(232, 168, 56, 0.10);
+            font-size: 1.2rem;
+            transition: background 0.3s ease, transform 0.25s ease;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-social .soc-links a:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+            transform: scale(1.08);
+        }
+
+        .footer-bottom {
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom a {
+            color: var(--text-muted);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ─── STICKY MOBILE CTA ─── */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: var(--bg-nav);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid rgba(232, 168, 56, 0.10);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-cta .mcta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .mobile-cta .mcta-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 16px rgba(232, 168, 56, 0.25);
+            flex: 1;
+            justify-content: center;
+        }
+
+        .mobile-cta .mcta-btn:hover {
+            background: var(--accent-hover);
+            color: var(--text-dark);
+        }
+
+        .mobile-cta .mcta-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .hero-left {
+                align-items: center;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .hero-cta-row {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-right {
+                display: none;
+            }
+            .hero {
+                min-height: auto;
+                padding: 120px 0 60px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--bg-nav);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                padding: 16px 24px 20px;
+                gap: 14px;
+                border-bottom: 1px solid rgba(232, 168, 56, 0.06);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 110px 0 50px;
+            }
+            .hero h1 {
+                font-size: clamp(1.6rem, 6vw, 2.2rem);
+            }
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 4px 14px 4px 10px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-contact .fitem {
+                justify-content: center;
+            }
+            .footer-social .soc-links {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .mobile-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+
+            .section-title {
+                font-size: clamp(1.3rem, 4vw, 1.8rem);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-cta-row {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-cta-row .btn-primary,
+            .hero-cta-row .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .step-card {
+                padding: 20px 16px;
+            }
+            .scenario-card {
+                padding: 18px 18px;
+            }
+            .why-card {
+                padding: 22px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ STICKY NAV ═══ -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.8" opacity="0.3"/>
+                    <circle cx="16" cy="16" r="8" stroke="currentColor" stroke-width="1.8" opacity="0.5"/>
+                    <circle cx="16" cy="16" r="2.5" fill="currentColor"/>
+                    <path d="M16 2 L16 6 M16 26 L16 30 M2 16 L6 16 M26 16 L30 16" stroke="currentColor" stroke-width="1.4" opacity="0.4"/>
+                </svg>
+                <span>Mobilni Vulkanizer NS</span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#how">Kako funkcionišemo</a></li>
+                <li><a href="#scenarios">Kada vam trebamo</a></li>
+                <li><a href="#why">Zašto baš mi</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-deco">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <svg class="ring-svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <circle cx="100" cy="100" r="80" stroke="var(--accent)" stroke-width="1.2" opacity="0.25"/>
+                <circle cx="100" cy="100" r="60" stroke="var(--accent)" stroke-width="0.8" opacity="0.15"/>
+                <circle cx="100" cy="100" r="95" stroke="var(--accent)" stroke-width="0.6" opacity="0.10" stroke-dasharray="8 8"/>
+            </svg>
+            <svg class="ring-svg-2" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+                <circle cx="80" cy="80" r="60" stroke="var(--accent)" stroke-width="1" opacity="0.20"/>
+                <circle cx="80" cy="80" r="40" stroke="var(--accent)" stroke-width="0.6" opacity="0.12"/>
+                <path d="M20 80 Q 80 20 140 80 Q 80 140 20 80" stroke="var(--accent)" stroke-width="0.6" opacity="0.08"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-badge">
+                        <span>🛞</span> Mobilni vulkanizer u Novom Sadu
+                    </div>
+                    <h1>
+                        Ostali ste sa <span>probušenom gumom</span>?<br>
+                        Stižemo za <span>30 minuta</span>.
+                    </h1>
+                    <p class="hero-sub">
+                        Ne gubite vreme i živce. Zovite nas — dolazimo na vašu lokaciju,
+                        menjamo ili reparíramo gumu na licu mesta. Brzo, kvalitetno, po fer ceni.
+                    </p>
+                    <div class="hero-cta-row">
+                        <a href="tel:+381638074033" class="btn-primary">
+                            📞 Pozovite nas
+                        </a>
+                        <a href="#scenarios" class="btn-secondary">
+                            Saznajte više &darr;
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <span class="trust-item">⭐ <strong>5,0</strong> ocena</span>
+                        <span class="trust-item">🛠️ <strong>850+</strong> popravljenih guma</span>
+                        <span class="trust-item">⏱️ <strong>30 min</strong> prosečan dolazak</span>
+                        <span class="trust-item">📍 <strong>Novi Sad</strong> i okolina</span>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <svg class="hero-deco-svg" viewBox="0 0 380 380" fill="none" aria-hidden="true">
+                        <circle cx="190" cy="190" r="160" stroke="var(--accent)" stroke-width="1.2" opacity="0.12"/>
+                        <circle cx="190" cy="190" r="130" stroke="var(--accent)" stroke-width="1.8" opacity="0.15"/>
+                        <circle cx="190" cy="190" r="100" stroke="var(--accent)" stroke-width="1" opacity="0.20"/>
+                        <circle cx="190" cy="190" r="70" stroke="var(--accent)" stroke-width="1.4" opacity="0.25"/>
+                        <circle cx="190" cy="190" r="35" fill="var(--accent)" opacity="0.12"/>
+                        <circle cx="190" cy="190" r="18" fill="var(--accent)" opacity="0.20"/>
+                        <path d="M190 30 L190 60 M190 320 L190 350 M30 190 L60 190 M320 190 L350 190" stroke="var(--accent)" stroke-width="1.4" opacity="0.25"/>
+                        <path d="M72 72 L92 92 M288 288 L308 308 M72 308 L92 288 M288 72 L308 92" stroke="var(--accent)" stroke-width="1.2" opacity="0.15"/>
+                        <circle cx="190" cy="190" r="155" stroke="var(--accent)" stroke-width="0.6" opacity="0.08" stroke-dasharray="6 10"/>
+                        <circle cx="190" cy="190" r="50" stroke="var(--accent)" stroke-width="0.6" opacity="0.10" stroke-dasharray="4 8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="how" id="how">
+        <div class="container">
+            <div class="section-label">🚐 Vaš put do rešenja</div>
+            <h2 class="section-title">Kako funkcionišemo?</h2>
+            <p class="section-desc">
+                Od trenutka kada nas pozovete do potpuno rešene situacije — sve je jednostavno i brzo.
+                Radimo svakog dana, bez zakazivanja.
+            </p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <span class="step-emoji">📞</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Javite nam gde ste i šta se desilo. Naš operater je na liniji 24/7.</p>
+                    <div class="step-info">📱 +381 63 8074033</div>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <span class="step-emoji">📍</span>
+                    <h4>Šaljemo lokaciju</h4>
+                    <p>Pošaljite nam svoju lokaciju putem Vibera ili SMS. Stižemo u proseku za 30 minuta.</p>
+                    <div class="step-info">🕐 Radimo: 07–21h</div>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <span class="step-emoji">🔧</span>
+                    <h4>Popravka na licu mesta</h4>
+                    <p>Majstor dolazi sa svim potrebnim alatom i gumama. Popravka traje 15–25 minuta.</p>
+                    <div class="step-info">🛞 Bez skidanja felne</div>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <span class="step-emoji">✅</span>
+                    <h4>Nastavljate put</h4>
+                    <p>Guma je zamenjena ili reparirana. Plaćate samo uslugu — bez skrivenih troškova.</p>
+                    <div class="step-info">💳 Gotovina &amp; kartice</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SERVICE SCENARIOS ═══ -->
+    <section class="scenarios" id="scenarios">
+        <div class="container">
+            <svg class="scenarios-deco" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <circle cx="100" cy="100" r="80" stroke="var(--accent)" stroke-width="0.8" opacity="0.12"/>
+                <circle cx="100" cy="100" r="50" stroke="var(--accent)" stroke-width="0.6" opacity="0.08"/>
+                <path d="M20 100 Q 100 20 180 100 Q 100 180 20 100" stroke="var(--accent)" stroke-width="0.5" opacity="0.06"/>
+            </svg>
+            <div class="section-label">🛞 U kojim situacijama?</div>
+            <h2 class="section-title">Kada vam je potrebna pomoć?</h2>
+            <p class="section-desc">
+                Bilo da ste na putu, kod kuće ili na poslu — tu smo da rešimo problem sa gumama.
+                Ovo su najčešći razlozi zbog kojih nas zovu.
+            </p>
+            <div class="scenarios-grid">
+                <div class="scenario-card">
+                    <span class="scemoji">🕳️</span>
+                    <h4>Probušena guma na putu</h4>
+                    <p>Ekser, šraf ili oštar kamen — probušili ste gumu i ne možete dalje. Dolazimo na lice mesta.</p>
+                    <span class="scta">Tu smo za vas →</span>
+                </div>
+                <div class="scenario-card">
+                    <span class="scemoji">🧊</span>
+                    <h4>Zimske gume — zamena i skladištenje</h4>
+                    <p>Treba vam zamena letnjih/zimskih guma? Montiramo i balansiramo, a možemo i da ih čuvamo.</p>
+                    <span class="scta">Tu smo za vas →</span>
+                </div>
+                <div class="scenario-card">
+                    <span class="scemoji">⚖️</span>
+                    <h4>Balansiranje i poravnanje</h4>
+                    <p>Auto vam vibrira pri vožnji? Gume se neravnomerno troše? Obavimo balansiranje na licu mesta.</p>
+                    <span class="scta">Tu smo za vas →</span>
+                </div>
+                <div class="scenario-card">
+                    <span class="scemoji">🛒</span>
+                    <h4>Kupovina polovnih guma</h4>
+                    <p>Tražite kvalitetnu polovnu gumu po povoljnoj ceni? Imamo širok izbor — isporuka i montaža.</p>
+                    <span class="scta">Tu smo za vas →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY US ═══ -->
+    <section class="why" id="why">
+        <div class="container">
+            <div class="section-label">⭐ Zašto baš mi</div>
+            <h2 class="section-title">Zašto Mobilni Vulkanizer NS?</h2>
+            <p class="section-desc">
+                Ne prodajemo samo uslugu — nudimo mir dok putujete. Evo šta nas izdvaja od ostalih.
+            </p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-emoji">⏱️</span>
+                    <h4>Brza usluga</h4>
+                    <p>Stižemo u proseku za 30 minuta od poziva. Cela popravka traje 15–25 minuta — brzo ste na putu.</p>
+                    <span class="why-stat">prosek 30 min</span>
+                </div>
+                <div class="why-card">
+                    <span class="why-emoji">🔩</span>
+                    <h4>Kvalitetne gume</h4>
+                    <p>Sve polovne gume su pregledane, bez oštećenja i sa dubokim šarom. Dajemo garanciju na svaku gumu.</p>
+                    <span class="why-stat">100% pregledane</span>
+                </div>
+                <div class="why-card">
+                    <span class="why-emoji">🚐</span>
+                    <h4>Dolazak na lice mesta</h4>
+                    <p>Ne morate da vučete auto do vulkanizera. Mi dolazimo gde god da ste — Novi Sad i okolina.</p>
+                    <span class="why-stat">pokrivamo ceo grad</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🛞 Mobilni Vulkanizer Polovne Gume Novi Sad</h3>
+                    <div class="fcategory">Car repair and maintenance service</div>
+                    <p>
+                        Više od 5 godina pružamo pouzdanu vulkanizersku uslugu u Novom Sadu.
+                        Brz, profesionalan i fer servis — na vašoj lokaciji.
+                    </p>
+                </div>
+                <div class="footer-contact">
+                    <h4>📬 Kontakt</h4>
+                    <div class="fitem">
+                        <span class="femoji">📞</span>
+                        <a href="tel:+381638074033">+381 63 8074033</a>
+                    </div>
+                    <div class="fitem">
+                        <span class="femoji">✉️</span>
+                        <a href="mailto:mobilni.vulkanizer.polovne.gume.novi.sad@example.com">Pošaljite e‑mail</a>
+                    </div>
+                    <div class="fitem">
+                        <span class="femoji">📍</span>
+                        <span>Nikole Mihajlovića 8, Novi Sad 21000, Serbia</span>
+                    </div>
+                    <div class="fitem">
+                        <span class="femoji">💬</span>
+                        <a href="viber://chat?number=%2B381638074033" target="_blank">Viber</a>
+                        &nbsp;·&nbsp;
+                        <a href="https://wa.me/381638074033" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>🌐 Društvene mreže</h4>
+                    <div class="soc-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="LinkedIn">🔗</a>
+                        <a href="#" aria-label="Instagram">📸</a>
+                    </div>
+                    <p style="margin-top:16px;font-size:0.85rem;color:var(--text-muted);">
+                        📆 Radno vreme: 07:00 – 21:00, svaki dan
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Mobilni Vulkanizer Polovne Gume Novi Sad. Sva prava zadržana.</span>
+                <span>Izrada sajta · <a href="#">Mobilni Vulkanizer NS</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ STICKY MOBILE CTA ═══ -->
+    <div class="mobile-cta" id="mobileCta">
+        <div class="mcta-inner">
+            <a href="tel:+381638074033" class="mcta-btn">
+                📞 Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            var toggle = document.getElementById('navToggle');
+            var links = document.getElementById('navLinks');
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    links.classList.toggle('open');
+                });
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && e.target !== toggle) {
+                        links.classList.remove('open');
+                    }
+                });
+            }
+
+            // Smooth scroll for anchor links (fallback for Safari)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        var offset = 70;
+                        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                        // Close mobile nav if open
+                        if (links) links.classList.remove('open');
+                    }
+                });
+            });
+
+            // Sticky nav shadow on scroll
+            var nav = document.getElementById('nav');
+            if (nav) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 30) {
+                        nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+                    } else {
+                        nav.style.boxShadow = 'none';
+                    }
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,273 +1,1343 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vorga-Vet | Veterinarska usluga Novi Sad</title>
-  <meta name="description" content="Vorga-Vet nudi veterinary care usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Vorga-Vet">
-  <meta property="og:description" content="Veterinary Care usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vorga-Vet | Veterinarska usluga Novi Sad</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #1a1a2e;
+            --bg-card: #22223a;
+            --bg-nav: rgba(26, 26, 46, 0.88);
+            --accent: #e8a838;
+            --accent-hover: #d4952f;
+            --accent-glow: rgba(232, 168, 56, 0.25);
+            --text: #f0ece4;
+            --text-muted: #b8b0a4;
+            --text-dark: #1a1a2e;
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.45);
+            --max-width: 1080px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-pad {
+            padding: 64px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            color: var(--text-muted);
+            max-width: 680px;
+            margin-bottom: 44px;
+            line-height: 1.5;
+        }
+
+        .section-sub.centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        /* ===== STICKY NAV ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            border-bottom: 1px solid rgba(232, 168, 56, 0.10);
+            transition: background var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo .logo-icon {
+            font-size: 1.5rem;
+        }
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition);
+        }
+        .nav-toggle:hover {
+            background: rgba(232, 168, 56, 0.12);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--bg-nav);
+                backdrop-filter: blur(18px) saturate(1.3);
+                -webkit-backdrop-filter: blur(18px) saturate(1.3);
+                flex-direction: column;
+                padding: 24px 32px 32px;
+                gap: 18px;
+                transform: translateY(-110%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s ease, opacity 0.3s ease;
+                border-bottom: 1px solid rgba(232, 168, 56, 0.10);
+                box-shadow: var(--shadow);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .header-inner {
+                padding: 10px 20px;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(232, 168, 56, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(232, 168, 56, 0.05) 0%, transparent 60%),
+                var(--bg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -8%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(232, 168, 56, 0.12);
+            border: 1px solid rgba(232, 168, 56, 0.20);
+            padding: 6px 16px 6px 12px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
+        }
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.85);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .hero h1 .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 6px;
+            background: rgba(232, 168, 56, 0.20);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(232, 168, 56, 0.25);
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(232, 168, 56, 0.30);
+            color: var(--text-dark);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(232, 168, 56, 0.25);
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition);
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            background: rgba(232, 168, 56, 0.08);
+            border-color: rgba(232, 168, 56, 0.40);
+            color: var(--text);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            align-items: center;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .hero-trust-item .num {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+        .hero-trust-item .emoji {
+            font-size: 1.15rem;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-visual-inner {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-svg-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-svg-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-svg-icon {
+            position: relative;
+            z-index: 2;
+            width: 65%;
+            height: auto;
+            filter: drop-shadow(0 8px 40px rgba(232, 168, 56, 0.15));
+        }
+        .hero-svg-icon svg {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 820px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-visual-inner {
+                max-width: 260px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 100px 0 48px;
+            }
+            .hero h1 {
+                font-size: clamp(1.8rem, 8vw, 2.2rem);
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary,
+            .btn-secondary {
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-visual-inner {
+                max-width: 200px;
+            }
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-section {
+            background: linear-gradient(180deg, var(--bg) 0%, #1e1e34 100%);
+            position: relative;
+        }
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232, 168, 56, 0.15), transparent);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 32px 28px 28px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .why-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .why-card .stat {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .why-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 820px) {
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 520px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-card {
+                padding: 24px 20px 20px;
+            }
+        }
+
+        /* ===== SITUATIONS (KADA VAM TREBAMO) ===== */
+        .situations-section {
+            background: var(--bg);
+            position: relative;
+        }
+        .situations-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232, 168, 56, 0.10), transparent);
+        }
+
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .situ-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px 24px;
+            border-left: 3px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+        }
+        .situ-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .situ-card .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .situ-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .situ-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .situ-card .situ-cta {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            border-bottom: 1px solid rgba(232, 168, 56, 0.25);
+            padding-bottom: 2px;
+        }
+        .situ-card .situ-cta:hover {
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 820px) {
+            .situ-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 520px) {
+            .situ-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-section {
+            background: linear-gradient(180deg, #1e1e34 0%, var(--bg) 100%);
+            position: relative;
+        }
+        .how-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232, 168, 56, 0.12), transparent);
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+
+        .how-step {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 32px 24px 28px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        .how-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-bottom-color: var(--accent);
+        }
+
+        .how-step .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.12);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            border: 1px solid rgba(232, 168, 56, 0.20);
+        }
+        .how-step .step-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .how-step h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .how-step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+
+        .how-note {
+            margin-top: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 40px;
+            justify-content: center;
+            padding: 20px 28px;
+            background: rgba(232, 168, 56, 0.05);
+            border-radius: var(--radius);
+            border: 1px solid rgba(232, 168, 56, 0.08);
+        }
+        .how-note span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+        .how-note span .accent {
+            font-weight: 600;
+        }
+
+        @media (max-width: 820px) {
+            .how-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (max-width: 520px) {
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .how-step p {
+                max-width: 100%;
+            }
+            .how-note {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: #14142a;
+            border-top: 1px solid rgba(232, 168, 56, 0.08);
+            padding: 48px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand .tagline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col ul li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            transition: color var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+        .footer-col ul li .emoji {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(232, 168, 56, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom a {
+            color: var(--text-muted);
+        }
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 720px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .footer-col ul {
+                align-items: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg-nav);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            border-top: 1px solid rgba(232, 168, 56, 0.10);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.30);
+        }
+        .sticky-mobile-cta .cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+        .sticky-mobile-cta .cta-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sticky-mobile-cta .cta-label .emoji {
+            font-size: 1.1rem;
+        }
+        .sticky-mobile-cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition);
+            box-shadow: 0 4px 16px rgba(232, 168, 56, 0.20);
+            white-space: nowrap;
+        }
+        .sticky-mobile-cta .cta-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            color: var(--text-dark);
+        }
+        .sticky-mobile-cta .cta-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 720px) {
+            .sticky-mobile-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 72px;
+            }
+        }
+
+        /* ===== DECORATIVE SVG BLOBS ===== */
+        .blob-deco {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.20;
+            z-index: 0;
+        }
+
+        /* ===== SCROLL MARGIN ===== */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        /* ===== RESPONSIVE FINE-TUNE ===== */
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+            .section-pad {
+                padding: 48px 0;
+            }
+            .section-title {
+                font-size: clamp(1.5rem, 7vw, 1.9rem);
+            }
+            .section-sub {
+                font-size: 0.95rem;
+                margin-bottom: 32px;
+            }
+            .why-card .stat {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* ===== SMOOTH SCROLL FALLBACK ===== */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Vorga-Vet</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Veterinarska usluga / Novi Sad</p>
-          <h1>Vorga-Vet: Veterinarska usluga u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Vorga-Vet direktno za Profesionalne Veterinarska usluga usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 4.9 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:vorgavet@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Veterinarska usluga</div>
-            <div class="micro">Direktan kontakt: 021 510414</div>
-          </div>
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a href="#top" class="logo" aria-label="Vorga-Vet početna">
+                <span class="logo-icon">🐾</span>
+                Vorga-<span>Vet</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni" aria-expanded="false">
+                <span id="navIcon">☰</span>
+            </button>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#zasto-mi" data-nav>Zašto mi</a></li>
+                    <li><a href="#kada" data-nav>Kada</a></li>
+                    <li><a href="#kako" data-nav>Kako</a></li>
+                    <li><a href="#kontakt" data-nav>Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Veterinarska usluga</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> 18 PASTEROVA, 21000, Novi Sad, Južno-bački okrug, Novi Sad, Serbia</p>
-        </aside>
-      </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Veterinarska usluga u Novom Sadu
+                </div>
+                <h1>
+                    Vaš ljubimac je deo porodice —<br>
+                    <span class="highlight">zaslužuje najbolju negu</span>
+                </h1>
+                <p>
+                    Briga o zdravlju vašeg ljubimca ne sme da čeka. 
+                    U Vorga-Vet pružamo stručnu, nežnu i pouzdanu 
+                    veterinarsku pomoć u Novom Sadu — brzo, odgovorno i sa puno pažnje.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:021510414" class="btn-primary">
+                        📞 Pozovite nas
+                    </a>
+                    <a href="#kako" class="btn-secondary">
+                        Saznajte više →
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <span class="emoji">⭐</span>
+                        <span><span class="num">4,9</span> ocena</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="emoji">❤️</span>
+                        <span><span class="num">225+</span> zadovoljnih klijenata</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="emoji">⏱️</span>
+                        <span><span class="num">30 min</span> prosečno vreme odziva</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-inner">
+                    <!-- decorative SVG background blob -->
+                    <div class="hero-svg-bg" aria-hidden="true">
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="200" r="180" fill="url(#heroGlow)" opacity="0.5"/>
+                            <defs>
+                                <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#e8a838" stop-opacity="0.25"/>
+                                    <stop offset="100%" stop-color="#e8a838" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <!-- main SVG icon: stylized paw + heart -->
+                    <div class="hero-svg-icon" aria-hidden="true">
+                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- paw pad -->
+                            <ellipse cx="100" cy="120" rx="44" ry="36" fill="rgba(232,168,56,0.15)" stroke="#e8a838" stroke-width="2.5"/>
+                            <!-- toes -->
+                            <ellipse cx="62" cy="78" rx="16" ry="20" fill="rgba(232,168,56,0.12)" stroke="#e8a838" stroke-width="2" transform="rotate(-15 62 78)"/>
+                            <ellipse cx="100" cy="64" rx="16" ry="20" fill="rgba(232,168,56,0.12)" stroke="#e8a838" stroke-width="2"/>
+                            <ellipse cx="138" cy="78" rx="16" ry="20" fill="rgba(232,168,56,0.12)" stroke="#e8a838" stroke-width="2" transform="rotate(15 138 78)"/>
+                            <!-- heart inside paw -->
+                            <path d="M100 108 C88 96 70 100 70 112 C70 124 100 140 100 140 C100 140 130 124 130 112 C130 100 112 96 100 108Z" fill="rgba(232,168,56,0.20)" stroke="#e8a838" stroke-width="1.8" stroke-linejoin="round"/>
+                            <!-- small decorative crosses -->
+                            <circle cx="32" cy="152" r="4" fill="rgba(232,168,56,0.20)"/>
+                            <circle cx="168" cy="152" r="4" fill="rgba(232,168,56,0.20)"/>
+                            <circle cx="48" cy="40" r="3" fill="rgba(232,168,56,0.15)"/>
+                            <circle cx="152" cy="40" r="3" fill="rgba(232,168,56,0.15)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="why-section section-pad" id="zasto-mi">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Zašto baš <span class="accent">Vorga-Vet</span>?</h2>
+                <p class="section-sub centered">
+                    Ne biramo samo da radimo svoj posao — mi živimo za to. 
+                    Svaki ljubimac za nas je jedinstven, a vlasniku pružamo mir i sigurnost.
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="icon">⭐</span>
+                    <div class="stat">4,9</div>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši klijenti nas ocenjuju gotovo savršenom ocenom. Svaka preporuka nam je važna i na njoj smo zahvalni.</p>
+                </div>
+                <div class="why-card">
+                    <span class="icon">❤️</span>
+                    <div class="stat">225+</div>
+                    <h3>Zadovoljnih klijenata</h3>
+                    <p>Više od 225 porodica u Novom Sadu i okolini veruje nam kada je zdravlje njihovih ljubimaca u pitanju.</p>
+                </div>
+                <div class="why-card">
+                    <span class="icon">🏆</span>
+                    <div class="stat">12+</div>
+                    <h3>Godina iskustva</h3>
+                    <p>Dugogodišnje iskustvo u veterinarskoj praksi znači da znamo kako da reagujemo brzo, tačno i bez stresa.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Profesionalne Veterinarska usluga usluge</h3>
-          <p>Profesionalne Veterinarska usluga usluge je dostupna usluga u okviru Veterinarska usluga ponude koju Vorga-Vet pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ===== WHEN YOU MIGHT NEED US (SITUATIONS) ===== -->
+    <section class="situations-section section-pad" id="kada">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Kada vam je potrebna pomoć?</h2>
+                <p class="section-sub centered">
+                    Ponekad je dovoljan jedan znak da nešto nije u redu. 
+                    Evo u kojim situacijama nas vlasnici najčešće zovu.
+                </p>
+            </div>
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <span class="emoji">🤒</span>
+                    <h4>Ljubimac je letargičan ili nema apetit</h4>
+                    <p>Primetili ste da vaš ljubimac nije kao obično — povučen je, ne jede ili deluje umorno.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🤕</span>
+                    <h4>Povreda ili nesrećni slučaj</h4>
+                    <p>Udarac, pad, posekotina ili bilo koja povreda zahteva brzu veterinarsku intervenciju.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🤢</span>
+                    <h4>Problemi sa varenjem</h4>
+                    <p>Povraćanje, dijareja ili nadutost mogu biti znak ozbiljnijeg stanja koje ne treba zanemariti.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🩺</span>
+                    <h4>Redovna kontrola ili vakcinacija</h4>
+                    <p>Preventiva je najbolji način da vaš ljubimac ostane zdrav. Zakazujte redovne preglede.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">😰</span>
+                    <h4>Anksioznost ili promena ponašanja</h4>
+                    <p>Ljubimci ne mogu reći rečima, ali promene u ponašanju često govore da nešto nije u redu.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🐾</span>
+                    <h4>Problemi sa kožom ili krznom</h4>
+                    <p>Svrab, perutanje, gubitak dlake ili crvenilo kože — sve su to znaci koje treba proveriti.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.9 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Veterinarska usluga ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Veruje nam preko 225 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Veterinarska usluga ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section section-pad" id="kako">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Kako funkcionišemo?</h2>
+                <p class="section-sub centered">
+                    Do kvalitetne veterinarske usluge deli vas samo nekoliko koraka. 
+                    Jednostavno, brzo i bez nepotrebne birokratije.
+                </p>
+            </div>
+            <div class="how-grid">
+                <div class="how-step">
+                    <span class="step-emoji">📞</span>
+                    <span class="step-num">1</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Pozovite broj 021 510414 i opišite šta se dešava. Tu smo da vas saslušamo.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">📅</span>
+                    <span class="step-num">2</span>
+                    <h4>Dogovorite termin</h4>
+                    <p>Zajedno određujemo vreme koje vama odgovara. Trudimo se da vas primimo istog dana.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">🏥</span>
+                    <span class="step-num">3</span>
+                    <h4>Dovedite ljubimca</h4>
+                    <p>Dođite u našu ambulantu na Pasterovoj 18 u Novom Sadu. Prijem je brz i prijatan.</p>
+                </div>
+                <div class="how-step">
+                    <span class="step-emoji">💚</span>
+                    <span class="step-num">4</span>
+                    <h4>Nega i oporavak</h4>
+                    <p>Pružamo terapiju, savet i podršku. Pratimo oporavak vašeg ljubimca dok ne bude potpuno dobro.</p>
+                </div>
+            </div>
+            <div class="how-note">
+                <span>🕐 <span class="accent">Radno vreme:</span> Pon–Pet 08:00–20:00, Sub 09:00–15:00</span>
+                <span>📍 <span class="accent">Lokacija:</span> Novi Sad, Pasterova 18</span>
+                <span>⏱️ <span class="accent">Odziv:</span> obično unutar 30 minuta</span>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Prijateljski, Preporuka, Odlično, Najbolje, Stručno.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🐾 Vorga-<span>Vet</span></h3>
+                    <p class="tagline">Veterinarska usluga • Novi Sad</p>
+                    <p>Brinemo se o vašim ljubimcima sa puno pažnje, znanja i iskustva. 
+                    Vaš mir i zdravlje vašeg ljubimca su nam na prvom mestu.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><span class="emoji">📞</span> <a href="tel:021510414">021 510414</a></li>
+                        <li><span class="emoji">✉️</span> <a href="mailto:vorgavet@gmail.com">vorgavet@gmail.com</a></li>
+                        <li><span class="emoji">📍</span> Pasterova 18, 21000 Novi Sad</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul>
+                        <li><a href="#zasto-mi">Zašto mi</a></li>
+                        <li><a href="#kada">Kada vam trebamo</a></li>
+                        <li><a href="#kako">Kako funkcionišemo</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Vorga-Vet. Sva prava zadržana.</span>
+                <span>🐾 Veterinarska usluga u Novom Sadu</span>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:021510414">021 510414</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:vorgavet@gmail.com">vorgavet@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>18 PASTEROVA, 21000, Novi Sad, Južno-bački okrug, Novi Sad, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Vorga-Vet. Veterinarska usluga u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-mobile-cta" aria-label="Mobilna kontakt traka">
+        <div class="cta-inner">
+            <span class="cta-label">
+                <span class="emoji">🐾</span> Treba vam pomoć?
+            </span>
+            <a href="tel:021510414" class="cta-btn">
+                📞 Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navIcon = document.getElementById('navIcon');
+            const navAnchors = document.querySelectorAll('[data-nav]');
+
+            function toggleNav() {
+                const isOpen = navLinks.classList.toggle('open');
+                toggleBtn.setAttribute('aria-expanded', isOpen);
+                navIcon.textContent = isOpen ? '✕' : '☰';
+            }
+
+            function closeNav() {
+                navLinks.classList.remove('open');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                navIcon.textContent = '☰';
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleNav);
+            }
+
+            navAnchors.forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    closeNav();
+                });
+            });
+
+            // Close nav on resize to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 720) {
+                    closeNav();
+                }
+            });
+
+            // Smooth scroll for all anchor links (fallback enhancement)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
 </body>
 </html>

@@ -1,290 +1,1313 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burano Garden | Venčanja i proslave Novi Sad</title>
-  <meta name="description" content="Burano Garden nudi wedding venue usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Burano Garden">
-  <meta property="og:description" content="Wedding Venue usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burano Garden | Venčanja i proslave u Novom Sadu</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16162b;
+            --bg-card: #1f1f3a;
+            --bg-card-hover: #252545;
+            --accent: #e8a838;
+            --accent-light: #f2c66a;
+            --accent-dark: #c88a20;
+            --accent-glow: rgba(232, 168, 56, 0.15);
+            --text-primary: #f0e6d3;
+            --text-secondary: #c4b69e;
+            --text-muted: #8f8575;
+            --border-light: rgba(232, 168, 56, 0.2);
+            --border-card: rgba(232, 168, 56, 0.12);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --radius-card: 16px;
+            --radius-btn: 10px;
+            --radius-sm: 8px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-width: 1080px;
+            --nav-height: 68px;
+            --section-py: clamp(48px, 8vw, 80px);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(16px, 4vw, 40px);
+            background: rgba(26, 26, 46, 0.78);
+            backdrop-filter: blur(18px) saturate(1.3);
+            -webkit-backdrop-filter: blur(18px) saturate(1.3);
+            border-bottom: 1px solid var(--border-light);
+            transition: background var(--transition);
+        }
+
+        .nav-logo {
+            font-size: clamp(18px, 2.2vw, 24px);
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo .logo-icon {
+            color: var(--accent);
+            font-size: 1.2em;
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(12px, 2vw, 28px);
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: clamp(13px, 1.1vw, 15px);
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            position: relative;
+            transition: color var(--transition);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+            transition: color var(--transition);
+        }
+        .nav-toggle:hover {
+            color: var(--accent);
+        }
+
+        @media(max-width:720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 24px 28px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border-light);
+                transform: translateY(-110%);
+                opacity: 0;
+                transition: transform 0.4s ease, opacity 0.4s ease;
+                pointer-events: none;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-links a {
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+                padding: 8px 0;
+            }
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--nav-height) + 32px) 20px 60px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            max-width: 820px;
+            aspect-ratio: 1/1;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.13) 0%, rgba(232, 168, 56, 0.04) 50%, transparent 72%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .hero-deco-left,
+        .hero-deco-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            opacity: 0.5;
+            width: clamp(80px, 14vw, 200px);
+            height: auto;
+        }
+        .hero-deco-left {
+            left: clamp(8px, 2vw, 40px);
+        }
+        .hero-deco-right {
+            right: clamp(8px, 2vw, 40px);
+            transform: translateY(-50%) scaleX(-1);
+        }
+
+        .hero-deco-left svg,
+        .hero-deco-right svg {
+            width: 100%;
+            height: auto;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 1.8;
+            opacity: 0.35;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            background: rgba(232, 168, 56, 0.12);
+            border: 1px solid var(--border-light);
+            font-size: clamp(12px, 1.2vw, 14px);
+            font-weight: 500;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            letter-spacing: 0.04em;
+        }
+        .hero-badge span {
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 7vw, 64px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .hero h1 .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.35;
+            border-radius: 4px;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            border-radius: var(--radius-btn);
+            font-size: 17px;
+            font-weight: 600;
+            background: var(--accent);
+            color: #1a1a2e;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(232, 168, 56, 0.25);
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: var(--accent-light);
+            color: #1a1a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(232, 168, 56, 0.35);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        .btn-primary .icon {
+            font-size: 1.15em;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 30px;
+            border-radius: var(--radius-btn);
+            font-size: 16px;
+            font-weight: 500;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-light);
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition), transform var(--transition);
+            text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: rgba(232, 168, 56, 0.08);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(16px, 3vw, 36px);
+            justify-content: center;
+            padding: 18px 24px;
+            background: rgba(31, 31, 58, 0.5);
+            border-radius: 14px;
+            border: 1px solid var(--border-card);
+            backdrop-filter: blur(6px);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .hero-trust-item .num {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--accent);
+        }
+        .hero-trust-item .star {
+            color: var(--accent);
+        }
+
+        @media(max-width:720px) {
+            .hero {
+                min-height: 92vh;
+                padding: calc(var(--nav-height) + 20px) 16px 40px;
+            }
+            .hero-deco-left,
+            .hero-deco-right {
+                display: none;
+            }
+            .hero-cta-row {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 16px;
+            }
+        }
+
+        /* ─── SECTION BASE ─── */
+        .section {
+            padding: var(--section-py) 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(12px, 1vw, 14px);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            line-height: 1.18;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .section-title .acc {
+            color: var(--accent);
+        }
+
+        .section-sub {
+            font-size: clamp(16px, 1.6vw, 19px);
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+
+        /* decorative divider */
+        .deco-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 8px 0 28px;
+            color: var(--accent);
+            font-size: 18px;
+            opacity: 0.5;
+        }
+        .deco-divider .line {
+            width: 60px;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            border-radius: 2px;
+        }
+
+        /* ─── WHY US ─── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 30px 24px 28px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+            cursor: default;
+            position: relative;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        .why-card .emoji {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .why-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .why-card .big-num {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .why-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .why-card .badge-star {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(232, 168, 56, 0.15);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 8px;
+        }
+
+        /* ─── SITUATIONS ─── */
+        .situations-bg {
+            background: var(--bg-secondary);
+        }
+
+        .sit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .sit-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 26px 22px;
+            border: 1px solid var(--border-card);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: transform var(--transition), background var(--transition), border-color var(--transition);
+            cursor: default;
+            position: relative;
+        }
+        .sit-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-light);
+        }
+
+        .sit-card .emoji {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .sit-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .sit-card p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .sit-card .cta-mini {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sit-card .cta-mini .arrow {
+            transition: transform var(--transition);
+        }
+        .sit-card:hover .cta-mini .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ─── PROCESS ─── */
+        .process-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 720px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 8px;
+            bottom: 8px;
+            width: 2.5px;
+            background: linear-gradient(to bottom, var(--accent), rgba(232, 168, 56, 0.15));
+            border-radius: 4px;
+        }
+
+        .step {
+            position: relative;
+            padding: 0 0 32px 28px;
+        }
+        .step:last-child {
+            padding-bottom: 0;
+        }
+
+        .step-num {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #1a1a2e;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px rgba(232, 168, 56, 0.2);
+            z-index: 2;
+        }
+
+        .step-content {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 22px 24px;
+            border: 1px solid var(--border-card);
+            transition: transform var(--transition), background var(--transition);
+        }
+        .step-content:hover {
+            transform: translateX(4px);
+            background: var(--bg-card-hover);
+        }
+
+        .step-content .emoji {
+            font-size: 22px;
+            margin-right: 8px;
+        }
+        .step-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .process-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 36px;
+            justify-content: center;
+            margin-top: 36px;
+            padding: 20px 24px;
+            background: rgba(31, 31, 58, 0.4);
+            border-radius: 14px;
+            border: 1px solid var(--border-card);
+        }
+        .process-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14.5px;
+            color: var(--text-secondary);
+        }
+        .process-info-item .icon {
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        @media(max-width:720px) {
+            .process-timeline {
+                padding-left: 32px;
+            }
+            .process-timeline::before {
+                left: 10px;
+            }
+            .step-num {
+                left: -32px;
+                width: 26px;
+                height: 26px;
+                font-size: 13px;
+            }
+            .step {
+                padding: 0 0 24px 20px;
+            }
+            .step-content {
+                padding: 18px 18px;
+            }
+            .process-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* ─── CONTACT / FOOTER ─── */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-light);
+            padding: 60px 20px 100px;
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px 32px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col h4 .accent {
+            color: var(--accent);
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .footer-contact-item .icon {
+            color: var(--accent);
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-socials a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(232, 168, 56, 0.1);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-size: 18px;
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+            text-decoration: none;
+        }
+        .footer-socials a:hover {
+            background: var(--accent);
+            color: #1a1a2e;
+            transform: translateY(-3px);
+        }
+
+        .footer-viber-wa {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .footer-viber-wa a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(232, 168, 56, 0.1);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+            text-decoration: none;
+        }
+        .footer-viber-wa a:hover {
+            background: var(--accent);
+            color: #1a1a2e;
+            transform: translateY(-2px);
+        }
+        .footer-viber-wa a .icon {
+            font-size: 18px;
+        }
+
+        .footer-copy {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-card);
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .footer-copy .heart {
+            color: var(--accent);
+        }
+
+        @media(max-width:820px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 24px;
+            }
+            .footer-copy {
+                grid-column: 1 / -1;
+            }
+        }
+        @media(max-width:520px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        /* ─── STICKY MOBILE CTA ─── */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 10px 16px;
+            background: rgba(26, 26, 46, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid var(--border-light);
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+        }
+        .sticky-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: var(--radius-btn);
+            background: var(--accent);
+            color: #1a1a2e;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition);
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(232, 168, 56, 0.2);
+        }
+        .sticky-cta a:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+        .sticky-cta a .icon {
+            font-size: 20px;
+        }
+
+        @media(max-width:720px) {
+            .sticky-cta {
+                display: block;
+            }
+            .footer {
+                padding-bottom: 90px;
+            }
+        }
+
+        /* ─── RESPONSIVE TWEAKS ─── */
+        @media(max-width:420px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .sit-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            .btn-primary,
+            .btn-outline {
+                font-size: 15px;
+                padding: 12px 24px;
+            }
+        }
+
+        /* ─── UTILITY ─── */
+        .text-center {
+            text-align: center;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .gap-4 {
+            gap: 4px;
+        }
+
+        /* decorative sparkle */
+        .sparkle {
+            display: inline-block;
+            color: var(--accent);
+            opacity: 0.5;
+            font-size: 0.7em;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+
+        /* gold separator flourish */
+        .flourish {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin: 0 auto 28px;
+            max-width: 300px;
+        }
+        .flourish .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+        .flourish .diamond {
+            color: var(--accent);
+            font-size: 14px;
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Burano Garden</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ═══ NAV ═══ -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            <span class="logo-icon">🌿</span>
+            Burano<span>Garden</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Meni">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">Početna</a></li>
+            <li><a href="#why">Zašto mi</a></li>
+            <li><a href="#situations">Situacije</a></li>
+            <li><a href="#process">Proces</a></li>
+            <li><a href="#footer">Kontakt</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Venčanja i proslave / Novi Sad</p>
-          <h1>Burano Garden: lokalna Venčanja i proslave destinacija u Novom Sadu</h1>
-          <p class="lead">Kontaktirajte Burano Garden direktno za garden u Novom Sadu. Ključna prednost: Izuzetna ocena 4.6 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:buranogarden@gmail.com">Planiraj posetu</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Venčanja i proslave</div>
-            <div class="micro">Direktan kontakt: 063 590380</div>
-          </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <!-- decorative SVG leaves left -->
+        <div class="hero-deco-left" aria-hidden="true">
+            <svg viewBox="0 0 120 300" preserveAspectRatio="xMidYMid meet">
+                <path d="M60 10 Q10 80 40 160 Q60 220 30 280" stroke-linecap="round"/>
+                <path d="M50 40 Q30 90 50 140 Q65 175 45 220" stroke-linecap="round" opacity="0.5"/>
+                <path d="M75 70 Q95 110 75 160 Q60 195 80 240" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="38" cy="165" r="3" fill="rgba(232,168,56,0.3)" stroke="none"/>
+                <circle cx="72" cy="130" r="2" fill="rgba(232,168,56,0.2)" stroke="none"/>
+            </svg>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Venčanja i proslave</p>
-          <p><strong>Cilj:</strong> Planiraj posetu</p>
-          <p><strong>Adresa:</strong> Gavrila Principa 9, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
+        <!-- decorative SVG leaves right -->
+        <div class="hero-deco-right" aria-hidden="true">
+            <svg viewBox="0 0 120 300" preserveAspectRatio="xMidYMid meet">
+                <path d="M60 10 Q10 80 40 160 Q60 220 30 280" stroke-linecap="round"/>
+                <path d="M50 40 Q30 90 50 140 Q65 175 45 220" stroke-linecap="round" opacity="0.5"/>
+                <path d="M75 70 Q95 110 75 160 Q60 195 80 240" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="38" cy="165" r="3" fill="rgba(232,168,56,0.3)" stroke="none"/>
+                <circle cx="72" cy="130" r="2" fill="rgba(232,168,56,0.2)" stroke="none"/>
+            </svg>
+        </div>
+
+        <div class="hero-inner">
+            <div class="hero-badge">
+                ✦ <span>Burano Garden</span> · Novi Sad
+            </div>
+
+            <h1>
+                Vaš savršen dan<br>
+                počinje <span class="highlight">ovde</span>
+            </h1>
+
+            <p>
+                Zamislite baštu punu cveća, toplog svetla i osmeha — <br class="hide-mob">
+                prostor gde se snovi pretvaraju u stvarnost. <!-- Br -->U srcu Novog Sada.
+            </p>
+
+            <div class="hero-cta-row">
+                <a href="tel:063590380" class="btn-primary">
+                    <span class="icon">📞</span> Zakažite obilazak
+                </a>
+                <a href="#why" class="btn-outline">
+                    Saznajte više →
+                </a>
+            </div>
+
+            <div class="hero-trust">
+                <div class="hero-trust-item">
+                    <span class="star">★</span> <span class="num">4.6</span> ocena
+                </div>
+                <div class="hero-trust-item">
+                    <span class="num">105+</span> zadovoljnih klijenata
+                </div>
+                <div class="hero-trust-item">
+                    ⏱ <span class="num">odgovor za 2h</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ═══ WHY US ═══ -->
+    <section class="section" id="why">
+        <div class="text-center">
+            <div class="section-label">✦ Zašto baš mi</div>
+            <h2 class="section-title">Zašto <span class="acc">Burano Garden</span>?</h2>
+            <p class="section-sub mx-auto">
+                Ne nudimo samo prostor — nudimo atmosferu, pažnju i sigurnost da će vaša proslava biti savršena.
+            </p>
+            <div class="deco-divider">
+                <span class="line"></span>
+                <span>🌿</span>
+                <span class="line"></span>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Garden</h3>
-          <p>Garden je dostupna usluga u okviru Venčanja i proslave ponude koju Burano Garden pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
 
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Celebration</h3>
-          <p>Celebration je dostupna usluga u okviru Venčanja i proslave ponude koju Burano Garden pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Party</h3>
-          <p>Party je dostupna usluga u okviru Venčanja i proslave ponude koju Burano Garden pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
+        <div class="why-grid">
+            <div class="why-card">
+                <span class="emoji">⭐</span>
+                <div class="big-num">4.6</div>
+                <h3>Izuzetna ocena</h3>
+                <p>Naši gosti su nam dali najviše ocene za profesionalnost, ambijent i kvalitet usluge.</p>
+                <div class="badge-star">★★★★★</div>
+            </div>
+            <div class="why-card">
+                <span class="emoji">🤝</span>
+                <div class="big-num">105+</div>
+                <h3>Zadovoljnih klijenata</h3>
+                <p>Svaka proslava je jedinstvena, a više od 105 porodica i parova veruje nam već godinama.</p>
+            </div>
+            <div class="why-card">
+                <span class="emoji">🌹</span>
+                <h3>Profesionalna usluga</h3>
+                <p>Od prvog kontakta do poslednjeg detalja — tu smo da vas slušamo, savetujemo i podržimo.</p>
+            </div>
+            <div class="why-card">
+                <span class="emoji">🏡</span>
+                <h3>Bašta iz snova</h3>
+                <p>Zelenilo, cveće, nežno osvetljenje — naš vrt je scena za vaše najlepše uspomene.</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.6 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Venčanja i proslave ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ═══ SITUATIONS ═══ -->
+    <div class="situations-bg">
+        <section class="section" id="situations">
+            <div class="text-center">
+                <div class="section-label">🌸 Kada vam trebamo</div>
+                <h2 class="section-title">U kojim situacijama <span class="acc">nas zovu</span>?</h2>
+                <p class="section-sub mx-auto">
+                    Bilo da planirate venčanje, rođendan ili poslovnu proslavu — mi smo tu da stvorimo savršen ambijent.
+                </p>
+                <div class="flourish">
+                    <span class="line"></span>
+                    <span class="diamond">✦</span>
+                    <span class="line"></span>
+                </div>
+            </div>
 
-        <article class="proof-item">
-          <strong>Veruje nam preko 105 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Venčanja i proslave ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="sit-grid">
+                <div class="sit-card">
+                    <span class="emoji">💍</span>
+                    <h4>Venčanje</h4>
+                    <p>Vaš najvažniji dan zaslužuje bajkovitu baštu, nežnu muziku i detalje po vašoj meri. Tu smo za vas.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🎂</span>
+                    <h4>Rođendani</h4>
+                    <p>Proslavite godine uz smeh, dobru hranu i društvo. Bilo da je mali ili veliki — organizujemo sve.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🥂</span>
+                    <h4>Godišnjice</h4>
+                    <p>Pedeseta, prva, ili bilo koja godišnjica — zaslužujete veče koje ćete pamtiti zauvek.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🎉</span>
+                    <h4>Poslovne proslave</h4>
+                    <p>Timski uspeh slavi se u prijatnom ambijentu. Organizujemo koktele, večere i team building.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">👶</span>
+                    <h4>Dečje rođendane</h4>
+                    <p>Mališani uživaju u bezbednom prostoru punom igre, balona i slatkiša. Roditelji su mirni.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+                <div class="sit-card">
+                    <span class="emoji">🌿</span>
+                    <h4>Privatna okupljanja</h4>
+                    <p>Porodični ručkovi, okupljanja prijatelja, iznenađenja — svaki skup je poseban u našoj bašti.</p>
+                    <span class="cta-mini">Tu smo za vas <span class="arrow">→</span></span>
+                </div>
+            </div>
+        </section>
+    </div>
 
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Venčanja i proslave ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ═══ PROCESS ═══ -->
+    <section class="section" id="process">
+        <div class="text-center">
+            <div class="section-label">🌿 Kako funkcionišemo</div>
+            <h2 class="section-title">Vaš put do <span class="acc">savršene proslave</span></h2>
+            <p class="section-sub mx-auto">
+                Od prvog poziva do poslednjeg plesa — vodičemo vas kroz svaki korak.
+            </p>
+            <div class="deco-divider">
+                <span class="line"></span>
+                <span>✨</span>
+                <span class="line"></span>
+            </div>
         </div>
-      </div>
+
+        <div class="process-timeline">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4><span class="emoji">📞</span> Kontaktirajte nas</h4>
+                    <p>Pozovite nas ili pošaljite poruku. Odgovaramo u roku od 2 sata. Bez formalnosti — samo prijatan razgovor.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4><span class="emoji">🌺</span> Dogovorite obilazak</h4>
+                    <p>Dođite u Burano Garden, popijte kafu i osetite ambijent. Pokazaćemo vam baštu, opremu i sve mogućnosti.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4><span class="emoji">📋</span> Rezervišite termin</h4>
+                    <p>Dogovorimo datum, broj gostiju i detalje. Potvrđujemo rezervaciju i krećemo sa pripremama.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4><span class="emoji">🎊</span> Uživajte u proslavi</h4>
+                    <p>Vaš dan teče glatko — mi smo tu za svaki detalj. Vi samo uživate i stvarate uspomene.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-info">
+            <div class="process-info-item">
+                <span class="icon">🕐</span> Radno vreme: 09:00 – 21:00 (subotom do 23h)
+            </div>
+            <div class="process-info-item">
+                <span class="icon">📬</span> Odgovor za manje od 2 sata
+            </div>
+            <div class="process-info-item">
+                <span class="icon">📍</span> Novi Sad i okolina
+            </div>
+        </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
-        </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Preporuka, Odlično, Odlično, Uslužno.</div>
-      </div>
-    </section>
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <!-- col 1 -->
+            <div class="footer-col">
+                <h4><span class="accent">🌿</span> Burano <span class="accent">Garden</span></h4>
+                <p>Venčanja i proslave u Novom Sadu. Prostor gde se lepi trenuci pretvaraju u nezaboravne uspomene.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook" title="Facebook">📘</a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">🔗</a>
+                    <a href="#" aria-label="Instagram" title="Instagram">📷</a>
+                </div>
+            </div>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:063590380">063 590380</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:buranogarden@gmail.com">buranogarden@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Gavrila Principa 9, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+            <!-- col 2 -->
+            <div class="footer-col">
+                <h4>📍 Kontakt</h4>
+                <div class="footer-contact-item">
+                    <span class="icon">📞</span>
+                    <a href="tel:063590380">063 590380</a>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="icon">✉️</span>
+                    <a href="mailto:buranogarden@gmail.com">buranogarden@gmail.com</a>
+                </div>
+                <div class="footer-contact-item">
+                    <span class="icon">🏠</span>
+                    <span>Gavrila Principa 9,<br>Novi Sad 21000, Srbija</span>
+                </div>
+                <div class="footer-viber-wa">
+                    <a href="viber://chat?number=38163590380" target="_blank" rel="noopener">
+                        <span class="icon">💬</span> Viber
+                    </a>
+                    <a href="https://wa.me/38163590380" target="_blank" rel="noopener">
+                        <span class="icon">📱</span> WhatsApp
+                    </a>
+                </div>
+            </div>
 
-  <footer>
-    <div class="shell">&copy; 2026 Burano Garden. Venčanja i proslave u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+            <!-- col 3 -->
+            <div class="footer-col">
+                <h4>🕐 Radno vreme</h4>
+                <p><strong>Ponedeljak – Petak:</strong> 09:00 – 21:00</p>
+                <p><strong>Subota:</strong> 09:00 – 23:00</p>
+                <p><strong>Nedelja:</strong> 10:00 – 18:00</p>
+                <p style="margin-top:12px;font-size:14px;color:var(--text-muted);">
+                    ✦ Dolazak po dogovoru — javite se i dogovorimo termin.
+                </p>
+            </div>
+
+            <div class="footer-copy">
+                &copy; 2025 Burano Garden · Venčanja i proslave · Novi Sad &nbsp; <span class="heart">♥</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ STICKY MOBILE CTA ═══ -->
+    <div class="sticky-cta">
+        <a href="tel:063590380">
+            <span class="icon">📞</span> Pozovite nas
+        </a>
+    </div>
+
+    <!-- ═══ SCRIPT ═══ -->
+    <script>
+        (function() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    links.classList.toggle('open');
+                });
+
+                // close on link click
+                links.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        links.classList.remove('open');
+                    });
+                });
+
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                        links.classList.remove('open');
+                    }
+                });
+            }
+
+            // smooth scroll for anchor links (progressive enhancement)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = parseInt(getComputedStyle(document.documentElement)
+                            .getPropertyValue('--nav-height')) || 68;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset -
+                            navHeight - 12;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

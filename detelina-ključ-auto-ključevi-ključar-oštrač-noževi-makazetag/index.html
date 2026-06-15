@@ -2,287 +2,758 @@
 <html lang="sr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi... | bravar Novi Sad</title>
-  <meta name="description" content="Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi... nudi locksmith usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi...">
-  <meta property="og:description" content="Locksmith usluge u Novom Sadu sa direktnim kontakt informacijama.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Detelina Ključ – bravar Novi Sad</title>
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ===== RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-card: #22223a;
+      --bg-soft: #2a2a44;
+      --accent: #e8a838;
+      --accent-hover: #d4942e;
+      --text-light: #f0f0f0;
+      --text-muted: #b9b9cf;
+      --text-dark: #12121f;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --max-width: 1080px;
+      --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
+      font-family: var(--font);
+      background: var(--bg-dark);
+      color: var(--text-light);
       line-height: 1.6;
+      font-size: 16px;
+      font-weight: 400;
+      padding-bottom: 70px; /* sticky mobile bar */
     }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
+
+    @media (min-width: 721px) {
+      body {
+        padding-bottom: 0;
+      }
     }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
     }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
+    a:hover {
+      color: var(--accent-hover);
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
+
+    img, svg {
+      display: block;
+      max-width: 100%;
     }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
     }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
     h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
+      font-size: clamp(2.1rem, 6vw, 3.6rem);
+      margin-bottom: 0.5rem;
     }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
+
+    h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      margin-bottom: 1.2rem;
     }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .section-pad {
+      padding: 60px 0;
+    }
+
+    @media (max-width: 720px) {
+      .section-pad {
+        padding: 40px 0;
+      }
+    }
+
+    /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 12px rgba(232, 168, 56, 0.25);
       text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
     }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      color: var(--text-dark);
     }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
+
+    .btn--outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      box-shadow: none;
+    }
+    .btn--outline:hover {
+      background: var(--accent);
+      color: var(--text-dark);
+    }
+
+    /* ===== STICKY NAV ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(26, 26, 46, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232, 168, 56, 0.15);
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--text-light);
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .navbar .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.96);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0 40px;
+        gap: 24px;
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+        border-bottom: 1px solid var(--accent);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 130px 0 70px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 20% 40%, #2f2f52, transparent 70%),
+                  radial-gradient(ellipse at 90% 70%, #3a2a1a, transparent 60%),
+                  var(--bg-dark);
+    }
+
+    .hero::after {
+      content: "⚔️🔑⚙️";
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: 5rem;
+      opacity: 0.08;
+      pointer-events: none;
+      transform: rotate(-8deg);
+    }
+
+    .hero .container {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
     }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
     }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(232, 168, 56, 0.2));
     }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
+
+    .hero h1 {
+      color: white;
     }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
+    .hero h1 strong {
+      color: var(--accent);
     }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 480px;
     }
-    .contact-grid {
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px 32px;
+      margin-top: 28px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    .trust-row span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trust-row strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .trust-row {
+        justify-content: center;
+      }
+      .hero-visual svg {
+        max-width: 200px;
+      }
+    }
+
+    /* ===== WHY US ===== */
+    .why-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
     }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
+
+    .why-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 28px 20px 24px;
+      border-top: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
+    .why-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.6);
+    }
+    .why-card .emoji-big {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+    .why-card h3 {
+      color: white;
+    }
+    .why-card p {
+      font-size: 0.95rem;
+    }
+
+    /* ===== SITUATIONS (kada vam trebamo) ===== */
+    .situ-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .situ-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 24px 18px;
+      border-left: 4px solid var(--accent);
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .situ-card:hover {
+      background: #2e2e4a;
+      transform: translateY(-3px);
+    }
+    .situ-card .situ-emoji {
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+    .situ-card h4 {
+      color: white;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .situ-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    .situ-card .tu-smo {
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
     @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
+      .situ-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 520px) {
+      .situ-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== STEPS (kako funkcionišemo) ===== */
+    .steps-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .step-item {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      flex: 1 1 180px;
+      max-width: 240px;
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+    .step-item:hover {
+      transform: translateY(-4px);
+    }
+    .step-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.2rem;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+    .step-item h4 {
+      color: white;
+    }
+    .step-item p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #14142b;
+      border-top: 1px solid rgba(232, 168, 56, 0.2);
+      padding: 50px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .footer p, .footer a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    .footer a {
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .footer .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .footer .social-links a {
+      margin-right: 16px;
+      font-size: 1.2rem;
+    }
+    .footer .copy {
+      margin-top: 30px;
+      text-align: center;
+      border-top: 1px solid #2a2a44;
+      padding-top: 24px;
+      font-size: 0.85rem;
+      color: #7a7a9a;
+    }
+
+    @media (max-width: 720px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+      .footer .contact-line {
+        justify-content: center;
+      }
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #1e1e36;
+      border-top: 1px solid var(--accent);
+      padding: 10px 20px;
+      z-index: 99;
+      backdrop-filter: blur(8px);
+      justify-content: center;
+    }
+
+    .mobile-cta .btn {
+      width: 100%;
+      max-width: 340px;
+      justify-content: center;
+      font-size: 1.05rem;
+      padding: 14px 20px;
+    }
+
+    @media (max-width: 720px) {
+      .mobile-cta {
+        display: flex;
+      }
+    }
+
+    /* ===== DECORATIVE SVG LINE ===== */
+    .deco-line {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 20px;
+    }
+    .deco-line svg {
+      width: 80px;
+      height: 20px;
+      opacity: 0.5;
+    }
+
+    /* ===== MISC ===== */
+    .text-accent {
+      color: var(--accent);
+    }
+    .mb-0 {
+      margin-bottom: 0;
+    }
+    .mt-1 {
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi...</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
+  <!-- ===== STICKY NAV ===== -->
+  <nav class="navbar">
+    <div class="logo">
+      <span>🔑</span> Detelina <span>Ključ</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="otvori meni">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Početak</a></li>
+      <li><a href="#zasto">Zašto mi</a></li>
+      <li><a href="#kada">Kada zovu</a></li>
+      <li><a href="#koraci">Kako</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero section-pad" id="hero">
+    <div class="container">
+      <div class="hero-text">
+        <h1>Izgubili ključ? <strong>Brzi bravar</strong> u Novom Sadu</h1>
+        <p>Bez stresa, bez čekanja. Izrada auto ključeva, oštrenje noževa, makaza, tagova – sve na jednom mestu. Profesionalno i pouzdano.</p>
+        <a href="tel:0641118833" class="btn">📞 Pozovite nas</a>
+        <div class="trust-row">
+          <span>⭐ <strong>5.0</strong> ocena</span>
+          <span>👥 <strong>63+</strong> zadovoljnih</span>
+          <span>⏱️ odgovor <strong>za 20 min</strong></span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- dekorativni SVG – stilizovani ključ i zvezda -->
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="80" stroke="#e8a838" stroke-width="2" stroke-dasharray="6 6" fill="none" opacity="0.3"/>
+          <path d="M80 120 L80 90 Q80 70 95 70 L120 70 L120 85 L105 85 L105 120 L80 120Z" fill="#e8a838" opacity="0.7"/>
+          <circle cx="100" cy="100" r="18" fill="#e8a838" opacity="0.2"/>
+          <path d="M130 60 L140 50 L145 58 L135 68Z" fill="#e8a838" opacity="0.9"/>
+          <text x="100" y="160" font-size="28" text-anchor="middle" fill="#e8a838" opacity="0.5">⚙️</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="section-pad" id="zasto" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="deco-line">
+        <svg viewBox="0 0 80 16"><path d="M10 8 L70 8" stroke="#e8a838" stroke-width="2" stroke-dasharray="4 4"/><circle cx="10" cy="8" r="3" fill="#e8a838"/><circle cx="70" cy="8" r="3" fill="#e8a838"/></svg>
+      </div>
+      <h2>Zašto baš <span class="text-accent">Detelina Ključ</span>?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="emoji-big">⭐</div>
+          <h3>Ocena 5.0</h3>
+          <p>Svaki klijent nas ocenjuje najvišom ocenom – ponosimo se poverenjem.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">🔑</div>
+          <h3>Preko 63 klijenta</h3>
+          <p>Od auto ključeva do oštrenja – svaki posao je prilika da pomognemo.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">⚡</div>
+          <h3>Brz odziv</h3>
+          <p>U Novom Sadu smo za manje od 30 min. Bez izgovora.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">🛠️</div>
+          <h3>Profesionalnost</h3>
+          <p>Iskustvo, tačnost i ljubaznost – svaki put.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SITUATIONS (kada vam trebamo) ===== -->
+  <section class="section-pad" id="kada" style="background: #1e1e36;">
+    <div class="container">
+      <h2>Kada vam je potrebna pomoć?</h2>
+      <p class="mb-0">Prepoznajemo situacije koje umeju da zakomplikuju dan. Tu smo da ih rešimo.</p>
+      <div class="situ-grid" style="margin-top: 28px;">
+        <div class="situ-card">
+          <div class="situ-emoji">🚗</div>
+          <h4>Zaključali auto</h4>
+          <p>Ključ ostao unutra? Izrada novog na licu mesta.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+        <div class="situ-card">
+          <div class="situ-emoji">🏠</div>
+          <h4>Izgubljen kućni ključ</h4>
+          <p>Bez panike. Napravićemo vam novi ključ brzo.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+        <div class="situ-card">
+          <div class="situ-emoji">🔪</div>
+          <h4>Tupe makaze / noževi</h4>
+          <p>Profesionalno oštrenje – kuhinja i radionica.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+        <div class="situ-card">
+          <div class="situ-emoji">🏷️</div>
+          <h4>Izrada tagova</h4>
+          <p>Za automobile, kućne ljubimce, ormare – brzo i precizno.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+        <div class="situ-card">
+          <div class="situ-emoji">🔐</div>
+          <h4>Brava se zaglavila</h4>
+          <p>Servis i popravka brava na licu mesta.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+        <div class="situ-card">
+          <div class="situ-emoji">📋</div>
+          <h4>Kopija ključa</h4>
+          <p>Rezervni ključ za auto, stan, kancelariju.</p>
+          <span class="tu-smo">→ Tu smo za vas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS (koraci) ===== -->
+  <section class="section-pad" id="koraci">
+    <div class="container">
+      <div class="deco-line">
+        <svg viewBox="0 0 80 16"><path d="M10 8 L70 8" stroke="#e8a838" stroke-width="2" stroke-dasharray="4 4"/><circle cx="10" cy="8" r="3" fill="#e8a838"/><circle cx="70" cy="8" r="3" fill="#e8a838"/></svg>
+      </div>
+      <h2>Kako funkcionišemo?</h2>
+      <p>Jednostavan put do rešenja – bez komplikacija.</p>
+      <div class="steps-wrapper">
+        <div class="step-item">
+          <div class="step-badge">1</div>
+          <h4>📞 Poziv</h4>
+          <p>Nazovite nas ili pošaljite poruku. Odgovaramo odmah.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">2</div>
+          <h4>📍 Dolazak</h4>
+          <p>Dolazimo na vašu adresu u Novom Sadu (Rumenačka 127).</p>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">3</div>
+          <h4>⚙️ Usluga</h4>
+          <p>Izrada ključa, oštrenje, tag – brzo i profesionalno.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-badge">4</div>
+          <h4>✅ Gotovo</h4>
+          <p>Proverite, platite, nastavite dan bez stresa.</p>
+        </div>
+      </div>
+      <p style="margin-top: 28px; text-align: center; font-size: 0.95rem;">🕐 Radno vreme: pon–pet 08–18h, sub 09–14h | Servisiramo ceo Novi Sad</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER / KONTAKT ===== -->
+  <footer class="footer" id="kontakt">
+    <div class="container">
+      <div class="footer-grid">
         <div>
-          <p class="eyebrow">Bravar / Novi Sad</p>
-          <h1>Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi...: bravarske usluge u Novom Sadu, na jedan poziv</h1>
-          <p class="lead">Kontaktirajte Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi... direktno za rezervne ključeve u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:0641118833">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
+          <h4>🔑 Detelina Ključ</h4>
+          <p>Bravar, auto ključevi, oštrenje, tagovi. Pouzdan lokalni servis u Novom Sadu.</p>
+          <p style="margin-top: 10px;">📍 Rumenačka 127, 21000 Novi Sad</p>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <div class="contact-line">📞 <a href="tel:0641118833">064 111 88 33</a></div>
+          <div class="contact-line">✉️ <a href="mailto:svetozarmaluckov@gmail.com">svetozarmaluckov@gmail.com</a></div>
+          <div class="contact-line">💬 <a href="viber://chat?number=381641118833" target="_blank">Viber</a> / <a href="https://wa.me/381641118833" target="_blank">WhatsApp</a></div>
+        </div>
+        <div>
+          <h4>Pratite nas</h4>
+          <div class="social-links">
+            <a href="#" target="_blank">📘 Facebook</a>
+            <a href="#" target="_blank">🔗 LinkedIn</a>
           </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Bravar</div>
-            <div class="micro">Direktan kontakt: 064 1118833</div>
-          </div>
-        </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Bravar</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> Rumenačka 127, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
-    </section>
-
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
-        </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Rezervni ključevi</h3>
-          <p>Rezervni ključevi je dostupna usluga u okviru bravarske ponude koju Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi... pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
+          <p style="margin-top: 12px;">⭐ 5.0 • 63+ klijenata</p>
         </div>
       </div>
-    </section>
-
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Veruje nam preko 63 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Pristupačne cene</strong>
-          <span>Koristan signal kada poredite lokalne Bravar ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
+      <div class="copy">
+        © 2025 Detelina Ključ – bravar Novi Sad. Sva prava zadržana.
       </div>
-    </section>
-
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
-        </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Odlično, Najbolje.</div>
-      </div>
-    </section>
-
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0641118833">064 1118833</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:svetozarmaluckov@gmail.com">svetozarmaluckov@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Rumenačka 127, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell">&copy; 2026 Detelina Ključ - Auto ključevi, Ključar, Oštrač, Noževi, Makaze,Tagovi.... Bravar u Novom Sadu.</div>
+    </div>
   </footer>
+
+  <!-- ===== STICKY MOBILE CTA ===== -->
+  <div class="mobile-cta">
+    <a href="tel:0641118833" class="btn">📞 Pozovite nas</a>
+  </div>
+
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+    (function() {
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      if (toggle && links) {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          links.classList.toggle('open');
+        });
+        // close on link click
+        links.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            links.classList.remove('open');
+          });
+        });
+        // close on outside click
+        document.addEventListener('click', function(e) {
+          if (!links.contains(e.target) && !toggle.contains(e.target)) {
+            links.classList.remove('open');
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>

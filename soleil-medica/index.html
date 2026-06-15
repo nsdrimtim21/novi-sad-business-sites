@@ -1,273 +1,1107 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soleil Medica | doktor Novi Sad</title>
-  <meta name="description" content="Soleil Medica nudi doctor usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Soleil Medica">
-  <meta property="og:description" content="Doctor usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soleil Medica – Vaš lekar u Novom Sadu</title>
+    <style>
+        /* ===== CSS Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #1e2a45;
+            --accent: #e8a838;
+            --accent-soft: rgba(232, 168, 56, 0.12);
+            --accent-glow: rgba(232, 168, 56, 0.25);
+            --text-primary: #f0eada;
+            --text-secondary: #c4bbaa;
+            --text-muted: #9a9386;
+            --text-on-accent: #1a1a2e;
+            --border-subtle: rgba(232, 168, 56, 0.18);
+            --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.45);
+            --radius-card: 14px;
+            --radius-btn: 10px;
+            --radius-sm: 6px;
+            --max-width: 1080px;
+            --nav-height: 64px;
+            --body-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Typography ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5.5vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        h2 {
+            font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+        }
+        h3 {
+            font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+            font-weight: 700;
+        }
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .small {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== Reusable ===== */
+        .section-pad {
+            padding: 64px 0;
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+        .accent-border {
+            border-color: var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 12px 32px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            background: var(--accent);
+            color: var(--text-on-accent);
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px var(--accent-glow);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: inset 0 0 0 2px var(--accent);
+        }
+        .btn--ghost:hover {
+            background: var(--accent-soft);
+            box-shadow: inset 0 0 0 2px var(--accent), 0 4px 16px var(--accent-glow);
+        }
+
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            margin-top: 28px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .trust-item strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .trust-item .emoji-badge {
+            font-size: 1.2rem;
+        }
+
+        /* ===== Cards (shared) ===== */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 24px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+        }
+        .card .emoji-lg {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            margin-bottom: 8px;
+        }
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* ===== Sticky Nav ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(26, 26, 46, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-brand {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+        .nav-brand .accent {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.94rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--accent-soft);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .nav-toggle:hover {
+            background: var(--accent-soft);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 120px 0 72px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse 70% 60% at 20% 40%, rgba(232, 168, 56, 0.06), transparent 70%),
+                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(232, 168, 56, 0.04), transparent 60%),
+                var(--bg-primary);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            filter: drop-shadow(0 0 50px rgba(232, 168, 56, 0.10));
+        }
+
+        .hero .trust-row {
+            margin-top: 32px;
+        }
+
+        .hero h1 .accent {
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 16px 0 8px;
+        }
+
+        /* ===== Decorative blobs ===== */
+        .deco-blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.12;
+            background: var(--accent);
+            filter: blur(72px);
+        }
+        .deco-blob--1 {
+            width: 400px;
+            height: 400px;
+            top: -120px;
+            right: -80px;
+        }
+        .deco-blob--2 {
+            width: 280px;
+            height: 280px;
+            bottom: -60px;
+            left: -60px;
+            opacity: 0.07;
+        }
+
+        /* ===== Why Choose Us ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 36px;
+        }
+        .why-grid .card {
+            text-align: center;
+            border-top-color: var(--accent);
+        }
+        .why-grid .card .emoji-lg {
+            font-size: 2.6rem;
+        }
+        .why-grid .card .number-big {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ===== Service Scenarios ===== */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 36px;
+        }
+        .scenarios-grid .card {
+            border-top: 4px solid var(--accent);
+            text-align: left;
+            padding: 24px 22px;
+        }
+        .scenarios-grid .card .emoji-lg {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .scenarios-grid .card .tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-top: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* ===== How It Works ===== */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--border-subtle), var(--accent));
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 20px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border-bottom: 4px solid var(--accent);
+            position: relative;
+            z-index: 1;
+        }
+        .step-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--text-on-accent);
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+        }
+        .step-card .emoji-lg {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .step-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+        .step-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* ===== Reviews strip ===== */
+        .reviews-strip {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 40px 0;
+        }
+        .reviews-strip .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 32px 56px;
+        }
+        .review-word {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .review-word .emoji-badge {
+            font-size: 1.4rem;
+        }
+        .review-word .stars {
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 48px 0 32px;
+            border-top: 1px solid var(--border-subtle);
+            margin-bottom: 60px;
+        }
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 40px 48px;
+        }
+        .footer-brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .footer-brand .accent {
+            color: var(--accent);
+        }
+        .footer-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 320px;
+        }
+        .footer h4 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .footer-links li a,
+        .footer-contact p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links li a:hover {
+            color: var(--accent);
+        }
+        .footer-contact p {
+            margin-bottom: 6px;
+        }
+        .footer-contact a {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+        .footer-bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 24px;
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-social a {
+            font-size: 1.3rem;
+            transition: var(--transition);
+            color: var(--text-secondary);
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Sticky Mobile CTA ===== */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 12px 20px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .mobile-cta .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .mobile-cta .cta-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+        .mobile-cta .cta-text strong {
+            color: var(--text-primary);
+        }
+        .mobile-cta .btn {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== Mobile Nav ===== */
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.96);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px 24px 28px;
+                gap: 4px;
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: var(--transition);
+                border-bottom: 1px solid var(--border-subtle);
+                pointer-events: none;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                padding: 12px 16px;
+                font-size: 1.05rem;
+                width: 100%;
+                border-radius: var(--radius-sm);
+            }
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 32px;
+            }
+            .hero-visual svg {
+                max-width: 280px;
+            }
+            .hero .trust-row {
+                justify-content: center;
+            }
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .steps::before {
+                display: none;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-desc {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .footer-links {
+                align-items: center;
+            }
+            .footer-contact p {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .mobile-cta {
+                display: block;
+            }
+            .footer {
+                margin-bottom: 72px;
+            }
+
+            .reviews-strip .container {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+            .section-pad {
+                padding: 48px 0;
+            }
+            .hero {
+                padding: 100px 0 48px;
+            }
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.95rem;
+            }
+            .trust-row {
+                gap: 12px 18px;
+            }
+            .trust-item {
+                font-size: 0.85rem;
+            }
+            .card {
+                padding: 22px 18px;
+            }
+        }
+
+        /* ===== Scroll-triggered fade (optional enhancement) ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Soleil Medica</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <a href="#hero" class="nav-brand">
+                <span class="accent">✦</span> Soleil Medica
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#zasto">Zašto mi</a></li>
+                <li><a href="#kada">Kada zovu</a></li>
+                <li><a href="#kako">Kako radimo</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="tel:+381603019399" class="btn" style="padding:6px 18px;font-size:0.88rem;">Pozovite</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Lekar / Novi Sad</p>
-          <h1>Soleil Medica: doktor u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Soleil Medica direktno za Terapija u Novom Sadu. Ključna prednost: Izuzetna ocena 4.8 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:soleilmedica@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Lekar</div>
-            <div class="micro">Direktan kontakt: 060 3019399</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="deco-blob deco-blob--1"></div>
+        <div class="deco-blob deco-blob--2"></div>
+        <div class="container">
+            <div class="hero-text">
+                <h1>
+                    Vratite mir i<br>
+                    <span class="accent">zdravlje</span> uz pouzdanog lekara
+                </h1>
+                <p class="hero-sub">
+                    Stručna medicinska pomoć u Novom Sadu – brzo, profesionalno i sa pažnjom koju zaslužujete.
+                    Bez stresa, bez čekanja, bez neizvesnosti.
+                </p>
+                <a href="tel:+381603019399" class="btn">📞 Zakažite termin</a>
+                <div class="trust-row">
+                    <span class="trust-item">
+                        <span class="emoji-badge">⭐</span>
+                        <strong>4.8</strong> ocena pacijenata
+                    </span>
+                    <span class="trust-item">
+                        <span class="emoji-badge">❤️</span>
+                        <strong>150+</strong> zadovoljnih
+                    </span>
+                    <span class="trust-item">
+                        <span class="emoji-badge">⏱️</span>
+                        odgovor za <strong>30 min</strong>
+                    </span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Decorative SVG: stilizovani medicinski simbol i talas -->
+                <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e8a838" stop-opacity="0.35"/>
+                            <stop offset="100%" stop-color="#e8a838" stop-opacity="0.05"/>
+                        </linearGradient>
+                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e8a838" stop-opacity="0.55"/>
+                            <stop offset="100%" stop-color="#e8a838" stop-opacity="0.10"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="8" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <!-- pozadinski krugovi -->
+                    <circle cx="200" cy="190" r="150" fill="url(#g1)" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="6 8" opacity="0.5"/>
+                    <circle cx="200" cy="190" r="100" fill="url(#g1)" stroke="var(--border-subtle)" stroke-width="1" stroke-dasharray="4 6" opacity="0.4"/>
+                    <!-- stilizovani krst / medicinski simbol -->
+                    <g filter="url(#glow)">
+                        <rect x="168" y="130" width="64" height="120" rx="12" fill="#e8a838" opacity="0.50"/>
+                        <rect x="140" y="158" width="120" height="64" rx="12" fill="#e8a838" opacity="0.50"/>
+                        <rect x="168" y="130" width="64" height="120" rx="12" fill="#e8a838" opacity="0.25"/>
+                        <rect x="140" y="158" width="120" height="64" rx="12" fill="#e8a838" opacity="0.25"/>
+                    </g>
+                    <!-- centralni krug -->
+                    <circle cx="200" cy="190" r="32" fill="var(--bg-primary)" stroke="#e8a838" stroke-width="2" opacity="0.7"/>
+                    <text x="200" y="199" text-anchor="middle" fill="#e8a838" font-size="28" font-weight="700" font-family="system-ui">⚕</text>
+                    <!-- talas / puls -->
+                    <path d="M50 270 Q90 240 120 270 Q150 300 180 270 Q210 240 240 270 Q270 300 300 270 Q330 240 360 270"
+                    stroke="#e8a838" stroke-width="2.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+                    <path d="M60 290 Q100 260 130 290 Q160 320 190 290 Q220 260 250 290 Q280 320 310 290 Q340 260 370 290"
+                    stroke="#e8a838" stroke-width="1.5" fill="none" opacity="0.18" stroke-linecap="round"/>
+                    <!-- zvezdice -->
+                    <text x="80" y="80" font-size="18" fill="#e8a838" opacity="0.4">✦</text>
+                    <text x="310" y="60" font-size="22" fill="#e8a838" opacity="0.3">✦</text>
+                    <text x="340" y="140" font-size="14" fill="#e8a838" opacity="0.5">✦</text>
+                    <text x="40" y="200" font-size="12" fill="#e8a838" opacity="0.4">✦</text>
+                </svg>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Lekar</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Branka Radičevića 29, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="section-pad" id="zasto" style="background:var(--bg-secondary);">
+        <div class="container">
+            <h2 style="text-align:center;">Zašto baš <span class="accent">Soleil Medica</span>?</h2>
+            <p style="text-align:center;max-width:620px;margin:0 auto 8px;">Ne nudimo samo pregled – nudimo sigurnost, poštovanje i brigu koja traje.</p>
+            <div class="why-grid">
+                <div class="card">
+                    <span class="emoji-lg">⭐</span>
+                    <span class="number-big">4.8</span>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši pacijenti nas ocenjuju sa prosečnih 4,8 zvezdica – jer kvalitet i ljudskost idu ruku pod ruku.</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">🩺</span>
+                    <span class="number-big">15+</span>
+                    <h3>Godina iskustva</h3>
+                    <p>Dugogodišnje iskustvo u medicini znači brzu dijagnozu, pravi tretman i manje brige za vas.</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">📍</span>
+                    <span class="number-big">Centar</span>
+                    <h3>Novi Sad – centar</h3>
+                    <p>Nalazimo se u srcu Novog Sada, u Branka Radičevića 29. Lako dostupni, uvek tu za vas.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Terapija</h3>
-          <p>Terapija je dostupna usluga u okviru medicinske ponude koju Soleil Medica pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ===== REVIEWS STRIP ===== -->
+    <div class="reviews-strip">
+        <div class="container">
+            <span class="review-word"><span class="emoji-badge">💬</span> “Profesionalno”</span>
+            <span class="review-word"><span class="emoji-badge">❤️</span> “Ljubazno”</span>
+            <span class="review-word"><span class="emoji-badge">🌟</span> “Preporuka”</span>
+            <span class="review-word"><span class="emoji-badge">🏆</span> “Odlično”</span>
+            <span class="review-word"><span class="stars">★★★★★</span></span>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.8 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+    </div>
 
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== SERVICE SCENARIOS ===== -->
+    <section class="section-pad" id="kada">
+        <div class="container">
+            <h2 style="text-align:center;">Kada vam je potrebna pomoć?</h2>
+            <p style="text-align:center;max-width:600px;margin:0 auto 8px;">Ljudi nam se javljaju u različitim situacijama. Bez obzira na razlog – tu smo da vam pomognemo.</p>
+            <div class="scenarios-grid">
+                <div class="card">
+                    <span class="emoji-lg">🤒</span>
+                    <h3>Hitni simptomi</h3>
+                    <p>Povišena temperatura, bol, umor – ne čekajte da prođe. Javite se i dobijte stručnu procenu odmah.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">🔄</span>
+                    <h3>Hronične tegobe</h3>
+                    <p>Godinama tražite rešenje? Pravilan tretman može da promeni sve. Zakažite konsultaciju.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">🧑‍⚕️</span>
+                    <h3>Preventivni pregled</h3>
+                    <p>Ne čekajte da vas telo opomene. Redovan pregled je najbolja investicija u vaše zdravlje.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">👶</span>
+                    <h3>Zdravlje porodice</h3>
+                    <p>Brinete za roditelje, decu ili partnera? Dovedite ih kod nas – primamo sve generacije.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">📋</span>
+                    <h3>Drugo medicinsko mišljenje</h3>
+                    <p>Niste sigurni u postavljenu dijagnozu? Drugi par očiju može da vam donese mir.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="card">
+                    <span class="emoji-lg">💊</span>
+                    <h3>Kontrola terapije</h3>
+                    <p>Već ste na terapiji? Redovna kontrola je ključna – dolazite na provere bez zakazivanja.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section-pad" id="kako" style="background:var(--bg-secondary);">
+        <div class="container">
+            <h2 style="text-align:center;">Vaš put do <span class="accent">rešenja</span></h2>
+            <p style="text-align:center;max-width:560px;margin:0 auto 8px;">Jednostavan proces, bez papirologije i bez stresa. Od trenutka kada nas pozovete do prvog pregleda.</p>
+            <div class="steps">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <span class="emoji-lg">📞</span>
+                    <h3>Pozovite nas</h3>
+                    <p>Javite se na <strong>060 3019399</strong> i opišite svoj problem. Odgovaramo u roku od 30 minuta.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <span class="emoji-lg">📅</span>
+                    <h3>Zakažite termin</h3>
+                    <p>Dogovaramo termin koji vama odgovara – radimo od 8h do 20h, petkom do 18h.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <span class="emoji-lg">🏥</span>
+                    <h3>Dođite na pregled</h3>
+                    <p>Branka Radičevića 29, Novi Sad. Bez čekanja, uz prijatan i profesionalan prijem.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <span class="emoji-lg">✅</span>
+                    <h3>Dobijte rešenje</h3>
+                    <p>Dijagnoza, terapija i saveti – sve što vam treba da se vratite svom životu bez brige.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:36px;">
+                <a href="tel:+381603019399" class="btn">📞 Zakažite termin</a>
+                <span style="display:inline-block;margin-left:16px;color:var(--text-muted);font-size:0.92rem;">ili pišite na <a href="mailto:soleilmedica@gmail.com" style="color:var(--accent);">soleilmedica@gmail.com</a></span>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Odlično, Odlično.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ===== FOOTER / CONTACT ===== -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <div>
+                <div class="footer-brand">
+                    <span class="accent">✦</span> Soleil Medica
+                </div>
+                <p class="footer-desc">
+                    Vaš pouzdani lekar u Novom Sadu. Profesionalnost, iskustvo i ljudskost – na jednom mestu.
+                    <br><br>
+                    <span style="color:var(--text-secondary);font-size:0.92rem;">
+                        📍 Branka Radičevića 29, 21000 Novi Sad
+                    </span>
+                </p>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <div class="footer-contact">
+                    <p>📞 <a href="tel:+381603019399">060 3019399</a></p>
+                    <p>✉️ <a href="mailto:soleilmedica@gmail.com">soleilmedica@gmail.com</a></p>
+                    <p>🏠 Branka Radičevića 29, Novi Sad</p>
+                </div>
+                <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+                    <a href="viber://chat?number=381603019399" class="btn--ghost btn" style="padding:6px 16px;font-size:0.85rem;gap:6px;">💬 Viber</a>
+                    <a href="https://wa.me/381603019399" class="btn--ghost btn" style="padding:6px 16px;font-size:0.85rem;gap:6px;">📱 WhatsApp</a>
+                </div>
+            </div>
+            <div>
+                <h4>Radno vreme</h4>
+                <ul class="footer-links" style="gap:4px;">
+                    <li style="color:var(--text-secondary);font-size:0.95rem;">Pon – Pet: 08:00 – 20:00</li>
+                    <li style="color:var(--text-secondary);font-size:0.95rem;">Subota: 09:00 – 14:00</li>
+                    <li style="color:var(--text-muted);font-size:0.88rem;">Nedeljom: po dogovoru</li>
+                    <li style="margin-top:12px;"><a href="tel:+381603019399" style="color:var(--accent);font-weight:500;">📞 Pozovite odmah</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Soleil Medica – Novi Sad. Sva prava zadržana.</span>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="LinkedIn">🔗</a>
+                    <a href="mailto:soleilmedica@gmail.com" aria-label="Email">✉️</a>
+                </div>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0603019399">060 3019399</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:soleilmedica@gmail.com">soleilmedica@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Branka Radičevića 29, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Soleil Medica. Lekar u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="mobile-cta" id="mobileCta">
+        <div class="container">
+            <span class="cta-text">
+                <strong>Soleil Medica</strong> • 4.8 ⭐
+            </span>
+            <a href="tel:+381603019399" class="btn">📞 Pozovite nas</a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                });
+
+                // Close nav on link click
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                    });
+                });
+
+                // Close on click outside
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                    }
+                });
+            }
+
+            // Smooth scroll for all anchor links (fallback for very old browsers)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Intersection Observer for fade-up animation
+            const fadeEls = document.querySelectorAll('.fade-up');
+            if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+                fadeEls.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback: show all immediately
+                fadeEls.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+
+            // Add fade-up class to cards for scroll animation
+            document.querySelectorAll('.card, .step-card').forEach(function(el) {
+                if (!el.classList.contains('fade-up')) {
+                    el.classList.add('fade-up');
+                }
+            });
+            // Trigger re-check for already visible
+            if ('IntersectionObserver' in window) {
+                const cards = document.querySelectorAll('.card.fade-up, .step-card.fade-up');
+                const obs2 = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs2.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                cards.forEach(function(c) { obs2.observe(c); });
+            } else {
+                document.querySelectorAll('.card.fade-up, .step-card.fade-up').forEach(function(c) {
+                    c.classList.add('visible');
+                });
+            }
+
+            // Handle sticky nav shadow on scroll
+            const nav = document.querySelector('.nav');
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const current = window.pageYOffset || document.documentElement.scrollTop;
+                if (current > 20) {
+                    nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.35)';
+                } else {
+                    nav.style.boxShadow = 'none';
+                }
+                lastScroll = current;
+            }, { passive: true });
+
+        })();
+    </script>
+
 </body>
 </html>

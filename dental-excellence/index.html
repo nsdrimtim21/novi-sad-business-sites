@@ -1,283 +1,1423 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stomatološki Excellence | zubar Novi Sad</title>
-  <meta name="description" content="Dental Excellence nudi dentist usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Dental Excellence">
-  <meta property="og:description" content="Dentist usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Excellence – Stomatolog u Novom Sadu</title>
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --surface: #ffffff;
+            --accent: #0077b6;
+            --accent-dark: #005f92;
+            --accent-light: #e6f2fa;
+            --accent-glow: rgba(0, 119, 182, 0.12);
+            --text-primary: #1a2a3a;
+            --text-secondary: #3d5567;
+            --text-muted: #6b8299;
+            --radius: 14px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 14px 32px rgba(0, 119, 182, 0.14);
+            --transition: 0.32s cubic-bezier(0.2, 0, 0, 1);
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-width: 1080px;
+            --nav-height: 68px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─── container ─── */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 18px;
+            }
+        }
+
+        /* ─── utility ─── */
+        .section-pad {
+            padding: 66px 0 70px;
+        }
+        @media (max-width: 720px) {
+            .section-pad {
+                padding: 44px 0 50px;
+            }
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 6px 18px 6px 16px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+        }
+        .section-label svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .heading-lg {
+            font-size: clamp(2rem, 4.8vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.18;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .heading-md {
+            font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text-primary);
+        }
+        .heading-sm {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .text-body {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+        }
+        .text-body+ .text-body {
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(0, 119, 182, 0.28);
+        }
+        .btn:hover {
+            background: var(--accent-dark);
+            box-shadow: 0 8px 28px rgba(0, 119, 182, 0.35);
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent) inset;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 8px 28px rgba(0, 119, 182, 0.25);
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(240, 244, 248, 0.78);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
+            border-bottom: 1px solid rgba(0, 119, 182, 0.08);
+            transition: var(--transition);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .nav-logo svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        .nav-toggle svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(240, 244, 248, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 12px 24px 24px;
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(0, 119, 182, 0.08);
+                border-radius: 0 0 20px 20px;
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-links a {
+                padding: 14px 0;
+                font-size: 1.05rem;
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 119, 182, 0.06);
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .nav-inner {
+                padding: 0 18px;
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--nav-height)+ 30px) 0 50px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 119, 182, 0.07), transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0, 119, 182, 0.04), transparent 60%),
+                var(--bg);
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-content {
+            max-width: 580px;
+        }
+        .hero-content .heading-lg {
+            margin-bottom: 18px;
+        }
+        .hero-content .heading-lg .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero-content .heading-lg .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-light);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero-content .text-body {
+            font-size: 1.08rem;
+            margin-bottom: 28px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            padding-top: 6px;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .hero-trust-item svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .hero-trust-item strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-visual svg.tooth-deco {
+            width: clamp(220px, 26vw, 380px);
+            height: auto;
+            filter: drop-shadow(0 8px 32px rgba(0, 119, 182, 0.12));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+        .hero-visual .ring-deco {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            border-radius: 50%;
+            border: 2px dashed rgba(0, 119, 182, 0.10);
+            animation: spin 40s linear infinite;
+            pointer-events: none;
+        }
+        .hero-visual .ring-deco-2 {
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+            border-color: rgba(0, 119, 182, 0.06);
+            animation-duration: 50s;
+            animation-direction: reverse;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 820px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+            .hero-content {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .hero-content .text-body {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+                margin-bottom: 10px;
+            }
+            .hero-visual svg.tooth-deco {
+                width: clamp(140px, 30vw, 200px);
+            }
+            .hero-visual .ring-deco {
+                width: 110%;
+                height: 110%;
+                top: -5%;
+                left: -5%;
+            }
+        }
+        @media (max-width: 420px) {
+            .hero {
+                min-height: 92vh;
+                padding-top: calc(var(--nav-height)+ 16px);
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+
+        /* ─── WHY US ─── */
+        .why-us {
+            background: var(--surface);
+            position: relative;
+        }
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+        }
+        .why-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .why-header .heading-md {
+            max-width: 540px;
+            margin: 0 auto 12px;
+        }
+        .why-header .text-body {
+            margin: 0 auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .why-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 22px 26px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .why-card .emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .why-card .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 860px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 520px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── WHEN ─── */
+        .when {
+            background: var(--bg);
+            position: relative;
+        }
+        .when .section-label {
+            background: var(--surface);
+        }
+        .when-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .when-header .heading-md {
+            max-width: 500px;
+            margin: 0 auto 12px;
+        }
+
+        .when-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .when-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 24px 20px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+        }
+        .when-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .when-card .emoji {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .when-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .when-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex: 1;
+        }
+        .when-card .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 14px;
+            border-radius: 40px;
+            align-self: flex-start;
+        }
+
+        @media (max-width: 800px) {
+            .when-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 500px) {
+            .when-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── HOW ─── */
+        .how {
+            background: var(--surface);
+            position: relative;
+            overflow: hidden;
+        }
+        .how::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+        .how-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .how-header .heading-md {
+            max-width: 460px;
+            margin: 0 auto 12px;
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .how-step {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 20px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+        .how-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .how-step .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+        }
+        .how-step .emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .how-step h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .how-step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .how-step .step-time {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 3px 14px;
+            border-radius: 40px;
+        }
+
+        .how-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px 40px;
+            margin-top: 44px;
+            padding: 20px 24px;
+            background: var(--accent-light);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .how-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .how-info-item svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 820px) {
+            .how-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+        @media (max-width: 460px) {
+            .how-steps {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .how-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                padding: 16px;
+            }
+        }
+
+        /* ─── CONTACT / FOOTER ─── */
+        .footer {
+            background: #1a2a3a;
+            color: #dce4ed;
+            padding: 52px 0 40px;
+            position: relative;
+        }
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #4fc3f7, var(--accent));
+            opacity: 0.4;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.4fr 1.6fr;
+            gap: 36px 48px;
+        }
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .footer-brand h2 span {
+            color: #4fc3f7;
+        }
+        .footer-brand .cat {
+            font-size: 0.9rem;
+            color: #9bb4cb;
+            margin-bottom: 14px;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #b8cddf;
+            max-width: 320px;
+        }
+
+        .footer-contact h3,
+        .footer-social h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            color: #b8cddf;
+        }
+        .footer-contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #4fc3f7;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .footer-contact-item a {
+            color: #dce4ed;
+            transition: var(--transition);
+        }
+        .footer-contact-item a:hover {
+            color: #4fc3f7;
+        }
+
+        .footer-social .social-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .footer-social .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: #b8cddf;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .footer-social .social-links a:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .footer-social .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            margin-top: 36px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.82rem;
+            color: #7e99b0;
+        }
+        .footer-bottom .viber-wa {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-bottom .viber-wa a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 18px;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #b8cddf;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .footer-bottom .viber-wa a:hover {
+            background: rgba(0, 119, 182, 0.2);
+            color: #fff;
+        }
+        .footer-bottom .viber-wa a svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 820px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px 24px;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 520px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-brand {
+                grid-column: 1;
+            }
+            .footer-contact-item {
+                font-size: 0.85rem;
+            }
+            .footer-bottom .viber-wa {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* ─── STICKY MOBILE CTA ─── */
+        .sticky-cta {
+            display: none;
+        }
+        @media (max-width: 720px) {
+            .sticky-cta {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                background: rgba(240, 244, 248, 0.94);
+                backdrop-filter: blur(14px) saturate(1.3);
+                -webkit-backdrop-filter: blur(14px) saturate(1.3);
+                padding: 10px 18px 12px;
+                border-top: 1px solid rgba(0, 119, 182, 0.08);
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+            }
+            .sticky-cta .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 13px 20px;
+                font-size: 0.95rem;
+                max-width: 340px;
+                border-radius: 50px;
+            }
+            .sticky-cta .btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            body {
+                padding-bottom: 68px;
+            }
+        }
+        @media (max-width: 420px) {
+            .sticky-cta {
+                padding: 8px 14px 10px;
+            }
+            .sticky-cta .btn {
+                font-size: 0.88rem;
+                padding: 11px 16px;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
+
+        /* ─── DECORATIVE SHAPES ─── */
+        .deco-blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .deco-blob-1 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.08), transparent 70%);
+            top: -100px;
+            left: -80px;
+        }
+        .deco-blob-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.06), transparent 70%);
+            bottom: -40px;
+            right: -40px;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-dark);
+        }
+
+        /* ─── SMOOTH FADE-IN ON VIEW (simple) ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Stomatološki Excellence</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ─── NAV ─── -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">
+                <svg viewBox="0 0 32 32"><path d="M16 4C12 4 8 7 8 12c0 4 2 8 8 16 6-8 8-12 8-16 0-5-4-8-8-8z"/><circle cx="16" cy="12" r="2.5"/></svg>
+                Dental <span>Excellence</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori meni">
+                <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#zasto">Zašto mi</a></li>
+                <li><a href="#kada">Kada</a></li>
+                <li><a href="#kako">Kako</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Stomatolog / Novi Sad</p>
-          <h1>Stomatološki Excellence: zubar u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Stomatološki Excellence direktno za Vađenje u Novom Sadu. Ključna prednost: Izuzetna ocena 4.7 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:marko.mirkovicdentist@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Stomatolog</div>
-            <div class="micro">Direktan kontakt: 064 1838998</div>
-          </div>
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="hero">
+        <div class="deco-blob deco-blob-1"></div>
+        <div class="deco-blob deco-blob-2"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="section-label" style="background:var(--accent-light);color:var(--accent);">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/><path d="M2 7l10 5 10-5"/><path d="M12 22V12"/></svg>
+                    Stomatolog u Novom Sadu
+                </div>
+                <h1 class="heading-lg">
+                    Vaš osmeh je <span class="highlight">naša najveća briga</span>
+                </h1>
+                <p class="text-body">
+                    Profesionalna stomatološka nega uz vrhunsku opremu, ljubazan tim i
+                    individualni pristup. U Dental Excellenceu vaše zdravlje i udobnost su na prvom mestu.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:0641838998" class="btn">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Zakažite pregled
+                    </a>
+                    <a href="#zasto" class="btn btn-outline">Saznajte više</a>
+                </div>
+                <div class="hero-trust">
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <strong>4.7 ★</strong> ocena pacijenata
+                    </span>
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
+                        <strong>55+</strong> zadovoljnih pacijenata
+                    </span>
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <strong>Brzi odgovor</strong> u roku od 1h
+                    </span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ring-deco"></div>
+                <div class="ring-deco ring-deco-2"></div>
+                <svg class="tooth-deco" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60 8C45 8 26 18 22 34c-2 8-2 16 0 24 2 8 6 16 12 22 6 6 12 12 16 20 2 4 4 8 6 12 2-4 4-8 6-12 4-8 10-14 16-20 6-6 10-14 12-22 2-8 2-16 0-24C94 18 75 8 60 8z" fill="url(#toothGrad)" stroke="#0077b6" stroke-width="2.5"/>
+                    <path d="M48 42c-2-2-4-2-6 0-2 2-2 6 0 8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M72 42c2-2 4-2 6 0 2 2 2 6 0 8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <ellipse cx="60" cy="62" rx="4" ry="5" fill="#fff" opacity="0.6"/>
+                    <defs>
+                        <linearGradient id="toothGrad" x1="60" y1="8" x2="60" y2="132" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#e6f2fa"/>
+                            <stop offset="1" stop-color="#cce5f5"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Stomatolog</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> 2/B Dr Svetislava Kasapinovića, 21000, Novi Sad, Južno-bački okrug, Novi Sad, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ─── WHY US ─── -->
+    <section class="why-us section-pad" id="zasto">
+        <div class="container">
+            <div class="why-header fade-up">
+                <div class="section-label" style="margin:0 auto 16px;">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"/></svg>
+                    Zašto baš mi?
+                </div>
+                <h2 class="heading-md">Zašto pacijenti biraju Dental Excellence?</h2>
+                <p class="text-body">Ne vodimo se samo standardima – mi ih postavljamo. Svaki pacijent dobija pažnju koju zaslužuje.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card fade-up">
+                    <span class="emoji">⭐</span>
+                    <div class="num">4.7</div>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši pacijenti nas ocenjuju sa prosečnih 4.7 zvezdica – kvalitet koji se vidi i oseti.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <span class="emoji">😁</span>
+                    <div class="num">55+</div>
+                    <h3>Zadovoljnih pacijenata</h3>
+                    <p>Poverenje više od 55 ljudi koji su nam poverili svoj osmeh i zdravlje.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <span class="emoji">⚡</span>
+                    <div class="num" style="font-size:1.4rem;">&lt; 1h</div>
+                    <h3>Brza reakcija</h3>
+                    <p>Vaše vreme je dragoceno – odgovaramo u roku od sat vremena i brzo nalazimo termin.</p>
+                </div>
+                <div class="why-card fade-up">
+                    <span class="emoji">🏆</span>
+                    <div class="num" style="font-size:1.4rem;">100%</div>
+                    <h3>Profesionalnost</h3>
+                    <p>Pouzdan tim, vrhunska oprema i potpuna posvećenost svakom pacijentu.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Vađenje</h3>
-          <p>Vađenje je dostupna usluga u okviru stomatološke ponude koju Stomatološki Excellence pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ─── WHEN ─── -->
+    <section class="when section-pad" id="kada">
+        <div class="container">
+            <div class="when-header fade-up">
+                <div class="section-label" style="margin:0 auto 16px;">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    Kada vam je potrebna pomoć?
+                </div>
+                <h2 class="heading-md">U kojim situacijama nas zovu?</h2>
+                <p class="text-body">Bez obzira na problem – tu smo da vam pomognemo sa osmehom i stručnošću.</p>
+            </div>
+            <div class="when-grid">
+                <div class="when-card fade-up">
+                    <span class="emoji">🦷</span>
+                    <h3>Bol u zubu</h3>
+                    <p>Ne trpite bol – javite se i rešavamo problem brzo i nežno.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card fade-up">
+                    <span class="emoji">😟</span>
+                    <h3>Strah od stomatologa</h3>
+                    <p>Razumemo vas. Naš pristup je blag, strpljiv i bez osuđivanja.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card fade-up">
+                    <span class="emoji">⏰</span>
+                    <h3>Hitna potreba</h3>
+                    <p>Pukao zub, upala ili neočekivani problem – zovite, izlazimo u susret.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card fade-up">
+                    <span class="emoji">👄</span>
+                    <h3>Estetski problemi</h3>
+                    <p>Želite lepši osmeh? Pomažemo vam da dobijete samopouzdanje koje zaslužujete.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card fade-up">
+                    <span class="emoji">🩺</span>
+                    <h3>Redovan pregled</h3>
+                    <p>Prevencija je ključ. Na redovnim pregledima otkrivamo probleme na vreme.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card fade-up">
+                    <span class="emoji">🦷</span>
+                    <h3>Vađenje zuba</h3>
+                    <p>Bezbolno i profesionalno – uz maksimalnu pažnju i negu posle zahvata.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.7 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Veruje nam preko 55 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ─── HOW ─── -->
+    <section class="how section-pad" id="kako">
+        <div class="container">
+            <div class="how-header fade-up">
+                <div class="section-label" style="margin:0 auto 16px;">
+                    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    Kako funkcionišemo?
+                </div>
+                <h2 class="heading-md">Vaš put do zdravog osmeha</h2>
+                <p class="text-body">Jednostavno, brzo i bez stresa – vodimo vas kroz svaki korak.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step fade-up">
+                    <span class="badge">1</span>
+                    <span class="emoji">📞</span>
+                    <h3>Pozovite ili pišite</h3>
+                    <p>Javite nam se telefonom, putem Vibera ili mejla. Odgovaramo u roku od 1h.</p>
+                    <span class="step-time">📅 radnim danima 08–20h</span>
+                </div>
+                <div class="how-step fade-up">
+                    <span class="badge">2</span>
+                    <span class="emoji">📅</span>
+                    <h3>Dogovorite termin</h3>
+                    <p>Pronalazimo termin koji vama odgovara – bez dugog čekanja i zakazivanja.</p>
+                    <span class="step-time">⏱ brzo i fleksibilno</span>
+                </div>
+                <div class="how-step fade-up">
+                    <span class="badge">3</span>
+                    <span class="emoji">🏥</span>
+                    <h3>Dođite na pregled</h3>
+                    <p>Ordinacija u Novom Sadu, ul. Dr Svetislava Kasapinovića 2/B. Prijatan ambijent.</p>
+                    <span class="step-time">📍 Novi Sad, centar</span>
+                </div>
+                <div class="how-step fade-up">
+                    <span class="badge">4</span>
+                    <span class="emoji">😁</span>
+                    <h3>Osmeh koji želite</h3>
+                    <p>Zahvat obavljamo pažljivo i profesionalno. Izlazite sa osmehom i osećajem olakšanja.</p>
+                    <span class="step-time">✨ rezultat odmah</span>
+                </div>
+            </div>
+            <div class="how-info fade-up">
+                <span class="how-info-item">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Radno vreme: pon–pet 08–20h
+                </span>
+                <span class="how-info-item">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Servisiramo Novi Sad i okolinu
+                </span>
+                <span class="how-info-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    Prosečna ocena: 4.7 ★
+                </span>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Odlično, Najbolje.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ─── FOOTER / CONTACT ─── -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand fade-up">
+                    <h2>Dental <span>Excellence</span></h2>
+                    <div class="cat">Stomatolog • Novi Sad</div>
+                    <p>Posvećeni zdravlju vaših zuba i lepoti vašeg osmeha. Profesionalna nega u prijatnom ambijentu, sa osmehom i bez stresa.</p>
+                </div>
+                <div class="footer-contact fade-up">
+                    <h3>Kontakt</h3>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:0641838998">064 183 8998</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:marko.mirkovicdentist@gmail.com">marko.mirkovicdentist@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Dr Svetislava Kasapinovića 2/B, 21000 Novi Sad</span>
+                    </div>
+                </div>
+                <div class="footer-social fade-up">
+                    <h3>Pratite nas</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+                        <a href="viber://chat?number=381641838998" style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:40px;background:rgba(255,255,255,0.06);color:#b8cddf;font-size:0.82rem;font-weight:500;transition:var(--transition);border:1px solid rgba(255,255,255,0.05);">
+                            <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Viber
+                        </a>
+                        <a href="https://wa.me/381641838998" style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:40px;background:rgba(255,255,255,0.06);color:#b8cddf;font-size:0.82rem;font-weight:500;transition:var(--transition);border:1px solid rgba(255,255,255,0.05);">
+                            <svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom fade-up">
+                <div class="viber-wa">
+                    <a href="tel:0641838998">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Pozovite nas
+                    </a>
+                    <a href="mailto:marko.mirkovicdentist@gmail.com">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Pošaljite mejl
+                    </a>
+                </div>
+                <p>&copy; 2025 Dental Excellence • Stomatolog Novi Sad • Sva prava zadržana.</p>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0641838998">064 1838998</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:marko.mirkovicdentist@gmail.com">marko.mirkovicdentist@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>2/B Dr Svetislava Kasapinovića, 21000, Novi Sad, Južno-bački okrug, Novi Sad, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Stomatološki Excellence. Stomatolog u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ─── STICKY MOBILE CTA ─── -->
+    <div class="sticky-cta">
+        <a href="tel:0641838998" class="btn">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Pozovite nas
+        </a>
+    </div>
+
+    <script>
+        // ─── Mobile nav toggle ───
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            links.classList.toggle('open');
+            const isOpen = links.classList.contains('open');
+            toggle.innerHTML = isOpen ?
+                '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>' :
+                '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+        });
+        // close on link click
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => {
+                links.classList.remove('open');
+                toggle.innerHTML = '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+            });
+        });
+
+        // ─── Fade-up observer ───
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
+        faders.forEach(el => observer.observe(el));
+
+        // ─── Smooth hash scroll (fallback) ───
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

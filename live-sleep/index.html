@@ -1,290 +1,1418 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live & Sleep | Hotel Novi Sad</title>
-  <meta name="description" content="Live &amp; Sleep nudi hotel usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Live &amp; Sleep">
-  <meta property="og:description" content="Hotel usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #1c2530;
-      background: #f4f7fa;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(244,247,250,.94);
-      border-bottom: 1px solid #d4dde5;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #1f6f8b;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #1c2530;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #1c2530; border: 1px solid #d4dde5; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #d4dde5;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #d4dde5;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #1f6f8b;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #1c2530;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #1f6f8b;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #1f6f8b;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #d4dde5; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live &amp; Sleep | Hotel u Novom Sadu</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #222222;
+            --bg-card: #2a2a2a;
+            --accent: #c9a959;
+            --accent-soft: #d4b86a;
+            --accent-glow: rgba(201, 169, 89, 0.15);
+            --text-primary: #f0ede8;
+            --text-secondary: #c9c4bc;
+            --text-muted: #9e9a94;
+            --border-light: rgba(201, 169, 89, 0.2);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --radius-card: 14px;
+            --radius-btn: 30px;
+            --max-width: 1060px;
+            --nav-height: 64px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent-soft);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-pad {
+            padding: 64px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        .section-sub.center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .gold-line {
+            display: inline-block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .gold-line.center {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        /* ===== STICKY NAV ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(26, 26, 26, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: background var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+        .nav-logo .logo-emoji {
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color var(--transition), color var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: background var(--transition);
+        }
+        .nav-toggle:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 120px 0 72px 0;
+            min-height: 86vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 40%, rgba(201, 169, 89, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(201, 169, 89, 0.05) 0%, transparent 50%),
+                var(--bg-primary);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -160px;
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 89, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -100px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 89, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 169, 89, 0.12);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 6px 18px 6px 14px;
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+        .hero-badge svg {
+            flex-shrink: 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+        .hero h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 28px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 36px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px rgba(201, 169, 89, 0.25);
+        }
+        .btn-primary:hover {
+            background: #dabe6a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 169, 89, 0.35);
+            color: #1a1a1a;
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 24px;
+            border-radius: var(--radius-btn);
+            border: 1.5px solid var(--border-light);
+            cursor: pointer;
+            transition: border-color var(--transition), background var(--transition), color var(--transition);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(201, 169, 89, 0.06);
+            color: var(--accent);
+        }
+
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 36px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .trust-item strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .trust-item .num {
+            color: var(--accent);
+        }
+        .trust-item svg {
+            flex-shrink: 0;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual-inner {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            aspect-ratio: 1/0.9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-deco-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            border: 1.5px solid rgba(201, 169, 89, 0.12);
+            pointer-events: none;
+        }
+        .hero-deco-ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            border-color: rgba(201, 169, 89, 0.08);
+        }
+        .hero-deco-ring:nth-child(3) {
+            width: 50%;
+            height: 50%;
+            border-color: rgba(201, 169, 89, 0.05);
+            border-style: dashed;
+        }
+
+        .hero-visual-symbol {
+            font-size: 5.2rem;
+            line-height: 1;
+            z-index: 2;
+            filter: drop-shadow(0 8px 32px rgba(201, 169, 89, 0.15));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .hero-visual-label {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 2;
+            font-weight: 500;
+        }
+        .hero-visual-label span {
+            color: var(--accent);
+        }
+
+        .hero-visual-dots {
+            position: absolute;
+            bottom: 12%;
+            right: 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 8px);
+            gap: 10px;
+            pointer-events: none;
+        }
+        .hero-visual-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.25;
+        }
+
+        /* ===== WHY US ===== */
+        .why-us {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 32px 26px 30px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: default;
+            position: relative;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .why-card .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .why-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .why-card .stat {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        /* ===== WHEN YOU NEED US (Service situations) ===== */
+        .situations {
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .situ-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 24px;
+            border: 1px solid var(--border-light);
+            transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+            cursor: default;
+            text-align: center;
+        }
+        .situ-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(201, 169, 89, 0.08);
+        }
+
+        .situ-card .emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .situ-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .situ-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .situ-card .tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+            border: 1px solid rgba(201, 169, 89, 0.2);
+            padding: 4px 16px;
+            border-radius: 20px;
+            background: rgba(201, 169, 89, 0.05);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            counter-reset: step;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 30px 24px 28px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+        }
+
+        .step-card .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(201, 169, 89, 0.12);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            border: 1.5px solid var(--border-light);
+        }
+
+        .step-card .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .step-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .step-card .step-arrow {
+            position: absolute;
+            top: 50%;
+            right: -18px;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 1.2rem;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .steps-grid .step-card:last-child .step-arrow {
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #141414;
+            border-top: 1px solid var(--border-light);
+            padding: 52px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand .tagline {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+        .footer-contact a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+        .footer-contact a:hover {
+            color: var(--accent);
+        }
+        .footer-contact .icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: border-color var(--transition), background var(--transition), color var(--transition);
+        }
+        .footer-social a:hover {
+            border-color: var(--accent);
+            background: rgba(201, 169, 89, 0.08);
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom a {
+            color: var(--text-muted);
+        }
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        .footer-viber-wa {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-viber-wa a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            transition: border-color var(--transition), background var(--transition), color var(--transition);
+        }
+        .footer-viber-wa a:hover {
+            border-color: var(--accent);
+            background: rgba(201, 169, 89, 0.06);
+            color: var(--accent);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-light);
+            padding: 12px 20px;
+            z-index: 999;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-mobile-cta .cta-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .sticky-mobile-cta .cta-text strong {
+            color: var(--text-primary);
+        }
+        .sticky-mobile-cta .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+            box-shadow: 0 4px 16px rgba(201, 169, 89, 0.2);
+            flex-shrink: 0;
+        }
+        .sticky-mobile-cta .btn-cta:hover {
+            background: #dabe6a;
+            transform: scale(1.02);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet */
+        @media (max-width: 820px) {
+            .container {
+                padding: 0 20px;
+            }
+            .section-pad {
+                padding: 48px 0;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-cta-row {
+                justify-content: center;
+            }
+            .trust-row {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+                margin-bottom: 12px;
+            }
+            .hero-visual-inner {
+                max-width: 300px;
+            }
+            .hero-visual-symbol {
+                font-size: 3.8rem;
+            }
+            .hero {
+                padding: 100px 0 48px 0;
+                min-height: auto;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .situ-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .step-card .step-arrow {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 720px) {
+            .sticky-mobile-cta {
+                display: flex;
+            }
+            body {
+                padding-bottom: 76px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.97);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px 24px 28px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border-light);
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease;
+                pointer-events: none;
+                z-index: 100;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-links a {
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.9rem, 7vw, 2.6rem);
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .situ-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-contact p {
+                justify-content: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-viber-wa {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary,
+            .btn-secondary {
+                justify-content: center;
+                width: 100%;
+            }
+            .trust-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            .hero-visual-inner {
+                max-width: 220px;
+            }
+            .hero-visual-symbol {
+                font-size: 3rem;
+            }
+            .sticky-mobile-cta .btn-cta {
+                padding: 10px 20px;
+                font-size: 0.88rem;
+            }
+            .sticky-mobile-cta .cta-text {
+                font-size: 0.78rem;
+            }
+        }
+
+        /* ===== DECORATIVE SVG INLINE HELPERS ===== */
+        .deco-diamond {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            transform: rotate(45deg);
+            opacity: 0.2;
+            margin: 0 6px;
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .navbar,
+            .sticky-mobile-cta {
+                display: none !important;
+            }
+            body {
+                padding-bottom: 0;
+                background: #fff;
+                color: #000;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Live & Sleep</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAV ===== -->
+    <nav class="navbar" role="navigation" aria-label="Glavna navigacija">
+        <div class="container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-emoji">🏨</span>
+                Live &amp; <span>Sleep</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori navigaciju" aria-expanded="false">
+                ☰
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#situations">Situacije</a></li>
+                <li><a href="#how">Koraci</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Hotel / Novi Sad</p>
-          <h1>Live & Sleep: smeštaj u Novom Sadu sa direktnim kontaktom za rezervaciju</h1>
-          <p class="lead">Kontaktirajte Live & Sleep direktno za Doručak u Novom Sadu. Ključna prednost: Izuzetna ocena 4.9 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:0643517914">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Hotel</div>
-            <div class="micro">Direktan kontakt: 064 3517914</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <!-- inline SVG star -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 1L10.2 5.3L15 6.1L11.5 9.5L12.4 14.3L8 12L3.6 14.3L4.5 9.5L1 6.1L5.8 5.3L8 1Z" fill="currentColor" />
+                    </svg>
+                    Ocena 4.9 ★ &nbsp;·&nbsp; 114+ gostiju
+                </div>
+                <h1>
+                    Vaš miran kutak<br>u srcu <span class="highlight">Novog Sada</span>
+                </h1>
+                <p>
+                    Posle dugog puta ili napornog dana — zaslužujete mesto gde ćete se istinski odmoriti.
+                    Moderan smeštaj, topla dobrodošlica i sve što vam treba, na jednom mestu.
+                </p>
+                <div class="hero-cta-row">
+                    <a href="tel:0643517914" class="btn-primary">
+                        📞 Pozovite nas
+                    </a>
+                    <a href="#footer" class="btn-secondary">
+                        📍 Pogledajte lokaciju
+                    </a>
+                </div>
+                <div class="trust-row">
+                    <div class="trust-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M5.5 9L7.5 11L12.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span><strong class="num">4,9</strong> prosečna ocena</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9C1.5 13.14 4.86 16.5 9 16.5C13.14 16.5 16.5 13.14 16.5 9C16.5 4.86 13.14 1.5 9 1.5Z" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M9 5V9L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                        <span>Odgovor <strong>&lt; 30 min</strong></span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 9C15 12.31 12.31 15 9 15C5.69 15 3 12.31 3 9C3 5.69 5.69 3 9 3C12.31 3 15 5.69 15 9Z" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M9 5.5V9L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M5 1L2 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M13 1L16 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                        <span><strong>114+</strong> zadovoljnih gostiju</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-inner">
+                    <div class="hero-deco-ring"></div>
+                    <div class="hero-deco-ring"></div>
+                    <div class="hero-deco-ring"></div>
+                    <div class="hero-visual-symbol">🏨</div>
+                    <div class="hero-visual-label">
+                        ✦ <span>Live &amp; Sleep</span> ✦
+                    </div>
+                    <div class="hero-visual-dots">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Hotel</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> Grozde Gajšin 6a, Novi Sad 21101, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
-        </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Smeštaj</span>
-          <h3>Doručak</h3>
-          <p>Doručak je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
+    <!-- ===== WHY US ===== -->
+    <section class="why-us section-pad" id="why">
+        <div class="container">
+            <div class="text-center">
+                <span class="gold-line center"></span>
+                <h2 class="section-title">Zašto baš Live &amp; Sleep?</h2>
+                <p class="section-sub center">
+                    Ne nudimo samo sobu — nudimo osećaj da ste došli kući. 
+                    Evo zašto nam se gosti vraćaju.
+                </p>
+            </div>
 
-        <article class="card">
-          <span class="card-kicker">Smeštaj</span>
-          <h3>parking</h3>
-          <p>parking je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Smeštaj</span>
-          <h3>Sobe</h3>
-          <p>Sobe je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <span class="stat">4,9</span>
+                    <h3>Izuzetna ocena gostiju</h3>
+                    <p>
+                        Naša prosečna ocena od 4,9 zvezda nije slučajnost. Svaki gost dobija 
+                        pažnju, čistoću i toplinu koja ga vraća.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">❤️</span>
+                    <span class="stat">114+</span>
+                    <h3>Poverenje zadovoljnih gostiju</h3>
+                    <p>
+                        Više od 114 gostiju je odselo kod nas i ostavilo reči: <em>ljubazno, 
+                        čisto, preporuka, odlično</em>. To nam je najveći poklon.
+                    </p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">⚡</span>
+                    <span class="stat">&lt; 30 min</span>
+                    <h3>Brz odgovor i fleksibilnost</h3>
+                    <p>
+                        Bilo da treba da prijavite dolazak kasno uveče ili imate poseban zahtev — 
+                        tu smo za vas u roku od 30 minuta.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.9 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== SITUATIONS ===== -->
+    <section class="situations section-pad" id="situations">
+        <div class="container">
+            <div class="text-center">
+                <span class="gold-line center"></span>
+                <h2 class="section-title">Kada vam je potreban smeštaj?</h2>
+                <p class="section-sub center">
+                    Ove situacije najčešće dovode goste do nas. 
+                    Prepoznajete li se?
+                </p>
+            </div>
 
-        <article class="proof-item">
-          <strong>Veruje nam preko 114 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <span class="emoji">🛣️</span>
+                    <h4>Prolazite kroz Novi Sad</h4>
+                    <p>
+                        Na putu ste i treba vam udobno mesto za noćenje — brzo, lako i bez stresa.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">💼</span>
+                    <h4>Poslovni put</h4>
+                    <p>
+                        Dolazite zbog sastanka ili konferencije. Potreban vam je miran prostor 
+                        sa dobrim internetom i parkingom.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🧳</span>
+                    <h4>Vikend odmor u gradu</h4>
+                    <p>
+                        Želite da istražite Novi Sad i imate bazu u kojoj ćete se zaista odmoriti.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🎉</span>
+                    <h4>Proslava ili događaj</h4>
+                    <p>
+                        Dolazite na svadbu, rođendan ili festival — potreban vam je smeštaj blizu 
+                        dešavanja.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🏠</span>
+                    <h4>Preseljenje ili renoviranje</h4>
+                    <p>
+                        Dok vam se dom sredjuje ili se selite — potreban vam je privremeni, 
+                        prijatan smeštaj.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">❤️</span>
+                    <h4>Romantični beg</h4>
+                    <p>
+                        Želite da provedete kvalitetno vreme sa dragom osobom u intimnom, 
+                        lepom ambijentu.
+                    </p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works section-pad" id="how">
+        <div class="container">
+            <div class="text-center">
+                <span class="gold-line center"></span>
+                <h2 class="section-title">Kako funkcionišemo?</h2>
+                <p class="section-sub center">
+                    Do vašeg savršenog odmora — u samo nekoliko koraka.
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <span class="emoji">📞</span>
+                    <h4>Pozovite ili pišite</h4>
+                    <p>
+                        Javite nam se telefonom ili porukom. Tu smo za vas svakog dana.
+                    </p>
+                    <span class="step-arrow">→</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <span class="emoji">📅</span>
+                    <h4>Dogovorimo termine</h4>
+                    <p>
+                        Kažite nam kada dolazite i koje su vaše želje. Prilagođavamo se vama.
+                    </p>
+                    <span class="step-arrow">→</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <span class="emoji">🧹</span>
+                    <h4>Pripremimo vam smeštaj</h4>
+                    <p>
+                        Sve je čisto, uredno i spremno za vaš dolazak — dočekujemo vas sa osmehom.
+                    </p>
+                    <span class="step-arrow">→</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <span class="emoji">😌</span>
+                    <h4>Odmorite i uživajte</h4>
+                    <p>
+                        Predajte se miru i udobnosti. Vaš odmor počinje čim kročite kroz vrata.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;font-size:0.92rem;color:var(--text-secondary);">
+                📍 Radno vreme: <strong style="color:var(--text-primary);">00–24h</strong> &nbsp;·&nbsp;
+                📍 Servis: <strong style="color:var(--text-primary);">Novi Sad i okolina</strong> &nbsp;·&nbsp;
+                ⏱ Odgovaramo u roku od <strong style="color:var(--accent);">30 minuta</strong>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Ljubazno, Prijateljski, Preporuka, Odlično, Najbolje.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0643517914">064 3517914</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:liveapartman@gmail.com">liveapartman@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Grozde Gajšin 6a, Novi Sad 21101, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏨 Live &amp; <span>Sleep</span></h3>
+                    <p class="tagline">Hotel · Novi Sad, Srbija</p>
+                    <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">
+                        Moderan smeštaj sa dušom. Doručak, parking, čiste sobe i 
+                        ljubazna usluga — sve na jednom mestu.
+                    </p>
+                    <div class="footer-viber-wa">
+                        <a href="viber://chat?number=381643517914" target="_blank" rel="noopener">
+                            💬 Viber
+                        </a>
+                        <a href="https://wa.me/381643517914" target="_blank" rel="noopener">
+                            📲 WhatsApp
+                        </a>
+                    </div>
+                </div>
 
-  <footer>
-    <div class="shell">&copy; 2026 Live & Sleep. Hotel u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+                <div class="footer-contact">
+                    <h4 style="font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Kontakt</h4>
+                    <p>
+                        <span class="icon">📞</span>
+                        <a href="tel:0643517914">064 3517914</a>
+                    </p>
+                    <p>
+                        <span class="icon">✉️</span>
+                        <a href="mailto:liveapartman@gmail.com">liveapartman@gmail.com</a>
+                    </p>
+                    <p>
+                        <span class="icon">📍</span>
+                        <span>Grozde Gajšin 6a, Novi Sad 21101</span>
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H9.5V11H7.5V8.5H9.5V6.5C9.5 4.4 10.9 3 13 3H15.5V5.5H14C13.2 5.5 12.5 6.2 12.5 7V8.5H15.5L15 11H12.5V18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0Z" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H16C17.1 18 18 17.1 18 16V2C18 0.9 17.1 0 16 0ZM6 14H4V7H6V14ZM5 5.5C4.2 5.5 3.5 4.8 3.5 4C3.5 3.2 4.2 2.5 5 2.5C5.8 2.5 6.5 3.2 6.5 4C6.5 4.8 5.8 5.5 5 5.5ZM15 14H13V10.5C13 9.1 12.1 8.5 11 8.5C9.9 8.5 9 9.1 9 10.5V14H7V7H9V8.5C9.5 7.5 10.5 7 11.5 7C13.4 7 15 8.6 15 10.5V14Z" fill="currentColor" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:12px;">Usluge</h4>
+                    <ul style="list-style:none;font-size:0.9rem;color:var(--text-secondary);line-height:2;">
+                        <li>🍳 Doručak</li>
+                        <li>🅿️ Parking</li>
+                        <li>🛏️ Sobe</li>
+                        <li>📶 Besplatan Wi-Fi</li>
+                        <li>🧼 Profesionalno čišćenje</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2025 Live &amp; Sleep — Hotel u Novom Sadu. Sva prava zadržana.</span>
+                <span>Izrađeno sa ❤️ za naše goste</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-mobile-cta" id="stickyCta">
+        <div class="cta-text">
+            🏨 <strong>Live &amp; Sleep</strong><br>
+            <span style="font-size:0.75rem;color:var(--text-muted);">Brzi odgovor · 4,9 ★</span>
+        </div>
+        <a href="tel:0643517914" class="btn-cta">
+            📞 Pozovite nas
+        </a>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = navLinks.classList.toggle('open');
+                    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                    toggleBtn.textContent = isOpen ? '✕' : '☰';
+                });
+
+                // Close nav on link click
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    }
+                });
+            }
+
+            // Smooth scroll for all anchor links (fallback)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.length > 1) {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const offset = 70;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top: top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Sticky CTA: hide on desktop, show on mobile — already handled by CSS
+            // Small enhancement: add a subtle shadow when scrolling
+            const cta = document.getElementById('stickyCta');
+            if (cta) {
+                let ticking = false;
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            if (window.scrollY > 100) {
+                                cta.style.boxShadow = '0 -4px 20px rgba(0,0,0,0.3)';
+                            } else {
+                                cta.style.boxShadow = 'none';
+                            }
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>

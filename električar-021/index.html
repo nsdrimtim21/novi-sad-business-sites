@@ -1,273 +1,1326 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Električar Novi Sad 021 | električar Novi Sad</title>
-  <meta name="description" content="Električar Novi Sad 021 nudi electrician usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Električar Novi Sad 021">
-  <meta property="og:description" content="Electrician usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Električar Novi Sad 021 – Profesionalni električar u Novom Sadu</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0d1b2a;
+            --bg-secondary: #122135;
+            --bg-card: #162b40;
+            --accent: #ffd54f;
+            --accent-soft: #ffd54f22;
+            --accent-glow: #ffd54f44;
+            --text-primary: #f0f4fa;
+            --text-secondary: #b8c7dd;
+            --text-muted: #7a8ea8;
+            --border-subtle: #2a3f55;
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.55);
+            --radius-card: 14px;
+            --radius-btn: 10px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-width: 1080px;
+            --nav-height: 64px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: var(--nav-height);
+            overflow-x: hidden;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        a:hover {
+            color: #ffe082;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-pad {
+            padding: 64px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 5vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        /* ===== STICKY NAV ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(13, 27, 42, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .nav-logo svg {
+            flex-shrink: 0;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta-mobile {
+            display: none;
+            background: var(--accent);
+            color: #0d1b2a;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: var(--radius-btn);
+            font-size: 0.85rem;
+            transition: background 0.25s ease;
+        }
+        .nav-cta-mobile:hover {
+            background: #ffe082;
+            color: #0d1b2a;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text-primary);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: calc(100vh - var(--nav-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 40%, #1a3150 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 20% 70%, #2a1f00 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 80% 30%, #1a2a00 0%, transparent 50%),
+                var(--bg-primary);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255, 213, 79, 0.03) 40px,
+                    rgba(255, 213, 79, 0.03) 41px),
+                repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255, 213, 79, 0.02) 40px,
+                    rgba(255, 213, 79, 0.02) 41px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 213, 79, 0.12) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-deco-left,
+        .hero-deco-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+        .hero-deco-left {
+            left: 3%;
+        }
+        .hero-deco-right {
+            right: 3%;
+            transform: translateY(-50%) scaleX(-1);
+        }
+
+        .hero-deco-left svg,
+        .hero-deco-right svg {
+            width: clamp(60px, 10vw, 120px);
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 213, 79, 0.3));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 20px 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(255, 213, 79, 0.2);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 7vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        .hero-title .highlight {
+            color: var(--accent);
+            text-shadow: 0 0 40px rgba(255, 213, 79, 0.25);
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px 24px;
+            margin-bottom: 28px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #0d1b2a;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 36px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 213, 79, 0.25);
+        }
+        .btn-primary:hover {
+            background: #ffe082;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255, 213, 79, 0.35);
+            color: #0d1b2a;
+        }
+        .btn-primary:active {
+            transform: translateY(0px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 28px;
+            border-radius: var(--radius-btn);
+            border: 1.5px solid var(--border-subtle);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px 40px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero-trust strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .hero-trust .num {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* ===== WHY US ===== */
+        .why-us {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 32px 24px 28px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-card);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 213, 79, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 44px rgba(0, 0, 0, 0.6);
+            border-top-color: #ffe082;
+        }
+        .why-card .emoji {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .why-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .why-card .big-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+            opacity: 0.9;
+        }
+
+        /* ===== SITUATIONS ===== */
+        .situations {
+            background: var(--bg-primary);
+            position: relative;
+        }
+        .situations::before {
+            content: '⚡ ⚡ ⚡';
+            position: absolute;
+            top: 12px;
+            right: 30px;
+            font-size: 1.4rem;
+            letter-spacing: 12px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .situ-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 26px 22px 24px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .situ-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
+            border-left-color: #ffe082;
+            background: #1a3048;
+        }
+        .situ-card .emoji {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+        .situ-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .situ-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .situ-card .situ-cta {
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .situ-card .situ-cta::after {
+            content: '→';
+            transition: transform 0.25s ease;
+        }
+        .situ-card:hover .situ-cta::after {
+            transform: translateX(4px);
+        }
+
+        /* ===== PROCESS ===== */
+        .process {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .process::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+        }
+
+        .process-deco {
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 213, 79, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 28px 22px 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.35s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        .process-step .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #0d1b2a;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+        }
+        .process-step .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .process-step h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .process-step p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .process-step .step-detail {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #091520;
+            border-top: 1px solid var(--border-subtle);
+            padding: 48px 0 100px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 36px;
+        }
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col p,
+        .footer-col a {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+        .footer-col a {
+            display: inline-block;
+        }
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .footer-brand span {
+            color: var(--accent);
+        }
+        .footer-cat {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.25s ease;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+            color: #0d1b2a;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .footer-contact-item .icon {
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        .footer-bottom {
+            margin-top: 36px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-apps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .footer-apps a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-card);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.25s ease;
+        }
+        .footer-apps a:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-subtle);
+            padding: 12px 20px;
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #0d1b2a;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 28px;
+            border-radius: var(--radius-btn);
+            width: 100%;
+            max-width: 360px;
+            transition: background 0.25s ease;
+            box-shadow: 0 4px 20px rgba(255, 213, 79, 0.2);
+        }
+        .mobile-cta a:hover {
+            background: #ffe082;
+            color: #0d1b2a;
+        }
+        .mobile-cta a svg {
+            flex-shrink: 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-deco-left,
+            .hero-deco-right {
+                opacity: 0.12;
+            }
+            .hero-deco-left {
+                left: 1%;
+            }
+            .hero-deco-right {
+                right: 1%;
+            }
+            .hero-deco-left svg,
+            .hero-deco-right svg {
+                width: clamp(40px, 8vw, 80px);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(13, 27, 42, 0.96);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 24px 28px 32px;
+                gap: 18px;
+                border-bottom: 1px solid var(--border-subtle);
+                transform: translateY(-110%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                pointer-events: none;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-links a {
+                font-size: 1.05rem;
+                padding: 6px 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-cta-mobile {
+                display: inline-flex;
+            }
+            .nav-cta-desktop {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(1.7rem, 8vw, 2.4rem);
+            }
+            .hero-trust {
+                gap: 16px 24px;
+                font-size: 0.85rem;
+            }
+            .hero-trust span {
+                flex: 1 0 auto;
+                justify-content: center;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .situ-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .mobile-cta {
+                display: flex;
+            }
+            .footer {
+                padding-bottom: 90px;
+            }
+
+            .section-pad {
+                padding: 44px 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary,
+            .btn-secondary {
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .why-card {
+                padding: 24px 18px 22px;
+            }
+            .situ-card {
+                padding: 20px 16px 18px;
+            }
+            .process-step {
+                padding: 22px 18px 20px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .anim-fade-up {
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        .anim-delay-1 {
+            animation-delay: 0.1s;
+        }
+        .anim-delay-2 {
+            animation-delay: 0.2s;
+        }
+        .anim-delay-3 {
+            animation-delay: 0.3s;
+        }
+        .anim-delay-4 {
+            animation-delay: 0.4s;
+        }
+        .anim-delay-5 {
+            animation-delay: 0.5s;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Električar Novi Sad 021</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAV ===== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Glavna navigacija">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo" aria-label="Početna">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 2L4 16h9l-1 10 12-14H15l1-10z" fill="#ffd54f" />
+                </svg>
+                <span>Električar</span> Novi Sad 021
+            </a>
+
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="#hero" role="menuitem">Početna</a></li>
+                <li role="none"><a href="#zasto-mi" role="menuitem">Zašto mi</a></li>
+                <li role="none"><a href="#situacije" role="menuitem">Kada trebate</a></li>
+                <li role="none"><a href="#proces" role="menuitem">Kako funkcionišemo</a></li>
+                <li role="none"><a href="#kontakt" role="menuitem">Kontakt</a></li>
+                <li role="none"><a href="tel:0665755500" class="nav-cta-mobile" role="menuitem">📞 Pozovite nas</a></li>
+            </ul>
+
+            <a href="tel:0665755500" class="nav-cta-mobile" style="display:none;" aria-label="Pozovite nas">📞</a>
+
+            <button class="hamburger" id="hamburger" aria-label="Otvorite meni" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Električar / Novi Sad</p>
-          <h1>Električar Novi Sad 021: električarske usluge u Novom Sadu, direktan kontakt</h1>
-          <p class="lead">Kontaktirajte Električar Novi Sad 021 direktno za Profesionalne Električarske usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:0665755500">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Električar</div>
-            <div class="micro">Direktan kontakt: 066 5755500</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero" aria-label="Hero sekcija">
+        <div class="hero-glow"></div>
+
+        <div class="hero-deco-left" aria-hidden="true">
+            <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 10L10 90h30l-8 60 40-90H38l7-60z" fill="#ffd54f" opacity="0.6" />
+                <path d="M65 30L40 80h18l-4 30 20-45H58l7-35z" fill="#ffd54f" opacity="0.3" />
+            </svg>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Električar</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> Veselina Masleše 60, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
+        <div class="hero-deco-right" aria-hidden="true">
+            <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 10L10 90h30l-8 60 40-90H38l7-60z" fill="#ffd54f" opacity="0.6" />
+                <path d="M65 30L40 80h18l-4 30 20-45H58l7-35z" fill="#ffd54f" opacity="0.3" />
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge anim-fade-up">
+                ⚡ Profesionalni električar u Novom Sadu
+            </div>
+
+            <h1 class="hero-title anim-fade-up anim-delay-1">
+                Bez struje? Kvar vas koči?<br>
+                <span class="highlight">Rešavamo za 30 minuta</span>
+            </h1>
+
+            <p class="hero-sub anim-fade-up anim-delay-2">
+                Više od 10 godina iskustva u Novom Sadu. Brzi, pouzdani i precizni – 
+                dolazimo na vašu lokaciju i rešavamo sve električarske probleme, 
+                od sitnih kvarova do kompletnih instalacija.
+            </p>
+
+            <div class="hero-cta-row anim-fade-up anim-delay-3">
+                <a href="tel:0665755500" class="btn-primary">
+                    📞 Pozovite nas
+                </a>
+                <a href="#zasto-mi" class="btn-secondary">
+                    Saznajte više →
+                </a>
+            </div>
+
+            <div class="hero-trust anim-fade-up anim-delay-4">
+                <span>⭐ <span class="num">5.0</span> <strong>ocena</strong></span>
+                <span>⚡ <span class="num">30 min</span> <strong>prosečna reakcija</strong></span>
+                <span>🔧 <span class="num">500+</span> <strong>zadovoljnih klijenata</strong></span>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY US ===== -->
+    <section class="why-us section-pad" id="zasto-mi" aria-label="Zašto baš mi">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:44px;">
+                <span class="section-label">⚡ Zašto baš mi</span>
+                <h2 class="section-title">Zašto <span style="color:var(--accent);">Električar Novi Sad 021</span>?</h2>
+                <p class="section-sub" style="margin:0 auto;">
+                    Ne nudimo samo uslugu – nudimo sigurnost, brzinu i mir. 
+                    Evo zašto nam klijenti veruju već više od decenije.
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <div class="big-num">5.0</div>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši klijenti nas ocenjuju najvišom ocenom. Svaka preporuka nam je važna i trudimo se da opravdamo poverenje.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">⚡</span>
+                    <div class="big-num">30 min</div>
+                    <h3>Brza reakcija</h3>
+                    <p>U roku od 30 minuta smo na vašoj adresi. Znamo da kvar ne čeka – zato smo tu odmah.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🔧</span>
+                    <div class="big-num">10+</div>
+                    <h3>Godina iskustva</h3>
+                    <p>Deceniju radimo u Novom Sadu. Znamo svaki kvart, svaku vrstu instalacije i svaki mogući problem.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">✅</span>
+                    <div class="big-num">100%</div>
+                    <h3>Garantovana usluga</h3>
+                    <p>Svaki posao garantujemo. Ako niste zadovoljni – vraćamo se i popravljamo besplatno.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Profesionalne Električarske usluge</h3>
-          <p>Profesionalne Električarske usluge je dostupna usluga u okviru električarske ponude koju Električar Novi Sad 021 pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Električar ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== SITUATIONS ===== -->
+    <section class="situations section-pad" id="situacije" aria-label="Kada vam trebamo">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:44px;">
+                <span class="section-label">🔌 Kada vam trebamo</span>
+                <h2 class="section-title">U kojim situacijama vas možemo spasiti?</h2>
+                <p class="section-sub" style="margin:0 auto;">
+                    Bilo da je kvar mali ili veliki – mi smo tu. Ovo su najčešći razlozi 
+                    zbog kojih nam ljudi zovu.
+                </p>
+            </div>
 
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Električar ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <span class="emoji">🏠</span>
+                    <h4>Nestanak struje u stanu</h4>
+                    <p>Ostali ste bez struje? Proveravamo instalaciju, pronalazimo kvar i rešavamo ga u roku od sat vremena.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🏢</span>
+                    <h4>Kvar u poslovnom prostoru</h4>
+                    <p>Zastoj u radu košta. Dolazimo odmah, dijagnosticiramo problem i vraćamo vas u pogon.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">⚡</span>
+                    <h4>Kratak spoj ili preopterećenje</h4>
+                    <p>Osigurači neprestano ispadaju? Opasno je čekati. Intervenišemo brzo i bezbedno.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🔌</span>
+                    <h4>Nove instalacije i priključci</h4>
+                    <p>Potrebna vam je nova linija, utičnica ili priključak za mašinu? Izvodimo profesionalno.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">💡</span>
+                    <h4>Rasveta ne radi</h4>
+                    <p>Prekidači, lampe, LED trake – sve vrste rasvete popravljamo i zamenjujemo.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+                <div class="situ-card">
+                    <span class="emoji">🔄</span>
+                    <h4>Remont starih instalacija</h4>
+                    <p>Stare instalacije su ozbiljan rizik. Radimo kompletnu zamenu po najvišim standardima.</p>
+                    <span class="situ-cta">Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== PROCESS ===== -->
+    <section class="process section-pad" id="proces" aria-label="Kako funkcionišemo">
+        <div class="process-deco" aria-hidden="true"></div>
+        <div class="container">
+            <div style="text-align:center; margin-bottom:44px;">
+                <span class="section-label">📋 Koraci do usluge</span>
+                <h2 class="section-title">Kako funkcionišemo?</h2>
+                <p class="section-sub" style="margin:0 auto;">
+                    Jednostavan proces koji vas ne stresira. Od poziva do rešenja – brzo i bez komplikacija.
+                </p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="step-num">1</span>
+                    <span class="emoji">📞</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Pozovite broj <strong style="color:var(--accent);">066 575 5500</strong> i opišite problem. Dostupni smo svakog dana.</p>
+                    <div class="step-detail">Ponedeljak – Subota: 07h – 20h</div>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">2</span>
+                    <span class="emoji">📅</span>
+                    <h4>Dogovorite termin</h4>
+                    <p>Dogovaramo termin koji vama odgovara. Kod hitnih kvarova dolazimo odmah.</p>
+                    <div class="step-detail">Reakcija u roku od 30 minuta</div>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">3</span>
+                    <span class="emoji">🚐</span>
+                    <h4>Dolazimo na teren</h4>
+                    <p>Stižemo na vašu adresu u Novom Sadu i okolini. Sa sobom nosimo kompletnu opremu.</p>
+                    <div class="step-detail">Cela teritorija Novog Sada</div>
+                </div>
+                <div class="process-step">
+                    <span class="step-num">4</span>
+                    <span class="emoji">✅</span>
+                    <h4>Rešavamo problem</h4>
+                    <p>Popravljamo kvar, testiramo i objašnjavamo šta je urađeno. Plaćate samo posle obavljenog posla.</p>
+                    <div class="step-detail">Garantujemo kvalitet</div>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Preporuka, Odlično, Vrhunski, Brzo.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0665755500">066 5755500</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:mirela25031983@gmail.com">mirela25031983@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Veselina Masleše 60, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="kontakt" aria-label="Kontakt">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <div class="footer-brand">⚡ <span>Električar</span> Novi Sad 021</div>
+                    <div class="footer-cat">Profesionalni električarski servis</div>
+                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:12px;">
+                        Više od 10 godina pouzdane usluge u Novom Sadu. 
+                        Svaki kvar rešavamo brzo, profesionalno i uz garanciju.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/share/15kKMYb4Kk/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aleksandar-milisavljevi%C4%87-541b20357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="viber://chat?number=381665755500" aria-label="Viber">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.398 0C5.11 0 0 4.615 0 10.353c0 3.326 1.588 6.306 4.078 8.292v3.893l3.734-2.047c.98.258 2.008.403 3.068.403 6.288 0 11.398-4.615 11.398-10.353S17.686 0 11.398 0zm.86 15.27c-.284.284-.664.442-1.074.458a1.67 1.67 0 01-.074.002c-1.39 0-2.705-.522-3.704-1.468a7.573 7.573 0 01-1.53-2.02c-.288-.52-.44-1.108-.44-1.712 0-.57.16-1.126.46-1.598.3-.472.73-.838 1.24-1.07.326-.15.688-.156 1.014-.016.33.14.572.42.738.742.174.338.34.68.5 1.026.136.298.228.62.128.94-.102.322-.33.554-.604.738a.34.34 0 00-.122.132c-.026.064-.028.134-.01.198.07.214.23.478.468.724.318.33.69.6 1.092.796.134.066.28.088.424.066.09-.012.174-.062.226-.13.144-.19.264-.4.39-.606.09-.15.19-.298.316-.412.26-.238.642-.302.978-.164.33.136.556.44.736.768.186.34.38.676.574 1.01.09.158.152.332.174.518.016.136-.02.278-.11.386l-.002.002z"/></svg>
+                        </a>
+                        <a href="https://wa.me/381665755500" target="_blank" rel="noopener" aria-label="WhatsApp">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
 
-  <footer>
-    <div class="shell">&copy; 2026 Električar Novi Sad 021. Električar u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+                <div class="footer-col">
+                    <h4>📬 Kontakt informacije</h4>
+                    <div class="footer-contact-item">
+                        <span class="icon">📞</span>
+                        <a href="tel:0665755500" style="color:var(--text-secondary);">066 575 5500</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="icon">✉️</span>
+                        <a href="mailto:mirela25031983@gmail.com">mirela25031983@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="icon">📍</span>
+                        <span>Veselina Masleše 60, Novi Sad 21000, Srbija</span>
+                    </div>
+                    <div class="footer-apps">
+                        <a href="viber://chat?number=381665755500">💬 Viber</a>
+                        <a href="https://wa.me/381665755500" target="_blank" rel="noopener">💚 WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>🕒 Radno vreme</h4>
+                    <p style="margin-bottom:6px;"><strong>Ponedeljak – Petak:</strong> 07:00 – 20:00</p>
+                    <p style="margin-bottom:6px;"><strong>Subota:</strong> 07:00 – 16:00</p>
+                    <p style="margin-bottom:16px;"><strong>Nedelja:</strong> Po dogovoru</p>
+                    <p style="color:var(--text-muted); font-size:0.88rem;">
+                        ⚡ Za hitne intervencije pozovite i van radnog vremena – tu smo za vas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2025 <strong style="color:var(--text-primary);">Električar Novi Sad 021</strong> – sva prava zadržana. |
+                <span style="color:var(--text-muted);">Profesionalni električarski servis • Novi Sad</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="mobile-cta" id="mobileCta" aria-label="Mobilni poziv za akciju">
+        <a href="tel:0665755500" aria-label="Pozovite nas">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+            Pozovite nas
+        </a>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = navLinks.classList.toggle('open');
+                    hamburger.classList.toggle('active');
+                    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                // Close menu on link click
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // Close on click outside
+                document.addEventListener('click', function(e) {
+                    if (!navbar.contains(e.target) && navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Navbar shadow on scroll
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        if (window.scrollY > 20) {
+                            navbar.classList.add('navbar-scrolled');
+                        } else {
+                            navbar.classList.remove('navbar-scrolled');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Smooth scroll for anchor links (fallback for older browsers)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = navbar.offsetHeight;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({
+                            top: top,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
 </body>
 </html>

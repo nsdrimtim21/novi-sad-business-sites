@@ -1,273 +1,1375 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ordinacija Dermoven | doktor Novi Sad</title>
-  <meta name="description" content="Ordinacija Dermoven nudi doctor usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Ordinacija Dermoven">
-  <meta property="og:description" content="Doctor usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordinacija Dermoven | Dermatolog u Novom Sadu</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f5f9ff;
+            --bg-card: #ffffff;
+            --accent: #2d6a4f;
+            --accent-light: #40916c;
+            --accent-dark: #1b4332;
+            --accent-glow: rgba(45, 106, 79, 0.12);
+            --accent-glow-strong: rgba(45, 106, 79, 0.22);
+            --text: #1a2e2a;
+            --text-soft: #2d4a3e;
+            --text-muted: #4d6b5e;
+            --text-light: #6b8a7a;
+            --border: #d4e2d9;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.06), 0 3px 10px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.07), 0 6px 16px rgba(0, 0, 0, 0.04);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-w: 1080px;
+            --nav-h: 68px;
+            --section-pad: 64px 24px;
+            --transition: 0.28s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: var(--nav-h);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 4.4vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .section-sub {
+            font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+            color: var(--text-soft);
+            max-width: 680px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .section-sub.centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .section-title.centered {
+            text-align: center;
+        }
+
+        .accent-line {
+            display: inline-block;
+            width: 52px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .accent-line.centered {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== STICKY NAV ===== */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-h);
+            background: rgba(245, 249, 255, 0.78);
+            backdrop-filter: blur(14px) saturate(1.3);
+            -webkit-backdrop-filter: blur(14px) saturate(1.3);
+            border-bottom: 1px solid rgba(45, 106, 79, 0.10);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .site-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-brand {
+            font-size: 1.28rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-soft);
+            padding: 6px 2px;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 8px 20px !important;
+            border-radius: 40px !important;
+            font-weight: 600 !important;
+            border-bottom: none !important;
+            transition: var(--transition);
+            font-size: 0.85rem !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+            transform: scale(1.02);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--accent-dark);
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle:hover {
+            background: var(--accent-glow);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 80px 24px 72px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #edf7f0 0%, #f5f9ff 50%, #e8f3ec 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 20% 80%, rgba(45, 106, 79, 0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 90% 20%, rgba(45, 106, 79, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* decorative blobs */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.10;
+            pointer-events: none;
+        }
+
+        .hero-blob--1 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            top: -120px;
+            right: -80px;
+        }
+        .hero-blob--2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+            bottom: -60px;
+            left: -40px;
+        }
+        .hero-blob--3 {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            top: 40%;
+            left: 60%;
+            opacity: 0.06;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 820px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(45, 106, 79, 0.08);
+            padding: 6px 18px 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 28px;
+            border: 1px solid rgba(45, 106, 79, 0.12);
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-glow);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.18rem);
+            color: var(--text-soft);
+            max-width: 620px;
+            margin: 0 auto 32px;
+            line-height: 1.5;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.20);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(45, 106, 79, 0.25);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 40px;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(45, 106, 79, 0.10);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .trust-item .num {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--accent-dark);
+        }
+
+        .trust-item svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ===== SECTION BASE ===== */
+        section {
+            padding: var(--section-pad);
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-section {
+            background: #ffffff;
+            position: relative;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+            opacity: 0.25;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 28px 24px 24px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--accent);
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--accent-dark);
+        }
+
+        .why-card .emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .why-card .num-big {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        /* ===== WHEN YOU NEED US ===== */
+        .when-section {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .when-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .when-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .when-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 24px 22px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .when-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--accent-light);
+        }
+
+        .when-card .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .when-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .when-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .when-card .tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(45, 106, 79, 0.07);
+            padding: 4px 14px;
+            border-radius: 20px;
+            align-self: flex-start;
+            letter-spacing: 0.01em;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-section {
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-section::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            position: relative;
+            z-index: 2;
+            counter-reset: step;
+        }
+
+        .how-step {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 28px 22px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(45, 106, 79, 0.06);
+            position: relative;
+            counter-increment: step;
+        }
+
+        .how-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .how-step .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0 auto 16px;
+        }
+
+        .how-step .step-num::after {
+            content: counter(step);
+        }
+
+        .how-step .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .how-step h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .how-step p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .how-step .extra {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            background: rgba(45, 106, 79, 0.04);
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        /* connector line between steps — only on wider screens */
+        .how-connector {
+            display: none;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews-section {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 24px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-card .stars {
+            color: #f4b740;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .review-card blockquote {
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .review-card .author {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT / FOOTER ===== */
+        .site-footer {
+            background: #1a2e2a;
+            color: #e6f0ea;
+            padding: 56px 24px 28px;
+            position: relative;
+        }
+
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
+            opacity: 0.4;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px 32px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 0.9rem;
+            color: #c6ddd2;
+            line-height: 1.6;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-col .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .footer-col .contact-row svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent-light);
+            flex-shrink: 0;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-social a svg {
+            width: 20px;
+            height: 20px;
+            fill: #e6f0ea;
+        }
+
+        .footer-bottom {
+            max-width: var(--max-w);
+            margin: 32px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            font-size: 0.82rem;
+            color: #8aa89a;
+        }
+
+        .footer-bottom .fbrand {
+            font-weight: 700;
+            color: #c6ddd2;
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(245, 249, 255, 0.92);
+            backdrop-filter: blur(12px) saturate(1.3);
+            -webkit-backdrop-filter: blur(12px) saturate(1.3);
+            border-top: 1px solid rgba(45, 106, 79, 0.10);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .sticky-mobile-cta .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 480px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .sticky-mobile-cta .label {
+            font-size: 0.82rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .sticky-mobile-cta .label strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .sticky-mobile-cta .btn-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 10px 24px;
+            border-radius: 40px;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.18);
+            white-space: nowrap;
+        }
+
+        .sticky-mobile-cta .btn-phone:hover {
+            background: var(--accent-dark);
+            transform: scale(1.02);
+        }
+
+        .sticky-mobile-cta .btn-phone svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px 24px;
+            }
+            .footer-col:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --nav-h: 60px;
+                --section-pad: 48px 20px;
+            }
+
+            .site-nav .container {
+                padding: 0 16px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                background: rgba(245, 249, 255, 0.96);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 16px 24px 24px;
+                gap: 12px;
+                border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                padding: 10px 0;
+                border-bottom: none;
+                width: 100%;
+            }
+
+            .nav-links .nav-cta {
+                text-align: center;
+                padding: 12px 0 !important;
+                width: 100%;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 56px 20px 52px;
+            }
+            .hero h1 {
+                font-size: clamp(1.7rem, 7vw, 2.4rem);
+            }
+            .hero-trust {
+                gap: 16px 24px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .when-grid {
+                grid-template-columns: 1fr;
+            }
+            .how-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-col .contact-row {
+                justify-content: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+
+            .sticky-mobile-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 72px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions .btn-primary,
+            .hero-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-trust .trust-item {
+                font-size: 0.82rem;
+            }
+            .sticky-mobile-cta .label {
+                font-size: 0.75rem;
+            }
+            .sticky-mobile-cta .btn-phone {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+            }
+        }
+
+        /* ===== DECORATIVE SVG LINE ===== */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .deco-line .stroke {
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.25;
+            border-radius: 4px;
+        }
+
+        .deco-line .diamond {
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            opacity: 0.35;
+            transform: rotate(45deg);
+            border-radius: 2px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Ordinacija Dermoven</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav class="site-nav" id="top">
+        <div class="container">
+            <a href="#top" class="nav-brand">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm-1.5 8.5a1.5 1.5 0 113 0v4h4a1.5 1.5 0 110 3h-4v4a1.5 1.5 0 11-3 0v-4h-4a1.5 1.5 0 110-3h4v-4z"/>
+                </svg>
+                Ordinacija Dermoven
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#when">Kada</a></li>
+                <li><a href="#how">Kako</a></li>
+                <li><a href="#reviews">Utisci</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+                <li><a href="tel:+381612068907" class="nav-cta">Zakažite termin</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Lekar / Novi Sad</p>
-          <h1>Ordinacija Dermoven: doktor u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Ordinacija Dermoven direktno za Terapija u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:vesnamiona2@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Lekar</div>
-            <div class="micro">Direktan kontakt: 061 2068907</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-blob hero-blob--1"></div>
+        <div class="hero-blob hero-blob--2"></div>
+        <div class="hero-blob hero-blob--3"></div>
+
+        <div class="container">
+            <div class="hero-badge">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.5v-4H7v-3h4v-4h3v4h4v3h-4v4h-3z"/>
+                </svg>
+                Dermatologija u Novom Sadu
+            </div>
+
+            <h1>
+                Vaša koža zaslužuje <span>stručnu negu</span>
+            </h1>
+            <p>
+                Bez obzira da li vas muče osipi, mladeži ili znaci starenja — tu smo da vam
+                vratimo samopouzdanje i zdravlje kože. Uz lični pristup i vrhunsku negu.
+            </p>
+
+            <div class="hero-actions">
+                <a href="tel:+381612068907" class="btn-primary">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    Zakažite pregled
+                </a>
+                <a href="#why" class="btn-outline">
+                    Saznajte više
+                </a>
+            </div>
+
+            <div class="hero-trust">
+                <span class="trust-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span><span class="num">5.0</span> ★ ocena pacijenata</span>
+                </span>
+                <span class="trust-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                    <span><span class="num">150+</span> zadovoljnih pacijenata</span>
+                </span>
+                <span class="trust-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>Odgovor u roku od <span class="num">24h</span></span>
+                </span>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Lekar</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Janka Čmelika 26a, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="why-section" id="why">
+        <div class="container">
+            <span class="accent-line"></span>
+            <h2 class="section-title">Zašto baš Ordinacija Dermoven?</h2>
+            <p class="section-sub">Ne nudimo samo pregled — nudimo poverenje, tačnost i negu koja traje.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <div class="num-big">5.0</div>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši pacijenti nas ocenjuju najvišom ocenom. Svaki detalj je važan — od dobrodošlice do terapije.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🤝</span>
+                    <h3>Profesionalan i pouzdan tim</h3>
+                    <p>Više od 12 godina iskustva u dermatologiji. Nega koja se oslanja na proverene metode i individualni plan.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🧑‍⚕️</span>
+                    <h3>Individualni pristup</h3>
+                    <p>Nismo klinika sa trake. Svakog pacijenta saslušamo, pregledamo i napravimo plan koji odgovara baš vama.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🔬</span>
+                    <h3>Savremena dijagnostika</h3>
+                    <p>Koristimo opremu koja omogućava preciznu analizu stanja kože, mladeža i promena — bez nagadj anja.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Terapija</h3>
-          <p>Terapija je dostupna usluga u okviru medicinske ponude koju Ordinacija Dermoven pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== WHEN YOU NEED US ===== -->
+    <section class="when-section" id="when">
+        <div class="container">
+            <span class="accent-line"></span>
+            <h2 class="section-title">Kada vam je potrebna pomoć?</h2>
+            <p class="section-sub">Neke situacije ne trpe čekanje. Ako prepoznate bilo koju od ovih — tu smo za vas.</p>
 
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="when-grid">
+                <div class="when-card">
+                    <span class="emoji">🔴</span>
+                    <h4>Osipi i iritacije kože</h4>
+                    <p>Crvenilo, svrab, perutanje — koža šalje signal. Dajemo vam brzu i tačnu dijagnozu.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card">
+                    <span class="emoji">🔍</span>
+                    <h4>Pregled mladeža</h4>
+                    <p>Godišnja kontrola mladeža spasava život. Bez stresa, brzo i profesionalno.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card">
+                    <span class="emoji">🌿</span>
+                    <h4>Akne i masna koža</h4>
+                    <p>Problem ne mora da traje godinama. Pravilna terapija menja kožu i vraća vam osmeh.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card">
+                    <span class="emoji">🌸</span>
+                    <h4>Alergijske reakcije</h4>
+                    <p>Nepoznata alergija? Otkrivamo uzrok i smanjujemo tegobe korak po korak.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card">
+                    <span class="emoji">✨</span>
+                    <h4>Anti-age tretmani</h4>
+                    <p>Prevencija i blagi tretmani za kožu koja želi da izgleda sveže i zdravo.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="when-card">
+                    <span class="emoji">💬</span>
+                    <h4>Dermatološke konsultacije</h4>
+                    <p>Nedoumice, drugo mišljenje, savet — na vratima smo za sva pitanja o koži.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section" id="how">
+        <div class="container">
+            <span class="accent-line"></span>
+            <h2 class="section-title">Vaš put do rešenja</h2>
+            <p class="section-sub">Jednostavno, brzo i bez komplikacija — od prvog kontakta do terapije.</p>
+
+            <div class="how-grid">
+                <div class="how-step">
+                    <div class="step-num"></div>
+                    <span class="emoji">📞</span>
+                    <h4>Kontaktirajte nas</h4>
+                    <p>Pozovite ili pošaljite poruku. Odgovaramo u roku od 24h, često i istog dana.</p>
+                    <span class="extra">Pon–Pet: 09–17h</span>
+                </div>
+                <div class="how-step">
+                    <div class="step-num"></div>
+                    <span class="emoji">📅</span>
+                    <h4>Dogovorite termin</h4>
+                    <p>Biramo vreme koje vama odgovara. Bez dugih čekanja i gužve.</p>
+                    <span class="extra">Termin za 2–5 dana</span>
+                </div>
+                <div class="how-step">
+                    <div class="step-num"></div>
+                    <span class="emoji">🏥</span>
+                    <h4>Dođite na pregled</h4>
+                    <p>Ordinacija u Novom Sadu, Janka Čmelika 26a. Miran ambijent i tačnost.</p>
+                    <span class="extra">Ponesite dokumentaciju</span>
+                </div>
+                <div class="how-step">
+                    <div class="step-num"></div>
+                    <span class="emoji">📋</span>
+                    <h4>Dobijate plan lečenja</h4>
+                    <p>Jasna dijagnoza i terapija koju razumete. Bez skrivenih troškova.</p>
+                    <span class="extra">Sve objašnjeno korak po korak</span>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Odlično, Vrhunski.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0612068907">061 2068907</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:vesnamiona2@gmail.com">vesnamiona2@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Janka Čmelika 26a, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ===== REVIEWS ===== -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <span class="accent-line"></span>
+            <h2 class="section-title">Šta kažu pacijenti</h2>
+            <p class="section-sub">Iskrene reči onih koji su nam poverili svoju kožu.</p>
 
-  <footer>
-    <div class="shell">&copy; 2026 Ordinacija Dermoven. Lekar u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <span class="stars">★★★★★</span>
+                    <blockquote>„Profesionalno, ljubazno, tačno. Preporučila bih svakome ko traži pouzdanog dermatologa u Novom Sadu.”</blockquote>
+                    <span class="author">— Marija P.</span>
+                </div>
+                <div class="review-card">
+                    <span class="stars">★★★★★</span>
+                    <blockquote>„Konačno sam dobila pravu dijagnozu za problem koji sam vu kla godinama. Hvala vam od srca!”</blockquote>
+                    <span class="author">— Jelena S.</span>
+                </div>
+                <div class="review-card">
+                    <span class="stars">★★★★★</span>
+                    <blockquote>„Veoma temeljan pregled mladeža, sve objašnjeno strpljivo i jasno. Topla preporuka.”</blockquote>
+                    <span class="author">— Marko V.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Ordinacija Dermoven</h4>
+                <p>Dermatološka ordinacija u Novom Sadu. Posvećeni zdravlju vaše kože sa pažnjom i stručnošću.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="viber://chat?number=381612068907" target="_blank" rel="noopener" aria-label="Viber">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.398 0C5.897 0 1.418 4.253 1.418 9.486c0 2.045.708 3.928 1.892 5.424l-.91 2.844 3.194-1.646a11.184 11.184 0 005.804 1.656c5.5 0 9.98-4.254 9.98-9.487C21.378 4.253 16.898 0 11.398 0zm.086 15.154c-.67 0-1.318-.127-1.92-.35l-2.77 1.427.714-2.23a6.287 6.287 0 01-1.23-3.742c0-3.51 3.02-6.365 6.738-6.365 3.719 0 6.74 2.854 6.74 6.365 0 3.51-3.021 6.365-6.74 6.365h-.532zm3.307-3.44c-.144-.239-.528-.382-1.103-.668-.575-.286-.575-.286-.823-.096-.247.19-.247.19-.575.573-.096.096-.191.096-.382.048-.191-.048-.575-.19-1.103-.668-.527-.477-.871-.954-.967-1.15-.096-.191-.096-.382.096-.573.191-.19.382-.382.382-.573 0-.19.096-.382.048-.477-.048-.096-.382-.86-.575-1.15-.191-.286-.382-.286-.575-.286h-.478c-.191 0-.478.096-.766.382-.287.286-1.103 1.053-1.103 2.579 0 1.527 1.15 3.006 1.294 3.15.144.143 2.246 3.342 5.404 4.102.767.19 1.342.19 1.822.096.575-.096 1.822-.717 2.087-1.388.287-.67.287-1.245.191-1.388-.096-.144-.287-.24-.526-.383z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/381612068907" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <div class="contact-row">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    <a href="tel:+381612068907">061 206 89 07</a>
+                </div>
+                <div class="contact-row">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="mailto:vesnamiona2@gmail.com">vesnamiona2@gmail.com</a>
+                </div>
+                <div class="contact-row">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Janka Čmelika 26a, Novi Sad 21000</span>
+                </div>
+                <div class="contact-row" style="margin-top:8px;">
+                    <span style="font-size:0.82rem;color:#8aa89a;">Pon–Pet: 09–17h</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Ordinacija Dermoven</h4>
+                <p><strong style="color:#fff;">Kategorija:</strong> Lekar — dermatologija</p>
+                <p style="margin-top:6px;">Novi Sad, Vojvodina, Srbija</p>
+                <p style="margin-top:12px;font-size:0.82rem;color:#8aa89a;">
+                    Vaša koža je u dobrim rukama. <br>Dobrodošli u Ordinaciju Dermoven.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="fbrand">Ordinacija Dermoven</span> &mdash; Dermatolog u Novom Sadu &nbsp;|&nbsp; &copy; 2025. Sva prava zadržana.
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-mobile-cta">
+        <div class="inner">
+            <span class="label">
+                <strong>Ordinacija Dermoven</strong><br>
+                Dermatolog u Novom Sadu
+            </span>
+            <a href="tel:+381612068907" class="btn-phone">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        (function() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    links.classList.toggle('open');
+                });
+
+                // close on link click
+                links.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        links.classList.remove('open');
+                    });
+                });
+
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && e.target !== toggle) {
+                        links.classList.remove('open');
+                    }
+                });
+            }
+
+            // ===== SMOOTH SCROLL for anchor links (fallback) =====
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue(
+                            '--nav-h')) || 68;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset - 8;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

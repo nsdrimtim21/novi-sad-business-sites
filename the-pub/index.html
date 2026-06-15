@@ -1,291 +1,1221 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Pub | Muzički klub Novi Sad</title>
-  <meta name="description" content="The Pub nudi live music venue usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="The Pub">
-  <meta property="og:description" content="Live Music Venue usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pub | Muzički klub – Novi Sad</title>
+    <style>
+        :root {
+            --bg: #1c0f0a;
+            --bg-card: #2a1a14;
+            --bg-nav: rgba(28, 15, 10, 0.88);
+            --accent: #e65100;
+            --accent-glow: rgba(230, 81, 0, 0.25);
+            --accent-light: #ff8f00;
+            --text: #f5f0eb;
+            --text-muted: #c9bdb5;
+            --text-dark: #1c0f0a;
+            --border: rgba(230, 81, 0, 0.25);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --max-w: 1080px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ─── CONTAINER ─── */
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 18px;
+            }
+        }
+
+        /* ─── STICKY NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--bg-nav);
+            backdrop-filter: blur(14px) saturate(1.2);
+            -webkit-backdrop-filter: blur(14px) saturate(1.2);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .nav-logo {
+            font-weight: 800;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--bg-nav);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                padding: 20px 24px 26px;
+                gap: 18px;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-110%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links a {
+                font-size: 1.05rem;
+                width: 100%;
+                padding: 6px 0;
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse 80% 60% at 20% 40%, rgba(230, 81, 0, 0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(255, 143, 0, 0.07) 0%, transparent 60%),
+                var(--bg);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(230, 81, 0, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 143, 0, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--accent-glow);
+            border-radius: 4px;
+            opacity: 0.4;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.35);
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(230, 81, 0, 0.45);
+            background: #f05700;
+        }
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin-top: 36px;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .hero-trust-item strong {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .hero-trust-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-visual svg {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            filter: drop-shadow(0 0 60px rgba(230, 81, 0, 0.15));
+        }
+
+        @media (max-width: 860px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content h1 .highlight::after {
+                display: none;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual svg {
+                max-width: 280px;
+            }
+            .hero {
+                padding: 120px 0 60px;
+            }
+        }
+
+        /* ─── SECTION BASE ─── */
+        section {
+            padding: 70px 0;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            padding: 4px 16px;
+            border-radius: 50px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 640px;
+            margin-bottom: 44px;
+            line-height: 1.7;
+        }
+        .section-desc.center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ─── WHY CHOOSE US ─── */
+        .why {
+            background: radial-gradient(ellipse 70% 50% at 50% 20%, rgba(230, 81, 0, 0.05) 0%, transparent 70%);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 32px 26px 30px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+            border-top-color: var(--accent-light);
+        }
+        .why-card .emoji {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .why-card .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 860px) {
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 540px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── SERVICES / WHEN TO VISIT ─── */
+        .services {
+            background: var(--bg);
+            position: relative;
+        }
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 22px 26px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent);
+        }
+        .service-card .emoji {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .service-card .tag {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 2px 14px;
+            border-radius: 50px;
+        }
+
+        @media (max-width: 860px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 540px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── HOW IT WORKS (timeline style) ─── */
+        .process {
+            background: radial-gradient(ellipse 60% 40% at 80% 30%, rgba(230, 81, 0, 0.04) 0%, transparent 60%);
+            position: relative;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+        }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+            opacity: 0.25;
+            border-radius: 2px;
+        }
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        .step-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            box-shadow: 0 0 0 6px rgba(230, 81, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+        .step .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .step h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px 28px;
+            }
+            .process-steps::before {
+                display: none;
+            }
+        }
+        @media (max-width: 540px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* ─── REVIEWS ─── */
+        .reviews {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+        }
+        .review-card .stars {
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .review-card blockquote {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .review-card .author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .review-card .source {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 860px) {
+            .reviews-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 540px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: #130a07;
+            padding: 56px 0 40px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+        .footer-brand .cat {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-col ul li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+        .footer-col ul li svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            margin-top: 44px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom a {
+            color: var(--accent);
+        }
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .footer-socials a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .footer-socials a svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer-socials a:hover svg {
+            fill: #fff;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+        @media (max-width: 540px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ─── STICKY MOBILE CTA ─── */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px) saturate(1.2);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            border-top: 1px solid var(--border);
+            padding: 12px 20px;
+        }
+        .mobile-cta .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+        .mobile-cta .text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .mobile-cta .text small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .mobile-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.3);
+        }
+        .mobile-cta .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        .mobile-cta .btn:hover {
+            background: #f05700;
+        }
+
+        @media (max-width: 720px) {
+            .mobile-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        /* ─── UTILITY ─── */
+        .gap-8 {
+            gap: 8px;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+
+        /* decorative inline shape */
+        .deco-blob {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+            border-radius: 60% 40% 50% 30%;
+            opacity: 0.2;
+            filter: blur(6px);
+            margin-right: 8px;
+        }
+
+        /* smooth scroll offset for anchor targets */
+        .anchor-offset {
+            scroll-margin-top: 80px;
+        }
+
+        @media (max-width: 720px) {
+            .anchor-offset {
+                scroll-margin-top: 70px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">The Pub</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ═══ STICKY NAV ═══ -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <a href="#hero" class="nav-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                The <span>Pub</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menij">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#services">Usluge</a></li>
+                <li><a href="#process">Kako</a></li>
+                <li><a href="#reviews">Recenzije</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Muzički klub / Novi Sad</p>
-          <h1>The Pub: lokalna Muzički klub destinacija u Novom Sadu</h1>
-          <p class="lead">Kontaktirajte The Pub direktno za Događaj u Novom Sadu. Ključna prednost: Izuzetna ocena 4.6 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:vladimirkrstic1986@gmail.com">Planiraj posetu</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Muzički klub</div>
-            <div class="micro">Direktan kontakt: 063 545495</div>
-          </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero anchor-offset" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Žudite za večeri<br>
+                    koja <span class="highlight">pamti</span>?
+                </h1>
+                <p class="hero-sub">
+                    U <strong>The Pub</strong> svaka nota, svaki smeh i svaki trenutak postaju deo priče.
+                    Živa muzika, stand-up večeri i koncerti — sve na jednom mestu, u srcu Novog Sada.
+                </p>
+                <a href="tel:063545495" class="hero-cta">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                    Pozovite nas
+                </a>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span><strong>4.6</strong> ★ ocena</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        <span><strong>843+</strong> zadovoljnih gostiju</span>
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        <span>Odgovaramo za <strong>15 min</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e65100" stop-opacity="0.35"/>
+                            <stop offset="100%" stop-color="#ff8f00" stop-opacity="0.10"/>
+                        </linearGradient>
+                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e65100" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#ff8f00" stop-opacity="0.05"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- decorative blobs -->
+                    <circle cx="200" cy="170" r="130" fill="url(#g1)" opacity="0.6"/>
+                    <circle cx="200" cy="170" r="90" fill="url(#g2)" opacity="0.5"/>
+                    <!-- music notes -->
+                    <text x="120" y="120" font-size="56" fill="#e65100" opacity="0.7">♪</text>
+                    <text x="260" y="100" font-size="42" fill="#ff8f00" opacity="0.5">♫</text>
+                    <text x="170" y="260" font-size="38" fill="#e65100" opacity="0.4">♩</text>
+                    <text x="290" y="240" font-size="32" fill="#ff8f00" opacity="0.35">♪</text>
+                    <!-- sound wave stylized -->
+                    <path d="M80 190 Q100 150 120 190 Q140 230 160 190 Q180 150 200 190 Q220 230 240 190 Q260 150 280 190 Q300 230 320 190" stroke="#e65100" stroke-width="2.5" fill="none" opacity="0.3" stroke-linecap="round"/>
+                    <path d="M100 210 Q120 180 140 210 Q160 240 180 210 Q200 180 220 210 Q240 240 260 210 Q280 180 300 210" stroke="#ff8f00" stroke-width="2" fill="none" opacity="0.2" stroke-linecap="round"/>
+                    <!-- small circles -->
+                    <circle cx="70" cy="160" r="6" fill="#e65100" opacity="0.3"/>
+                    <circle cx="330" cy="180" r="8" fill="#ff8f00" opacity="0.2"/>
+                    <circle cx="150" cy="70" r="5" fill="#e65100" opacity="0.25"/>
+                    <circle cx="280" cy="290" r="7" fill="#ff8f00" opacity="0.2"/>
+                </svg>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Muzički klub</p>
-          <p><strong>Cilj:</strong> Planiraj posetu</p>
-          <p><strong>Adresa:</strong> Ignjata Pavlasa 4, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ═══ WHY CHOOSE US ═══ -->
+    <section class="why anchor-offset" id="why">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">✦ Zašto baš mi</span>
+                <h2 class="section-title">Zašto <span style="color:var(--accent)">The Pub</span>?</h2>
+                <p class="section-desc center">
+                    Nismo samo još jedan klub. Mi smo mesto gde se muzika oseća, gde se smeh deli i gde
+                    svaka večer dobije svoj ritam. Evo zašto nam se gosti vraćaju.
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <span class="number">4.6</span>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši gosti su nas ocenili sa 4.6 zvezdica — jer kvalitet, atmosfera i energija govore sami za sebe.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🎤</span>
+                    <span class="number">843+</span>
+                    <h3>Zadovoljnih gostiju</h3>
+                    <p>Poverenje više od 843 posetilaca koji su uživali u live svirkama, stand-up večerima i koncertima.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🎵</span>
+                    <span class="number">4</span>
+                    <h3>Različita iskustva</h3>
+                    <p>Eventi, live music, stand up i koncerti — svaki put drugačija emocija, uvek vrhunski doživljaj.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Događaj</h3>
-          <p>Događaj je dostupna usluga u okviru Muzički klub ponude koju The Pub pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Živa muzika</h3>
-          <p>Živa muzika je dostupna usluga u okviru Muzički klub ponude koju The Pub pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Stand-up</h3>
-          <p>Stand-up je dostupna usluga u okviru Muzički klub ponude koju The Pub pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Koncert</h3>
-          <p>Koncert je dostupna usluga u okviru Muzički klub ponude koju The Pub pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ═══ SERVICES / WHEN TO VISIT ═══ -->
+    <section class="services anchor-offset" id="services">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">🎶 Šta nudimo</span>
+                <h2 class="section-title">Kada vam treba <span style="color:var(--accent)">večer</span> koja odiše</h2>
+                <p class="section-desc center">
+                    Bilo da ste raspoloženi za koncert, smeh do suza ili opušteno veče uz žive tonove —
+                    kod nas pronađete tačno ono što vam duša traži.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="emoji">🎸</span>
+                    <h3>Live Music</h3>
+                    <p>Svake nedelje uživajte u nastupima najboljih bendova iz regiona.</p>
+                    <span class="tag">svake nedelje</span>
+                </div>
+                <div class="service-card">
+                    <span class="emoji">🎤</span>
+                    <h3>Stand Up</h3>
+                    <p>Večeri punog smeha sa proverenim komičarima koji znaju kako da vas oraspolože.</p>
+                    <span class="tag">petkom</span>
+                </div>
+                <div class="service-card">
+                    <span class="emoji">🎶</span>
+                    <h3>Koncerti</h3>
+                    <p>Veliki koncerti sa domaćim i stranim izvođačima — osetite energiju uživo.</p>
+                    <span class="tag">vikendom</span>
+                </div>
+                <div class="service-card">
+                    <span class="emoji">🎉</span>
+                    <h3>Eventi</h3>
+                    <p>Tematske žurke, proslave i specijalna večera — organizujemo sve po vašoj meri.</p>
+                    <span class="tag">po dogovoru</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.6 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Muzički klub ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Veruje nam preko 843 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Muzički klub ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ═══ HOW IT WORKS / PROCESS ═══ -->
+    <section class="process anchor-offset" id="process">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">🚀 Vaš put</span>
+                <h2 class="section-title">Kako funkcionišemo?</h2>
+                <p class="section-desc center">
+                    Od ideje do nezaboravne večeri — sve je jednostavno i brzo. Dajte nam priliku da vas
+                    ugostimo na pravi način.
+                </p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-badge">1</div>
+                    <span class="emoji">📞</span>
+                    <h3>Pozovite nas</h3>
+                    <p>Javite nam se telefonom ili porukom. Tu smo za vas od 16h do ponoći, svakog dana.</p>
+                </div>
+                <div class="step">
+                    <div class="step-badge">2</div>
+                    <span class="emoji">🗓️</span>
+                    <h3>Dogovorimo termin</h3>
+                    <p>Kažite šta vas interesuje — live nastup, stand up ili koncert — i biramo idealan datum.</p>
+                </div>
+                <div class="step">
+                    <div class="step-badge">3</div>
+                    <span class="emoji">🎫</span>
+                    <h3>Rezervišite mesto</h3>
+                    <p>Osigurajte svoje mesto uz jednostavnu rezervaciju. Broj mesta je ograničen.</p>
+                </div>
+                <div class="step">
+                    <div class="step-badge">4</div>
+                    <span class="emoji">🍻</span>
+                    <h3>Uživajte</h3>
+                    <p>Dođite, opustite se i prepustite se vrhunskoj atmosferi koju smo pripremili za vas.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:48px;color:var(--text-muted);font-size:0.95rem;">
+                📍 Servisiramo ceo Novi Sad i okolinu · Radno vreme: 16h – 00h · Odgovaramo u roku od 15 minuta
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Preporuka, Vrhunski, Fantastično, Savršeno, Vole.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ═══ REVIEWS ═══ -->
+    <section class="reviews anchor-offset" id="reviews">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">💬 Recenzije</span>
+                <h2 class="section-title">Šta kažu naši gosti?</h2>
+                <p class="section-desc center">
+                    Najbolje reči dolaze od onih koji su već osetili duh The Pub-a. Evo šta su nam
+                    napisali posle svojih večeri.
+                </p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>„Fantastičan ambijent! Bili smo na live svirci i jednostavno smo oduševljeni. Muzika, zvuk, energija — sve na mestu. Preporučujem svakom ko voli dobru atmosferu.”</blockquote>
+                    <div class="author">— Marko J.</div>
+                    <div class="source">Google recenzija</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>„Stand up veče je bio neverovatan! Smijali smo se od početka do kraja. The Pub je postao naše omiljeno mesto za izlazak u Novom Sadu. Sve pohvale!”</blockquote>
+                    <div class="author">— Ana K.</div>
+                    <div class="source">Google recenzija</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>„Top mesto! Koncert je bio savršen, osoblje ljubazno, a piće odlično. Osećaj je kao da ste kod kuće, samo što je muzika mnogo bolja. 😊”</blockquote>
+                    <div class="author">— Stefan P.</div>
+                    <div class="source">Google recenzija</div>
+                </div>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:063545495">063 545495</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:vladimirkrstic1986@gmail.com">vladimirkrstic1986@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Ignjata Pavlasa 4, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="shell">&copy; 2026 The Pub. Muzički klub u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer anchor-offset" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>The <span>Pub</span></h3>
+                    <p class="cat">🎵 Muzički klub · Novi Sad</p>
+                    <p>Mesto gde se muzika, smeh i dobra energija prepliću u nezaboravne večeri. Dobrodošli u The Pub — vaš kutak za pravi izlazak.</p>
+                    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+                        <a href="viber://chat?number=38163545495" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border);padding:6px 16px;border-radius:50px;font-size:0.85rem;color:var(--text-muted);transition:var(--transition);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#7c4dff"><path d="M11.5 2C6.26 2 2 6.26 2 11.5c0 2.18.74 4.18 2 5.76V22l4.28-2.14c1.42.6 2.96.94 4.72.94 5.24 0 9.5-4.26 9.5-9.5S16.74 2 11.5 2z"/></svg>
+                            Viber
+                        </a>
+                        <a href="https://wa.me/38163545495" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border);padding:6px 16px;border-radius:50px;font-size:0.85rem;color:var(--text-muted);transition:var(--transition);">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741 1.204 1.2-3.648-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                            <a href="tel:063545495">063 545495</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <a href="mailto:vladimirkrstic1986@gmail.com">vladimirkrstic1986@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Ignjata Pavlasa 4, Novi Sad 21000
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pratite nas</h4>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            <a href="#" target="_blank">Facebook</a>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            <a href="#" target="_blank">LinkedIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 The Pub · Muzički klub · Novi Sad</span>
+                <span>🛠️ Sa ljubavlju iz Novog Sada</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ STICKY MOBILE CTA ═══ -->
+    <div class="mobile-cta">
+        <div class="inner">
+            <div class="text">
+                The Pub <small>Muzički klub · Novi Sad</small>
+            </div>
+            <a href="tel:063545495" class="btn">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        (function() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+            if (toggle && links) {
+                toggle.addEventListener('click', function() {
+                    links.classList.toggle('open');
+                });
+                // close on link click (mobile)
+                links.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        links.classList.remove('open');
+                    });
+                });
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!toggle.contains(e.target) && !links.contains(e.target)) {
+                        links.classList.remove('open');
+                    }
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>

@@ -1,273 +1,1217 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stomatološki District - Stomatološka ordinacija - Novi Sad | Stomatološki Clinic Novi Sad</title>
-  <meta name="description" content="Dental District - Stomatološka ordinacija - Novi Sad nudi dental clinic usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Dental District - Stomatološka ordinacija - Novi Sad">
-  <meta property="og:description" content="Dental Clinic usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental District – Stomatološka ordinacija Novi Sad</title>
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --bg-card: #ffffff;
+            --accent: #0077b6;
+            --accent-light: #e1f0fa;
+            --accent-dark: #005a8c;
+            --accent-glow: rgba(0, 119, 182, 0.12);
+            --text: #1a2a3a;
+            --text-soft: #3d5568;
+            --text-muted: #6a7f94;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.10);
+            --radius: 14px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-w: 1080px;
+            --nav-h: 68px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.6;
+            padding-top: var(--nav-h);
+            min-height: 100vh;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─── CONTAINER ─── */
+        .container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* ─── SECTION SHARED ─── */
+        section {
+            padding: 64px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-soft);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        .section-title-center {
+            text-align: center;
+        }
+
+        .section-sub-center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* ─── STICKY NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(240, 244, 248, 0.72);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 119, 182, 0.08);
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-soft);
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--accent);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle:hover {
+            background: var(--accent-light);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                width: 100%;
+                background: rgba(240, 244, 248, 0.96);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 24px 28px;
+                gap: 18px;
+                border-bottom: 1px solid rgba(0, 119, 182, 0.08);
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                width: 100%;
+                padding: 8px 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .nav-inner {
+                padding: 0 16px;
+            }
+            .nav-logo {
+                font-size: 1rem;
+            }
+            .nav-logo svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 20px 0 60px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, #f0f4f8 0%, #e6f0fa 60%, #dce8f5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-icon {
+            margin-bottom: 18px;
+            width: 72px;
+            height: 72px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 8px rgba(0, 119, 182, 0.06);
+        }
+
+        .hero-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            max-width: 780px;
+            margin-bottom: 16px;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            color: var(--text-soft);
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 14px 36px;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 6px 24px rgba(0, 119, 182, 0.28);
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(0, 119, 182, 0.34);
+        }
+
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px 40px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid rgba(0, 119, 182, 0.10);
+        }
+
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .hero-trust-item span.num {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .hero-trust-item .star {
+            color: #f5b342;
+        }
+
+        @media (max-width: 720px) {
+            .hero {
+                padding: 16px 0 44px;
+            }
+            .hero-icon {
+                width: 60px;
+                height: 60px;
+            }
+            .hero-icon svg {
+                width: 32px;
+                height: 32px;
+            }
+            .hero-cta {
+                padding: 12px 28px;
+                font-size: 0.95rem;
+            }
+            .hero-trust {
+                gap: 16px 24px;
+            }
+            .hero-trust-item {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* ─── WHY US ─── */
+        .why {
+            background: var(--white);
+            position: relative;
+        }
+
+        .why::before {
+            content: '✦';
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 5rem;
+            color: rgba(0, 119, 182, 0.05);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 24px 24px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .why-card .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .why-card p {
+            font-size: 0.93rem;
+            color: var(--text-soft);
+            line-height: 1.5;
+        }
+
+        .why-card .badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 420px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── SITUATIONS / KADA ─── */
+        .situations {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .situations::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            opacity: 0.15;
+        }
+
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .situ-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 22px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .situ-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .situ-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .situ-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .situ-card p {
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .situ-card .cta-label {
+            margin-top: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .situ-card .cta-label svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 420px) {
+            .situ-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ─── HOW IT WORKS ─── */
+        .how {
+            background: var(--white);
+            position: relative;
+        }
+
+        .how-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px 56px;
+            align-items: center;
+        }
+
+        .how-left .section-title {
+            margin-bottom: 16px;
+        }
+
+        .how-left .section-sub {
+            margin-bottom: 28px;
+        }
+
+        .how-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .how-step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .how-step .num {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent);
+        }
+
+        .how-step .content h4 {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .how-step .content p {
+            font-size: 0.92rem;
+            color: var(--text-soft);
+            line-height: 1.5;
+        }
+
+        .how-right {
+            background: var(--bg);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 119, 182, 0.08);
+        }
+
+        .how-right .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .how-right .info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.95rem;
+            color: var(--text-soft);
+        }
+
+        .how-right .info-item .icon {
+            font-size: 1.4rem;
+            width: 32px;
+            text-align: center;
+        }
+
+        .how-right .info-item strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        @media (max-width: 720px) {
+            .how-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .how-right {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .how-step .num {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+            .how-right .info-item {
+                font-size: 0.88rem;
+            }
+        }
+
+        /* ─── DECORATIVE DIVIDER ─── */
+        .divider-wave {
+            width: 100%;
+            height: 40px;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .divider-wave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--text);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 48px 0 28px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px 48px;
+            margin-bottom: 32px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p {
+            font-size: 0.92rem;
+            opacity: 0.7;
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col ul li a,
+        .footer-col ul li span {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-col ul li .icon {
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .footer-bottom a {
+            color: var(--accent);
+            opacity: 0.9;
+        }
+
+        .footer-bottom a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 720px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px 24px;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ─── STICKY MOBILE CTA ─── */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 119, 182, 0.12);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .sticky-cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .sticky-cta .label {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-soft);
+        }
+
+        .sticky-cta .label strong {
+            color: var(--text);
+        }
+
+        .sticky-cta .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 119, 182, 0.24);
+            border: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .sticky-cta .btn-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .sticky-cta .btn-cta svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 720px) {
+            .sticky-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 76px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .sticky-cta {
+                padding: 10px 16px;
+            }
+            .sticky-cta .label {
+                font-size: 0.78rem;
+            }
+            .sticky-cta .btn-cta {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+            }
+        }
+
+        /* ─── RESPONSIVE TWEAKS ─── */
+        @media (max-width: 720px) {
+            section {
+                padding: 44px 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            section {
+                padding: 36px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Stomatološki District - Stomatološka ordinacija - Novi Sad</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Stomatološki Clinic / Novi Sad</p>
-          <h1>Stomatološki District - Stomatološka ordinacija - Novi Sad: Stomatološka ordinacija u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Stomatološki District - Stomatološka ordinacija - Novi Sad direktno za Profesionalne Stomatološka ordinacija usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:lidijastojovic@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Stomatološki Clinic</div>
-            <div class="micro">Direktan kontakt: 064 2525555</div>
-          </div>
+    <!-- ═══ STICKY NAV ═══ -->
+    <header class="nav" role="banner">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" aria-label="Dental District početna">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C9.5 2 7.5 3.5 6.5 6L5 12c-.5 2 .5 4 2 5v3c0 1 .5 2 1.5 2h1c1 0 1.5-1 1.5-2v-3h2v3c0 1 .5 2 1.5 2h1c1 0 1.5-1 1.5-2v-3c1.5-1 2.5-3 2-5l-1.5-6C16.5 3.5 14.5 2 12 2z"/>
+                </svg>
+                Dental District
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Početna</a></li>
+                <li><a href="#why">Zašto mi</a></li>
+                <li><a href="#situations">Kada</a></li>
+                <li><a href="#how">Kako</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+            </ul>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Stomatološki Clinic</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Bulevar patrijarha Pavla 1B, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C9.5 2 7.5 3.5 6.5 6L5 12c-.5 2 .5 4 2 5v3c0 1 .5 2 1.5 2h1c1 0 1.5-1 1.5-2v-3h2v3c0 1 .5 2 1.5 2h1c1 0 1.5-1 1.5-2v-3c1.5-1 2.5-3 2-5l-1.5-6C16.5 3.5 14.5 2 12 2z"/>
+                </svg>
+            </div>
+            <h1>Vaš <span>osmeh</span> je naša najveća motivacija</h1>
+            <p>Ugodna i bezbolna stomatološka iskustva u Novom Sadu – jer zaslužujete negu kojoj verujete.</p>
+            <a href="tel:0642525555" class="hero-cta" aria-label="Pozovite nas">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+                Zakažite pregled
+            </a>
+            <div class="hero-trust">
+                <div class="hero-trust-item">
+                    <span class="star">⭐</span> <span class="num">5.0</span> ocena
+                </div>
+                <div class="hero-trust-item">
+                    🦷 <span class="num">10+</span> godina iskustva
+                </div>
+                <div class="hero-trust-item">
+                    😊 <span class="num">1000+</span> zadovoljnih pacijenata
+                </div>
+                <div class="hero-trust-item">
+                    ⏱️ Odgovor za <span class="num">&lt;30</span> min
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ═══ WHY US / Zašto baš mi ═══ -->
+    <section class="why" id="why">
+        <div class="container">
+            <h2 class="section-title section-title-center">Zašto baš Dental District?</h2>
+            <p class="section-sub section-sub-center">Ne nudimo samo stomatološke usluge – nudimo poverenje, komfor i vrhunsku stručnost. Evo zašto su nam pacijenti verni.</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <span class="badge">5.0 ★</span>
+                    <h3>Izuzetna ocena</h3>
+                    <p>Naši pacijenti nas ocenjuju najvišom ocenom – svaki osmeh je potvrda kvaliteta.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🦷</span>
+                    <span class="badge">10+ godina</span>
+                    <h3>Dokazano iskustvo</h3>
+                    <p>Decenija rada u Novom Sadu, sa hiljadama uspešno zbrinutih pacijenata.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">💙</span>
+                    <span class="badge">Bez stresa</span>
+                    <h3>Bezbolan tretman</h3>
+                    <p>Koristimo najsavremenije metode i tehnologije za potpuno bezbolno iskustvo.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">👨‍⚕️</span>
+                    <span class="badge">Tim stručnjaka</span>
+                    <h3>Profesionalni tim</h3>
+                    <p>Svaki član našeg tima kontinuirano se usavršava za najbolju negu.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Profesionalne Stomatološki Clinic usluge</h3>
-          <p>Profesionalne Stomatološki Clinic usluge je dostupna usluga u okviru Stomatološka ordinacija ponude koju Stomatološki District - Stomatološka ordinacija - Novi Sad pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ═══ SITUATIONS / Kada vam je potrebna pomoć ═══ -->
+    <section class="situations" id="situations">
+        <div class="container">
+            <h2 class="section-title section-title-center">Kada vam je potrebna pomoć?</h2>
+            <p class="section-sub section-sub-center">Bilo da ste zabrinuti zbog bola ili želite preventivni pregled – tu smo za vas u svakoj situaciji.</p>
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <div class="emoji">😣</div>
+                    <h4>Bol u zubu?</h4>
+                    <p>Ne trpite bol – hitno vas primamo i otklanjamo uzrok brzo i nežno.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">🦷</div>
+                    <h4>Potreban vam je pregled?</h4>
+                    <p>Redovan pregled sprečava veće probleme. Preporučujemo svakih 6 meseci.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">✨</div>
+                    <h4>Želite lepši osmeh?</h4>
+                    <p>Bleaching, estetske restauracije, keramičke fasete – vaš idealan osmeh je moguć.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">⚡</div>
+                    <h4>Hitna intervencija</h4>
+                    <p>Pukao zub, upala, iznenadni bol? Javite se odmah – izlazimo u susret.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">👶</div>
+                    <h4>Deca trebaju stomatologa?</h4>
+                    <p>Prvi pregled kod zubara ne mora biti strašan. Naš tim je strpljiv i prilagođen deci.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">🔄</div>
+                    <h4>Potrebna vam je protetika?</h4>
+                    <p>Krunice, mostovi, proteze – vraćamo funkcionalnost i estetiku vašeg osmeha.</p>
+                    <span class="cta-label">Tu smo za vas →</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Stomatološka ordinacija ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Stomatološka ordinacija ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- decorative wave -->
+    <div class="divider-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 40" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,20 C360,55 1080,0 1440,20 L1440,0 L0,0 Z"/>
+        </svg>
+    </div>
+
+    <!-- ═══ HOW IT WORKS / Kako funkcionišemo ═══ -->
+    <section class="how" id="how">
+        <div class="container">
+            <div class="how-inner">
+                <div class="how-left">
+                    <h2 class="section-title">Vaš put do zdravog osmeha</h2>
+                    <p class="section-sub">Jednostavan proces, bez nepotrebne gužve. Od prvog poziva do blistavog osmeha u samo nekoliko koraka.</p>
+                    <div class="how-steps">
+                        <div class="how-step">
+                            <div class="num">1</div>
+                            <div class="content">
+                                <h4>📞 Zakažite termin</h4>
+                                <p>Pozovite nas ili pošaljite poruku – dogovaramo termin koji vama odgovara.</p>
+                            </div>
+                        </div>
+                        <div class="how-step">
+                            <div class="num">2</div>
+                            <div class="content">
+                                <h4>🏥 Dođite na pregled</h4>
+                                <p>U prijatnoj atmosferi, bez stresa, obavljamo kompletan pregled i dogovaramo plan.</p>
+                            </div>
+                        </div>
+                        <div class="how-step">
+                            <div class="num">3</div>
+                            <div class="content">
+                                <h4>🦷 Dobijte terapiju</h4>
+                                <p>Tretman prilagođen vašim potrebama – brzo, efikasno i bezbolno.</p>
+                            </div>
+                        </div>
+                        <div class="how-step">
+                            <div class="num">4</div>
+                            <div class="content">
+                                <h4>😁 Osmehujte se slobodno</h4>
+                                <p>Nakon tretmana nastavljamo brigu i dajemo savete za dugoročno zdravlje.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-right">
+                    <div class="info-block">
+                        <div class="info-item">
+                            <span class="icon">📅</span>
+                            <span><strong>Radno vreme:</strong> Ponedeljak – Petak 08:00 – 20:00, Subota 09:00 – 15:00</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">⏱️</span>
+                            <span><strong>Brzi odgovor:</strong> Javljamo se u roku od 30 minuta tokom radnog vremena</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">📍</span>
+                            <span><strong>Lokacija:</strong> Bulevar patrijarha Pavla 1B, Novi Sad – lako dostupni</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">🅿️</span>
+                            <span><strong>Parking:</strong> Besplatan parking ispred ordinacije</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="icon">💳</span>
+                            <span><strong>Plaćanje:</strong> Gotovina, kartice, rate – sve opcije dostupne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Preporuka, Odlično, Najbolje, Vrhunski.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🦷 Dental District – Stomatološka ordinacija – Novi Sad</h3>
+                    <p>Vaš pouzdani partner za zdrav osmeh u Novom Sadu. Profesionalna nega uz topao i ljudski pristup.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:0642525555" aria-label="Pozovite 0642525555"><span class="icon">📞</span> 064 2525555</a></li>
+                        <li><a href="mailto:lidijastojovic@gmail.com" aria-label="Pošaljite email"><span class="icon">✉️</span> lidijastojovic@gmail.com</a></li>
+                        <li><span class="icon">📍</span> Bulevar patrijarha Pavla 1B,<br>21000 Novi Sad, Srbija</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Povežite se</h4>
+                    <ul>
+                        <li><a href="viber://chat?number=381642525555" aria-label="Viber"><span class="icon">💬</span> Viber</a></li>
+                        <li><a href="https://wa.me/381642525555" aria-label="WhatsApp"><span class="icon">📱</span> WhatsApp</a></li>
+                        <li><a href="#" aria-label="Facebook"><span class="icon">📘</span> Facebook</a></li>
+                        <li><a href="#" aria-label="LinkedIn"><span class="icon">🔗</span> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Dental District – Stomatološka ordinacija – Novi Sad. Sva prava zadržana.</span>
+                <span>🦷 Nega kojoj verujete</span>
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0642525555">064 2525555</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:lidijastojovic@gmail.com">lidijastojovic@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Bulevar patrijarha Pavla 1B, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="shell">&copy; 2026 Stomatološki District - Stomatološka ordinacija - Novi Sad. Stomatološki Clinic u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ═══ STICKY MOBILE CTA ═══ -->
+    <div class="sticky-cta" aria-label="Kontakt traka">
+        <div class="sticky-cta-inner">
+            <span class="label">📞 <strong>064 2525555</strong> – brz odgovor</span>
+            <a href="tel:0642525555" class="btn-cta" aria-label="Pozovite nas">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+                Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = navLinks.classList.toggle('open');
+                    toggleBtn.setAttribute('aria-expanded', isOpen);
+                    toggleBtn.textContent = isOpen ? '✕' : '☰';
+                });
+
+                // Close on link click
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    });
+                });
+
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    }
+                });
+            }
+
+            // Smooth scroll for all anchor links (fallback)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.length > 1) {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - navH - 12;
+                            window.scrollTo({ top: top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+        })();
+    </script>
+
 </body>
 </html>

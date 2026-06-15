@@ -1,273 +1,1291 @@
+```html
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moj Pedijatar Dr. Andric Sanja | doktor Novi Sad</title>
-  <meta name="description" content="Moj Pedijatar Dr. Andric Sanja nudi doctor usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Moj Pedijatar Dr. Andric Sanja">
-  <meta property="og:description" content="Doctor usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moj Pedijatar Dr. Andrić Sanja | Pedijatar u Sremskoj Mitrovici</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f0faf0;
+            --bg-card: #ffffff;
+            --accent: #40916c;
+            --accent-dark: #2d6a4f;
+            --accent-light: #d8f3dc;
+            --accent-glow: rgba(64, 145, 108, 0.15);
+            --text: #1b4332;
+            --text-secondary: #2d6a4f;
+            --text-light: #52b788;
+            --white: #ffffff;
+            --shadow: 0 8px 32px rgba(27, 67, 50, 0.08);
+            --shadow-hover: 0 16px 48px rgba(27, 67, 50, 0.14);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+            --max-width: 1060px;
+            --nav-height: 68px;
+            --transition: 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            font-size: clamp(16px, 1.1vw, 17.5px);
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: var(--accent-dark);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: clamp(48px, 8vw, 70px) 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: clamp(13px, 0.85vw, 15px);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: clamp(16px, 1.15vw, 19px);
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.5;
+        }
+
+        .section-title.center,
+        .section-sub.center {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(15px, 1vw, 17px);
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn:hover {
+            background: var(--accent-dark);
+            box-shadow: 0 8px 28px rgba(64, 145, 108, 0.3);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* ===== STICKY NAV ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(240, 250, 240, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(64, 145, 108, 0.12);
+            transition: background var(--transition);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            font-size: clamp(17px, 1.3vw, 21px);
+            font-weight: 800;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: clamp(13px, 0.85vw, 15px);
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            transition: all var(--transition);
+        }
+        .nav-links a:hover {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            border-radius: 4px;
+            background: var(--text);
+            transition: all var(--transition);
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--nav-height);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #f0faf0 0%, #d8f3dc 40%, #e8f5e9 100%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(ellipse at 70% 50%, rgba(82, 183, 136, 0.12), transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-content {
+            padding: 20px 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(13px, 0.8vw, 15px);
+            font-weight: 600;
+            color: var(--accent-dark);
+            background: var(--accent-light);
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 4.2vw, 54px);
+            font-weight: 800;
+            line-height: 1.12;
+            color: var(--text);
+            margin-bottom: 18px;
+            letter-spacing: -0.01em;
+        }
+        .hero h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: clamp(17px, 1.2vw, 20px);
+            color: var(--text-secondary);
+            max-width: 500px;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 20px;
+            margin-bottom: 28px;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(14px, 0.85vw, 16px);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .hero-trust-item svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+        .hero-trust-item strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        /* — Hero visual — */
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-visual svg {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+        }
+
+        .hero-visual-deco {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .hero-visual-deco .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-glow);
+        }
+        .hero-visual-deco .circle:nth-child(1) {
+            width: 160px;
+            height: 160px;
+            top: -20px;
+            right: 10%;
+            background: radial-gradient(circle, rgba(82, 183, 136, 0.15), transparent);
+        }
+        .hero-visual-deco .circle:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            bottom: 10%;
+            left: 5%;
+            background: radial-gradient(circle, rgba(64, 145, 108, 0.1), transparent);
+        }
+
+        /* ===== WHY US ===== */
+        .why-us {
+            background: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        .why-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 24px 32px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            cursor: default;
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .why-card .emoji {
+            font-size: 34px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .why-card h3 {
+            font-size: clamp(18px, 1.1vw, 21px);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .why-card p {
+            font-size: clamp(14px, 0.9vw, 16px);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .why-card .stat {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        /* ===== SITUATIONS (When you need us) ===== */
+        .situations {
+            background: var(--bg);
+        }
+
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 36px;
+        }
+
+        .situation-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+            transition: all var(--transition);
+        }
+        .situation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .situation-card .emoji {
+            font-size: 32px;
+            flex-shrink: 0;
+            width: 48px;
+            text-align: center;
+        }
+        .situation-card .text {
+            flex: 1;
+        }
+        .situation-card .text strong {
+            display: block;
+            font-size: clamp(15px, 0.95vw, 17px);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .situation-card .text span {
+            font-size: clamp(14px, 0.85vw, 15px);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: var(--white);
+            position: relative;
+        }
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 12%;
+            right: 12%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
+            border-radius: 4px;
+            opacity: 0.35;
+            z-index: 0;
+        }
+
+        .step-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 28px 20px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .step-card .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .step-card .emoji {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .step-card h3 {
+            font-size: clamp(16px, 1vw, 18px);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .step-card p {
+            font-size: clamp(13px, 0.8vw, 15px);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .steps-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            margin-top: 36px;
+            padding: 24px 28px;
+            background: var(--accent-light);
+            border-radius: var(--radius);
+        }
+        .steps-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(14px, 0.85vw, 16px);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .steps-info-item svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews {
+            background: var(--bg);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-light);
+            transition: all var(--transition);
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .review-card .stars {
+            color: #f4b942;
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .review-card blockquote {
+            font-size: clamp(15px, 0.9vw, 17px);
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.55;
+            margin-bottom: 14px;
+        }
+        .review-card .author {
+            font-size: clamp(13px, 0.8vw, 15px);
+            font-weight: 600;
+            color: var(--text);
+        }
+        .review-card .author span {
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .review-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .review-cta p {
+            font-size: clamp(15px, 0.95vw, 17px);
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--text);
+            color: var(--bg);
+            padding: 48px 0 32px;
+        }
+        .footer .container {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 32px 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: clamp(20px, 1.4vw, 26px);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand .tag {
+            font-size: clamp(13px, 0.8vw, 15px);
+            color: var(--accent-light);
+            margin-bottom: 14px;
+            display: block;
+        }
+        .footer-brand p {
+            font-size: clamp(14px, 0.85vw, 16px);
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        .footer-contact h4,
+        .footer-social h4 {
+            font-size: clamp(15px, 0.95vw, 17px);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+        .footer-contact ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-contact ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: clamp(14px, 0.85vw, 16px);
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .footer-contact ul li svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+        .footer-contact ul li a {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .footer-contact ul li a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-social .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-social .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+        .footer-social .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        .footer-social .social-links a svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: clamp(13px, 0.75vw, 14px);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .footer-bottom a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: var(--white);
+            border-top: 1px solid rgba(64, 145, 108, 0.15);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 24px rgba(27, 67, 50, 0.06);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .sticky-mobile-cta .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-mobile-cta .label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .sticky-mobile-cta .label strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+        .sticky-mobile-cta .btn {
+            padding: 12px 24px;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+        .sticky-mobile-cta .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            .hero-content {
+                order: 1;
+                padding: 10px 0 0;
+            }
+            .hero-visual {
+                order: 0;
+                padding-top: 10px;
+            }
+            .hero-visual svg {
+                max-width: 260px;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+
+            .situations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .steps::before {
+                display: none;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-contact ul {
+                align-items: center;
+            }
+            .footer-social .social-links {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .navbar .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: rgba(240, 250, 240, 0.96);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px 24px 28px;
+                gap: 6px;
+                border-bottom: 1px solid rgba(64, 145, 108, 0.1);
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                pointer-events: none;
+            }
+            .navbar .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            .navbar .nav-links a {
+                font-size: 16px;
+                padding: 12px 20px;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero h1 {
+                font-size: clamp(26px, 7vw, 36px);
+            }
+            .hero-visual svg {
+                max-width: 180px;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 36px 0;
+            }
+            .sticky-mobile-cta .label {
+                font-size: 12px;
+            }
+            .sticky-mobile-cta .btn {
+                padding: 10px 18px;
+                font-size: 14px;
+                gap: 6px;
+            }
+            .sticky-mobile-cta .btn svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .sticky-mobile-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 76px;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Decorative dot pattern */
+        .deco-dots {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.08;
+            background-image: radial-gradient(var(--accent) 2px, transparent 2px);
+            background-size: 16px 16px;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Moj Pedijatar Dr. Andric Sanja</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAV ===== -->
+    <nav class="navbar" role="navigation" aria-label="Glavna navigacija">
+        <div class="container">
+            <a href="#hero" class="nav-logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm0 24c-5.523 0-10-4.477-10-10S10.477 6 16 6s10 4.477 10 10-4.477 10-10 10z" fill="currentColor"/>
+                    <path d="M16 8v16M8 16h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                Moj Pedijatar<span>.</span>
+            </a>
+
+            <button class="nav-toggle" aria-label="Otvorite meni" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#hero" role="menuitem">Početna</a></li>
+                <li role="none"><a href="#zasto-mi" role="menuitem">Zašto mi</a></li>
+                <li role="none"><a href="#situacije" role="menuitem">Kada vam trebamo</a></li>
+                <li role="none"><a href="#proces" role="menuitem">Kako funkcionišemo</a></li>
+                <li role="none"><a href="#utisci" role="menuitem">Utisci</a></li>
+                <li role="none"><a href="#kontakt" role="menuitem">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Lekar / Novi Sad</p>
-          <h1>Moj Pedijatar Dr. Andric Sanja: doktor u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Moj Pedijatar Dr. Andric Sanja direktno za Profesionalne Medicinske usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:drandricsanja@gmail.com">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Lekar</div>
-            <div class="micro">Direktan kontakt: 064 1289426</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    🩺 Pedijatrijska ordinacija u Sremskoj Mitrovici
+                </div>
+                <h1>
+                    Briga o zdravlju vašeg deteta<br>
+                    <span class="highlight">sa puno ljubavi i stručnosti</span>
+                </h1>
+                <p>
+                    Roditelji već godinama veruju dr Sanji Andrić – pedijatarki koja 
+                    svakom malom pacijentu pruža pažnju, toplinu i vrhunsku medicinsku negu.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:+381641289426" class="btn">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                        Zakažite pregled
+                    </a>
+                    <a href="#zasto-mi" class="btn btn-outline">Saznajte više ↓</a>
+                </div>
+                <div class="hero-trust">
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <strong>5.0</strong> ★ ocena
+                    </span>
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        <strong>50+</strong> porodica preporučuje
+                    </span>
+                    <span class="hero-trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <strong>15+</strong> godina iskustva
+                    </span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-visual-deco">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+                <!-- Decorative SVG – stylized family / care -->
+                <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- background glow -->
+                    <circle cx="200" cy="190" r="170" fill="url(#heroGlow)" opacity="0.25"/>
+                    <defs>
+                        <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+                            <stop stop-color="#52b788" stop-opacity="0.4"/>
+                            <stop offset="1" stop-color="#52b788" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
+                    <!-- large heart -->
+                    <path d="M200 320c-60-40-110-90-110-150 0-45 36-80 80-80 28 0 53 14 68 36 6 8 10 18 10 28 0 10-4 20-10 28-15 22-40 36-68 36-44 0-80-35-80-80 0-10 2-20 6-28" stroke="#40916c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                    <path d="M200 320c60-40 110-90 110-150 0-45-36-80-80-80-28 0-53 14-68 36-6 8-10 18-10 28 0 10 4 20 10 28 15 22 40 36 68 36 44 0 80-35 80-80 0-10-2-20-6-28" stroke="#40916c" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                    <!-- small stars -->
+                    <circle cx="100" cy="80" r="6" fill="#52b788" opacity="0.5"/>
+                    <circle cx="310" cy="60" r="4" fill="#52b788" opacity="0.35"/>
+                    <circle cx="70" cy="220" r="5" fill="#52b788" opacity="0.3"/>
+                    <circle cx="340" cy="250" r="7" fill="#52b788" opacity="0.4"/>
+                    <!-- child-like stick figures -->
+                    <circle cx="200" cy="140" r="18" stroke="#2d6a4f" stroke-width="2.5" fill="none"/>
+                    <path d="M200 158v50M185 178h30M200 208l-20 30M200 208l20 30" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <!-- parent hand -->
+                    <path d="M160 210c-10-10-20-20-20-35" stroke="#40916c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <path d="M240 210c10-10 20-20 20-35" stroke="#40916c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <!-- small hearts -->
+                    <path d="M130 120a10 10 0 00-10 4 10 10 0 00-10-4 10 10 0 00-10 10c0 8 10 16 20 22 10-6 20-14 20-22a10 10 0 00-10-10z" fill="#52b788" opacity="0.3"/>
+                    <path d="M280 100a8 8 0 00-8 3.2 8 8 0 00-8-3.2 8 8 0 00-8 8c0 6.4 8 12.8 16 17.6 8-4.8 16-11.2 16-17.6a8 8 0 00-8-8z" fill="#52b788" opacity="0.25"/>
+                </svg>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Lekar</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Ratarska 17, Sremska Mitrovica 22000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY US ===== -->
+    <section class="section why-us" id="zasto-mi">
+        <div class="container">
+            <div style="position:relative;">
+                <div class="deco-dots" style="top:-30px;right:-20px;"></div>
+                <span class="section-label">🌟 Zašto baš mi</span>
+                <h2 class="section-title">Zašto roditelji biraju<br>Moj Pedijatar Dr. Andrić Sanja?</h2>
+                <p class="section-sub">
+                    Jer znaju da je njihovo dete u sigurnim rukama – svaki pregled, svaki savet, svaka reč 
+                    podjednako su važni.
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <div class="stat">5.0</div>
+                    <h3>Besprekorna ocena</h3>
+                    <p>Roditelji ocenjuju naš rad najvišom ocenom – svaki osvrt ističe profesionalnost, ljubaznost i posvećenost.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">❤️</span>
+                    <h3>Profesionalna i pouzdana</h3>
+                    <p>Dr Sanja Andrić svakom detetu pristupa individualno, sa strpljenjem i dubokim razumevanjem potreba mališana.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🩺</span>
+                    <h3>Celokupna briga o detetu</h3>
+                    <p>Od preventivnih pregleda i vakcinacije do saveta o ishrani i razvoju – sve na jednom mestu.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🌿</span>
+                    <div class="stat">15+</div>
+                    <h3>Godina iskustva</h3>
+                    <p>Dugogodišnje poverenje porodica iz Sremske Mitrovice i okoline govori više od reči.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Profesionalne Medicinske usluge</h3>
-          <p>Profesionalne Medicinske usluge je dostupna usluga u okviru medicinske ponude koju Moj Pedijatar Dr. Andric Sanja pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ===== SITUATIONS ===== -->
+    <section class="section situations" id="situacije">
+        <div class="container">
+            <span class="section-label">📋 Kada vam trebamo</span>
+            <h2 class="section-title">U kojim situacijama<br>roditelji najčešće zovu?</h2>
+            <p class="section-sub">Bez obzira na doba dana ili vrstu brige – tu smo da vam olakšamo.</p>
 
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Lekar ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="situations-grid">
+                <div class="situation-card">
+                    <span class="emoji">🤒</span>
+                    <div class="text">
+                        <strong>Dete ima temperaturu ili kašalj?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🦷</span>
+                    <div class="text">
+                        <strong>Vreme je za sistematski pregled?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🌙</span>
+                    <div class="text">
+                        <strong>Dete se budi noću sa bolom?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🍽️</span>
+                    <div class="text">
+                        <strong>Imate pitanja o ishrani bebe?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">💉</span>
+                    <div class="text">
+                        <strong>Vreme je za vakcinaciju?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">📋</span>
+                    <div class="text">
+                        <strong>Potreban vam je savet o razvoju deteta?</strong>
+                        <span>Tu smo za vas →</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section how-it-works" id="proces">
+        <div class="container">
+            <span class="section-label">🚀 Vaš put do rešenja</span>
+            <h2 class="section-title">Kako funkcionišemo?</h2>
+            <p class="section-sub">Jednostavan put do kvalitetne pedijatrijske nege – bez stresa i čekanja.</p>
+
+            <div class="steps">
+                <div class="step-card">
+                    <div class="badge">1</div>
+                    <span class="emoji">📞</span>
+                    <h3>Pozovite ili pišite</h3>
+                    <p>Nazovite nas ili pošaljite poruku. Odgovaramo brzo, obično u roku od nekoliko sati.</p>
+                </div>
+                <div class="step-card">
+                    <div class="badge">2</div>
+                    <span class="emoji">📅</span>
+                    <h3>Dogovorite termin</h3>
+                    <p>Zajedno pronalazimo vreme koje vama odgovara – bez gužve i dugog čekanja.</p>
+                </div>
+                <div class="step-card">
+                    <div class="badge">3</div>
+                    <span class="emoji">🏥</span>
+                    <h3>Dođite na pregled</h3>
+                    <p>Ambulanta je u Sremskoj Mitrovici, lako dostupna i prilagođena deci.</p>
+                </div>
+                <div class="step-card">
+                    <div class="badge">4</div>
+                    <span class="emoji">❤️</span>
+                    <h3>Najbolja nega</h3>
+                    <p>Vaše dete dobija pažljiv pregled, tačnu dijagnozu i savete koje razumete.</p>
+                </div>
+            </div>
+
+            <div class="steps-info">
+                <span class="steps-info-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Odgovaramo u roku od 24h
+                </span>
+                <span class="steps-info-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Radno vreme: pon–pet 8–18h
+                </span>
+                <span class="steps-info-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Sremska Mitrovica i okolina
+                </span>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Prijateljski, Preporuka, Odlično.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:0641289426">064 1289426</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:drandricsanja@gmail.com">drandricsanja@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Ratarska 17, Sremska Mitrovica 22000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ===== REVIEWS ===== -->
+    <section class="section reviews" id="utisci">
+        <div class="container">
+            <span class="section-label">💬 Utisci roditelja</span>
+            <h2 class="section-title">Šta kažu porodice<br>koje su nam poverile svoje dete?</h2>
+            <p class="section-sub">Svaka reč podrške nas inspiriše da budemo još bolji.</p>
 
-  <footer>
-    <div class="shell">&copy; 2026 Moj Pedijatar Dr. Andric Sanja. Lekar u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
-</body>
-</html>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Profesionalna, ljubazna i puna razumevanja. Dete se oseća prijatno i opušteno. Najbolja pedijatarka u Sremskoj Mitrovici!”</blockquote>
+                    <div class="author">— Marija N. <span>• mama trogodišnjakinje</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Dr Sanja je neverovatna! Svaki pregled je detaljan, a saveti su uvek korisni. Preporučujem je svim roditeljima.”</blockquote>
+                    <div class="author">— Marko P. <span>• otac dvoje dece</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Konačno pedijatar koji sluša i razume. Moja ćerka je presrećna što ide na preglede. Hvala vam!”</blockquote>
+                    <div class="author">— Jelena R. <span>• mama petogodišnjakinje</span></div>
+                </div>
+            </div>
+
+            <div class="review-cta">
+                <p>Vaše mišljenje nam je važno. Pridružite se porodicama koje su zadovoljne.</p>
+                <a href="tel:+381641289426" class="btn">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                    Pozovite nas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Moj Pedijatar<span>.</span></h3>
+                <span class="tag">Dr. Andrić Sanja • Pedijatar</span>
+                <p>Ordinacija posvećena najmlađima – sa ljubavlju, stručnošću i poverenjem porodica iz Sremske Mitrovice i okoline.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                        <a href="tel:+381641289426">064 1289426</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:drandricsanja@gmail.com">drandricsanja@gmail.com</a>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Ratarska 17, Sremska Mitrovica 22000
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Povežite se</h4>
+                <div class="social-links">
+                    <a href="viber://chat?number=381641289426" aria-label="Viber" title="Viber">
+                        <svg viewBox="0 0 24 24"><path d="M11.4 1.02C6.62 1.33 3 5.51 3 10.31V20c0 .55.45 1 1 1h1.01c.55 0 1-.45 1-1v-9.69c0-3.83 2.97-7.14 6.78-7.29 3.96-.16 7.22 3.06 7.22 7V20c0 .55.45 1 1 1H21c.55 0 1-.45 1-1v-9.69c0-5.45-4.85-9.93-10.6-9.29zM7 20v-7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h2c.55 0 1-.45 1-1zm7-7v7c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1zm-4 0v7c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1z"/></svg>
+                    </a>
+                    <a href="https://wa.me/381641289426" aria-label="WhatsApp" title="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="https://facebook.com" aria-label="Facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136

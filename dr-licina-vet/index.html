@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ličina Vet — Veterinarska ambulanta Novi Sad</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5faf5;
+            --accent: #2d6a4f;
+            --accent-soft: #40916c;
+            --accent-light: #d8f3dc;
+            --accent-dark: #1b4332;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --text-white: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 20px rgba(45, 106, 79, 0.10);
+            --shadow-hover: 0 12px 32px rgba(45, 106, 79, 0.18);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-w: 1100px;
+            --nav-h: 64px;
+            --transition: 0.30s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.65;
+            padding-top: var(--nav-h);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--accent-dark);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5.5vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+            margin-bottom: 0.4em;
+            letter-spacing: -0.01em;
+        }
+
+        h2 .deco {
+            display: inline-block;
+            background: var(--accent-light);
+            padding: 0 0.3em;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-light);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 0.8rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(245, 250, 245, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+            transition: var(--transition);
+        }
+
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--accent-dark);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                width: 100%;
+                background: rgba(245, 250, 245, 0.96);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 1.8rem 1.5rem 2.2rem;
+                gap: 1.2rem;
+                transform: translateY(-120%);
+                opacity: 0;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+                pointer-events: none;
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links a {
+                font-size: 1.05rem;
+                padding: 0.3rem 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 3rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #edf7f0 0%, #f5faf5 50%, #e8f3ec 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(64, 145, 108, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            padding: 1rem 0;
+        }
+
+        .hero-content .pre-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 0.3rem 1.2rem 0.3rem 0.8rem;
+            border-radius: 40px;
+            width: fit-content;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content .sub {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-light);
+            margin-bottom: 1.6rem;
+            max-width: 90%;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.85rem 2.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.25);
+        }
+
+        .hero-cta:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(45, 106, 79, 0.30);
+        }
+
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(45, 106, 79, 0.10);
+        }
+
+        .hero-trust .item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .hero-trust .item strong {
+            color: var(--accent-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            filter: drop-shadow(0 8px 32px rgba(45, 106, 79, 0.10));
+        }
+
+        .hero-visual .deco-circle {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(45, 106, 79, 0.04);
+            top: -20px;
+            right: -10px;
+            z-index: -1;
+        }
+
+        .hero-visual .deco-circle2 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(64, 145, 108, 0.06);
+            bottom: 10px;
+            left: -20px;
+            z-index: -1;
+        }
+
+        @media (max-width: 820px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content .sub {
+                max-width: 100%;
+            }
+
+            .hero-content .pre-head {
+                margin: 0 auto 1.2rem;
+            }
+
+            .hero-trust {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-visual svg {
+                max-width: 260px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero {
+                padding: 2rem 0 2.8rem;
+            }
+
+            .hero-trust {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+            }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 4.5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0.4rem auto 0;
+            font-size: 1.05rem;
+        }
+
+        .section-title .deco-line {
+            display: inline-block;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+            margin-top: 0.6rem;
+        }
+
+        /* ===== HOW IT WORKS (vertical timeline) ===== */
+        .how {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .how::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent-light), transparent);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            position: relative;
+        }
+
+        .timeline-item .badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.20);
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .timeline-item .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.8rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .timeline-item .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .timeline-item .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-item .card p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .timeline-item .card .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.4rem;
+            margin-top: 0.8rem;
+            font-size: 0.88rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(45, 106, 79, 0.06);
+            padding-top: 0.8rem;
+        }
+
+        .timeline-item .card .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        @media (max-width: 600px) {
+            .timeline-item {
+                grid-template-columns: 44px 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-item .badge {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .timeline-item .card {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        /* ===== SITUATIONS (kada vam trebamo) ===== */
+        .situations {
+            background: linear-gradient(180deg, #f5faf5 0%, #edf7f0 100%);
+            position: relative;
+        }
+
+        .situations::after {
+            content: '🐾';
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 4rem;
+            opacity: 0.06;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .situ-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .situ-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .situ-card .emoji {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .situ-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .situ-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .situ-card .cta-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            align-self: flex-start;
+            margin-top: 0.3rem;
+        }
+
+        @media (max-width: 720px) {
+            .situ-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== WHY US ===== */
+        .why {
+            background: var(--bg);
+            position: relative;
+        }
+
+        .why .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-deco {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 8rem;
+            opacity: 0.03;
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .why-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.8rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+            text-align: center;
+        }
+
+        .why-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .why-card .icon {
+            font-size: 2.4rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .why-card h3 {
+            font-size: 1.05rem;
+            margin: 0.4rem 0 0.3rem;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 900px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--accent-dark);
+            color: rgba(255, 255, 255, 0.88);
+            padding: 3.5rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-light), var(--accent-soft), var(--accent));
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer h3 {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: var(--text-white);
+        }
+
+        .footer .brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer .brand svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent-light);
+        }
+
+        .footer .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .contact-line a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .footer .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .footer .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer .bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer .bottom a {
+            color: var(--accent-light);
+        }
+
+        .footer .messenger-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .footer .messenger-btns a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.45rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .footer .messenger-btns a:hover {
+            background: var(--accent);
+        }
+
+        @media (max-width: 800px) {
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer .col:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer .contact-line {
+                justify-content: center;
+            }
+
+            .footer .social-links {
+                justify-content: center;
+            }
+
+            .footer .messenger-btns {
+                justify-content: center;
+            }
+
+            .footer .brand {
+                justify-content: center;
+            }
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(45, 106, 79, 0.10);
+            padding: 0.7rem 1.25rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .sticky-cta .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            gap: 0.8rem;
+        }
+
+        .sticky-cta .label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .sticky-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.6rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(45, 106, 79, 0.20);
+            flex-shrink: 0;
+        }
+
+        .sticky-cta .btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .sticky-cta .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 720px) {
+            .sticky-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 64px;
+            }
+        }
+
+        /* ===== DECORATIVE SVG BLOBS ===== */
+        .deco-blob {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 0;
+        }
+
+        .deco-blob-1 {
+            top: 10%;
+            right: -5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--accent);
+            filter: blur(60px);
+        }
+
+        .deco-blob-2 {
+            bottom: 5%;
+            left: -5%;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            filter: blur(50px);
+        }
+
+        /* ===== RESPONSIVE HELPERS ===== */
+        @media (max-width: 720px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* ===== SMOOTH HOVER UTILITIES ===== */
+        .hover-lift {
+            transition: var(--transition);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        ::selection {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4C12.5 4 9.5 6.5 9 10C7.5 9.5 5.5 10 4.5 12C3.5 14 4 16.5 6 18C5 20 5.5 22.5 7.5 24C9.5 25.5 12 25 14 23C15 24 17 24.5 19 23.5C21 22.5 22 20.5 21.5 18.5C23 17 23.5 14.5 22 12.5C20.5 10.5 18 10 16.5 11C16 7.5 14 4 16 4Z"
+                    fill="currentColor" opacity="0.7"/>
+                    <circle cx="16" cy="16" r="2" fill="currentColor"/>
+                </svg>
+                Dr. Ličina Vet
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori meni">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#kako">Kako funkcionišemo</a></li>
+                <li><a href="#situacije">Kada nam se javite</a></li>
+                <li><a href="#zasto">Zašto mi</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="pre-head">
+                    <span>🐾</span> Veterinarska ambulanta u Novom Sadu
+                </div>
+                <h1>Vaš ljubimac zaslužuje<br>nežnu i stručnu negu</h1>
+                <p class="sub">Brinemo o zdravlju vaših četvoronožnih prijatelja — od preventivnih pregleda do savremene dijagnostike i terapije. Bez stresa, sa puno pažnje.</p>
+                <a href="tel:+381216623138" class="hero-cta">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Pozovite nas
+                </a>
+                <div class="hero-trust">
+                    <div class="item"><strong>15+</strong> godina iskustva</div>
+                    <div class="item"><strong>4.200+</strong> zadovoljnih vlasnika</div>
+                    <div class="item"><strong>⏱️</strong> Odgovor u roku od 30 min</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="deco-circle"></div>
+                <div class="deco-circle2"></div>
+                <svg viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- deco bg -->
+                    <circle cx="200" cy="180" r="150" fill="rgba(45,106,79,0.04)" />
+                    <circle cx="200" cy="180" r="110" fill="rgba(45,106,79,0.03)" />
+                    <!-- stylized heart + paw -->
+                    <path d="M200 100 C160 60 100 80 100 130 C100 170 140 200 200 250 C260 200 300 170 300 130 C300 80 240 60 200 100Z"
+                    fill="rgba(45,106,79,0.10)" stroke="var(--accent)" stroke-width="1.5" />
+                    <path d="M200 140 C180 120 140 130 140 160 C140 180 170 200 200 225 C230 200 260 180 260 160 C260 130 220 120 200 140Z"
+                    fill="rgba(64,145,108,0.12)" />
+                    <!-- paw -->
+                    <g transform="translate(120, 220)" fill="var(--accent)" opacity="0.18">
+                        <circle cx="0" cy="0" r="12"/>
+                        <circle cx="22" cy="-18" r="9"/>
+                        <circle cx="-22" cy="-18" r="9"/>
+                        <circle cx="32" cy="4" r="8"/>
+                        <circle cx="-32" cy="4" r="8"/>
+                    </g>
+                    <g transform="translate(260, 210) scale(0.7)" fill="var(--accent)" opacity="0.12">
+                        <circle cx="0" cy="0" r="12"/>
+                        <circle cx="22" cy="-18" r="9"/>
+                        <circle cx="-22" cy="-18" r="9"/>
+                        <circle cx="32" cy="4" r="8"/>
+                        <circle cx="-32" cy="4" r="8"/>
+                    </g>
+                    <!-- text -->
+                    <text x="200" y="310" text-anchor="middle" font-size="18" font-weight="700" fill="var(--accent)" opacity="0.25">❤️ 🐾</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS (Kako funkcionišemo) ===== -->
+    <section class="how" id="kako">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-label">📋 Proces</span>
+                <h2>Kako funkcionišemo?</h2>
+                <p>Vaš put do kvalitetne veterinarske usluge — jednostavno, brzo i bez komplikacija.</p>
+                <div class="deco-line"></div>
+            </div>
+            <div class="timeline">
+                <!-- step 1 -->
+                <div class="timeline-item">
+                    <div class="badge">1</div>
+                    <div class="card">
+                        <h3>📞 Javite nam se</h3>
+                        <p>Pozovite nas ili nam pošaljite poruku. Opisujete simptome ili potrebe vašeg ljubimca, a mi vam dajemo prve savete i zakazujemo termin.</p>
+                        <div class="meta">
+                            <span>📅 Radnim danima 08–20h</span>
+                            <span>📍 Novi Sad i okolina</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- step 2 -->
+                <div class="timeline-item">
+                    <div class="badge">2</div>
+                    <div class="card">
+                        <h3>🏥 Dolazite na pregled</h3>
+                        <p>Naša ambulanta je opremljena savremenom dijagnostikom. Pregled je temeljan, a ljubimac je u centru pažnje — bez žurbe i stresa.</p>
+                        <div class="meta">
+                            <span>🩺 Pregled u proseku traje 30–45 min</span>
+                            <span>🚗 Parking odmah pored ulaza</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- step 3 -->
+                <div class="timeline-item">
+                    <div class="badge">3</div>
+                    <div class="card">
+                        <h3>📋 Dobijate plan terapije</h3>
+                        <p>Nakon dijagnostike dobijate jasan plan lečenja, savete za negu i odgovore na sva pitanja. Sve pišemo jednostavnim jezikom.</p>
+                        <div class="meta">
+                            <span>💊 Terapija prilagođena ljubimcu</span>
+                            <span>📞 Pratimo oporavak i nakon posete</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- step 4 -->
+                <div class="timeline-item">
+                    <div class="badge">4</div>
+                    <div class="card">
+                        <h3>❤️ Redovna briga i podrška</h3>
+                        <p>Ostajemo uz vas i vašeg ljubimca i nakon tretmana. Preporučujemo termine vakcinacije, kontrole i savetujemo ishranu i negu.</p>
+                        <div class="meta">
+                            <span>📆 Podsetnik za vakcinaciju</span>
+                            <span>🐕 Saveti za ishranu i ponašanje</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SITUATIONS (Kada vam je potrebna pomoć) ===== -->
+    <section class="situations" id="situacije">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-label">🆘 Situacije</span>
+                <h2>Kada nam se vlasnici najčešće javljaju</h2>
+                <p>U svakoj od ovih situacija — tu smo za vas i vašeg ljubimca.</p>
+                <div class="deco-line"></div>
+            </div>
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <div class="emoji">🤒</div>
+                    <h3>Ljubimac je letargičan i nema apetit</h3>
+                    <p>Primetili ste da vaš pas ili mačka nije raspoložen, ne jede i više spava nego obično.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">🤕</div>
+                    <h3>Povreda ili hramanje</h3>
+                    <p>Vaš ljubimac je počeo da hramlje, ili ste primetili otok, ranu ili nelagodnost pri kretanju.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">😰</div>
+                    <h3>Povraćanje ili dijareja</h3>
+                    <p>Probavne smetnje su česte i mogu biti znak ozbiljnijeg problema ako potraju duže od 24h.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">🦷</div>
+                    <h3>Zubobolja i loš zadah</h3>
+                    <p>Problemi sa zubima su bolni i često prolaze nezapaženo dok ne postanu ozbiljni. Pomažemo na vreme.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">💉</div>
+                    <h3>Vakcinacija i preventiva</h3>
+                    <p>Redovna vakcinacija je najbolja zaštita. Bez stresa, uz blagi pristup i savete o nezi.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <div class="emoji">🧓</div>
+                    <h3>Stariji ljubimac i hronične bolesti</h3>
+                    <p>Stariji ljubimci zahtevaju posebnu pažnju i redovne kontrole. Prilagođavamo terapiju životnom dobu.</p>
+                    <span class="cta-tag">Tu smo za vas →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY US (Zašto baš mi) ===== -->
+    <section class="why" id="zasto">
+        <div class="why-deco">🐾</div>
+        <div class="container">
+            <div class="section-title">
+                <span class="section-label">⭐ Zašto mi</span>
+                <h2>Zašto baš Dr. Ličina Vet?</h2>
+                <p>Ne nudimo samo pregled — nudimo mir. Evo šta nas izdvaja.</p>
+                <div class="deco-line"></div>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon">👨‍⚕️</div>
+                    <div class="number">15+</div>
+                    <h3>Godina iskustva</h3>
+                    <p>Radili smo sa hiljadama ljubimaca — od malih čivava do velikih ovčara. Znamo šta radimo i volimo svoj posao.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🔬</div>
+                    <div class="number">Savremena</div>
+                    <h3>Dijagnostika</h3>
+                    <p>Koristimo modernu opremu za brzu i preciznu dijagnostiku — manje čekanja, više sigurnosti.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">🤝</div>
+                    <div class="number">100%</div>
+                    <h3>Individualni pristup</h3>
+                    <p>Svaki ljubimac je jedinstven. Ne radimo po šablonu — prilagođavamo terapiju potrebama vašeg ljubimca.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon">❤️</div>
+                    <div class="number">4.200+</div>
+                    <h3>Zadovoljnih vlasnika</h3>
+                    <p>Preporuke su naša najbolja reklama. Svaki osmeh vlasnika i rep koji maha — to je naš uspeh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER / KONTAKT ===== -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <!-- col 1 -->
+            <div class="col">
+                <div class="brand">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <path d="M16 4C12.5 4 9.5 6.5 9 10C7.5 9.5 5.5 10 4.5 12C3.5 14 4 16.5 6 18C5 20 5.5 22.5 7.5 24C9.5 25.5 12 25 14 23C15 24 17 24.5 19 23.5C21 22.5 22 20.5 21.5 18.5C23 17 23.5 14.5 22 12.5C20.5 10.5 18 10 16.5 11C16 7.5 14 4 16 4Z"
+                        fill="currentColor" opacity="0.8"/>
+                        <circle cx="16" cy="16" r="2" fill="currentColor"/>
+                    </svg>
+                    Dr. Ličina Vet
+                </div>
+                <p>Veterinarska ambulanta u Novom Sadu. Posvećeni zdravlju i dobrobiti vaših ljubimaca.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="LinkedIn">🔗</a>
+                    <a href="#" aria-label="Instagram">📸</a>
+                </div>
+            </div>
+            <!-- col 2 - kontakt -->
+            <div class="col">
+                <h3>📬 Kontakt</h3>
+                <div class="contact-line">📍 <span>Beogradski kej 19B, Novi Sad 21000</span></div>
+                <div class="contact-line">📞 <a href="tel:+381216623138">+38121 6623138</a></div>
+                <div class="contact-line">✉️ <a href="mailto:dr..liina.vet@example.com">dr..liina.vet@example.com</a></div>
+                <div class="messenger-btns">
+                    <a href="viber://chat?number=381216623138" target="_blank">💬 Viber</a>
+                    <a href="https://wa.me/381216623138" target="_blank">📱 WhatsApp</a>
+                </div>
+            </div>
+            <!-- col 3 - info -->
+            <div class="col">
+                <h3>🕒 Radno vreme</h3>
+                <p>Ponedeljak – Petak: 08:00 – 20:00<br>
+                Subota: 09:00 – 14:00<br>
+                Nedelja: po dogovoru</p>
+                <p style="margin-top:0.6rem;">🚗 Slobodan parking ispred ambulante.</p>
+                <p style="margin-top:0.3rem;">🐾 Pomoć na licu mesta u roku od 30 min.</p>
+            </div>
+            <!-- bottom -->
+            <div class="bottom">
+                &copy; 2025 Dr. Ličina Vet — Sva prava zadržana. | Novi Sad, Srbija
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="inner">
+            <span class="label">🐾 Vaš ljubimac nam je važan</span>
+            <a href="tel:+381216623138" class="btn">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = links.classList.toggle('open');
+                    toggle.classList.toggle('active', isOpen);
+                    toggle.setAttribute('aria-expanded', isOpen);
+                });
+
+                // Close nav on link click
+                links.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        links.classList.remove('open');
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // Close nav on click outside
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                        links.classList.remove('open');
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Smooth scroll for anchor links (fallback enhancement)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue(
+                            '--nav-h')) || 64;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight -
+                            12;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Set aria-expanded initially
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        })();
+    </script>
+
+</body>
+</html>

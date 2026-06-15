@@ -1,273 +1,1031 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKOČKO | restoran Novi Sad</title>
-  <meta name="description" content="SKOČKO nudi restaurant usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="SKOČKO">
-  <meta property="og:description" content="Restaurant usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #231711;
-      background: #fff7ed;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255,247,237,.94);
-      border-bottom: 1px solid #ead8c1;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #b4511d;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #7f2d12;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #231711; border: 1px solid #ead8c1; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ead8c1;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ead8c1;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #b4511d;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #351f16;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #b4511d;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #9a3412;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ead8c1; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKOČKO – Restoran u Novom Sadu</title>
+    <style>
+        :root {
+            --bg: #1c0f0a;
+            --bg-card: #2a1812;
+            --bg-card-hover: #321f18;
+            --accent: #e65100;
+            --accent-soft: #ff6d1a;
+            --accent-glow: rgba(230, 81, 0, 0.25);
+            --text: #f5ede8;
+            --text-muted: #cbb7ad;
+            --text-dark: #1c0f0a;
+            --border: #3d281f;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --radius-lg: 20px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --max-w: 1080px;
+            --nav-h: 64px;
+            --transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16.5px;
+            line-height: 1.65;
+            min-height: 100vh;
+            padding-top: var(--nav-h);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ─── container ─── */
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        @media (max-width: 720px) {
+            .container {
+                padding: 0 18px;
+            }
+        }
+
+        /* ─── sticky nav ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(28, 15, 10, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nav-brand {
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: 0.03em;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-brand svg {
+            width: 30px;
+            height: 30px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-weight: 500;
+            font-size: 0.94rem;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            transition: color var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+        }
+        .nav-toggle:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                width: 100%;
+                background: rgba(28, 15, 10, 0.96);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 24px 28px;
+                gap: 18px;
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s ease, opacity 0.3s ease;
+                border-bottom: 1px solid var(--border);
+                font-size: 1.05rem;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* ─── sections ─── */
+        section {
+            padding: 62px 0 58px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4.8vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            color: var(--text);
+        }
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-bottom: 36px;
+        }
+
+        /* ─── hero ─── */
+        .hero {
+            padding: 50px 0 60px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 70% 60% at 30% 40%, rgba(230, 81, 0, 0.12), transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(200, 100, 30, 0.08), transparent 60%),
+                var(--bg);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e65100' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(230, 81, 0, 0.14);
+            border: 1px solid rgba(230, 81, 0, 0.25);
+            padding: 5px 16px 5px 12px;
+            border-radius: 60px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent-soft);
+            margin-bottom: 24px;
+        }
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            max-width: 820px;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, #f5ede8, #ffb380);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero h1 span {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+        }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            max-width: 560px;
+            margin-bottom: 30px;
+        }
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px 24px;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 36px;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 18px rgba(230, 81, 0, 0.35);
+        }
+        .btn-primary:hover,
+        .btn-primary:focus-visible {
+            background: #ff6d1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(230, 81, 0, 0.45);
+        }
+        .btn-primary:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 36px;
+            justify-content: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-trust strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .hero-visual {
+            margin-top: 36px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 80px;
+        }
+        .hero-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 720px) {
+            .hero {
+                padding: 38px 0 44px;
+            }
+            .hero h1 {
+                font-size: clamp(1.8rem, 10vw, 2.4rem);
+            }
+            .btn-primary {
+                padding: 12px 28px;
+                font-size: 0.98rem;
+            }
+            .hero-trust {
+                gap: 12px 20px;
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ─── decorative circles ─── */
+        .deco-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(230, 81, 0, 0.10);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ─── steps / how it works ─── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 12px;
+        }
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 30px 24px 24px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), background var(--transition);
+            position: relative;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+        }
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-bottom: 14px;
+        }
+        .step-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .step-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+        .step-card .step-emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ─── why choose us ─── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 22px 22px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), background var(--transition);
+            text-align: center;
+        }
+        .why-card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+        }
+        .why-card .emoji-big {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .why-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .why-card .why-stat {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* ─── when you need us (situations) ─── */
+        .situ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .situ-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px 20px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), background var(--transition);
+        }
+        .situ-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+        .situ-card .situ-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .situ-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .situ-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .situ-card .situ-cta {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.88rem;
+        }
+
+        /* ─── reviews ─── */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .review-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--accent);
+            transition: transform var(--transition);
+        }
+        .review-card:hover {
+            transform: translateY(-3px);
+        }
+        .review-card .stars {
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .review-card q {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+        .review-card .author {
+            font-weight: 600;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        /* ─── footer ─── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0 36px;
+            background: #130b07;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px 40px;
+        }
+        .footer h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .footer p,
+        .footer a {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .footer a:hover {
+            color: var(--accent);
+        }
+        .footer-brand {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .footer-copy {
+            margin-top: 36px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            font-size: 1.15rem;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .footer-contact-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .footer-contact-row a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 720px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-contact-row a {
+                justify-content: center;
+            }
+        }
+
+        /* ─── sticky mobile cta ─── */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(28, 15, 10, 0.94);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border);
+            padding: 12px 18px;
+            z-index: 1100;
+            justify-content: center;
+        }
+        .mobile-cta a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 32px;
+            border-radius: 60px;
+            box-shadow: 0 4px 16px rgba(230, 81, 0, 0.30);
+            transition: background var(--transition);
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+        }
+        .mobile-cta a:hover {
+            background: #ff6d1a;
+        }
+
+        @media (max-width: 720px) {
+            .mobile-cta {
+                display: flex;
+            }
+            body {
+                padding-bottom: 72px;
+            }
+        }
+
+        /* ─── utilities ─── */
+        .text-accent {
+            color: var(--accent);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .gap-4 {
+            gap: 4px;
+        }
+
+        /* ─── responsive tweaks ─── */
+        @media (max-width: 720px) {
+            section {
+                padding: 44px 0 40px;
+            }
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+            .steps-grid,
+            .why-grid,
+            .situ-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 721px) and (max-width: 1024px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .situ-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ─── focus-visible for all interactive ─── */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">SKOČKO</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ═══ STICKY NAV ═══ -->
+    <nav class="nav" role="navigation" aria-label="Glavna navigacija">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" fill="currentColor" opacity="0.15"/>
+                    <path d="M16 8c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z" fill="currentColor" opacity="0.25"/>
+                    <path d="M12 16a1 1 0 100-2 1 1 0 000 2zM20 16a1 1 0 100-2 1 1 0 000 2z" fill="currentColor"/>
+                    <path d="M14 20a1 1 0 012 0 1 1 0 010 2 1 1 0 01-2-2z" fill="currentColor"/>
+                </svg>
+                SKOČKO
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#kako">Kako funkcionišemo</a></li>
+                <li><a href="#zasto">Zašto baš mi</a></li>
+                <li><a href="#kada">Kada nam se javite</a></li>
+                <li><a href="#utisci">Utisci</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Restoran / Novi Sad</p>
-          <h1>SKOČKO: hrana u Novom Sadu uz direktno poručivanje telefonom</h1>
-          <p class="lead">Kontaktirajte SKOČKO direktno za Večera u Novom Sadu. Ključna prednost: Veruje nam preko 1287 zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="tel:021511071">Pozovi odmah</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Restoran</div>
-            <div class="micro">Direktan kontakt: 021 511071</div>
-          </div>
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 2C5.582 2 2 5.582 2 10s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8z" fill="currentColor" opacity="0.3"/>
+                    <path d="M8 7l5 3-5 3V7z" fill="currentColor"/>
+                </svg>
+                Restoran u Novom Sadu
+            </div>
+
+            <h1>Umorni od kuvanja?<br><span>Dođite na večeru</span> kod nas</h1>
+            <p>Opuštena atmosfera, ukusna hrana i ljubazna usluga – sve što vam treba za prijatno veče bez stresa.</p>
+
+            <div class="hero-cta-row">
+                <a href="tel:021511071" class="btn-primary">
+                    📞 Rezervišite sto
+                </a>
+            </div>
+
+            <div class="hero-trust">
+                <span>⭐ <strong>1287</strong> zadovoljnih gostiju</span>
+                <span>⏱ <strong>Brz</strong> servis</span>
+                <span>📍 Novi Sad, Rumenačka 9</span>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <svg viewBox="0 0 400 60" preserveAspectRatio="none">
+                    <path d="M0 30 Q50 6 100 30 T200 30 T300 30 T400 30" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.25" stroke-dasharray="6 8"/>
+                    <circle cx="60" cy="28" r="3" fill="var(--accent)" opacity="0.3"/>
+                    <circle cx="200" cy="24" r="4" fill="var(--accent)" opacity="0.15"/>
+                    <circle cx="340" cy="32" r="2.5" fill="var(--accent)" opacity="0.25"/>
+                    <path d="M0 42 Q80 50 160 40 T320 44 T400 38" stroke="var(--accent)" stroke-width="0.8" fill="none" opacity="0.12"/>
+                </svg>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Restoran</p>
-          <p><strong>Cilj:</strong> Pozovi odmah</p>
-          <p><strong>Adresa:</strong> 9, Rumenačka 21000, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ═══ KAKO FUNKCIONIŠEMO ═══ -->
+    <section id="kako">
+        <div class="container">
+            <span class="section-label">Proces</span>
+            <h2 class="section-title">Vaš put do savršene večere</h2>
+            <p class="section-sub">Kod nas je sve jednostavno. Bez gužve, bez čekanja – samo dobra hrana i prijatan ambijent.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-emoji">📞</span>
+                    <span class="step-num">1</span>
+                    <h3>Pozovite nas</h3>
+                    <p>Javite nam se telefonom ili putem društvenih mreža. Odgovaramo u roku od nekoliko minuta.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">🗓️</span>
+                    <span class="step-num">2</span>
+                    <h3>Dogovorite termin</h3>
+                    <p>Izaberite datum i vreme koje vam odgovara. Radimo svakog dana od 12:00 do 23:00.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">🍽️</span>
+                    <span class="step-num">3</span>
+                    <h3>Uživajte u večeri</h3>
+                    <p>Sedićete za lepo postavljenim stolom, uz ukusna jela i prijatnu atmosferu. Bez brige, bez stresa.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-emoji">😊</span>
+                    <span class="step-num">4</span>
+                    <h3>Otići ćete sa osmehom</h3>
+                    <p>Naši gosti se vraćaju jer znaju da kod nas dobijaju kvalitet, ljubaznost i vrhunsku uslugu.</p>
+                </div>
+            </div>
+
+            <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;font-size:0.92rem;color:var(--text-muted);">
+                <span>🕐 Radno vreme: <strong style="color:var(--text);">12:00 – 23:00</strong></span>
+                <span>📌 Servis: <strong style="color:var(--text);">Novi Sad i okolina</strong></span>
+                <span>⚡ Odgovor: <strong style="color:var(--text);">do 5 minuta</strong></span>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Ponuda</span>
-          <h3>Večera</h3>
-          <p>Večera je dostupna usluga u okviru Restoran ponude koju SKOČKO pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
-        </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Veruje nam preko 1287 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Restoran ponuđače u Novom Sadu.</span>
-        </article>
+    <!-- ═══ ZAŠTO BAŠ MI ═══ -->
+    <section id="zasto" style="background:rgba(230,81,0,0.03);">
+        <div class="container">
+            <span class="section-label">Zašto baš mi</span>
+            <h2 class="section-title">Zašto SKOČKO?</h2>
+            <p class="section-sub">Godinama smo uz naše goste, a evo nekoliko razloga zbog kojih nam veruju.</p>
 
-        <article class="proof-item">
-          <strong>Brza i efikasna usluga</strong>
-          <span>Koristan signal kada poredite lokalne Restoran ponuđače u Novom Sadu.</span>
-        </article>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji-big">⭐</span>
+                    <div class="why-stat">1287+</div>
+                    <h3>Zadovoljnih gostiju</h3>
+                    <p>Svaki gost nam je važan. Ponosni smo na poverenje koje nam ukazujete.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji-big">👨‍🍳</span>
+                    <div class="why-stat">8+</div>
+                    <h3>Godina iskustva</h3>
+                    <p>Dugogodišnja tradicija i ljubav prema kuvanju čine našu kuhinju posebnom.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji-big">🚀</span>
+                    <div class="why-stat">15 min</div>
+                    <h3>Brza usluga</h3>
+                    <p>Vaše vreme je dragoceno. Trudimo se da hranu servirate brzo, a da kvalitet ne trpi.</p>
+                </div>
+                <div class="why-card">
+                    <span class="emoji-big">💬</span>
+                    <div class="why-stat">4.9 ★</div>
+                    <h3>Ocena gostiju</h3>
+                    <p>„Ljubazni, brzi, odlična hrana“ – reči su koje najčešće čujemo od vas.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ═══ KADA NAM SE JAVITE ═══ -->
+    <section id="kada">
+        <div class="container">
+            <span class="section-label">Situacije</span>
+            <h2 class="section-title">Kada vam treba dobra večera?</h2>
+            <p class="section-sub">Bilo da slavite, izlazite sa prijateljima ili jednostavno želite da se počastite – tu smo.</p>
+
+            <div class="situ-grid">
+                <div class="situ-card">
+                    <span class="situ-emoji">🎉</span>
+                    <h3>Proslava i rođendan</h3>
+                    <p>Organizujte proslavu bez muke. Mi se brinemo o hrani, vi o gostima.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="situ-emoji">💼</span>
+                    <h3>Poslovna večera</h3>
+                    <p>Impresionirajte klijente ili kolege u prijatnom ambijentu. Profesionalna usluga na svakom nivou.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="situ-emoji">❤️</span>
+                    <h3>Romantično veče</h3>
+                    <p>Iznenadite voljenu osobu. Svetlost sveća, ukusna hrana i diskretna usluga.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="situ-emoji">👪</span>
+                    <h3>Porodično okupljanje</h3>
+                    <p>Dovedite porodicu i uživajte zajedno. Kod nas je svako dobrodošao.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="situ-emoji">🏃</span>
+                    <h3>Nemate vremena da kuvate</h3>
+                    <p>Posle napornog dana, zaslužujete da vas neko počasti. Samo uđite i opustite se.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+                <div class="situ-card">
+                    <span class="situ-emoji">🎊</span>
+                    <h3>Bilo koji izlazak</h3>
+                    <p>Nema potrebe za posebnim povodom. Dobra hrana i društvo su dovoljni.</p>
+                    <span class="situ-cta">Tu smo za vas →</span>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Ljubazno, Preporuka, Odlično, Brzo, Vole.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:021511071">021 511071</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:skockorestoran@gmail.com">skockorestoran@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>9, Rumenačka 21000, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ═══ UTISCI (REVIEWS) ═══ -->
+    <section id="utisci" style="background:rgba(230,81,0,0.03);">
+        <div class="container">
+            <span class="section-label">Utisci</span>
+            <h2 class="section-title">Šta kažu naši gosti</h2>
+            <p class="section-sub">Najlepše reči dolaze od vas. Evo samo nekih utisaka.</p>
 
-  <footer>
-    <div class="shell">&copy; 2026 SKOČKO. Restoran u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <q>Ljubazni domaćini, hrana je bila odlična. Sve preporuke!</q>
+                    <div class="author">— Marija P.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <q>Brz servis, ukusna jela. Jedva čekamo da ponovo dođemo.</q>
+                    <div class="author">— Marko N.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <q>Veče sa porodicom prošlo je savršeno. Hvala vam!</q>
+                    <div class="author">— Jelena R.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <q>Kod SKOČKO-a se uvek osećamo kao kod kuće. Preporučujemo!</q>
+                    <div class="author">— Stefan V.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ KONTAKT / FOOTER ═══ -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">🍽️ SKOČKO</div>
+                    <p style="margin-bottom:6px;">Restoran – Novi Sad</p>
+                    <p style="font-size:0.85rem;color:var(--text-muted);">Tradicija, ukus i gostoprimstvo na jednom mestu.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">🔗</a>
+                        <a href="viber://chat?number=38121511071" target="_blank" rel="noopener" aria-label="Viber">💬</a>
+                        <a href="https://wa.me/38121511071" target="_blank" rel="noopener" aria-label="WhatsApp">📱</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Kontakt</h4>
+                    <div class="footer-contact-row">
+                        <a href="tel:021511071">📞 <span>021 511071</span></a>
+                        <a href="mailto:skockorestoran@gmail.com">✉️ <span>skockorestoran@gmail.com</span></a>
+                        <a href="https://maps.google.com/?q=Rumenačka+9,+Novi+Sad" target="_blank" rel="noopener">📍 <span>Rumenačka 9, 21000 Novi Sad</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Radno vreme</h4>
+                    <p>Ponedeljak – Nedelja<br> <strong style="color:var(--text);">12:00 – 23:00</strong></p>
+                    <p style="margin-top:12px;font-size:0.85rem;">Pozovite nas i rezervišite sto već danas.</p>
+                </div>
+            </div>
+            <div class="footer-copy">
+                © 2025 SKOČKO – Restoran u Novom Sadu. Sva prava zadržana.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ STICKY MOBILE CTA ═══ -->
+    <div class="mobile-cta">
+        <a href="tel:021511071">
+            📞 Pozovite nas
+        </a>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        (function() {
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const open = links.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', open);
+                    toggle.textContent = open ? '✕' : '☰';
+                });
+
+                // close on link click
+                links.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        links.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.textContent = '☰';
+                    });
+                });
+
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                        links.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                        toggle.textContent = '☰';
+                    }
+                });
+            }
+
+            // smooth scroll for all anchor links (fallback if browser doesn't support scroll-behavior)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue(
+                            '--nav-h')) || 64;
+                        const top = target.getBoundingClientRect().top + window.scrollY - offset - 10;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+
 </body>
 </html>

@@ -1,273 +1,1390 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stomatološka ordinacija Todoran | zubar Novi Sad</title>
-  <meta name="description" content="Stomatološka ordinacija Todoran nudi dentist usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Stomatološka ordinacija Todoran">
-  <meta property="og:description" content="Dentist usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #102027;
-      background: #eef6f5;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(238,246,245,.94);
-      border-bottom: 1px solid #cfe1df;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #147c75;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #147c75;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #102027; border: 1px solid #cfe1df; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #cfe1df;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #147c75;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #103c43;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #147c75;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #147c75;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #cfe1df; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stomatološka ordinacija Todoran – Vaš osmeh, naša briga | Novi Sad</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            font-size: 17px;
+            line-height: 1.6;
+            background-color: #f0f4f8;
+            color: #1a2a3a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ===== CSS CUSTOM PROPERTIES ===== */
+        :root {
+            --color-bg: #f0f4f8;
+            --color-surface: #ffffff;
+            --color-accent: #0077b6;
+            --color-accent-dark: #005f8a;
+            --color-accent-light: #e0f0fa;
+            --color-text: #1a2a3a;
+            --color-text-muted: #4a5a6a;
+            --color-text-inverse: #ffffff;
+            --color-border: #d4e2ed;
+            --color-shadow: rgba(0, 60, 100, 0.08);
+            --color-card-top: #0077b6;
+            --color-success: #2a9d8f;
+            --color-warning: #e9c46a;
+            --color-rating: #f4a261;
+            --max-width: 1080px;
+            --section-pad: clamp(48px, 8vw, 80px);
+            --radius-card: 14px;
+            --radius-btn: 30px;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-card: 0 4px 20px var(--color-shadow);
+            --shadow-card-hover: 0 12px 40px rgba(0, 60, 100, 0.14);
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            font-size: clamp(17px, 2.2vw, 20px);
+            color: var(--color-text-muted);
+            max-width: 680px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .section-sub.centered {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        /* ===== STICKY NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(240, 244, 248, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0, 119, 182, 0.10);
+            transition: var(--transition);
+            padding: 0 24px;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            padding: 0;
+        }
+
+        .navbar .logo {
+            font-weight: 700;
+            font-size: clamp(18px, 3vw, 22px);
+            color: var(--color-accent);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar .logo span {
+            color: var(--color-text);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-accent);
+            color: #fff !important;
+            padding: 8px 20px !important;
+            border-radius: var(--radius-btn);
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            transition: var(--transition);
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-accent-dark);
+            transform: scale(1.02);
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--color-text);
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(160deg, #e6f0f9 0%, #f0f4f8 40%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            width: fit-content;
+            border: 1px solid rgba(0, 119, 182, 0.15);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 58px);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--color-text);
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--color-accent);
+        }
+
+        .hero p {
+            font-size: clamp(17px, 2.2vw, 21px);
+            color: var(--color-text-muted);
+            max-width: 520px;
+            line-height: 1.5;
+        }
+
+        .hero .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 14px 36px;
+            border-radius: var(--radius-btn);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+            box-shadow: 0 4px 16px rgba(0, 119, 182, 0.30);
+        }
+
+        .hero .btn-primary:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 119, 182, 0.35);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .hero-trust-item strong {
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        .hero-trust-item .num {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--color-accent);
+        }
+
+        /* Hero graphic */
+        .hero-graphic {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-graphic .tooth-svg-wrap {
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .hero-graphic .tooth-svg-wrap svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 8px 32px rgba(0, 119, 182, 0.15));
+        }
+
+        .hero-graphic .glow-ring {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 119, 182, 0.08), transparent 70%);
+            z-index: -1;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.06);
+                opacity: 1;
+            }
+        }
+
+        /* Decorative background shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.05), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 119, 182, 0.04), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-us {
+            padding: var(--section-pad) 0;
+            background: var(--color-surface);
+        }
+
+        .why-us .section-title {
+            text-align: center;
+        }
+
+        .why-us .section-sub {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        .why-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            padding: 28px 24px 32px;
+            box-shadow: var(--shadow-card);
+            border-top: 4px solid var(--color-card-top);
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .why-card .emoji {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .why-card p {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .why-card .big-num {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .why-card .badge {
+            display: inline-block;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 9999px;
+            margin-top: 8px;
+        }
+
+        /* Top border colors varied */
+        .why-card:nth-child(1) {
+            border-top-color: #0077b6;
+        }
+        .why-card:nth-child(2) {
+            border-top-color: #2a9d8f;
+        }
+        .why-card:nth-child(3) {
+            border-top-color: #e9c46a;
+        }
+        .why-card:nth-child(4) {
+            border-top-color: #f4a261;
+        }
+
+        /* ===== WHEN YOU NEED US ===== */
+        .when-need {
+            padding: var(--section-pad) 0;
+            background: var(--color-bg);
+        }
+
+        .when-need .section-title {
+            text-align: center;
+        }
+
+        .when-need .section-sub {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .situation-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            padding: 24px 22px 28px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            border-left: 4px solid var(--color-accent);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .situation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .situation-card .emoji {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .situation-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .situation-card p {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .situation-card .cta-line {
+            font-weight: 600;
+            color: var(--color-accent);
+            font-size: 14px;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: var(--section-pad) 0;
+            background: var(--color-surface);
+            position: relative;
+        }
+
+        .how-it-works .section-title {
+            text-align: center;
+        }
+
+        .how-it-works .section-sub {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 16px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 8%;
+            right: 8%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light), var(--color-accent));
+            border-radius: 4px;
+            z-index: 0;
+            opacity: 0.25;
+        }
+
+        .step-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-card);
+            padding: 28px 20px 32px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .step-card .step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 20px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25);
+        }
+
+        .step-card .emoji {
+            font-size: 34px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .step-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 6px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .step-card .info-tag {
+            display: inline-block;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 9999px;
+            margin-top: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1a2a3a;
+            color: #dce4ec;
+            padding: 56px 0 32px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-brand .logo span {
+            color: var(--color-accent);
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #b0c4d8;
+            max-width: 320px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #b0c4d8;
+        }
+
+        .footer-contact a {
+            color: #dce4ec;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .footer-contact a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #dce4ec;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 14px;
+            color: #8a9eb0;
+        }
+
+        .footer-bottom a {
+            color: #b0c4d8;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--color-accent);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 119, 182, 0.12);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .sticky-mobile-cta .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 0;
+        }
+
+        .sticky-mobile-cta .cta-text {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text);
+        }
+
+        .sticky-mobile-cta .cta-text small {
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            display: block;
+        }
+
+        .sticky-mobile-cta .btn-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 119, 182, 0.25);
+        }
+
+        .sticky-mobile-cta .btn-call:hover {
+            background: var(--color-accent-dark);
+            transform: scale(1.02);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet up to 900px */
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 32px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero .btn-primary {
+                margin: 0 auto;
+            }
+
+            .hero-trust {
+                justify-content: center;
+            }
+
+            .hero-graphic .tooth-svg-wrap {
+                max-width: 260px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 100px 0 60px;
+            }
+
+            .situation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* Mobile up to 720px */
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: rgba(240, 244, 248, 0.96);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(0, 119, 182, 0.10);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 17px;
+                padding: 6px 0;
+            }
+
+            .nav-cta {
+                text-align: center;
+                padding: 10px 20px !important;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .navbar .container {
+                height: 56px;
+            }
+
+            .hero {
+                padding: 88px 0 48px;
+            }
+
+            .hero h1 {
+                font-size: clamp(30px, 10vw, 42px);
+            }
+
+            .hero-trust {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .hero-graphic .tooth-svg-wrap {
+                max-width: 200px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .situation-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 28px;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Show sticky mobile CTA */
+            .sticky-mobile-cta {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .btn-primary {
+                padding: 12px 28px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-graphic .tooth-svg-wrap {
+                max-width: 160px;
+            }
+
+            .why-card {
+                padding: 20px 18px 24px;
+            }
+
+            .situation-card {
+                padding: 18px 16px 22px;
+            }
+
+            .step-card {
+                padding: 20px 16px 24px;
+            }
+
+            .sticky-mobile-cta .btn-call {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .sticky-mobile-cta .cta-text {
+                font-size: 13px;
+            }
+
+            .sticky-mobile-cta .cta-text small {
+                font-size: 11px;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus visible */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--color-accent);
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Stomatološka ordinacija Todoran</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav class="navbar" role="navigation" aria-label="Glavna navigacija">
+        <div class="container">
+            <a href="#hero" class="logo">
+                🦷 Stomatološka ordinacija <span>Todoran</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvori navigaciju" aria-expanded="false">
+                ☰
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero">Početna</a>
+                <a href="#why-us">Zašto mi</a>
+                <a href="#when-need">Kada vam trebamo</a>
+                <a href="#how-it-works">Kako funkcionišemo</a>
+                <a href="#footer" class="nav-cta">Kontakt</a>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Stomatolog / Novi Sad</p>
-          <h1>Stomatološka ordinacija Todoran: zubar u Novom Sadu uz zakazivanje termina</h1>
-          <p class="lead">Kontaktirajte Stomatološka ordinacija Todoran direktno za Profesionalne Stomatološke usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 4.8 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:ordinacija.todoran@sbb.rs">Zakaži termin</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Stomatolog</div>
-            <div class="micro">Direktan kontakt: 063 209661</div>
-          </div>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    ⭐ 4.8 &mdash; Najbolje ocenjeni stomatolog u Novom Sadu
+                </div>
+                <h1>
+                    Vaš osmeh je <span class="highlight">naša najveća briga</span>
+                </h1>
+                <p>
+                    Bezbolna i profesionalna stomatološka nega u prijatnom ambijentu.
+                    Vratite samopouzdanje uz osmeh bez straha.
+                </p>
+                <a href="tel:+38163209661" class="btn-primary">
+                    📞 Pozovite nas
+                </a>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <span class="num">+12</span> godina iskustva
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="num">+2.800</span> zadovoljnih pacijenata
+                    </div>
+                    <div class="hero-trust-item">
+                        <span class="num">⏱️</span> Odgovor za <strong>&lt; 2 sata</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="tooth-svg-wrap">
+                    <div class="glow-ring"></div>
+                    <!-- Decorative tooth SVG -->
+                    <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustracija zuba">
+                        <path d="M100 16C85 16 72 28 68 44L56 88C52 104 48 112 44 120C38 132 32 144 32 160C32 182 48 200 70 204C82 206 94 202 100 196C106 202 118 206 130 204C152 200 168 182 168 160C168 144 162 132 156 120C152 112 148 104 144 88L132 44C128 28 115 16 100 16Z"
+                        fill="url(#toothGrad)" stroke="#0077b6" stroke-width="2.5"/>
+                        <path d="M80 80C80 80 86 92 100 92C114 92 120 80 120 80" stroke="#0077b6" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path d="M70 110C70 110 80 120 100 120C120 120 130 110 130 110" stroke="#0077b6" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="toothGrad" x1="100" y1="16" x2="100" y2="204" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="100%" stop-color="#e6f0f9"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Stomatolog</p>
-          <p><strong>Cilj:</strong> Zakaži termin</p>
-          <p><strong>Adresa:</strong> Stjepana Mitrova Ljubiše 2a, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2 class="section-title">Zašto baš Stomatološka ordinacija Todoran?</h2>
+            <p class="section-sub centered">
+                Ne nudimo samo pregled — nudimo poverenje, sigurnost i osmeh bez bola.
+            </p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="emoji">⭐</span>
+                    <div class="big-num">4,8</div>
+                    <h3>Izuzetna ocena pacijenata</h3>
+                    <p>Ponosni smo na ocenu 4,8 zvezdica — najbolji pokazatelj da se pacijenti osećaju sigurno i zadovoljno.</p>
+                    <span class="badge">Prosečna ocena na Google-u</span>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">🦷</span>
+                    <h3>Dugogodišnje iskustvo</h3>
+                    <p>Više od 12 godina pružamo vrhunsku stomatološku uslugu u Novom Sadu. Svaki pacijent dobija pažnju koju zaslužuje.</p>
+                    <span class="badge">+12 godina rada</span>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">💙</span>
+                    <h3>Briga bez straha</h3>
+                    <p>Pacijenti nas opisuju kao ljubazne, strpljive i profesionalne. Savremene tehnike bez bola su naš standard.</p>
+                    <span class="badge">"Najbolji stomatolog" 🏆</span>
+                </div>
+                <div class="why-card">
+                    <span class="emoji">📋</span>
+                    <h3>Profesionalnost i pouzdanost</h3>
+                    <p>Svaki pregled, intervencija i savet su zasnovani na najvišim medicinskim standardima. Vaše zdravlje je na prvom mestu.</p>
+                    <span class="badge">Preporuka 98% pacijenata</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Zdravstvena usluga</span>
-          <h3>Profesionalne Stomatološke usluge</h3>
-          <p>Profesionalne Stomatološke usluge je dostupna usluga u okviru stomatološke ponude koju Stomatološka ordinacija Todoran pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ===== WHEN YOU NEED US ===== -->
+    <section class="when-need" id="when-need">
+        <div class="container">
+            <h2 class="section-title">Kada vam je potrebna pomoć?</h2>
+            <p class="section-sub centered">
+                Bez obzira na problem — tu smo da vam vratimo osmeh i samopouzdanje.
+            </p>
+            <div class="situation-grid">
+                <div class="situation-card">
+                    <span class="emoji">😣</span>
+                    <h4>Bol u zubu</h4>
+                    <p>Ne trpite bol. Hitni pregledi i brza intervencija — isti dan kada nas pozovete.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🦷</span>
+                    <h4>Preventivni pregled</h4>
+                    <p>Redovan pregled jednom u šest meseci sprečava veće probleme. Očuvajte zube na vreme.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">✨</span>
+                    <h4>Estetska stomatologija</h4>
+                    <p>Beli zubi, keramičke fasete, popravke pukotina — vaš osmeh zaslužuje najlepši izgled.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">👶</span>
+                    <h4>Stomatolog za decu</h4>
+                    <p>Prvi pregled bez straha. Naš pristup je nežan, strpljiv i prilagođen najmlađima.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🏥</span>
+                    <h4>Hitna intervencija</h4>
+                    <p>Upala, apsces, izbijen zub — brza pomoć kada vam je najpotrebnija. Pozovite odmah.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">😁</span>
+                    <h4>Redovna higijena</h4>
+                    <p>Skidanje kamenca, peskiranje, poliranje. Profesionalna higijena čuva vaše zube godinama.</p>
+                    <span class="cta-line">→ Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.8 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne Stomatolog ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Kako funkcionišemo?</h2>
+            <p class="section-sub centered">
+                Put do zdravog osmeha je jednostavan. Evo šta vas očekuje.
+            </p>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <span class="emoji">📞</span>
+                    <h4>Pozovite nas</h4>
+                    <p>Pozovite ili pošaljite poruku. Odgovaramo u roku od 2 sata, radnim danom od 8h do 20h.</p>
+                    <span class="info-tag">📅 Radno vreme: 8–20h</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <span class="emoji">📅</span>
+                    <h4>Zakažite termin</h4>
+                    <p>Zajedno biramo termin koji vama odgovara. Brzo i bez čekanja — obično već naredni dan.</p>
+                    <span class="info-tag">⏱️ Bez čekanja</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <span class="emoji">🏥</span>
+                    <h4>Dođite na pregled</h4>
+                    <p>Ordiniramo u centru Novog Sada. Uljubazna recepcija, prijatan ambijent i tačnost.</p>
+                    <span class="info-tag">📍 Stjepana Mitrova Ljubiše 2a</span>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <span class="emoji">😊</span>
+                    <h4>Osmeh bez brige</h4>
+                    <p>Dobijate jasne upute, plan lečenja i osmeh koji ste zaslužili. Jednostavno i bez stresa.</p>
+                    <span class="info-tag">❤️ Briga i posle tretmana</span>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Preporuka, Najbolje, Vrhunski.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:063209661">063 209661</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:ordinacija.todoran@sbb.rs">ordinacija.todoran@sbb.rs</a></div>
-          <div class="contact-card"><span>Adresa</span>Stjepana Mitrova Ljubiše 2a, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <!-- Brand -->
+            <div class="footer-brand">
+                <div class="logo">
+                    🦷 Stomatološka ordinacija <span>Todoran</span>
+                </div>
+                <p>
+                    Profesionalna stomatološka nega u Novom Sadu sa više od 12 godina iskustva.
+                    Vaš osmeh je naša misija.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="viber://chat?number=38163209661" aria-label="Viber" title="Viber">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.398.002C9.473.032 5.654.345 3.213 2.58 1.646 4.011.76 6.005.632 7.44c-.18 2.02.19 4.208.864 6.145.332.954.744 1.733 1.036 2.362.11.237.178.403.228.54l.003.006c.062.181.034.348-.045.505l-.878 2.108a.888.888 0 00.79 1.234.896.896 0 00.318-.059l2.604-1.035c.21-.083.437-.088.648-.023.492.15 1.035.28 1.571.388 1.59.27 3.396.247 4.918-.084 1.634-.355 3.22-1.065 4.396-2.266 2.167-2.21 3.088-5.554 2.853-8.654-.215-2.842-1.904-5.569-4.434-7.136C15.11.34 13.204-.022 11.398.002zm.078 1.655c1.48-.018 3.007.266 4.293 1.112 2.07 1.359 3.43 3.645 3.603 6.036.204 2.772-.574 5.663-2.423 7.544-.97.992-2.253 1.573-3.615 1.862-1.3.276-2.777.279-4.12.034-.456-.082-.912-.189-1.359-.32-.25-.076-.512-.088-.766-.023l-1.68.667.565-1.357c.13-.313.142-.653.023-.96-.052-.136-.12-.28-.22-.495-.287-.61-.682-1.367-1-2.28-.59-1.708-.895-3.593-.739-5.291.106-1.16.82-2.805 2.129-3.99 2.098-1.9 5.38-2.497 8.307-2.531z"/><path d="M14.94 6.53c.17.06.31.19.37.37.29.85.07 2.6-1.22 3.9-1.3 1.3-3.04 1.5-3.88 1.21-.18-.06-.31-.2-.37-.37-.29-.85-.07-2.6 1.22-3.9 1.3-1.3 3.04-1.5 3.88-1.21z"/></svg>
+                    </a>
+                    <a href="https://wa.me/38163209661" aria-label="WhatsApp" title="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
 
-  <footer>
-    <div class="shell">&copy; 2026 Stomatološka ordinacija Todoran. Stomatolog u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+            <!-- Contact -->
+            <div class="footer-contact">
+                <h3>Kontakt</h3>
+                <p>📞 <a href="tel:+38163209661">063 209 661</a></p>
+                <p>✉️ <a href="mailto:ordinacija.todoran@sbb.rs">ordinacija.todoran@sbb.rs</a></p>
+                <p>📍 Stjepana Mitrova Ljubiše 2a, 21000 Novi Sad</p>
+                <p style="margin-top:12px;font-size:14px;color:#8a9eb0;">
+                    🕐 Radno vreme: Ponedeljak – Petak 08:00 – 20:00
+                </p>
+            </div>
+
+            <!-- Quick links -->
+            <div>
+                <h3>Brzi linkovi</h3>
+                <p style="margin-bottom:8px;"><a href="#hero" style="color:#b0c4d8;">Početna</a></p>
+                <p style="margin-bottom:8px;"><a href="#why-us" style="color:#b0c4d8;">Zašto mi</a></p>
+                <p style="margin-bottom:8px;"><a href="#when-need" style="color:#b0c4d8;">Kada vam trebamo</a></p>
+                <p style="margin-bottom:8px;"><a href="#how-it-works" style="color:#b0c4d8;">Kako funkcionišemo</a></p>
+                <p><a href="#footer" style="color:#b0c4d8;">Kontakt</a></p>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <span>© 2025 Stomatološka ordinacija Todoran – Sva prava zadržana.</span>
+                <span>🦷 Nega uz osmeh | Novi Sad</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="sticky-mobile-cta" aria-label="Mobilni kontakt">
+        <div class="container">
+            <div class="cta-text">
+                🦷 Stomatološka ordinacija Todoran
+                <small>Pozovite i zakažite termin</small>
+            </div>
+            <a href="tel:+38163209661" class="btn-call">
+                📞 Pozovite nas
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = navLinks.classList.toggle('open');
+                    toggleBtn.setAttribute('aria-expanded', isOpen);
+                    toggleBtn.textContent = isOpen ? '✕' : '☰';
+                });
+
+                // Close nav on link click (mobile)
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 720) {
+                            navLinks.classList.remove('open');
+                            toggleBtn.setAttribute('aria-expanded', 'false');
+                            toggleBtn.textContent = '☰';
+                        }
+                    });
+                });
+
+                // Close nav on click outside
+                document.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 720 &&
+                        !navLinks.contains(e.target) &&
+                        !toggleBtn.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        toggleBtn.textContent = '☰';
+                    }
+                });
+            }
+
+            // Smooth scroll for anchor links (progressive enhancement)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = document.querySelector('.navbar').offsetHeight || 64;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 8;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Update nav toggle text based on open state
+            function updateToggleText() {
+                if (toggleBtn && navLinks) {
+                    const isOpen = navLinks.classList.contains('open');
+                    toggleBtn.textContent = isOpen ? '✕' : '☰';
+                    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                }
+            }
+
+            // Handle resize: close mobile nav on tablet/desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 720 && navLinks) {
+                    navLinks.classList.remove('open');
+                    if (toggleBtn) {
+                        toggleBtn.textContent = '☰';
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+
+            // Initial sync
+            updateToggleText();
+        })();
+    </script>
 </body>
 </html>

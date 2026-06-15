@@ -1,0 +1,1325 @@
+I've created a complete, fully-styled dark-themed HTML website for SLM Cezar Company, tailored as a local shopping destination in Novi Sad.
+```html
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLM Cezar Company – Vaš centar za kupovinu u Novom Sadu</title>
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #222222;
+            --bg-card: #2a2a2a;
+            --bg-elevated: #333333;
+            --accent: #e63946;
+            --accent-hover: #d62839;
+            --accent-glow: rgba(230, 57, 70, 0.25);
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --text-muted: #7a7a7a;
+            --border-subtle: #3a3a3a;
+            --border-accent: #e63946;
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35);
+            --radius-card: 14px;
+            --radius-btn: 10px;
+            --radius-sm: 8px;
+            --nav-height: 64px;
+            --max-width: 1060px;
+            --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --section-pad: 64px;
+            --transition: 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-bottom: 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* ── container ── */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ── sticky nav ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            transition: background var(--transition);
+        }
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+        }
+        .nav-logo span {
+            color: var(--accent);
+        }
+        .nav-logo svg {
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 4px 0;
+            transition: color var(--transition);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: var(--radius-sm);
+            transition: background var(--transition);
+        }
+        .nav-toggle:hover {
+            background: var(--bg-elevated);
+        }
+
+        /* ── hero ── */
+        .hero {
+            padding: calc(var(--nav-height) + 48px) 0 60px;
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(ellipse at 20% 40%, rgba(230, 57, 70, 0.10) 0%, transparent 60%),
+                radial-gradient(ellipse at 90% 70%, rgba(230, 57, 70, 0.06) 0%, transparent 50%),
+                var(--bg-primary);
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content {
+            max-width: 580px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            padding: 6px 18px 6px 14px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
+        }
+        .hero-badge svg {
+            flex-shrink: 0;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.4vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+        .hero h1 .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-glow);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero p {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 34px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+        .btn-primary svg {
+            flex-shrink: 0;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            border: 1.5px solid var(--border-subtle);
+            cursor: pointer;
+            transition: border-color var(--transition), background var(--transition);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background: rgba(230, 57, 70, 0.06);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .hero-trust-item strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .hero-trust-item svg {
+            flex-shrink: 0;
+        }
+
+        /* hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-visual-inner {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            aspect-ratio: 1/0.9;
+        }
+        .hero-svg-deco {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .hero-svg-deco svg {
+            width: 100%;
+            height: 100%;
+        }
+        .hero-emoji-grid {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
+            padding: 18px;
+            align-content: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .hero-emoji-cell {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-subtle);
+            transition: transform var(--transition), border-color var(--transition);
+            aspect-ratio: 1/1;
+        }
+        .hero-emoji-cell:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+
+        /* ── section general ── */
+        section {
+            padding: var(--section-pad) 0;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin-bottom: 40px;
+        }
+
+        /* ── why us ── */
+        #zasto {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        #zasto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .why-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 32px 26px 30px;
+            border-top: 4px solid var(--accent);
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at top right, var(--accent-glow), transparent 70%);
+            opacity: 0.3;
+            transition: opacity var(--transition);
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+        }
+        .why-card:hover::after {
+            opacity: 0.6;
+        }
+        .why-card-emoji {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .why-card .stat {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ── situations / kada ── */
+        #kada {
+            background: var(--bg-primary);
+            position: relative;
+        }
+        #kada::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        }
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .situation-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 26px 22px 24px;
+            border: 1px solid var(--border-subtle);
+            transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            display: flex;
+            flex-direction: column;
+        }
+        .situation-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+        .situation-card .emoji {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .situation-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .situation-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            flex: 1;
+        }
+        .situation-card .tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(230, 57, 70, 0.10);
+            padding: 4px 14px;
+            border-radius: 100px;
+            align-self: flex-start;
+            border: 1px solid rgba(230, 57, 70, 0.15);
+        }
+
+        /* ── how it works ── */
+        #kako {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+        #kako::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            counter-reset: step;
+        }
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 30px 22px 26px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            counter-increment: step;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .step-card .emoji {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .step-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .step-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .steps-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 40px;
+            margin-top: 36px;
+            padding: 20px 28px;
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border-subtle);
+            justify-content: center;
+        }
+        .steps-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .steps-info-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .steps-info-item svg {
+            flex-shrink: 0;
+        }
+
+        /* ── footer ── */
+        .footer {
+            background: #111;
+            border-top: 1px solid var(--border-subtle);
+            padding: 48px 0 40px;
+        }
+        .footer .container {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 36px 48px;
+        }
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+        .footer-brand .cat {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .footer-contact h4,
+        .footer-social h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            letter-spacing: 0.02em;
+        }
+        .footer-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-contact-list a,
+        .footer-contact-list .addr {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+        .footer-contact-list a:hover {
+            color: var(--accent);
+        }
+        .footer-contact-list svg {
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+        .footer-contact-list .addr svg {
+            color: var(--text-muted);
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .footer-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            transition: background var(--transition), border-color var(--transition), color var(--transition);
+        }
+        .footer-social-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .footer-social-links a svg {
+            flex-shrink: 0;
+        }
+
+        .footer-copy {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        /* ── sticky mobile CTA ── */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 10px 16px;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .sticky-cta .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-cta-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .sticky-cta-text .small {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .sticky-cta-text .name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .sticky-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: background var(--transition), transform var(--transition);
+            flex-shrink: 0;
+        }
+        .sticky-cta-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(0.97);
+        }
+        .sticky-cta-btn svg {
+            flex-shrink: 0;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero p {
+                max-width: 100%;
+            }
+            .hero-cta {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual-inner {
+                max-width: 340px;
+            }
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .situations-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            :root {
+                --section-pad: 44px;
+                --nav-height: 58px;
+            }
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.96);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                flex-direction: column;
+                padding: 18px 24px 24px;
+                gap: 14px;
+                border-bottom: 1px solid var(--border-subtle);
+                transform: translateY(-110%);
+                opacity: 0;
+                transition: transform 0.35s ease, opacity 0.35s ease;
+                pointer-events: none;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-links a {
+                font-size: 1rem;
+                padding: 6px 0;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .hero {
+                min-height: auto;
+                padding-top: calc(var(--nav-height) + 32px);
+                padding-bottom: 40px;
+            }
+            .hero h1 {
+                font-size: clamp(1.8rem, 6vw, 2.4rem);
+            }
+            .hero-trust {
+                gap: 16px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-visual-inner {
+                max-width: 260px;
+            }
+            .hero-emoji-cell {
+                font-size: 1.8rem;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .situations-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-contact-list a,
+            .footer-contact-list .addr {
+                justify-content: center;
+            }
+            .footer-social-links {
+                justify-content: center;
+            }
+            .steps-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 16px 18px;
+            }
+
+            .sticky-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 72px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-emoji-cell {
+                font-size: 1.4rem;
+            }
+            .hero-visual-inner {
+                max-width: 200px;
+            }
+            .btn-primary {
+                padding: 12px 24px;
+                font-size: 0.92rem;
+            }
+            .btn-outline {
+                padding: 10px 20px;
+                font-size: 0.88rem;
+            }
+            .sticky-cta-btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+            .sticky-cta-text .name {
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ── utilities ── */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        .accent {
+            color: var(--accent);
+        }
+
+        /* decorative floating shapes */
+        .float-deco {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+        }
+        .float-deco-1 {
+            top: 10%;
+            right: -5%;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent), transparent 70%);
+        }
+        .float-deco-2 {
+            bottom: 5%;
+            left: -8%;
+            width: 240px;
+            height: 240px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: var(--accent-glow);
+            filter: blur(40px);
+        }
+        .float-deco-3 {
+            top: 40%;
+            left: 50%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            filter: blur(50px);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ STICKY NAV ═══ -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <a href="#hero" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect x="2" y="2" width="28" height="28" rx="6" stroke="currentColor" stroke-width="2.5" fill="none" />
+                    <path d="M10 16 L16 10 L22 16 L16 22 Z" fill="var(--accent)" opacity="0.85" />
+                    <circle cx="16" cy="16" r="3" fill="#fff" opacity="0.9" />
+                </svg>
+                SLM <span>Cezar</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni" aria-expanded="false">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="17" x2="20" y2="17" />
+                </svg>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#zasto">Zašto mi</a>
+                <a href="#kada">Kada nam doći</a>
+                <a href="#kako">Kako funkcionišemo</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+        <div class="float-deco float-deco-1"></div>
+        <div class="float-deco float-deco-2"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <circle cx="8" cy="8" r="6" stroke="var(--accent)" stroke-width="1.5" fill="none" />
+                        <path d="M5 8 L7 10 L11 6" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Novi Sad • Shopping centar
+                </div>
+                <h1>
+                    Sve što tražite – <br />
+                    <span class="highlight">na jednom mestu</span>
+                </h1>
+                <p>
+                    Umorni ste od traženja po raznim radnjama? Kod nas pronalazite širok asortiman,
+                    stručan savet i cene koje vam odgovaraju – bez stresa i bez kompromisa.
+                </p>
+                <div class="hero-cta">
+                    <a href="tel:+381216411696" class="btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        Pozovite nas
+                    </a>
+                    <a href="#kako" class="btn-outline">
+                        Saznajte više
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <polyline points="19 12 12 19 5 12" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <div class="hero-trust-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="6" />
+                            <path d="M12 14v4" />
+                            <path d="M8 22h8" />
+                        </svg>
+                        <div><strong>15+</strong> godina iskustva</div>
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        <div><strong>5000+</strong> zadovoljnih kupaca</div>
+                    </div>
+                    <div class="hero-trust-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        <div><strong>5★</strong> ocena kupaca</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-visual-inner">
+                    <div class="hero-svg-deco">
+                        <svg viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="180" r="170" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="6 8" fill="none" opacity="0.15" />
+                            <circle cx="200" cy="180" r="130" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="4 6" fill="none" opacity="0.10" />
+                            <path d="M200 10 L200 350" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.08" />
+                            <path d="M30 180 L370 180" stroke="var(--accent)" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.08" />
+                            <path d="M100 60 Q200 30 300 60" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.08" />
+                            <path d="M100 300 Q200 330 300 300" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.08" />
+                            <path d="M60 100 Q30 180 60 260" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.08" />
+                            <path d="M340 100 Q370 180 340 260" stroke="var(--accent)" stroke-width="1.5" fill="none" opacity="0.08" />
+                            <circle cx="200" cy="180" r="60" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 6" fill="none" opacity="0.12" />
+                        </svg>
+                    </div>
+                    <div class="hero-emoji-grid">
+                        <div class="hero-emoji-cell">🛍️</div>
+                        <div class="hero-emoji-cell">🏪</div>
+                        <div class="hero-emoji-cell">💰</div>
+                        <div class="hero-emoji-cell">⭐</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ZAŠTO BAŠ MI ═══ -->
+    <section id="zasto">
+        <div class="container">
+            <div class="section-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                </svg>
+                Zašto baš mi
+            </div>
+            <h2 class="section-title">Zašto SLM Cezar Company?</h2>
+            <p class="section-sub">Već 15 godina smo pouzdan izbor za kupce u Novom Sadu. Donosimo vam kvalitet, znanje i cene koje prijaju.</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-card-emoji">📦</span>
+                    <span class="stat">3000+</span>
+                    <h3>Širok asortiman</h3>
+                    <p>Od boja i lakova do alata i opreme – sve na jednom mestu. Stalno ažuriramo ponudu prema vašim potrebama.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-emoji">🧑‍🔧</span>
+                    <span class="stat">100%</span>
+                    <h3>Stručan savet</h3>
+                    <p>Naš tim pozna proizvode i pomoći će vam da izaberete tačno ono što vam treba – bez okolišanja i grešaka.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-emoji">🏷️</span>
+                    <span class="stat">–15%</span>
+                    <h3>Pristupačne cene</h3>
+                    <p>Konkurentne cene i redovne akcije – jer dobar proizvod ne mora da košta više. Povoljno za svaki budžet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ KADA NAM DOĆI ═══ -->
+    <section id="kada">
+        <div class="container">
+            <div class="section-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                Kada nam doći
+            </div>
+            <h2 class="section-title">U kojim situacijama smo tu za vas?</h2>
+            <p class="section-sub">Bez obzira na to šta vas muči – kod nas dobijate rešenje. Evo kad najčešće dolaze naši kupci.</p>
+            <div class="situations-grid">
+                <div class="situation-card">
+                    <span class="emoji">🎨</span>
+                    <h4>Potreban vam je savršen ton boje</h4>
+                    <p>Ne znate koju nijansu odabrati za zidove ili nameštaj? Pomažemo vam da pronađete tačan ton uz profesionalnu paletu.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🛠️</span>
+                    <h4>Planirate renoviranje doma</h4>
+                    <p>Od alata do završnih materijala – kompletan asortiman za jedan uspešan projekat bez lutanja po radnjama.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🧼</span>
+                    <h4>Treba vam oprema za održavanje</h4>
+                    <p>Sredstva, pribor i alati koji olakšavaju svakodnevno čišćenje i održavanje doma ili poslovnog prostora.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🎯</span>
+                    <h4>Tražite nešto specifično</h4>
+                    <p>Ako vam treba proizvod koji se retko nalazi – pitajte nas. Nabavljamo i manje uobičajene artikle po porudžbini.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">📐</span>
+                    <h4>Potreban vam je savet pre kupovine</h4>
+                    <p>Ne želite da pogrešite pri odabiru? Naši stručnjaci vam objašnjavaju prednosti i mane proizvoda – potpuno transparentno.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🚚</span>
+                    <h4>Potrebna vam je brza isporuka</h4>
+                    <p>Dogovorite preuzimanje ili dostavu – prilagođavamo se vašem rasporedu, bez nepotrebnog čekanja.</p>
+                    <span class="tag">Tu smo za vas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ KAKO FUNKCIONIŠEMO ═══ -->
+    <section id="kako">
+        <div class="container">
+            <div class="section-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+                Kako funkcionišemo
+            </div>
+            <h2 class="section-title">Vaš put do rešenja</h2>
+            <p class="section-sub">Od dolaska do zadovoljstva – jednostavan proces koji vas vodi do pravog proizvoda.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <span class="emoji">🚶</span>
+                    <h4>Dođite u radnju</h4>
+                    <p>Posetite nas na adresi Primorska 20, u srcu Novog Sada. Lako ćete nas pronaći i parking je blizu.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <span class="emoji">💬</span>
+                    <h4>Izložite potrebu</h4>
+                    <p>Recite nam šta tražite – bilo da je farba, alat ili pribor. Slušamo vas i postavljamo prava pitanja.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <span class="emoji">✅</span>
+                    <h4>Dobijate rešenje</h4>
+                    <p>Preporučujemo najbolji proizvod za vašu situaciju – pošteno, bez nametanja i skrivenih troškova.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <span class="emoji">😊</span>
+                    <h4>Zadovoljni kupac</h4>
+                    <p>Sa sigurnošću nosite proizvod kući. Ako imate pitanja – uvek smo na vezi i posle kupovine.</p>
+                </div>
+            </div>
+            <div class="steps-info">
+                <div class="steps-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span>Radno vreme: <strong>Pon–Pet 08–19h, Sub 08–15h</strong></span>
+                </div>
+                <div class="steps-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>Odziv: <strong>u roku od 24h</strong></span>
+                </div>
+                <div class="steps-info-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span>Servisiramo: <strong>Novi Sad i okolina</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer" id="kontakt">
+        <div class="container">
+            <div class="footer-brand">
+                <h3>SLM <span>Cezar</span> Company</h3>
+                <div class="cat">🛒 Shopping centar • Novi Sad</div>
+                <p>Više od prodavnice – mesto gde dobijate savet, kvalitet i cenu koja vam odgovara. Dođite i uverite se.</p>
+                <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+                    <a href="viber://chat?number=381216411696" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:100px;padding:6px 16px 6px 12px;font-size:0.82rem;color:var(--text-secondary);transition:border-color var(--transition),color var(--transition);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.98 0C5.38 0 0 5.38 0 11.98c0 2.38.7 4.58 1.9 6.46L.66 23.02l4.8-1.24c1.8.98 3.84 1.56 6.04 1.56 6.6 0 11.98-5.38 11.98-11.98C23.96 5.38 18.58 0 11.98 0zm6.84 16.68c-.28.78-1.4 1.44-2.28 1.62-.6.12-1.38.22-4.02-1.02-3.38-1.58-5.56-5.24-5.72-5.48-.18-.24-1.36-1.82-1.36-3.48s.84-2.46 1.14-2.8c.28-.3.62-.38.82-.38s.46.02.66.02c.2 0 .48-.08.76.58.28.66.96 2.28 1.04 2.44.1.16.14.36.04.56-.1.2-.16.28-.3.44-.14.16-.28.28-.42.46-.14.16-.28.34-.12.66.16.32.72 1.18 1.54 1.92 1.06.96 1.96 1.26 2.24 1.4.28.14.44.12.6-.08.16-.2.7-.82.88-1.1.2-.28.4-.24.66-.14.26.1 1.64.78 1.92.92.28.14.48.22.54.34.08.12.08.72-.2 1.42z"/></svg>
+                        Viber
+                    </a>
+                    <a href="https://wa.me/381216411696" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:100px;padding:6px 16px 6px 12px;font-size:0.82rem;color:var(--text-secondary);transition:border-color var(--transition),color var(--transition);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>📞 Kontakt</h4>
+                <div class="footer-contact-list">
+                    <a href="tel:+381216411696">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        +381 21 641 1696
+                    </a>
+                    <a href="mailto:slm.cezar@gmail.com">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        slm.cezar@gmail.com
+                    </a>
+                    <div class="addr">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Primorska 20, 21000 Novi Sad, Srbija
+                    </div>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>🌐 Društvene mreže</h4>
+                <div class="footer-social-links">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                    </a>
+                </div>
+                <p style="font-size:0.82rem;color:var(--text-muted);margin-top:6px;">
+                    📍 Primorska 20, Novi Sad
+                </p>
+            </div>
+            <div class="footer-copy">
+                &copy; 2025 SLM Cezar Company – Sva prava zadržana. 💙 Novi Sad
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ STICKY MOBILE CTA

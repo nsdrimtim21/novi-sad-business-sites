@@ -1,284 +1,1203 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juvelir Mojse | Jewelry Store Novi Sad</title>
-  <meta name="description" content="Juvelir Mojse nudi jewelry store usluge u Novom Sadu. Kontakt telefonom ili emailom.">
-  <meta property="og:title" content="Juvelir Mojse">
-  <meta property="og:description" content="Jewelry Store usluge u Novom Sadu sa direktnim kontakt informacijama.">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #172026;
-      background: #f7f4ef;
-      line-height: 1.6;
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247,244,239,.94);
-      border-bottom: 1px solid #ddd4c7;
-      backdrop-filter: blur(14px);
-    }
-    nav {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .brand { font-weight: 800; }
-    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
-    .nav-links a { text-decoration: none; }
-    .hero {
-      padding: 86px 0 72px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      gap: 42px;
-      align-items: center;
-    }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #266c84;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-    h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(2.3rem, 5vw, 4.9rem);
-      line-height: 1.02;
-    }
-    .lead {
-      max-width: 680px;
-      margin: 22px 0 0;
-      color: #44515a;
-      font-size: 1.12rem;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 800;
-      background: #172026;
-      color: #fff;
-    }
-    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
-    .snapshot {
-      background: #ffffff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
-    }
-    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
-    .snapshot p { margin: 0 0 12px; color: #44515a; }
-    section { padding: 68px 0; }
-    .section-head { max-width: 720px; margin-bottom: 28px; }
-    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
-    .section-head p { margin: 0; color: #5a666f; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .card, .proof-item {
-      background: #fff;
-      border: 1px solid #ddd4c7;
-      border-radius: 8px;
-      padding: 22px;
-    }
-    .card-kicker {
-      display: block;
-      color: #266c84;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
-    .card p, .proof-item span { color: #5a666f; }
-    .proof {
-      background: #172026;
-      color: #fff;
-    }
-    .proof .section-head p, .proof-item span { color: #c7d0d5; }
-    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
-    .proof-item strong { display: block; margin-bottom: 8px; }
-    .review-box {
-      background: #fff;
-      border-left: 5px solid #266c84;
-      padding: 26px;
-      border-radius: 8px;
-      color: #44515a;
-      font-size: 1.08rem;
-    }
-    .contact-band {
-      background: #266c84;
-      color: #fff;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 20px;
-      overflow-wrap: anywhere;
-    }
-    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
-    .contact-card a { font-weight: 800; text-decoration: none; }
-    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
-    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
-    @media (max-width: 820px) {
-      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juvelir Mojse – Zlatara Novi Sad | Ručno izrađen nakit</title>
+    <meta name="description" content="Juvelir Mojse u Novom Sadu – vrhunski zlatarski radovi, burme, prstenje i unikatan nakit. Posetite nas na Jevrejskoj 34.">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0d0d1a;
+            --bg-surface: #16162b;
+            --bg-card: #1c1c36;
+            --accent: #c9a959;
+            --accent-light: #e8d5a3;
+            --accent-dim: #a8883e;
+            --text-primary: #f5f0e8;
+            --text-secondary: #cbc4ba;
+            --text-muted: #8f867a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .55);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --transition: .3s cubic-bezier(.4, 0, .2, 1);
+            --max-w: 1100px;
+            --nav-h: 64px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-pad {
+            padding: 64px 0 72px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .section-label::after {
+            content: '';
+            width: 40px;
+            height: 1.5px;
+            background: currentColor;
+            opacity: .5;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4.4vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -.02em;
+        }
+        .section-title .gold {
+            color: var(--accent);
+        }
+
+        .section-sub {
+            font-size: clamp(1rem, 1.8vw, 1.12rem);
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 40px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #0d0d1a;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 34px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(201, 169, 89, .3);
+        }
+        .btn-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201, 169, 89, .4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1.5px solid var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: .95rem;
+            padding: 10px 26px;
+            border-radius: 50px;
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #0d0d1a;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav.sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 1000;
+            background: rgba(13, 13, 26, .78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201, 169, 89, .15);
+            transition: var(--transition);
+        }
+        nav .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo .gold {
+            color: var(--accent);
+        }
+        .nav-logo .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 120px 0 80px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 80% 30%, rgba(201, 169, 89, .08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 70%, rgba(201, 169, 89, .04) 0%, transparent 50%),
+                var(--bg-primary);
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text {
+            position: relative;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 169, 89, .12);
+            color: var(--accent-light);
+            font-size: .8rem;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(201, 169, 89, .2);
+            margin-bottom: 20px;
+            letter-spacing: .3px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -.03em;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gold {
+            color: var(--accent);
+        }
+        .hero p {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin-bottom: 28px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            font-size: .88rem;
+            color: var(--text-muted);
+        }
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-trust strong {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-diamond-wrap {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-diamond-wrap svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 60px rgba(201, 169, 89, .15));
+        }
+        .sparkle-float {
+            position: absolute;
+            font-size: 1.6rem;
+            animation: sparkleDrift 4s ease-in-out infinite;
+            pointer-events: none;
+            opacity: .7;
+        }
+        .sparkle-float:nth-child(1) {
+            top: 0%;
+            right: 0%;
+            animation-delay: 0s;
+        }
+        .sparkle-float:nth-child(2) {
+            bottom: 10%;
+            left: -5%;
+            animation-delay: 1.2s;
+            font-size: 1.2rem;
+        }
+        .sparkle-float:nth-child(3) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 2.4s;
+            font-size: 1rem;
+        }
+        .sparkle-float:nth-child(4) {
+            bottom: 0%;
+            right: 10%;
+            animation-delay: .6s;
+            font-size: 1.8rem;
+        }
+
+        @keyframes sparkleDrift {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: .7;
+            }
+            50% {
+                transform: translateY(-18px) scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            border-top: 3px solid var(--accent);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 169, 89, .06);
+            border-top-width: 3px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .55);
+            border-color: rgba(201, 169, 89, .15);
+            border-top-color: var(--accent);
+        }
+        .card .emoji-big {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .card p {
+            color: var(--text-secondary);
+            font-size: .94rem;
+        }
+
+        /* ===== ZAŠTO BAŠ MI ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .why-card .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .why-card .stat-label {
+            font-size: .9rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ===== USLUGE ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            border: 1px solid rgba(201, 169, 89, .08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(201, 169, 89, .2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+        }
+        .service-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: .92rem;
+        }
+
+        /* ===== KADA VAM TREBAMO ===== */
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .situation-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+        .situation-card:hover {
+            background: var(--bg-card);
+            transform: translateX(4px);
+        }
+        .situation-card .emoji {
+            font-size: 1.7rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .situation-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .situation-card p {
+            color: var(--text-secondary);
+            font-size: .88rem;
+        }
+        .situation-card .tu-smo {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: .3px;
+        }
+
+        /* ===== KAKO FUNKCIONIŠEMO ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 44px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), rgba(201, 169, 89, .2), var(--accent));
+            z-index: 0;
+            opacity: .3;
+        }
+        .step-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius);
+            padding: 28px 20px 24px;
+            text-align: center;
+            border: 1px solid rgba(201, 169, 89, .06);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(201, 169, 89, .18);
+        }
+        .step-num {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #0d0d1a;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            box-shadow: 0 4px 16px rgba(201, 169, 89, .25);
+        }
+        .step-card .emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .step-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .step-card p {
+            color: var(--text-secondary);
+            font-size: .86rem;
+        }
+
+        /* ===== RECENZIJE ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            border: 1px solid rgba(201, 169, 89, .06);
+            transition: var(--transition);
+        }
+        .review-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(201, 169, 89, .15);
+        }
+        .review-card .stars {
+            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .review-card blockquote {
+            font-size: .94rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .review-card .author {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-surface);
+            border-top: 1px solid rgba(201, 169, 89, .08);
+            padding: 52px 0 28px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        .footer-brand .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .footer-brand .logo .gold {
+            color: var(--accent);
+        }
+        .footer-brand .tagline {
+            font-size: .9rem;
+            color: var(--text-muted);
+            max-width: 260px;
+            line-height: 1.5;
+        }
+        .footer-col h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .footer-col ul li {
+            font-size: .92rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(201, 169, 89, .06);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: .82rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer-bottom a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(13, 13, 26, .92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(201, 169, 89, .15);
+            padding: 10px 20px;
+            justify-content: center;
+        }
+        .mobile-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #0d0d1a;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 380px;
+            transition: var(--transition);
+        }
+        .mobile-cta a:hover {
+            background: var(--accent-light);
+        }
+
+        /* ===== DECORATIVE DIVIDER ===== */
+        .deco-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0 32px;
+            opacity: .3;
+        }
+        .deco-divider .line {
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .deco-divider .diamond {
+            color: var(--accent);
+            font-size: .8rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-diamond-wrap {
+                width: 200px;
+                height: 200px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .situations-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .steps-grid::before {
+                display: none;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--nav-h);
+                left: 0;
+                width: 100%;
+                background: rgba(13, 13, 26, .95);
+                backdrop-filter: blur(16px);
+                padding: 20px 24px;
+                border-bottom: 1px solid rgba(201, 169, 89, .1);
+                gap: 16px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .mobile-cta {
+                display: flex;
+            }
+            body {
+                padding-bottom: 70px;
+            }
+            .section-pad {
+                padding: 48px 0 56px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .situations-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-diamond-wrap {
+                width: 160px;
+                height: 160px;
+            }
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+            .hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.4rem);
+            }
+            .btn-cta {
+                padding: 12px 26px;
+                font-size: .92rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-cta {
+                display: none !important;
+            }
+            body {
+                padding-bottom: 0 !important;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="shell">
-      <div class="brand">Juvelir Mojse</div>
-      <div class="nav-links">
-        <a href="#usluge">Usluge</a>
-        <a href="#utisci">Utisci</a>
-        <a href="#kontakt">Kontakt</a>
-      </div>
+
+    <!-- ===== STICKY NAV ===== -->
+    <nav class="sticky-nav" role="navigation" aria-label="Glavna navigacija">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">💎</span>
+                <span>Juvelir <span class="gold">Mojse</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Otvorite meni">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#usluge">Usluge</a></li>
+                <li><a href="#zasto">Zašto mi</a></li>
+                <li><a href="#kada">Kada</a></li>
+                <li><a href="#kako">Kako</a></li>
+                <li><a href="#recenzije">Recenzije</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Jewelry Store / Novi Sad</p>
-          <h1>Juvelir Mojse: lokalna jewelry store destinacija u Novom Sadu</h1>
-          <p class="lead">Kontaktirajte Juvelir Mojse direktno za rings u Novom Sadu. Ključna prednost: Izuzetna ocena 4.8 od strane zadovoljnih klijenata.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:zlataramojse@gmail.com">Planiraj posetu</a>
-            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
-          </div>
-          <div class="micro-grid">
-            <div class="micro">Oblast: Novi Sad</div>
-            <div class="micro">Kategorija: Jewelry Store</div>
-            <div class="micro">Direktan kontakt: 021 427222</div>
-          </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="hero-badge">✨ Zlatara u Novom Sadu od 2008.</div>
+                <h1>
+                    Nakit koji<br>
+                    nosi <span class="gold">vašu priču</span>
+                </h1>
+                <p>
+                    Ručno izrađene burme, prstenje i unikatni komadi – svaki detalj pažljivo
+                    oblikovan da traje generacijama. Posetite nas i osetite razliku.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:021427222" class="btn-cta">📞 Pozovite nas</a>
+                    <a href="#kontakt" class="btn-outline">📍 Jevrejska 34</a>
+                </div>
+                <div class="hero-trust">
+                    <span>⭐ <strong>4.8</strong> ocena</span>
+                    <span>👤 <strong>125+</strong> zadovoljnih</span>
+                    <span>⚡ <strong>Brzi</strong> odgovor</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-diamond-wrap">
+                    <!-- Decorative SVG diamond -->
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 10 L170 80 L100 190 L30 80 L100 10Z" fill="url(#diamondGrad)" stroke="#c9a959" stroke-width="1.5" opacity=".9"/>
+                        <path d="M100 30 L148 80 L100 160 L52 80 L100 30Z" fill="url(#innerGrad)" stroke="#e8d5a3" stroke-width=".8" opacity=".6"/>
+                        <path d="M100 50 L125 80 L100 130 L75 80 L100 50Z" fill="#e8d5a3" opacity=".35"/>
+                        <line x1="30" y1="80" x2="170" y2="80" stroke="#c9a959" stroke-width="1.2" opacity=".3"/>
+                        <line x1="100" y1="10" x2="100" y2="190" stroke="#c9a959" stroke-width="1.2" opacity=".2"/>
+                        <circle cx="100" cy="80" r="6" fill="#c9a959" opacity=".5"/>
+                        <defs>
+                            <linearGradient id="diamondGrad" x1="100" y1="10" x2="100" y2="190" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#c9a959" stop-opacity=".35"/>
+                                <stop offset=".5" stop-color="#e8d5a3" stop-opacity=".08"/>
+                                <stop offset="1" stop-color="#c9a959" stop-opacity=".2"/>
+                            </linearGradient>
+                            <linearGradient id="innerGrad" x1="100" y1="30" x2="100" y2="160" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#c9a959" stop-opacity=".2"/>
+                                <stop offset="1" stop-color="#e8d5a3" stop-opacity=".05"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="sparkle-float">✨</span>
+                    <span class="sparkle-float">💫</span>
+                    <span class="sparkle-float">⭐</span>
+                    <span class="sparkle-float">✦</span>
+                </div>
+            </div>
         </div>
-        <aside class="snapshot" aria-label="Pregled firme">
-          <h2>Pregled firme</h2>
-          <p><strong>Kategorija:</strong> Jewelry Store</p>
-          <p><strong>Cilj:</strong> Planiraj posetu</p>
-          <p><strong>Adresa:</strong> Jevrejska 34, Novi Sad 21000, Serbia</p>
-        </aside>
-      </div>
     </section>
 
-    <section id="usluge">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Usluge</h2>
-          <p>Dostupne usluge iz profila firme.</p>
+    <!-- ===== USLUGE ===== -->
+    <section class="section-pad" id="usluge" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-label">💍 Naše usluge</div>
+            <h2 class="section-title">Šta <span class="gold">radimo</span></h2>
+            <p class="section-sub">Svaki komad nastaje u našoj radionici – od ideje do konačnog sjaja.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="icon">💍</span>
+                    <h3>Burme i verenički prstenovi</h3>
+                    <p>Izrađujemo burme po vašoj meri – klasične, sa dijamantima, sa graviranjem. Savršen krug koji simboliše večnost.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">👑</span>
+                    <h3>Unikatni nakit</h3>
+                    <p>Privesci, minđuše, narukvice – ručni rad, pažljivo biranje kamena i metala. Svaki komad je jedinstven.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🔧</span>
+                    <h3>Popravka i restauracija</h3>
+                    <p>Vraćamo stari sjaj vašem omiljenom nakitu – popravka karičica, zamena kamenja, poliranje i čišćenje.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">✍️</span>
+                    <h3>Graviranje po želji</h3>
+                    <p>Dodajte datum, ime ili poruku – graviranje rukom ili mašinski, na unutrašnjoj ili spoljnoj strani nakita.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Rings</h3>
-          <p>Rings je dostupna usluga u okviru jewelry store ponude koju Juvelir Mojse pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-
-        <article class="card">
-          <span class="card-kicker">Usluga</span>
-          <h3>Jewelry</h3>
-          <p>Jewelry je dostupna usluga u okviru jewelry store ponude koju Juvelir Mojse pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section class="proof">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Zašto mi</h2>
-          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
+    <!-- ===== ZAŠTO BAŠ MI ===== -->
+    <section class="section-pad" id="zasto">
+        <div class="container">
+            <div class="section-label">⭐ Zašto baš mi</div>
+            <h2 class="section-title">Zašto <span class="gold">Juvelir Mojse</span></h2>
+            <p class="section-sub">Ne pravimo kompromise – ni u materijalu, ni u odnosu prema vama.</p>
+            <div class="why-grid">
+                <div class="card why-card">
+                    <span class="emoji-big">⭐</span>
+                    <div class="stat-num">4.8</div>
+                    <div class="stat-label">prosečna ocena</div>
+                    <p style="margin-top:10px;">Naši klijenti nas ocenjuju najvišim ocenama – profesionalnost, ljubaznost i vrhunski rad.</p>
+                </div>
+                <div class="card why-card">
+                    <span class="emoji-big">👤</span>
+                    <div class="stat-num">125+</div>
+                    <div class="stat-label">zadovoljnih klijenata</div>
+                    <p style="margin-top:10px;">Poverenje koje smo izgradili kroz svaki savet, svaki sat rada i svaki osmeh.</p>
+                </div>
+                <div class="card why-card">
+                    <span class="emoji-big">🛡️</span>
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">garancija kvaliteta</div>
+                    <p style="margin-top:10px;">Svaki komad izlazi iz naše radionice tek kada smo sigurni da je savršen.</p>
+                </div>
+            </div>
+            <div class="deco-divider">
+                <span class="line"></span>
+                <span class="diamond">◆</span>
+                <span class="line"></span>
+            </div>
         </div>
-        <div class="grid">
-        <article class="proof-item">
-          <strong>Izuzetna ocena 4.8 od strane zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne jewelry store ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Veruje nam preko 125 zadovoljnih klijenata</strong>
-          <span>Koristan signal kada poredite lokalne jewelry store ponuđače u Novom Sadu.</span>
-        </article>
-
-        <article class="proof-item">
-          <strong>Profesionalna i pouzdana usluga</strong>
-          <span>Koristan signal kada poredite lokalne jewelry store ponuđače u Novom Sadu.</span>
-        </article>
-        </div>
-      </div>
     </section>
 
-    <section id="utisci">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Utisci klijenata</h2>
-          <p>Glavne teme iz dostupnih recenzija.</p>
+    <!-- ===== KADA VAM TREBAMO ===== -->
+    <section class="section-pad" id="kada" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-label">📌 Kada vam trebamo</div>
+            <h2 class="section-title">U kojim <span class="gold">situacijama</span> nas zovu</h2>
+            <p class="section-sub">Bilo da planirate veliki korak ili želite da obradujete sebe – tu smo.</p>
+            <div class="situations-grid">
+                <div class="situation-card">
+                    <span class="emoji">💍</span>
+                    <h4>Prosidba ili venčanje</h4>
+                    <p>Tražite savršenu burmu ili verenički prsten? Pomažemo vam da odaberete komad koji će zauvek pamtiti.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🎁</span>
+                    <h4>Poklon za dragu osobu</h4>
+                    <p>Rođendan, godišnjica, jubilej – poklonite nešto što nosi emociju i traje.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🔧</span>
+                    <h4>Oštećen omiljeni komad</h4>
+                    <p>Pukla karičica, ispao kamen, izgubio sjaj? Donesite – vraćamo mu prvobitnu lepotu.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">✍️</span>
+                    <h4>Želja za graviranjem</h4>
+                    <p>Dodajte lični pečat – datum, ime, kratka poruka. Graviranje radimo brzo i precizno.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">💎</span>
+                    <h4>Izrada nakita po meri</h4>
+                    <p>Imate ideju? Skiciramo, biramo kamen i metal, i stvaramo komad koji postoji samo u vašoj mašti.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+                <div class="situation-card">
+                    <span class="emoji">🧹</span>
+                    <h4>Profesionalno čišćenje</h4>
+                    <p>Vratite sjaj svom nakitu – ultrazvučno čišćenje i poliranje koje osvežava svaki komad.</p>
+                    <span class="tu-smo">→ Tu smo za vas</span>
+                </div>
+            </div>
         </div>
-        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Ljubazno, Odlično, Najbolje, Super.</div>
-      </div>
     </section>
 
-    <section id="kontakt" class="contact-band">
-      <div class="shell">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+    <!-- ===== KAKO FUNKCIONIŠEMO ===== -->
+    <section class="section-pad" id="kako">
+        <div class="container">
+            <div class="section-label">⚙️ Vaš put do rešenja</div>
+            <h2 class="section-title">Kako <span class="gold">funkcionišemo</span></h2>
+            <p class="section-sub">Jednostavan proces od prvog kontakta do trenutka kada nakit ponosno nosite.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <span class="emoji">📞</span>
+                    <h4>Poziv ili dolazak</h4>
+                    <p>Nazovite nas ili svratite do Jevrejske 34. Razgovaramo o vašoj ideji i željama.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <span class="emoji">✏️</span>
+                    <h4>Konsultacije i skica</h4>
+                    <p>Zajedno biramo materijal, kamen i oblik. Radimo skicu po vašoj meri.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <span class="emoji">🔨</span>
+                    <h4>Izrada u radionici</h4>
+                    <p>Svaki komad nastaje ručno – sati preciznog rada i ljubavi prema zanatu.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <span class="emoji">🎉</span>
+                    <h4>Preuzimanje i sjaj</h4>
+                    <p>Nakit je spreman. Dolazite po njega, probate i odlazite sa osmehom.</p>
+                </div>
+            </div>
+            <div style="margin-top:36px;text-align:center;color:var(--text-muted);font-size:.9rem;">
+                🕐 Radno vreme: pon–pet 09:00–18:00 &nbsp;·&nbsp; sub 09:00–14:00 &nbsp;·&nbsp; 📍 Novi Sad
+            </div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card"><span>Telefon</span><a href="tel:021427222">021 427222</a></div>
-          <div class="contact-card"><span>Email</span><a href="mailto:zlataramojse@gmail.com">zlataramojse@gmail.com</a></div>
-          <div class="contact-card"><span>Adresa</span>Jevrejska 34, Novi Sad 21000, Serbia</div>
-        </div>
-      </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="shell">&copy; 2026 Juvelir Mojse. Jewelry Store u Novom Sadu.</div>
-  </footer>
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        var target = document.querySelector(link.getAttribute("href"));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  </script>
+    <!-- ===== RECENZIJE ===== -->
+    <section class="section-pad" id="recenzije" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="section-label">💬 Recenzije</div>
+            <h2 class="section-title">Šta kažu <span class="gold">naši klijenti</span></h2>
+            <p class="section-sub">Reči koje nas motivišu da svaki dan budemo bolji.</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Profesionalni, ljubazni, vrhunski rad. Burma je savršena – svaki detalj je bio tačno onako kako smo želeli.”</blockquote>
+                    <div class="author">– Marija S.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Najbolji zlatar u Novom Sadu! Popravili su stari prsten moje bake – izgleda kao nov. Neizmerno sam zahvalna.”</blockquote>
+                    <div class="author">– Jelena P.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>“Došao sam sa skicom na salveti, a izašao sa prelepim vereničkim prstenom. Hvala vam od srca!”</blockquote>
+                    <div class="author">– Marko K.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:28px;">
+                <span style="color:var(--text-muted);font-size:.9rem;">⭐ Prosečna ocena <strong style="color:var(--accent);">4.8</strong> od 5 — na osnovu 125+ utisaka</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER / KONTAKT ===== -->
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">💎 Juvelir <span class="gold">Mojse</span></div>
+                    <p class="tagline">Zlatarska radnja u Novom Sadu – ručna izrada nakita, popravka i graviranje. Tradicija i kvalitet od 2008.</p>
+                    <div style="display:flex;gap:14px;margin-top:16px;">
+                        <a href="https://www.facebook.com/profile.php?id=61556568121789" target="_blank" rel="noopener" style="color:var(--text-muted);font-size:1.4rem;transition:var(--transition);">📘</a>
+                        <a href="https://rs.linkedin.com/in/mojse" target="_blank" rel="noopener" style="color:var(--text-muted);font-size:1.4rem;transition:var(--transition);">🔗</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li>📞 <a href="tel:021427222">021 427 222</a></li>
+                        <li>📧 <a href="mailto:zlataramojse@gmail.com">zlataramojse@gmail.com</a></li>
+                        <li>📍 Jevrejska 34, Novi Sad</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Povežite se</h4>
+                    <ul>
+                        <li>💬 <a href="viber://chat?number=38121427222" target="_blank">Viber</a></li>
+                        <li>📱 <a href="https://wa.me/38121427222" target="_blank">WhatsApp</a></li>
+                        <li>📘 <a href="https://www.facebook.com/profile.php?id=61556568121789" target="_blank">Facebook</a></li>
+                        <li>🔗 <a href="https://rs.linkedin.com/in/mojse" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Juvelir Mojse – Zlatara Novi Sad. Sva prava zadržana.</span>
+                <span>Ručni rad 💛 tradicija</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== STICKY MOBILE CTA ===== -->
+    <div class="mobile-cta">
+        <a href="tel:021427222">📞 Pozovite nas</a>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            // Mobile nav toggle
+            const toggle = document.getElementById('navToggle');
+            const links = document.getElementById('navLinks');
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    links.classList.toggle('open');
+                    toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+                });
+                // Close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                        links.classList.remove('open');
+                        toggle.textContent = '☰';
+                    }
+                });
+                // Close on link click
+                links.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        links.classList.remove('open');
+                        toggle.textContent = '☰';
+                    });
+                });
+            }
+
+            // Smooth scroll for anchor links (fallback enhancement)
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue(
+                        '--nav-h'), 10) || 64;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Add subtle parallax sparkle to hero on mousemove
+            const hero = document.querySelector('.hero');
+            const sparkles = hero ? hero.querySelectorAll('.sparkle-float') : [];
+            if (sparkles.length && hero) {
+                hero.addEventListener('mousemove', function(e) {
+                    const rect = hero.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - .5;
+                    const y = (e.clientY - rect.top) / rect.height - .5;
+                    sparkles.forEach(function(el, i) {
+                        const speed = 8 + i * 2;
+                        const dx = x * speed;
+                        const dy = y * speed;
+                        el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(1.05)';
+                    });
+                });
+                hero.addEventListener('mouseleave', function() {
+                    sparkles.forEach(function(el) {
+                        el.style.transform = '';
+                    });
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Banquet Hall Crystal | Sale za proslave Novi Sad</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #f0ede6;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-card: #232340;
+      --bg-soft: #2a2a4a;
+      --accent: #e8a838;
+      --accent-soft: #f5c56e;
+      --accent-dark: #c48a2a;
+      --text-light: #f0ede6;
+      --text-muted: #b8b0a0;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+      --radius-card: 14px;
+      --radius-btn: 30px;
+      --max-width: 1100px;
+      --nav-height: 64px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      margin-bottom: 0.5em;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    /* ===== STICKY NAV ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(26, 26, 46, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(232, 168, 56, 0.2);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span {
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    /* mobile nav */
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.96);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        padding: 28px 0 32px;
+        gap: 22px;
+        transform: translateY(-120%);
+        transition: transform 0.35s ease;
+        border-bottom: 1px solid rgba(232,168,56,0.2);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 120px 0 70px;
+      background: radial-gradient(ellipse at 20% 30%, #2f2a4a, transparent 70%), 
+                  radial-gradient(ellipse at 90% 70%, #3a2a30, transparent 60%),
+                  var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232,168,56,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      color: var(--text-light);
+      margin-bottom: 0.3em;
+    }
+
+    .hero-content h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #1a1a2e;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: var(--radius-btn);
+      font-size: 1.1rem;
+      transition: 0.25s;
+      box-shadow: 0 6px 18px rgba(232,168,56,0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent-soft);
+      transform: scale(1.02);
+      box-shadow: 0 10px 28px rgba(232,168,56,0.4);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 32px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .trust-row span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trust-row strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-svg-wrap {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1/1;
+      background: rgba(232,168,56,0.04);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(232,168,56,0.15);
+      box-shadow: 0 0 60px rgba(232,168,56,0.08);
+    }
+
+    .hero-svg-wrap svg {
+      width: 70%;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+    }
+
+    @media (max-width: 720px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-cta {
+        margin: 0 auto;
+      }
+      .trust-row {
+        justify-content: center;
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .hero-svg-wrap {
+        max-width: 200px;
+      }
+    }
+
+    /* ===== ZAŠTO BAŠ MI ===== */
+    .why-section {
+      background: var(--bg-soft);
+      position: relative;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .why-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 28px 20px;
+      border-top: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 36px rgba(0,0,0,0.6);
+    }
+
+    .why-card .emoji-big {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+    }
+
+    .why-card h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 0.95rem;
+    }
+
+    /* ===== KADA VAM TREBAMO ===== */
+    .situations {
+      background: var(--bg-dark);
+    }
+
+    .situations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .situation-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 24px 18px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      transition: 0.2s;
+    }
+
+    .situation-card:hover {
+      background: #2e2e52;
+    }
+
+    .situation-card .emoji {
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .situation-card h4 {
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .situation-card .tu-smo {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 600;
+      color: var(--accent-soft);
+      border-bottom: 1px dotted var(--accent);
+    }
+
+    @media (max-width: 720px) {
+      .situations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== KAKO FUNKCIONIŠEMO ===== */
+    .process {
+      background: var(--bg-soft);
+      position: relative;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px 20px;
+      margin-top: 30px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 28px 22px;
+      flex: 1 1 180px;
+      max-width: 240px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-bottom: 3px solid var(--accent);
+      transition: 0.2s;
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      color: #1a1a2e;
+      font-weight: 800;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .step-card .emoji {
+      font-size: 2rem;
+      margin: 6px 0;
+    }
+
+    .step-card h4 {
+      color: var(--accent);
+    }
+
+    .process-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(232,168,56,0.2);
+    }
+
+    .process-info span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+    }
+
+    .process-info strong {
+      color: var(--accent);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #12121f;
+      padding: 48px 0 30px;
+      border-top: 1px solid rgba(232,168,56,0.15);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-col h4 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .footer-col p, .footer-col a {
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent-soft);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .footer-social a {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 720px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .sticky-mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #1a1a2e;
+      border-top: 1px solid rgba(232,168,56,0.3);
+      padding: 12px 20px;
+      z-index: 999;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+    }
+
+    .sticky-mobile-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--accent);
+      color: #1a1a2e;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: var(--radius-btn);
+      font-size: 1.05rem;
+      transition: 0.2s;
+    }
+
+    .sticky-mobile-cta a:hover {
+      background: var(--accent-soft);
+    }
+
+    @media (max-width: 720px) {
+      .sticky-mobile-cta {
+        display: block;
+      }
+      body {
+        padding-bottom: 70px;
+      }
+    }
+
+    /* ===== DECORATIVE SVG LINE ===== */
+    .deco-line {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0 10px;
+      opacity: 0.3;
+    }
+
+    .deco-line span {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* ===== MISC ===== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title svg {
+      flex-shrink: 0;
+    }
+
+    .text-accent {
+      color: var(--accent);
+    }
+
+    .mb-0 {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== STICKY NAV ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      🪟 Banquet Hall <span>Crystal</span>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Navigacija">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Početna</a></li>
+      <li><a href="#why">Zašto mi</a></li>
+      <li><a href="#situations">Kada</a></li>
+      <li><a href="#process">Kako</a></li>
+      <li><a href="#footer">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Vaša proslava <em>bez stresa</em> – prepustite nam brigu</h1>
+        <p class="hero-sub">Organizujemo venčanja, rođendane i svečane večere u prelepom ambijentu. Vi uživajte, mi se brinemo o svakom detalju.</p>
+        <a href="tel:+381607477002" class="hero-cta">📞 Pozovite nas</a>
+        <div class="trust-row">
+          <span>⭐ <strong>12+</strong> godina iskustva</span>
+          <span>🎉 <strong>350+</strong> srećnih proslava</span>
+          <span>⏱️ <strong>odgovor</strong> za manje od 2h</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-svg-wrap">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="80" stroke="#e8a838" stroke-width="2" stroke-dasharray="8 6" fill="none" opacity="0.5"/>
+            <circle cx="100" cy="100" r="50" fill="#e8a838" fill-opacity="0.08" stroke="#e8a838" stroke-width="1.5"/>
+            <path d="M70 110 L100 70 L130 110 Z" fill="#e8a838" fill-opacity="0.2" stroke="#e8a838" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="12" fill="#e8a838" fill-opacity="0.3"/>
+            <path d="M60 140 Q100 160 140 140" stroke="#e8a838" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="70" cy="80" r="6" fill="#e8a838" fill-opacity="0.4"/>
+            <circle cx="130" cy="80" r="6" fill="#e8a838" fill-opacity="0.4"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ZAŠTO BAŠ MI ===== -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="section-title">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8a838" stroke-width="1.8"><path d="M12 2L15 9H22L16 14L19 21L12 16.5L5 21L8 14L2 9H9L12 2Z"/></svg>
+        <h2>Zašto baš Crystal?</h2>
+      </div>
+      <div class="deco-line"><span></span><span></span><span></span></div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="emoji-big">🏰</div>
+          <h3>Prelep ambijent</h3>
+          <p>Prostran, elegantan prostor sa prirodnim svetlom – savršen za nezaboravne trenutke.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">👑</div>
+          <h3>Profesionalna organizacija</h3>
+          <p>Iskusan tim koji vodi računa o svakom detalju, od dekoracije do muzike i cateringa.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">🎯</div>
+          <h3>Po meri vašeg događaja</h3>
+          <p>Prilagođavamo usluge vašoj viziji – svaka proslava je unikatna.</p>
+        </div>
+        <div class="why-card">
+          <div class="emoji-big">🤝</div>
+          <h3>Više od 12 godina</h3>
+          <p>Poverenje stotina porodica i mladenaca – preporuka je naš najveći uspeh.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KADA VAM TREBAMO ===== -->
+  <section class="situations" id="situations">
+    <div class="container">
+      <div class="section-title">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8a838" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6V12L16 14"/></svg>
+        <h2>Kada vam je potrebna pomoć?</h2>
+      </div>
+      <div class="deco-line"><span></span><span></span><span></span></div>
+      <div class="situations-grid">
+        <div class="situation-card">
+          <div class="emoji">💍</div>
+          <h4>Venčanje</h4>
+          <p>Organizacija ceremonije, dekoracija, muzika i večera – sve na jednom mestu.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+        <div class="situation-card">
+          <div class="emoji">🎂</div>
+          <h4>Rođendani & jubileji</h4>
+          <p>Proslavite važan rođendan ili godišnjicu u raskošnom ambijentu.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+        <div class="situation-card">
+          <div class="emoji">🏢</div>
+          <h4>Korporativni događaji</h4>
+          <p>Tim bildinzi, proslave firmi, kokteli – profesionalna podrška od A do Š.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+        <div class="situation-card">
+          <div class="emoji">🎊</div>
+          <h4>Porodična slavlja</h4>
+          <p>Krštenja, mature, male mature – svaki trenutak je važan.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+        <div class="situation-card">
+          <div class="emoji">🍽️</div>
+          <h4>Večere & banketi</h4>
+          <p>Elegantne večere za posebne prilike, uz vrhunski catering.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+        <div class="situation-card">
+          <div class="emoji">🎶</div>
+          <h4>Muzički program</h4>
+          <p>Bend, DJ ili klavir – prilagođavamo atmosferu vašem ukusu.</p>
+          <span class="tu-smo">Tu smo za vas →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KAKO FUNKCIONIŠEMO ===== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-title">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8a838" stroke-width="1.8"><path d="M22 12H18L15 21L9 3L6 12H2"/></svg>
+        <h2>Vaš put do savršene proslave</h2>
+      </div>
+      <div class="deco-line"><span></span><span></span><span></span></div>
+      <div class="process-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="emoji">📞</div>
+          <h4>Kontakt</h4>
+          <p>Pozovite nas ili pošaljite poruku – odgovaramo u roku od 2 sata.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="emoji">🤝</div>
+          <h4>Dogovor</h4>
+          <p>Razgovaramo o vašim željama, broju gostiju i budžetu.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="emoji">✨</div>
+          <h4>Organizacija</h4>
+          <p>Mi preuzimamo dekoraciju, muziku, hranu i sve detalje.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="emoji">🎉</div>
+          <h4>Proslava</h4>
+          <p>Vi uživate, a mi se brinemo da sve teče besprekorno.</p>
+        </div>
+      </div>
+      <div class="process-info">
+        <span>🕒 <strong>Radno vreme:</strong> 10:00 – 20:00 (subotom do 18h)</span>
+        <span>📍 <strong>Servis:</strong> Novi Sad, Veternik i okolina</span>
+        <span>⚡ <strong>Brzi odgovor:</strong> manje od 2 sata</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>🏛️ Banquet Hall Crystal</h4>
+        <p>Sale za proslave • Novi Sad</p>
+        <p>📍 Ive Lole Ribara 4a, Veternik, Serbia</p>
+        <p>📞 <a href="tel:+381607477002">+381 60 747 7002</a></p>
+        <p>✉️ <a href="mailto:banquet.hall.crystal@example.com">banquet.hall.crystal@example.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Brzi linkovi</h4>
+        <a href="#hero">Početna</a>
+        <a href="#why">Zašto mi</a>
+        <a href="#situations">Kada vam trebamo</a>
+        <a href="#process">Kako funkcionišemo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Povežite se</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="LinkedIn">🔗</a>
+          <a href="viber://chat?number=381607477002" aria-label="Viber">💬</a>
+          <a href="https://wa.me/381607477002" aria-label="WhatsApp">📱</a>
+        </div>
+        <p style="margin-top: 16px;">📞 <a href="tel:+381607477002">Pozovite nas</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Banquet Hall Crystal – Sva prava zadržana.</p>
+    </div>
+  </footer>
+
+  <!-- ===== STICKY MOBILE CTA ===== -->
+  <div class="sticky-mobile-cta">
+    <a href="tel:+381607477002">📞 Pozovite nas</a>
+  </div>
+
+  <!-- ===== JS ===== -->
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+      });
+
+      // close on link click
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      // close on outside click
+      document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
