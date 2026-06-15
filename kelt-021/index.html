@@ -1,609 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KELT 021 DOO | Insurance Agency Novi Sad – Trusted Professional Service</title>
-  <meta name="description" content="KELT 021 DOO is a professional insurance agency in Novi Sad, Serbia. 5.0-star rated, fast & reliable. Request a quote today.">
-  <meta property="og:title" content="KELT 021 DOO | Insurance Agency Novi Sad">
-  <meta property="og:description" content="Professional insurance agency with 5.0-star rating. Fast, reliable service in Novi Sad, Serbia. Request a quote.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kelt021doo.com">
-  <meta property="og:locale" content="en_RS">
-  <meta name="keywords" content="KELT 021 DOO, Insurance Agency Novi Sad, Insurance Agency insurance_agency, best insurance agency in Novi Sad, insurance agency services Serbia, professional insurance agency">
+  <title>KELT 021 DOO | Osiguravajuća agencija Novi Sad</title>
+  <meta name="description" content="KELT 021 DOO nudi insurance agency usluge u Novom Sadu. Kontakt telefonom ili emailom.">
+  <meta property="og:title" content="KELT 021 DOO">
+  <meta property="og:description" content="Insurance Agency usluge u Novom Sadu sa direktnim kontakt informacijama.">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background: #fafbfc;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      color: #1e293b;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #172026;
+      background: #f7f4ef;
+      line-height: 1.6;
     }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247,244,239,.94);
+      border-bottom: 1px solid #ddd4c7;
+      backdrop-filter: blur(14px);
     }
-
-    /* spacing */
-    section {
-      padding: 5rem 0;
-    }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: #334155;
-      max-width: 680px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #1e3a5f;
-      color: white;
-      font-weight: 500;
-      font-size: 1.1rem;
-      padding: 0.9rem 2.4rem;
-      border-radius: 40px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      letter-spacing: 0.3px;
-    }
-
-    .btn:hover {
-      background: #14304e;
-      transform: scale(1.02);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    /* header */
-    .navbar {
-      padding: 1.5rem 0;
-      background: white;
-      border-bottom: 1px solid #e9edf2;
-    }
-
-    .navbar .container {
+    nav {
+      min-height: 68px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      gap: 20px;
     }
-
-    .logo {
-      font-weight: 600;
-      font-size: 1.6rem;
-      letter-spacing: -0.02em;
-      color: #0b1e33;
-    }
-
-    .logo span {
-      color: #3b6b9f;
-    }
-
-    .nav-cta {
-      background: #1e3a5f;
-      color: white;
-      padding: 0.5rem 1.8rem;
-      border-radius: 30px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: #14304e;
-    }
-
-    /* hero */
+    .brand { font-weight: 800; }
+    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
+    .nav-links a { text-decoration: none; }
     .hero {
-      background: #f0f4fa;
-      padding: 5rem 0 5.5rem;
+      padding: 86px 0 72px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
     }
-
-    .hero .container {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 42px;
       align-items: center;
     }
-
-    .hero-content h1 {
-      color: #0b1e33;
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #266c84;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.82rem;
     }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      margin: 1.5rem 0 2rem;
-      color: #2c3e50;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 1.8rem;
-      margin-top: 2rem;
-    }
-
-    .stat-item {
-      background: white;
-      padding: 1rem 1.6rem;
-      border-radius: 24px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
-      text-align: center;
-    }
-
-    .stat-number {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #1e3a5f;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: #475569;
-      letter-spacing: 0.3px;
-    }
-
-    .hero-visual {
-      background: #dce6f0;
-      border-radius: 40px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.02);
-    }
-
-    .hero-visual svg {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 28px;
-      padding: 2rem 1.8rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #eef2f7;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.04);
-    }
-
-    .service-icon {
-      background: #e7edf6;
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-icon svg {
-      width: 28px;
-      height: 28px;
-      stroke: #1e3a5f;
-      stroke-width: 1.6;
-      fill: none;
-    }
-
-    .service-card h3 {
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: #475569;
-    }
-
-    /* why choose us */
-    .why-bg {
-      background: #ffffff;
-    }
-
-    .usp-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 2.2rem;
-      margin-top: 1rem;
-    }
-
-    .usp-item {
-      background: #f6f9fe;
-      border-radius: 28px;
-      padding: 2rem 1.8rem;
-      text-align: center;
-      border: 1px solid #e9edf4;
-    }
-
-    .usp-item .big-icon {
-      font-size: 2.6rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .usp-item h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .usp-item p {
-      font-size: 0.95rem;
-      color: #475569;
-    }
-
-    /* reviews */
-    .reviews {
-      background: #f7faff;
-    }
-
-    .review-summary {
+    h1 {
+      margin: 0;
       max-width: 780px;
-      margin: 0 auto 3rem;
-      text-align: center;
-      background: white;
-      padding: 2rem 2.5rem;
-      border-radius: 40px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
-      border: 1px solid #eef2f7;
+      font-size: clamp(2.3rem, 5vw, 4.9rem);
+      line-height: 1.02;
     }
-
-    .review-stars {
-      font-size: 2.2rem;
-      color: #f5b342;
-      margin-bottom: 0.5rem;
-      letter-spacing: 4px;
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: #44515a;
+      font-size: 1.12rem;
     }
-
-    .review-summary p {
-      font-size: 1.2rem;
-      color: #1e293b;
-      font-weight: 450;
-      margin: 0 auto;
-    }
-
-    .review-tags {
-      display: flex;
-      flex-wrap: wrap;
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #172026;
+      color: #fff;
     }
-
-    .review-tag {
-      background: white;
-      border-radius: 40px;
-      padding: 0.5rem 1.8rem;
-      border: 1px solid #dce3ec;
-      font-weight: 500;
-      color: #1e3a5f;
-      font-size: 1rem;
+    .btn.secondary { background: #fff; color: #172026; border: 1px solid #ddd4c7; }
+    .snapshot {
+      background: #ffffff;
+      border: 1px solid #ddd4c7;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
     }
-
-    /* contact */
+    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
+    .snapshot p { margin: 0 0 12px; color: #44515a; }
+    section { padding: 68px 0; }
+    .section-head { max-width: 720px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
+    .section-head p { margin: 0; color: #5a666f; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card, .proof-item {
+      background: #fff;
+      border: 1px solid #ddd4c7;
+      border-radius: 8px;
+      padding: 22px;
+    }
+    .card-kicker {
+      display: block;
+      color: #266c84;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
+    .card p, .proof-item span { color: #5a666f; }
+    .proof {
+      background: #172026;
+      color: #fff;
+    }
+    .proof .section-head p, .proof-item span { color: #c7d0d5; }
+    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
+    .proof-item strong { display: block; margin-bottom: 8px; }
+    .review-box {
+      background: #fff;
+      border-left: 5px solid #266c84;
+      padding: 26px;
+      border-radius: 8px;
+      color: #44515a;
+      font-size: 1.08rem;
+    }
+    .contact-band {
+      background: #266c84;
+      color: #fff;
+    }
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.8rem;
-      background: white;
-      border-radius: 40px;
-      padding: 3rem 3rem;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
-      border: 1px solid #eef2f7;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
-
-    .contact-info h2 {
-      text-align: left;
-      margin-bottom: 1.5rem;
+    .contact-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-wrap: anywhere;
     }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .contact-detail svg {
-      width: 24px;
-      height: 24px;
-      stroke: #1e3a5f;
-      stroke-width: 1.8;
-      flex-shrink: 0;
-    }
-
-    .contact-detail a {
-      font-size: 1.1rem;
-      color: #1e293b;
-      border-bottom: 1px solid transparent;
-      transition: border 0.2s;
-    }
-
-    .contact-detail a:hover {
-      border-bottom: 1px solid #1e3a5f;
-    }
-
-    .contact-cta {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 1.2rem;
-    }
-
-    .contact-cta p {
-      font-size: 1.1rem;
-      color: #2c3e50;
-    }
-
-    .contact-cta .btn {
-      background: #1e3a5f;
-    }
-
-    /* footer */
-    footer {
-      padding: 2.2rem 0;
-      border-top: 1px solid #e9edf2;
-      background: white;
-      text-align: center;
-      color: #5f6c80;
-      font-size: 0.9rem;
-    }
-
-    /* responsive */
-    @media (max-width: 800px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        font-size: 1.8rem;
-      }
-      .hero .container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .hero-stats {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr;
-        padding: 2rem 1.8rem;
-      }
-      .contact-cta {
-        align-items: flex-start;
-      }
-      .navbar .container {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .nav-cta {
-        margin-top: 0.4rem;
-      }
-      .review-summary {
-        padding: 1.8rem 1.2rem;
-      }
-      .usp-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 3.5rem 0;
-      }
-      .hero {
-        padding: 3rem 0;
-      }
-      .stat-item {
-        padding: 0.8rem 1.2rem;
-      }
-      .stat-number {
-        font-size: 1.6rem;
-      }
+    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
+    .contact-card a { font-weight: 800; text-decoration: none; }
+    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .micro { border-top: 1px solid #ddd4c7; padding-top: 12px; color: #5a666f; font-size: .94rem; }
+    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
+    @media (max-width: 820px) {
+      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { padding-top: 56px; }
     }
   </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">KELT <span>021</span> DOO</div>
-      <a href="mailto:kelt021doo@gmail.com" class="nav-cta">Request Quote</a>
-    </div>
+  <header>
+    <nav class="shell">
+      <div class="brand">KELT 021 DOO</div>
+      <div class="nav-links">
+        <a href="#usluge">Usluge</a>
+        <a href="#utisci">Utisci</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Trusted insurance agency in Novi Sad — 5.0 ★</h1>
-        <p>KELT 021 DOO delivers fast, professional insurance services with a personal touch. Rated exceptional by our community.</p>
-        <a href="mailto:kelt021doo@gmail.com" class="btn">Request Quote</a>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-number">5.0</div>
-            <div class="stat-label">★ Customer rating</div>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Osiguravajuća agencija / Novi Sad</p>
+          <h1>KELT 021 DOO: jasna Osiguravajuća agencija pomoć za vaš sledeći korak</h1>
+          <p class="lead">Kontaktirajte KELT 021 DOO direktno za Profesionalne Osiguravajuća agencija usluge u Novom Sadu. Ključna prednost: Izuzetna ocena 5.0 od strane zadovoljnih klijenata.</p>
+          <div class="actions">
+            <a class="btn" href="mailto:kelt021doo@gmail.com">Zatraži ponudu</a>
+            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Quotes delivered</div>
+          <div class="micro-grid">
+            <div class="micro">Oblast: Novi Sad</div>
+            <div class="micro">Kategorija: Osiguravajuća agencija</div>
+            <div class="micro">Direktan kontakt: 065 4772477</div>
           </div>
         </div>
+        <aside class="snapshot" aria-label="Pregled firme">
+          <h2>Pregled firme</h2>
+          <p><strong>Kategorija:</strong> Osiguravajuća agencija</p>
+          <p><strong>Cilj:</strong> Zatraži ponudu</p>
+          <p><strong>Adresa:</strong> Jozefa Marčoka 1, Novi Sad, Serbia</p>
+        </aside>
       </div>
-      <div class="hero-visual">
-        <!-- simple shield icon / professional emblem -->
-        <svg viewBox="0 0 120 120" width="180" height="180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60 12L18 30v25c0 26 16.8 45 42 53 25.2-8 42-27 42-53V30L60 12Z" fill="#dce6f0" stroke="#1e3a5f" stroke-width="2.5"/>
-          <path d="M48 62l8 8 16-16" stroke="#1e3a5f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="60" cy="60" r="28" stroke="#1e3a5f" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <h2>Professional Insurance Agency Services</h2>
-      <div class="services-grid">
-        <!-- single service card (only one provided) -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-          </div>
-          <h3>Professional Insurance Agency Services</h3>
-          <p>Tailored coverage for individuals and businesses. We handle claims, renewals, and risk assessment with speed and transparency. Every policy backed by 5-star service.</p>
+    <section id="usluge">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Usluge</h2>
+          <p>Dostupne usluge iz profila firme.</p>
         </div>
-        <!-- Because only one service is provided, we keep it clean -->
+        <div class="grid">
+        <article class="card">
+          <span class="card-kicker">Usluga</span>
+          <h3>Profesionalne Osiguravajuća agencija usluge</h3>
+          <p>Profesionalne Osiguravajuća agencija usluge je dostupna usluga u okviru Osiguravajuća agencija ponude koju KELT 021 DOO pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
+        </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Choose Us -->
-  <section class="why-bg" id="why">
-    <div class="container">
-      <h2>Why KELT 021 DOO?</h2>
-      <div class="usp-grid">
-        <div class="usp-item">
-          <div class="big-icon">⭐</div>
-          <h3>Exceptional 5.0 rating</h3>
-          <p>Our customers consistently rate us 5 stars for reliability and care.</p>
+    <section class="proof">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Zašto mi</h2>
+          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
         </div>
-        <div class="usp-item">
-          <div class="big-icon">⚡</div>
-          <h3>Fast & efficient</h3>
-          <p>Quick quotes, swift policy processing — we respect your time.</p>
-        </div>
-        <div class="usp-item">
-          <div class="big-icon">🤝</div>
-          <h3>Professional & reliable</h3>
-          <p>Clear advice, no hidden clauses. Trust built through transparency.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="grid">
+        <article class="proof-item">
+          <strong>Izuzetna ocena 5.0 od strane zadovoljnih klijenata</strong>
+          <span>Koristan signal kada poredite lokalne Osiguravajuća agencija ponuđače u Novom Sadu.</span>
+        </article>
 
-  <!-- Reviews -->
-  <section class="reviews" id="reviews">
-    <div class="container">
-      <h2>Review insights: what clients say</h2>
-      <div class="review-summary">
-        <div class="review-stars">★★★★★</div>
-        <p><strong>“Professional, recommend, fast — that’s KELT 021.”</strong> Clients highlight our speed, clear communication, and reliable advice. Recurring themes: <em>brz</em> (fast), trustworthy, and highly recommended.</p>
-        <div class="review-tags">
-          <span class="review-tag">Professional</span>
-          <span class="review-tag">Recommend</span>
-          <span class="review-tag">Fast</span>
-          <span class="review-tag">Brz</span>
-        </div>
-      </div>
-    </div>
-  </section>
+        <article class="proof-item">
+          <strong>Brza i efikasna usluga</strong>
+          <span>Koristan signal kada poredite lokalne Osiguravajuća agencija ponuđače u Novom Sadu.</span>
+        </article>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h2>Get in touch</h2>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <a href="tel:0654772477">065 4772477</a>
-          </div>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="M22 7l-10 7L2 7"/>
-            </svg>
-            <a href="mailto:kelt021doo@gmail.com">kelt021doo@gmail.com</a>
-          </div>
-          <div class="contact-detail">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Jozefa Marčoka 1, Novi Sad, Serbia</span>
-          </div>
-        </div>
-        <div class="contact-cta">
-          <p>Ready for a fast, professional quote? We’re here to help.</p>
-          <a href="mailto:kelt021doo@gmail.com" class="btn">Request Quote</a>
-          <p style="font-size:0.9rem; color:#5f6c80;">Response within 2 hours • 5.0 ★ service</p>
+        <article class="proof-item">
+          <strong>Profesionalna i pouzdana usluga</strong>
+          <span>Koristan signal kada poredite lokalne Osiguravajuća agencija ponuđače u Novom Sadu.</span>
+        </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="utisci">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Utisci klijenata</h2>
+          <p>Glavne teme iz dostupnih recenzija.</p>
+        </div>
+        <div class="review-box">Najčešće pohvale klijenata: Profesionalno, Preporuka, Brzo, Brz.</div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact-band">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card"><span>Telefon</span><a href="tel:0654772477">065 4772477</a></div>
+          <div class="contact-card"><span>Email</span><a href="mailto:kelt021doo@gmail.com">kelt021doo@gmail.com</a></div>
+          <div class="contact-card"><span>Adresa</span>Jozefa Marčoka 1, Novi Sad, Serbia</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <p>© 2025 KELT 021 DOO – Insurance Agency Novi Sad. All rights reserved.</p>
-    </div>
+    <div class="shell">&copy; 2026 KELT 021 DOO. Osiguravajuća agencija u Novom Sadu.</div>
   </footer>
-
-  <!-- no external scripts, just inline (optional smooth scroll) -->
   <script>
-    (function() {
-      // ensure all anchor links with mailto: are standard
-      // no extra logic needed, but we add small UX: prevent double tap zoom on buttons
-      const btns = document.querySelectorAll('.btn');
-      btns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          // let default mailto behavior happen
-        });
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener("click", function(event) {
+        var target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
-    })();
+    });
   </script>
 </body>
 </html>

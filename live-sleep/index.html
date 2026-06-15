@@ -1,530 +1,290 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Live & Sleep · Premier Hotel Novi Sad | 4.9★ trusted stay</title>
-  <meta name="description" content="Live & Sleep in Novi Sad – exceptional 4.9 star rating, warm hospitality, breakfast & parking. Call now for a serene stay.">
-  <meta property="og:title" content="Live & Sleep · Hotel Novi Sad | 4.9★ trusted stay">
-  <meta property="og:description" content="Exceptional 4.9-star hotel in Novi Sad. Breakfast, parking, modern rooms. Trusted by 114+ guests. Call now.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://liveandsleep.rs">
-  <meta property="og:locale" content="en_GB">
-  <meta name="keywords" content="Live &amp; Sleep, Hotel Novi Sad, Hotel hotel, best hotel in Novi Sad, hotel services Serbia, professional hotel">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live & Sleep | Hotel Novi Sad</title>
+  <meta name="description" content="Live &amp; Sleep nudi hotel usluge u Novom Sadu. Kontakt telefonom ili emailom.">
+  <meta property="og:title" content="Live &amp; Sleep">
+  <meta property="og:description" content="Hotel usluge u Novom Sadu sa direktnim kontakt informacijama.">
   <style>
-    /* ----- RESET & BASE (modern, no frameworks) ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background: #fbfaf8;
-      color: #1f2a2e;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #1c2530;
+      background: #f4f7fa;
+      line-height: 1.6;
     }
-
-    img, a, button {
-      display: block;
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244,247,250,.94);
+      border-bottom: 1px solid #d4dde5;
+      backdrop-filter: blur(14px);
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
+    nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-
-    button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    /* ----- GRID & SPACING (mobile-first) ----- */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-    }
-
-    @media (min-width: 768px) {
-      section {
-        padding: 5.5rem 0;
-      }
-    }
-
-    /* ----- TYPOGRAPHY ----- */
-    h1, h2, h3 {
-      font-weight: 350;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-
-    h1 {
-      font-size: 2.6rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-    }
-
-    h3 {
-      font-size: 1.6rem;
-      font-weight: 380;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #3d4a4f;
-      max-width: 650px;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .text-balance {
-      text-wrap: balance;
-    }
-
-    /* ----- HERO (unique) ----- */
+    .brand { font-weight: 800; }
+    .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
+    .nav-links a { text-decoration: none; }
     .hero {
-      background: #e9e3db;  /* warm stone */
-      padding: 5rem 0 4.5rem;
-      position: relative;
+      padding: 86px 0 72px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
     }
-
-    .hero .container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 42px;
+      align-items: center;
     }
-
-    .hero-content {
-      max-width: 800px;
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #1f6f8b;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.82rem;
     }
-
-    .hero h1 {
-      margin-bottom: 1.2rem;
-      color: #1f2a2e;
-      font-weight: 390;
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(2.3rem, 5vw, 4.9rem);
+      line-height: 1.02;
     }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2.2rem;
-      color: #2c3a40;
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: #44515a;
+      font-size: 1.12rem;
     }
-
-    .hero-usp {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      margin: 1.2rem 0 1.8rem;
-      font-size: 1rem;
-      color: #1f2a2e;
-    }
-
-    .hero-usp span {
-      background: rgba(255,255,240,0.3);
-      padding: 0.2rem 0.8rem 0.2rem 1.6rem;
-      border-radius: 40px;
-      font-weight: 440;
-      position: relative;
-    }
-
-    .hero-usp span::before {
-      content: "★";
-      position: absolute;
-      left: 8px;
-      color: #bb8c5e;
-    }
-
-    .btn-call {
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      background: #1f2a2e;
-      color: #f9f6f1;
-      padding: 1rem 2.8rem;
-      border-radius: 60px;
-      font-size: 1.4rem;
-      font-weight: 440;
-      letter-spacing: 0.3px;
-      transition: background 0.2s, transform 0.1s;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      width: fit-content;
-    }
-
-    .btn-call:hover {
-      background: #3a4a50;
-      transform: scale(1.02);
-    }
-
-    .btn-call small {
-      font-weight: 300;
-      opacity: 0.8;
-      font-size: 0.9rem;
-    }
-
-    @media (min-width: 600px) {
-      h1 {
-        font-size: 3.6rem;
-      }
-      .hero {
-        padding: 7rem 0 5.5rem;
-      }
-    }
-
-    /* ----- SERVICES section (cards) ----- */
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (min-width: 600px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 900px) {
-      .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .service-card {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 2.4rem 1.8rem 2.2rem;
-      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s;
-      border: 1px solid #ece7e0;
-    }
-
-    .service-card:hover {
-      box-shadow: 0 20px 32px -12px rgba(0,0,0,0.08);
-    }
-
-    .service-icon {
-      font-size: 2.6rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card h3 {
-      font-weight: 420;
-      margin-bottom: 0.3rem;
-    }
-
-    .service-card p {
-      font-size: 1rem;
-      color: #4d5b62;
-      margin-top: 0.6rem;
-    }
-
-    /* ----- WHY CHOOSE US (USP) ----- */
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.8rem;
-      margin: 2rem 0 1rem;
-    }
-
-    @media (min-width: 600px) {
-      .why-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .why-item {
-      background: #f2efe9;
-      border-radius: 28px;
-      padding: 2.4rem 1.8rem;
-      text-align: center;
-      border: 1px solid #e3dbd0;
-    }
-
-    .why-item .stat {
-      font-size: 2.8rem;
-      font-weight: 350;
-      line-height: 1;
-      color: #936f4b;
-      margin-bottom: 0.45rem;
-    }
-
-    .why-item p {
-      margin: 0 auto;
-      font-size: 1.1rem;
-    }
-
-    /* ----- REVIEWS (thematic) ----- */
-    .review-block {
-      background: #f5f1eb;
-      border-radius: 48px;
-      padding: 3rem 2rem;
-      max-width: 800px;
-      margin: 2rem auto 0;
-    }
-
-    .review-summary {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2rem 2rem;
-      font-size: 1.4rem;
-      font-weight: 340;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      background: #1c2530;
+      color: #fff;
     }
-
-    .review-summary span {
-      background: white;
-      padding: 0.2rem 1.8rem 0.2rem 2.2rem;
-      border-radius: 50px;
-      border: 1px solid #ddd6cb;
-      position: relative;
-    }
-
-    .review-summary span::before {
-      content: "❤";
-      position: absolute;
-      left: 12px;
-      color: #b28b65;
-      font-size: 1.1rem;
-    }
-
-    .review-note {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      color: #3a4a50;
-    }
-
-    .review-note strong {
-      font-weight: 550;
-    }
-
-    /* ----- CONTACT (clickable, clean) ----- */
-    .contact-card {
+    .btn.secondary { background: #fff; color: #1c2530; border: 1px solid #d4dde5; }
+    .snapshot {
       background: #ffffff;
-      border-radius: 40px;
-      padding: 2.8rem 2rem;
-      max-width: 780px;
-      margin: 1.8rem auto 0;
-      border: 1px solid #e8e0d6;
-      box-shadow: 0 10px 24px -8px rgba(0,0,0,0.02);
+      border: 1px solid #d4dde5;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
     }
-
-    .contact-item {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      padding: 1.2rem 0;
-      border-bottom: 1px solid #efebe6;
-      font-size: 1.2rem;
+    .snapshot h2 { margin: 0 0 14px; font-size: 1.15rem; }
+    .snapshot p { margin: 0 0 12px; color: #44515a; }
+    section { padding: 68px 0; }
+    .section-head { max-width: 720px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
+    .section-head p { margin: 0; color: #5a666f; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
-
-    .contact-item:last-child {
-      border-bottom: none;
+    .card, .proof-item {
+      background: #fff;
+      border: 1px solid #d4dde5;
+      border-radius: 8px;
+      padding: 22px;
     }
-
-    .contact-icon {
-      min-width: 2.2rem;
-      font-size: 1.8rem;
-      opacity: 0.7;
+    .card-kicker {
+      display: block;
+      color: #1f6f8b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
-
-    .contact-item a {
-      color: #1f2a2e;
-      font-weight: 430;
-      word-break: break-word;
+    .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
+    .card p, .proof-item span { color: #5a666f; }
+    .proof {
+      background: #1c2530;
+      color: #fff;
     }
-
-    .contact-item a:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .proof .section-head p, .proof-item span { color: #c7d0d5; }
+    .proof-item { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
+    .proof-item strong { display: block; margin-bottom: 8px; }
+    .review-box {
+      background: #fff;
+      border-left: 5px solid #1f6f8b;
+      padding: 26px;
+      border-radius: 8px;
+      color: #44515a;
+      font-size: 1.08rem;
     }
-
-    .address-block {
-      font-style: normal;
-      color: #2c3a40;
-      line-height: 1.4;
+    .contact-band {
+      background: #1f6f8b;
+      color: #fff;
     }
-
-    .contact-cta-note {
-      margin: 1.8rem 0 0.4rem;
-      text-align: center;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
-
-    .contact-cta-note .btn-call {
-      font-size: 1.3rem;
-      padding: 0.9rem 2.6rem;
+    .contact-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-wrap: anywhere;
     }
-
-    /* ----- FOOTER (minimal) ----- */
-    footer {
-      padding: 2.5rem 0 3rem;
-      border-top: 1px solid #e5ddd2;
-      color: #4a5a60;
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    /* ----- UTILITY ----- */
-    .subhead {
-      font-size: 1.1rem;
-      color: #4d5b62;
-      margin-top: -0.8rem;
-      margin-bottom: 2rem;
-    }
-
-    hr {
-      border: 0;
-      height: 1px;
-      background: #e0d8cc;
-      margin: 1rem 0 2.5rem;
-    }
-
-    @media (max-width: 380px) {
-      h1 { font-size: 2rem; }
-      .hero p { font-size: 1.1rem; }
+    .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
+    .contact-card a { font-weight: 800; text-decoration: none; }
+    .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .micro { border-top: 1px solid #d4dde5; padding-top: 12px; color: #5a666f; font-size: .94rem; }
+    footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
+    @media (max-width: 820px) {
+      .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero { padding-top: 56px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- HERO (unique headline & usp) -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="text-balance">Live & Sleep<br>where Novi Sad rests.</h1>
-        <p>Intimate, serene stays with a 4.9★ rating — trusted by 114+ guests. Breakfast, parking & modern rooms in the heart of the city.</p>
-        <div class="hero-usp">
-          <span>Exceptional 4.9 ★ rating</span>
-          <span>114+ happy guests</span>
-          <span>Fast & efficient service</span>
-        </div>
-        <a href="tel:+381643517914" class="btn-call">
-          📞 Call Now <small>064 3517914</small>
-        </a>
+  <header>
+    <nav class="shell">
+      <div class="brand">Live & Sleep</div>
+      <div class="nav-links">
+        <a href="#usluge">Usluge</a>
+        <a href="#utisci">Utisci</a>
+        <a href="#kontakt">Kontakt</a>
       </div>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <!-- SERVICES (exact services from data: Breakfast, Parking, Rooms) -->
-  <section id="services">
-    <div class="container">
-      <h2 class="text-balance">Services designed for calm</h2>
-      <p class="subhead text-balance">Everything you need for a seamless stay — no extras, just quality.</p>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🍳☕</div>
-          <h3>Breakfast</h3>
-          <p>Start your morning with a carefully prepared breakfast, using fresh local produce. Served in a quiet, sunlit space.</p>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Hotel / Novi Sad</p>
+          <h1>Live & Sleep: smeštaj u Novom Sadu sa direktnim kontaktom za rezervaciju</h1>
+          <p class="lead">Kontaktirajte Live & Sleep direktno za Doručak u Novom Sadu. Ključna prednost: Izuzetna ocena 4.9 od strane zadovoljnih klijenata.</p>
+          <div class="actions">
+            <a class="btn" href="tel:0643517914">Pozovi odmah</a>
+            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
+          </div>
+          <div class="micro-grid">
+            <div class="micro">Oblast: Novi Sad</div>
+            <div class="micro">Kategorija: Hotel</div>
+            <div class="micro">Direktan kontakt: 064 3517914</div>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🅿️🚗</div>
-          <h3>Parking</h3>
-          <p>Free, secure on-site parking — no circling the block. Reserved spot upon arrival, hassle-free.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🛁🛏️</div>
-          <h3>Rooms</h3>
-          <p>Minimal, immaculate rooms with crisp linen, blackout curtains, and a peaceful atmosphere for deep sleep.</p>
-        </div>
+        <aside class="snapshot" aria-label="Pregled firme">
+          <h2>Pregled firme</h2>
+          <p><strong>Kategorija:</strong> Hotel</p>
+          <p><strong>Cilj:</strong> Pozovi odmah</p>
+          <p><strong>Adresa:</strong> Grozde Gajšin 6a, Novi Sad 21101, Serbia</p>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHY CHOOSE US (USP exact: rating, clients, fast service) -->
-  <section id="why-choose-us">
-    <div class="container">
-      <h2 class="text-balance text-center">Why guests keep coming back</h2>
-      <div class="why-grid">
-        <div class="why-item">
-          <div class="stat">4.9 ★</div>
-          <p><strong>Exceptional rating</strong> — one of the highest in Novi Sad, based on authentic guest reviews.</p>
+    <section id="usluge">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Usluge</h2>
+          <p>Dostupne usluge iz profila firme.</p>
         </div>
-        <div class="why-item">
-          <div class="stat">114+</div>
-          <p><strong>Trusted clients</strong> — and counting. Every guest is treated with personal attention.</p>
-        </div>
-        <div class="why-item">
-          <div class="stat">⚡</div>
-          <p><strong>Fast & efficient</strong> — from booking to check-out, we value your time.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="grid">
+        <article class="card">
+          <span class="card-kicker">Smeštaj</span>
+          <h3>Doručak</h3>
+          <p>Doručak je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
+        </article>
 
-  <!-- REVIEWS (thematic summary, no fake names) -->
-  <section id="reviews">
-    <div class="container">
-      <h2 class="text-balance text-center">What guests say</h2>
-      <div class="review-block">
-        <div class="review-summary">
-          <span>Kind</span>
-          <span>Friendly</span>
-          <span>Recommend</span>
-          <span>Great</span>
-          <span>Best</span>
-        </div>
-        <div class="review-note text-center">
-          <strong>Recurring themes:</strong> guests highlight a warm, kind atmosphere, helpful hosts,<br> 
-          and a spotless environment. “Best place to stay in Novi Sad” appears often.
+        <article class="card">
+          <span class="card-kicker">Smeštaj</span>
+          <h3>parking</h3>
+          <p>parking je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
+        </article>
+
+        <article class="card">
+          <span class="card-kicker">Smeštaj</span>
+          <h3>Sobe</h3>
+          <p>Sobe je dostupna usluga u okviru hotelske ponude koju Live & Sleep pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
+        </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT (real data: phone, email, address) + CTA call now -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="text-balance text-center">Reserve your room</h2>
-      <p class="subhead text-center text-balance">One call is all it takes — we answer personally.</p>
-      <div class="contact-card">
-        <div class="contact-item">
-          <span class="contact-icon">📞</span>
-          <a href="tel:+381643517914">064 3517914</a>
+    <section class="proof">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Zašto mi</h2>
+          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
         </div>
-        <div class="contact-item">
-          <span class="contact-icon">✉️</span>
-          <a href="mailto:liveapartman@gmail.com">liveapartman@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">📍</span>
-          <address class="address-block">
-            Grozde Gajšin 6a, Novi Sad 21101, Serbia
-          </address>
-        </div>
-        <div class="contact-cta-note">
-          <a href="tel:+381643517914" class="btn-call" style="font-size:1.3rem;">
-            📞 Call Now <small>064 3517914</small>
-          </a>
+        <div class="grid">
+        <article class="proof-item">
+          <strong>Izuzetna ocena 4.9 od strane zadovoljnih klijenata</strong>
+          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
+        </article>
+
+        <article class="proof-item">
+          <strong>Veruje nam preko 114 zadovoljnih klijenata</strong>
+          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
+        </article>
+
+        <article class="proof-item">
+          <strong>Brza i efikasna usluga</strong>
+          <span>Koristan signal kada poredite lokalne Hotel ponuđače u Novom Sadu.</span>
+        </article>
         </div>
       </div>
-      <p class="text-center" style="margin-top:1.2rem; font-size:0.95rem; color:#5c6e76;">We’re available 8:00 – 22:00 · call, email or drop by</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER (minimal, contact again) -->
+    <section id="utisci">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Utisci klijenata</h2>
+          <p>Glavne teme iz dostupnih recenzija.</p>
+        </div>
+        <div class="review-box">Najčešće pohvale klijenata: Ljubazno, Prijateljski, Preporuka, Odlično, Najbolje.</div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact-band">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card"><span>Telefon</span><a href="tel:0643517914">064 3517914</a></div>
+          <div class="contact-card"><span>Email</span><a href="mailto:liveapartman@gmail.com">liveapartman@gmail.com</a></div>
+          <div class="contact-card"><span>Adresa</span>Grozde Gajšin 6a, Novi Sad 21101, Serbia</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <div class="container">
-      <p>Live & Sleep · Grozde Gajšin 6a, Novi Sad · <a href="tel:+381643517914" style="text-decoration:underline; text-underline-offset:3px;">064 3517914</a></p>
-      <p style="margin-top:0.8rem; opacity:0.6;">Serene stays · since 2019</p>
-    </div>
+    <div class="shell">&copy; 2026 Live & Sleep. Hotel u Novom Sadu.</div>
   </footer>
-
-  <!-- (no JS needed – everything inline, no external deps) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener("click", function(event) {
+        var target = document.querySelector(link.getAttribute("href"));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
 </body>
 </html>

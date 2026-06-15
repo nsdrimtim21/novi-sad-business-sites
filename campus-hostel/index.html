@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campus Hostel | Hostel in Novi Sad</title>
-  <meta name="description" content="Campus Hostel offers hostel services in Novi Sad. Contact by phone or email.">
+  <title>Campus Hostel | Hostel Novi Sad</title>
+  <meta name="description" content="Campus Hostel nudi hostel usluge u Novom Sadu. Kontakt telefonom ili emailom.">
   <meta property="og:title" content="Campus Hostel">
-  <meta property="og:description" content="Hostel services in Novi Sad with direct contact information.">
+  <meta property="og:description" content="Hostel usluge u Novom Sadu sa direktnim kontakt informacijama.">
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #231711;
-      background: #fff7ed;
+      color: #1c2530;
+      background: #f4f7fa;
       line-height: 1.6;
     }
     a { color: inherit; }
@@ -23,8 +23,8 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(255,247,237,.94);
-      border-bottom: 1px solid #ead8c1;
+      background: rgba(244,247,250,.94);
+      border-bottom: 1px solid #d4dde5;
       backdrop-filter: blur(14px);
     }
     nav {
@@ -34,14 +34,12 @@
       justify-content: space-between;
       gap: 20px;
     }
-    .brand { font-weight: 800; letter-spacing: 0; }
+    .brand { font-weight: 800; }
     .nav-links { display: flex; gap: 18px; font-size: 0.94rem; color: #44515a; }
     .nav-links a { text-decoration: none; }
     .hero {
       padding: 86px 0 72px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.9), rgba(254,215,170,.64)),
-        linear-gradient(145deg, transparent 0 52%, rgba(180,81,29,.12) 52% 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f5fa 100%);
     }
     .hero-grid {
       display: grid;
@@ -51,7 +49,7 @@
     }
     .eyebrow {
       margin: 0 0 14px;
-      color: #b4511d;
+      color: #1f6f8b;
       font-weight: 800;
       text-transform: uppercase;
       font-size: 0.82rem;
@@ -61,7 +59,6 @@
       max-width: 780px;
       font-size: clamp(2.3rem, 5vw, 4.9rem);
       line-height: 1.02;
-      letter-spacing: 0;
     }
     .lead {
       max-width: 680px;
@@ -79,13 +76,13 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 800;
-      background: #7f2d12;
+      background: #1c2530;
       color: #fff;
     }
-    .btn.secondary { background: #fff; color: #231711; border: 1px solid #ead8c1; }
+    .btn.secondary { background: #fff; color: #1c2530; border: 1px solid #d4dde5; }
     .snapshot {
       background: #ffffff;
-      border: 1px solid #ead8c1;
+      border: 1px solid #d4dde5;
       border-radius: 8px;
       padding: 24px;
       box-shadow: 0 18px 50px rgba(25, 31, 35, 0.08);
@@ -103,13 +100,13 @@
     }
     .card, .proof-item {
       background: #fff;
-      border: 1px solid #ead8c1;
+      border: 1px solid #d4dde5;
       border-radius: 8px;
       padding: 22px;
     }
     .card-kicker {
       display: block;
-      color: #b4511d;
+      color: #1f6f8b;
       font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -118,7 +115,7 @@
     .card h3 { margin: 0 0 10px; font-size: 1.16rem; }
     .card p, .proof-item span { color: #5a666f; }
     .proof {
-      background: #351f16;
+      background: #1c2530;
       color: #fff;
     }
     .proof .section-head p, .proof-item span { color: #c7d0d5; }
@@ -126,14 +123,14 @@
     .proof-item strong { display: block; margin-bottom: 8px; }
     .review-box {
       background: #fff;
-      border-left: 5px solid #b4511d;
+      border-left: 5px solid #1f6f8b;
       padding: 26px;
       border-radius: 8px;
       color: #44515a;
       font-size: 1.08rem;
     }
     .contact-band {
-      background: #9a3412;
+      background: #1f6f8b;
       color: #fff;
     }
     .contact-grid {
@@ -151,7 +148,7 @@
     .contact-card span { display: block; color: #d7edf4; font-size: 0.82rem; margin-bottom: 8px; }
     .contact-card a { font-weight: 800; text-decoration: none; }
     .micro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .micro { border-top: 1px solid #ead8c1; padding-top: 12px; color: #5a666f; font-size: .94rem; }
+    .micro { border-top: 1px solid #d4dde5; padding-top: 12px; color: #5a666f; font-size: .94rem; }
     footer { padding: 24px 0; background: #11181d; color: #cad2d7; font-size: 0.92rem; }
     @media (max-width: 820px) {
       .hero-grid, .grid, .contact-grid, .micro-grid { grid-template-columns: 1fr; }
@@ -165,9 +162,9 @@
     <nav class="shell">
       <div class="brand">Campus Hostel</div>
       <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+        <a href="#usluge">Usluge</a>
+        <a href="#utisci">Utisci</a>
+        <a href="#kontakt">Kontakt</a>
       </div>
     </nav>
   </header>
@@ -177,38 +174,38 @@
       <div class="shell hero-grid">
         <div>
           <p class="eyebrow">Hostel / Novi Sad</p>
-          <h1>Campus Hostel: stay in Novi Sad with direct booking contact</h1>
-          <p class="lead">Contact Campus Hostel directly for professional hostel services in Novi Sad. Key trust signal: fast and efficient service.</p>
+          <h1>Campus Hostel: smeštaj u Novom Sadu sa direktnim kontaktom za rezervaciju</h1>
+          <p class="lead">Kontaktirajte Campus Hostel direktno za Profesionalne Hostel usluge u Novom Sadu. Ključna prednost: Brza i efikasna usluga.</p>
           <div class="actions">
-            <a class="btn" href="tel:0605055759">Call Now</a>
-            <a class="btn secondary" href="#services">View Services</a>
+            <a class="btn" href="tel:0605055759">Pozovi odmah</a>
+            <a class="btn secondary" href="#usluge">Pogledaj usluge</a>
           </div>
           <div class="micro-grid">
-            <div class="micro">Service area: Novi Sad</div>
-            <div class="micro">Category: Hostel</div>
-            <div class="micro">Direct contact: 060 5055759</div>
+            <div class="micro">Oblast: Novi Sad</div>
+            <div class="micro">Kategorija: Hostel</div>
+            <div class="micro">Direktan kontakt: 060 5055759</div>
           </div>
         </div>
-        <aside class="snapshot" aria-label="Business snapshot">
-          <h2>Business Snapshot</h2>
-          <p><strong>Category:</strong> Hostel</p>
-          <p><strong>Goal:</strong> Call Now</p>
-          <p><strong>Address:</strong> Dr Sime Miloševića 10, Novi Sad 21000, Serbia</p>
+        <aside class="snapshot" aria-label="Pregled firme">
+          <h2>Pregled firme</h2>
+          <p><strong>Kategorija:</strong> Hostel</p>
+          <p><strong>Cilj:</strong> Pozovi odmah</p>
+          <p><strong>Adresa:</strong> Dr Sime Miloševića 10, Novi Sad 21000, Serbia</p>
         </aside>
       </div>
     </section>
 
-    <section id="services">
+    <section id="usluge">
       <div class="shell">
         <div class="section-head">
-          <h2>Services</h2>
-          <p>Available services from the business profile.</p>
+          <h2>Usluge</h2>
+          <p>Dostupne usluge iz profila firme.</p>
         </div>
         <div class="grid">
         <article class="card">
-          <span class="card-kicker">Offer</span>
-          <h3>Professional Hostel Services</h3>
-          <p>Professional Hostel Services is the available hostel service listed for Campus Hostel. Use the contact details below to ask for current availability.</p>
+          <span class="card-kicker">Smeštaj</span>
+          <h3>Profesionalne Hostel usluge</h3>
+          <p>Profesionalne Hostel usluge je dostupna usluga u okviru ponude hostela koju Campus Hostel pruža. Koristite kontakt podatke ispod za proveru trenutne raspoloživosti.</p>
         </article>
         </div>
       </div>
@@ -217,45 +214,45 @@
     <section class="proof">
       <div class="shell">
         <div class="section-head">
-          <h2>Why Choose Us</h2>
-          <p>Helpful signals before you call, book, or request details.</p>
+          <h2>Zašto mi</h2>
+          <p>Korisni signali pre nego što pozovete, zakažete ili zatražite detalje.</p>
         </div>
         <div class="grid">
         <article class="proof-item">
-          <strong>Fast and efficient service</strong>
-          <span>A useful signal when comparing local hostel providers in Novi Sad.</span>
+          <strong>Brza i efikasna usluga</strong>
+          <span>Koristan signal kada poredite lokalne Hostel ponuđače u Novom Sadu.</span>
         </article>
         </div>
       </div>
     </section>
 
-    <section id="reviews">
+    <section id="utisci">
       <div class="shell">
         <div class="section-head">
-          <h2>Reviews</h2>
-          <p>Recurring themes from the available review information.</p>
+          <h2>Utisci klijenata</h2>
+          <p>Glavne teme iz dostupnih recenzija.</p>
         </div>
-        <div class="review-box">Recurring review themes: Kind, Friendly, Quick.</div>
+        <div class="review-box">Najčešće pohvale klijenata: Ljubazno, Prijateljski, Brzo.</div>
       </div>
     </section>
 
-    <section id="contact" class="contact-band">
+    <section id="kontakt" class="contact-band">
       <div class="shell">
         <div class="section-head">
-          <h2>Contact</h2>
-          <p>Call, email, or use the address below.</p>
+          <h2>Kontakt</h2>
+          <p>Pozovite, pošaljite email ili koristite adresu ispod.</p>
         </div>
         <div class="contact-grid">
-          <div class="contact-card"><span>Phone</span><a href="tel:0605055759">060 5055759</a></div>
+          <div class="contact-card"><span>Telefon</span><a href="tel:0605055759">060 5055759</a></div>
           <div class="contact-card"><span>Email</span><a href="mailto:suzanasdjuric@gmail.com">suzanasdjuric@gmail.com</a></div>
-          <div class="contact-card"><span>Address</span>Dr Sime Miloševića 10, Novi Sad 21000, Serbia</div>
+          <div class="contact-card"><span>Adresa</span>Dr Sime Miloševića 10, Novi Sad 21000, Serbia</div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="shell">&copy; 2026 Campus Hostel. Hostel in Novi Sad.</div>
+    <div class="shell">&copy; 2026 Campus Hostel. Hostel u Novom Sadu.</div>
   </footer>
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(function(link) {
